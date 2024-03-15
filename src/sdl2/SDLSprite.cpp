@@ -41,7 +41,7 @@ void SDLSprite::loadSpriteFile(const char *filename, SDL_Renderer *renderer) {
 void SDLSprite::draw(SDL_Renderer *renderer, int x, int y, int w, int h) const {
     if (_texture == nullptr) {
         // TODO: Gére l'erreur (par exemple, aucune texture à dessiner)
-        SDL_Log("Aucune texture à dessiner !\n");
+        //SDL_Log("Aucune texture à dessiner !\n");
         return;
     }
 

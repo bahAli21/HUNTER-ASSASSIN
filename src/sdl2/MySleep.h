@@ -8,7 +8,7 @@
 
 #ifndef HUNTERASSASSIN_MYSLEEP_H
 #define HUNTERASSASSIN_MYSLEEP_H
-
+#include "SDL.h"
 //#include "TimerCallback.h"
 
 /**

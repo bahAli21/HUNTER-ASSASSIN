@@ -25,7 +25,8 @@ Game::Game(int nbGardes): _player(), nbGardes(nbGardes) {
 
             // Je vérifie la collision avec les gardes déjà générés
             for (int j = 0; j < i; ++j) {
-                if (checkCollision(rectTmp, Rect(allGardes[j].getPosition().x, allGardes[j].getPosition().y, PLAYER_WIDTH, PLAYER_HEIGHT))) {
+                Rect rect= {allGardes[j].getPosition().x, allGardes[j].getPosition().y, PLAYER_WIDTH, PLAYER_HEIGHT};
+                if (checkCollision(rectTmp, rect)) {
                     collision = true;
                     break;
                 }
@@ -35,7 +36,7 @@ Game::Game(int nbGardes): _player(), nbGardes(nbGardes) {
         allGardes[i].setPositionX(X);
         allGardes[i].setPositionY(Y);
         gardesDest[i] = {allGardes[i].getPosition().x,
-                    allGardes[i].getPosition().y,
+                        allGardes[i].getPosition().y,
                     PLAYER_WIDTH,
                     PLAYER_HEIGHT};
         gardesRect[i] = {allGardes[i].getPosition().x,
