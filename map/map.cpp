@@ -10,39 +10,66 @@
 }*/
 
 // on prend une image et on la place dans un rectangle destination qui est deja placee sur le rendu
-void map::drawObstacle(SDL_Renderer * renderer, char * path, SDL_Rect destination) {
+void Map::drawObstacle(SDL_Renderer * renderer, char * path, SDL_Rect destination) {
     SDL_Surface* obstacle = SDL_LoadBMP(path);
     SDL_Texture * tex = SDL_CreateTextureFromSurface( renderer,obstacle);
     SDL_FreeSurface(obstacle);
     SDL_RenderCopy( renderer,  tex,  NULL, & destination);
 }
 
-void map::makeMap(SDL_Renderer * renderer) {
+void Map::makeMap(SDL_Renderer * renderer) {
     //drawMoquette(renderer);
-    for(int i=0; i<=17;i++){
+    for(int i=0; i<9;i++){
         drawObstacle(renderer,imgPaths[i],recTab[i]);
     }
 }
 //un probleme de concatenation à resoudre
-void map::initAllRectangle() {
+void Map::initAllRectangle() {
     //destination
-    //porte
-    /*recTab[0].x = 225;
-    recTab[0].y = 823;
-    recTab[0].w = 100;
-    recTab[0].h = 33;
+
+    const int tailleRecTab = 10;
+    int recTabX[tailleRecTab] = {0,150,0,200,201,380,201,380,200};
+    int recTabY[tailleRecTab] = {0,900,900,900,809,809,510,510,540};
+    int recTabW[tailleRecTab] = {600,50,150,400,20,19,20,19,200};
+    int recTabH[tailleRecTab] = {950,50,50,50,30,30,30,30,270};
+    for(int i=0; i<tailleRecTab; i++){
+        recTab[i].x = recTabX[i];
+        recTab[i].y = recTabY[i];
+        recTab[i].w = recTabW[i];
+        recTab[i].h = recTabH[i];
+    }
+    //chemin
+    pathTexture(imgPaths,"../data/texture.bmp",1);
+    pathTexture(imgPaths,"../data/porte.bmp",1);
+    pathTexture(imgPaths,"../data/mur-entree.bmp",2);
+    pathTexture(imgPaths,"../data/porte jaune.bmp",4);
+    pathTexture(imgPaths,"../data/block.bmp",1);
+    /*
+    pathTexture(imgPaths,"../data/moquette-blanc.bmp",2);
+    pathTexture(imgPaths,"../data/mur.bmp",1);
+    pathTexture(imgPaths,"../data/mur-bas.bmp",1);
+    pathTexture(imgPaths,"../data/mur-horizontal.bmp",1);
+    pathTexture(imgPaths,"../data/mur-horizontal-gauche.bmp",1);
+    pathTexture(imgPaths,"../data/bordureKakiBasDroite.bmp",1);
+    pathTexture(imgPaths,"../data/blockMilieu.bmp",6);
+    //pathTexture(imgPaths,"../data/portes.bmp",1);*/
+//porte
+    /*recTab[0].x = 120;
+    recTab[0].y = 850;
+    recTab[0].w = 50;
+    recTab[0].h = 50;
     //mur gauche
     recTab[1].x = 0;
-    recTab[1].y = 800;
-    recTab[1].w = 225;
+    recTab[1].y = 850;
+    recTab[1].w = 120;
     recTab[1].h = 50;
     //mur droit
-    recTab[2].x = 325;
-    recTab[2].y = 800;
-    recTab[2].w = 225;
+    recTab[2].x = 170;
+    recTab[2].y = 850;
+    recTab[2].w = 380;
     recTab[2].h = 50;
     //texture bas
-    recTab[3].x = 0;
+    /*recTab[3].x = 0;
     recTab[3].y = 510;
     recTab[3].w = 550;
     recTab[3].h = 305;
@@ -115,50 +142,11 @@ void map::initAllRectangle() {
     recTab[17].x = 415;
     recTab[17].y = 330;
     recTab[17].w = 50;
-    recTab[17].h = 50;*/
-    const int tailleRecTab = 20;
-    int recTabX[tailleRecTab] = {225, 0, 325, 0, 0, 190, 175, 190, 190, 230, 530, 450, 280, 280, 280, 415, 415, 415};
-    int recTabY[tailleRecTab] = {823, 800, 800, 510, 0, 0, 580, 200, 0, 470, -5, 470, 50, 190, 330, 50, 190, 330};
-    int recTabW[tailleRecTab] = {100, 225, 225, 550, 190, 368, 185, 40, 40, 90, 40, 100, 50, 50, 50, 50, 50, 50};
-    int recTabH[tailleRecTab] = {33, 50, 50, 305, 510, 510, 167, 310, 80, 40, 510, 40, 50, 50, 50, 50, 50, 50};
-    for(int i=0; i<tailleRecTab; i++){
-        recTab[i].x = recTabX[i];
-        recTab[i].y = recTabY[i];
-        recTab[i].w = recTabW[i];
-        recTab[i].h = recTabH[i];
-    }
-   //chemin
-    /*pathTab[0] = "../data/porte.bmp";
-    for(int i=1; i<3; i++){
-        pathTab[i]= "../data/mur.bmp";
-    }
-    for(int i=3; i<5; i++){
-        pathTab[i]= "../data/textureBlanc.bmp";
-    }
-    pathTab[5] = "../data/textureKaki.bmp";
-    pathTab[6] = "../data/grosBlockBas.bmp";
-    for(int i=7; i<=8; i++){
-        pathTab[i]= "../data/bordureTextureKaki.bmp";
-    }
-    pathTab[9] = "../data/bordureKakiBas.bmp";
-    pathTab[10]= "../data/bordureTextureKaki.bmp";
-    pathTab[11] = "../data/bordureKakiBasDroite.bmp";
-    for(int i=12; i<=17; i++){
-        pathTab[i]= "../data/blockMilieu.bmp";
-    }*/
-    pathTexture(imgPaths,PORTE,1);
-    pathTexture(imgPaths,"../data/mur.bmp",2);
-    pathTexture(imgPaths,"../data/textureBlanc.bmp",2);
-    pathTexture(imgPaths,"../data/textureKaki.bmp",1);
-    pathTexture(imgPaths,"../data/grosBlockBas.bmp",1);
-    pathTexture(imgPaths,"../data/bordureTextureKaki.bmp",2);
-    pathTexture(imgPaths,"../data/bordureKakiBas.bmp",1);
-    pathTexture(imgPaths,"../data/bordureTextureKaki.bmp",1);
-    pathTexture(imgPaths,"../data/bordureKakiBasDroite.bmp",1);
-    pathTexture(imgPaths,"../data/blockMilieu.bmp",6);
+    recTab[17].h = 50;
+     */
 }
 
-void map::pathTexture(vector<char *> &imgPaths, char *image, int repetition) {
+void Map::pathTexture(vector<char *> &imgPaths, char *image, int repetition) {
     for(int i=1; i<=repetition; i++){
         imgPaths.push_back(image);
     }
