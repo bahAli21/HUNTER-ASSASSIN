@@ -1,13 +1,7 @@
 #include <iostream>
 #include <SDL.h>
-#include "config_Variable.h"
+#include "core/config.h"
 #include "../map/map.h"
-
-#define WINDOW_TITLE "Animation Hunter Assassin"
-
-#define PLAYER_WIDTH 25
-#define PLAYER_HEIGHT 36
-
 //Mon joueur
 struct Player {
     SDL_Texture* tex;
@@ -121,7 +115,7 @@ int main(int argc, char* args[]) {
         handleInput();
         updatePlayer();
         SDL_RenderClear(contenu.renderer);
-        mapGame.makeMap(contenu.renderer);
+        //mapGame.makeMap(contenu.renderer);
         SDL_RenderCopy( contenu.renderer,  contenu.player.tex, & contenu.player.source, & contenu.player.dest);
         SDL_RenderPresent( contenu.renderer);
     }

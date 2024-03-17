@@ -1,6 +1,3 @@
-//
-// Created by mamad on 13/03/2024.
-//
 
 #ifndef HUNTERASSASSIN_CONFIG_H
 #define HUNTERASSASSIN_CONFIG_H
