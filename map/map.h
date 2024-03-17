@@ -15,7 +15,7 @@ using namespace std;
 
 class Map {
 public:
-    SDL_Rect recTab[20];
+    SDL_Rect recTab[50];
     //char * pathTab[20];
     vector<char*> imgPaths;
     //char* PORTE = "../data/porte.bmp";
