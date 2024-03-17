@@ -20,11 +20,11 @@
 
 /// \def WINDOW_W
 /// Largeur de la fenêtre.
-#define WINDOW_W 299 // 550 chez Gold
+#define WINDOW_W 600 // 550 chez Gold
 
 /// \def WINDOW_H
 /// Hauteur de la fenêtre.
-#define WINDOW_H 550 // 850 chez Gold
+#define WINDOW_H 950 // 850 chez Gold
 
 /// \def PLAYER_WIDTH
 /// Largeur du joueur.
