@@ -21,23 +21,21 @@ include_directories(${SDL2_INCLUDE_DIR})
 
 add_executable(hunterassassin src/sdl2/mainProject.cpp
         src/sdl2/SDLGame.cpp
-        src/sdl2/SDLGame.h
+        #src/sdl2/SDLGame.h
         src/sdl2/SDLSprite.cpp
-        src/sdl2/SDLSprite.h
+        #src/sdl2/SDLSprite.h
         src/core/Game.cpp
-        src/core/Game.h
-        src/core/config.h
+        #src/core/Game.h
+        #src/core/config.h
         src/core/Player.cpp
-        src/core/Player.h
-        src/core/Rect.h
+        #src/core/Player.h
+        #src/core/Rect.h
         src/core/IA.cpp
-        src/core/IA.h
+        #src/core/IA.h
         src/core/Map.cpp
-        src/core/Map.h
+        #src/core/Map.h
         src/core/Garde.cpp
-        src/core/Garde.h
-        src/sdl2/TimerCallBack.h
-        src/sdl2/MySleep.h
+        #src/core/Garde.h
 )
 
 add_executable(Animation src/mainAnimation.cpp

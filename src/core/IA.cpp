@@ -126,6 +126,8 @@ void AI::mov(std::vector<Rect>& obstacles) {
     // Calcul des distances sur les axes x et y
     int distanceX = destRect->x - squareRect->x;
     int distanceY = destRect->y - squareRect->y;
+
+    //Rectangle de contour par default
     Rect* rec = &obstacles[0]; // Initialiser rec avec l'adresse du premier obstacle
     int ind = 0;
 
