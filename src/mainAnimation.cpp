@@ -71,25 +71,37 @@ void updatePlayer() {
     int idx = animation_speed % 4;
     float vitesse=2.4;
 
-    if ( contenu.moving_left) {
-         contenu.player.source.x =  contenu.player_left_clips[idx].x;
-         contenu.player.source.y =  contenu.player_left_clips[idx].y;
-         contenu.player.dest.x -= vitesse;
-    }
-    if ( contenu.moving_right) {
-         contenu.player.source.x =  contenu.player_right_clips[idx].x;
-         contenu.player.source.y =  contenu.player_right_clips[idx].y;
-         contenu.player.dest.x += vitesse;
-    }
     if ( contenu.moving_up) {
-         contenu.player.source.x =  contenu.player_up_clips[idx].x;
-         contenu.player.source.y =  contenu.player_up_clips[idx].y;
-         contenu.player.dest.y -= vitesse;
+        contenu.player.source.x = 0;
+        contenu.player.source.y = PLAYER_HEIGHT*8;
+        contenu.player.dest.y -= 1;
+         /*contenu.player.source.x =  contenu.player_left_clips[idx].x;
+         contenu.player.source.y =  contenu.player_left_clips[idx].y;
+         contenu.player.dest.x -= vitesse;*/
+    }
+    if ( contenu.moving_left) {
+        contenu.player.source.x = 0;
+        contenu.player.source.y = PLAYER_HEIGHT*9;
+        contenu.player.dest.x -= 1;
+         /*contenu.player.source.x =  contenu.player_right_clips[idx].x;
+         contenu.player.source.y =  contenu.player_right_clips[idx].y;
+         contenu.player.dest.x += vitesse;*/
     }
     if ( contenu.moving_down) {
-         contenu.player.source.x =  contenu.player_down_clips[idx].x;
+        contenu.player.source.x = 0;
+        contenu.player.source.y = PLAYER_HEIGHT * 10;
+        contenu.player.dest.y += 1;
+         /*contenu.player.source.x =  contenu.player_up_clips[idx].x;
+         contenu.player.source.y =  contenu.player_up_clips[idx].y;
+         contenu.player.dest.y -= vitesse;*/
+    }
+    if ( contenu.moving_right) {
+        contenu.player.source.x = 0;
+        contenu.player.source.y = PLAYER_HEIGHT * 11;
+        contenu.player.dest.x += 1;
+         /*contenu.player.source.x =  contenu.player_down_clips[idx].x;
          contenu.player.source.y =  contenu.player_down_clips[idx].y;
-         contenu.player.dest.y += vitesse;
+         contenu.player.dest.y += vitesse;*/
     }
 }
 
@@ -100,18 +112,20 @@ int main(int argc, char* args[]) {
      contenu.window = SDL_CreateWindow(WINDOW_TITLE, WINDOW_X, WINDOW_Y, WINDOW_W, WINDOW_H, SDL_WINDOW_SHOWN);
      contenu.renderer = SDL_CreateRenderer( contenu.window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
 
-     SDL_Surface* player_img = SDL_LoadBMP("../data/bardo.bmp");
+     SDL_Surface* player_img = SDL_LoadBMP("../data/sprite_Player.bmp");
 
      contenu.player.tex = SDL_CreateTextureFromSurface( contenu.renderer, player_img);
-     contenu.player.source = {0, 0, PLAYER_WIDTH, PLAYER_HEIGHT};
-     contenu.player.dest = {100, 100, PLAYER_WIDTH * 2, PLAYER_HEIGHT * 2};
+     contenu.player.source = {0, PLAYER_HEIGHT*4, PLAYER_WIDTH, PLAYER_HEIGHT};
+     contenu.player.dest = {100, 100, PLAYER_WIDTH , PLAYER_HEIGHT };
      SDL_FreeSurface(player_img);
 
     loadClips();
-    map mapGame;
-    mapGame.initAllRectangle();
+     //Map mapGame;
+    //mapGame.initAllRectangle();
 
     while (true) {
+        SDL_SetRenderDrawColor(contenu.renderer, 255,255,255, 255);
+        SDL_RenderClear(contenu.renderer);
         handleInput();
         updatePlayer();
         SDL_RenderClear(contenu.renderer);
@@ -123,6 +137,7 @@ int main(int argc, char* args[]) {
     SDL_DestroyWindow( contenu.window);
     SDL_DestroyRenderer( contenu.renderer);
     SDL_Quit();
+
 
     return 0;
 }

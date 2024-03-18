@@ -20,18 +20,18 @@
 
 /// \def WINDOW_W
 /// Largeur de la fenêtre.
-#define WINDOW_W 600 // 550 chez Gold
+#define WINDOW_W 900 // 550 chez Gold
 
 /// \def WINDOW_H
 /// Hauteur de la fenêtre.
-#define WINDOW_H 950 // 850 chez Gold
+#define WINDOW_H 400 // 850 chez Gold
 
 /// \def PLAYER_WIDTH
 /// Largeur du joueur.
-#define PLAYER_WIDTH 24
+#define PLAYER_WIDTH 56
 
 /// \def PLAYER_HEIGHT
 /// Hauteur du joueur.
-#define PLAYER_HEIGHT 24
+#define PLAYER_HEIGHT 65
 
 #endif // HUNTERASSASSIN_CONFIG_H
