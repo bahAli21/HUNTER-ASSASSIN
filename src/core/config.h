@@ -28,10 +28,10 @@
 
 /// \def PLAYER_WIDTH
 /// Largeur du joueur.
-#define PLAYER_WIDTH 56
+#define PLAYER_WIDTH 64  //Ne le change jamais Gold
 
 /// \def PLAYER_HEIGHT
 /// Hauteur du joueur.
-#define PLAYER_HEIGHT 65
+#define PLAYER_HEIGHT 64 //Ne le change jamais Gold
 
 #endif // HUNTERASSASSIN_CONFIG_H

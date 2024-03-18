@@ -35,15 +35,25 @@ Contenu  contenu;
 
 //Je charge mes image source (pour en faire une animation video
 void loadClips() {
-    for (int i = 0; i < 7; ++i) {
-         contenu.player_left_clips[i].x = i * PLAYER_WIDTH;
+    for (int i = 0; i < 6; ++i) {
+         /*contenu.player_left_clips[i].x = i * PLAYER_WIDTH;
          contenu.player_left_clips[i].y = PLAYER_HEIGHT;
          contenu.player_right_clips[i].x = i * PLAYER_WIDTH;
          contenu.player_right_clips[i].y = PLAYER_HEIGHT * 2;
          contenu.player_up_clips[i].x = i * PLAYER_WIDTH;
          contenu.player_up_clips[i].y = PLAYER_HEIGHT * 3;
          contenu.player_down_clips[i].x = i * PLAYER_WIDTH;
-         contenu.player_down_clips[i].y = 0;
+         contenu.player_down_clips[i].y = 0;*/
+
+        contenu.player_down_clips[i].x = i * PLAYER_WIDTH;
+        contenu.player_down_clips[i].y = PLAYER_HEIGHT * 10;
+        contenu.player_right_clips[i].y = PLAYER_HEIGHT * 11;
+        contenu.player_right_clips[i].x = i * PLAYER_WIDTH;
+        contenu.player_left_clips[i].x = i*PLAYER_WIDTH;
+        contenu.player_left_clips[i].y = PLAYER_HEIGHT * 9;
+        contenu.player_up_clips[i].x = i*PLAYER_WIDTH;
+        contenu.player_up_clips[i].y = PLAYER_HEIGHT * 8;
+
     }
 }
 
@@ -68,40 +78,29 @@ void handleInput() {
 
 void updatePlayer() {
     int animation_speed = SDL_GetTicks() / 175;
-    int idx = animation_speed % 4;
+    int idx = animation_speed % 6;
     float vitesse=2.4;
 
     if ( contenu.moving_up) {
-        contenu.player.source.x = 0;
-        contenu.player.source.y = PLAYER_HEIGHT*8;
-        contenu.player.dest.y -= 1;
-         /*contenu.player.source.x =  contenu.player_left_clips[idx].x;
-         contenu.player.source.y =  contenu.player_left_clips[idx].y;
-         contenu.player.dest.x -= vitesse;*/
+         contenu.player.source.x =  contenu.player_up_clips[idx].x;
+         contenu.player.source.y =  contenu.player_up_clips[idx].y;
+         contenu.player.dest.y -= vitesse;
     }
     if ( contenu.moving_left) {
-        contenu.player.source.x = 0;
-        contenu.player.source.y = PLAYER_HEIGHT*9;
-        contenu.player.dest.x -= 1;
-         /*contenu.player.source.x =  contenu.player_right_clips[idx].x;
-         contenu.player.source.y =  contenu.player_right_clips[idx].y;
-         contenu.player.dest.x += vitesse;*/
+
+         contenu.player.source.x =  contenu.player_left_clips[idx].x;
+         contenu.player.source.y =  contenu.player_left_clips[idx].y;
+         contenu.player.dest.x -= vitesse;
     }
     if ( contenu.moving_down) {
-        contenu.player.source.x = 0;
-        contenu.player.source.y = PLAYER_HEIGHT * 10;
-        contenu.player.dest.y += 1;
-         /*contenu.player.source.x =  contenu.player_up_clips[idx].x;
-         contenu.player.source.y =  contenu.player_up_clips[idx].y;
-         contenu.player.dest.y -= vitesse;*/
+        contenu.player.source.x = contenu.player_down_clips[idx].x;
+        contenu.player.source.y = contenu.player_down_clips[idx].y;
+        contenu.player.dest.y += vitesse;
     }
     if ( contenu.moving_right) {
-        contenu.player.source.x = 0;
-        contenu.player.source.y = PLAYER_HEIGHT * 11;
-        contenu.player.dest.x += 1;
-         /*contenu.player.source.x =  contenu.player_down_clips[idx].x;
-         contenu.player.source.y =  contenu.player_down_clips[idx].y;
-         contenu.player.dest.y += vitesse;*/
+        contenu.player.source.x = contenu.player_right_clips[idx].x;
+        contenu.player.source.y = contenu.player_right_clips[idx].y;
+        contenu.player.dest.x += vitesse;
     }
 }
 
@@ -120,8 +119,8 @@ int main(int argc, char* args[]) {
      SDL_FreeSurface(player_img);
 
     loadClips();
-     //Map mapGame;
-    //mapGame.initAllRectangle();
+    Map mapGame;
+    mapGame.initAllRectangle();
 
     while (true) {
         SDL_SetRenderDrawColor(contenu.renderer, 255,255,255, 255);

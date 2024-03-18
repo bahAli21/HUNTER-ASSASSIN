@@ -1,14 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
 project(hunterassassin)
 
-
-
-
-
-
-
-
-
 set(CMAKE_CXX_STANDARD 23)
 
 set(NOYAUTEST_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
@@ -39,7 +31,7 @@ add_executable(hunterassassin src/sdl2/mainProject.cpp
 )
 
 add_executable(Animation src/mainAnimation.cpp
-        map/map.h
+        #map/map.h
         map/map.cpp
         map/color.h
 )
@@ -47,16 +39,17 @@ add_executable(Animation src/mainAnimation.cpp
 add_executable(JeuTxt src/txt/main_txt.cpp
         src/txt/gameTxt.cpp
         src/txt/winTxt.cpp
-        src/txt/gameTxt.h
+        #src/txt/gameTxt.h
         src/txt/winTxt.h
         src/core/Game.cpp
-        src/core/Game.h
-        src/core/Player.h
+        #src/core/Game.h
+        #src/core/Player.h
         src/core/Player.cpp
-        src/core/Garde.h
+        #src/core/Garde.h
         src/core/Garde.cpp
         src/core/Map.cpp
-        src/core/Map.h)
+        #src/core/Map.h
+)
 
 set_target_properties(hunterassassin PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${HUNTERASSASSIN_OUTPUT_PATH}
