@@ -7,6 +7,7 @@
 #define HUNTERASSASSIN_SDLSPRITE_H
 
 #include "SDL.h"
+#include "../core/Rect.h"
 
 /**
  * @class SDLSprite
@@ -48,8 +49,8 @@ public:
      * @param w La largeur du sprite (par défaut 24)
      * @param h La hauteur du sprite (par défaut 37)
      */
-    void draw(SDL_Renderer *renderer, int x, int y, int w = 24, int h = 37) const;
-
+    void draw(SDL_Renderer *renderer, int x, int y, int w = 64, int h = 64, SDL_Rect* recSource= nullptr) const;
+    void drawAnimationSequence(SDL_Renderer *renderer, Rect rectSource, Rect rectPlayer);
     /**
      * @brief Obtient la texture SDL du sprite
      * @return La texture SDL du sprite

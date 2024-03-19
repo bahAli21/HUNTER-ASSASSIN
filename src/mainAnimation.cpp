@@ -25,10 +25,12 @@ struct Contenu {
     Position player_right_clips[7];
     Position player_up_clips[7];
     Position player_down_clips[7];
+    Position attackUp[7];
     bool moving_left;
     bool moving_right;
     bool moving_up;
     bool moving_down;
+    bool attack;
 };
 
 Contenu  contenu;
@@ -54,7 +56,15 @@ void loadClips() {
         contenu.player_up_clips[i].x = i*PLAYER_WIDTH;
         contenu.player_up_clips[i].y = PLAYER_HEIGHT * 8;
 
+        //Attacking
+        contenu.attackUp[i].y = PLAYER_HEIGHT*22;
+        contenu.attackUp[i].x = (i+1)*PLAYER_WIDTH;
+
     }
+}
+
+void Attaque(int direction) {
+
 }
 
 void handleInput() {
@@ -65,7 +75,7 @@ void handleInput() {
     contenu.moving_right = state[SDL_SCANCODE_RIGHT] > 0;
     contenu.moving_up = state[SDL_SCANCODE_UP] > 0;
     contenu.moving_down = state[SDL_SCANCODE_DOWN] > 0;
-
+    contenu.attack = state[SDL_SCANCODE_Q] > 0;
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {
             SDL_DestroyWindow(contenu.window);

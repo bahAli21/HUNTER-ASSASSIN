@@ -1,9 +1,11 @@
 #include "SDLGame.h"
 
+
 //J'ai converti le temps en second
 float SDLGame::temps() { return float(SDL_GetTicks()) / CLOCKS_PER_SEC; }
 
-SDLGame::SDLGame() : game(2) {
+SDLGame::SDLGame() : game(2),animPlayer(renderer,"../data/sprite_Player.bmp", PLAYER_HEIGHT*4, game._player) {
+
     // Initialisation de SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Unable to initialize SDL: %s", SDL_GetError());
@@ -43,11 +45,14 @@ SDLGame::SDLGame() : game(2) {
     game.vecAllObstacles.push_back({WINDOW_W / 2 - 80, WINDOW_H - 70, WINDOW_W / 2 - 25, SQUARE_SIZE});
 
     // Initialisation de tous les sprites
+
+
     //pour l'instant que le joueur
     // TODO On choisi le chemein depuis executable bin (donc on remonte une fois et on passe dans data)
     const char *path = "../data/mur.bmp";
     sp_player.loadSpriteFile(path, renderer);
     sp_garde.loadSpriteFile(path, renderer);
+    sourceAnimation.loadSpriteFile(animPlayer.animationIMG,renderer);
 }
 
 SDLGame::~SDLGame() {
@@ -110,14 +115,20 @@ void SDLGame::sdlDraw() {
     SDL_SetRenderDrawColor(renderer, 230, 240, 255, 255);
     SDL_RenderClear(renderer);
 
-    const Player &m_player = game.getConstPlayer();
+    //const Player &m_player = game.getConstPlayer();
     const Garde *m_gardes = game.getAllGardes();
     const Map &m_map = game.getConstMap();
 
     //Je dessine ma map. pas encore complet, j'attends plus que golden
     drawTheMap(m_map);
+
     //Je dessine mon joueur
-    sp_player.draw(renderer, game.playerRect.x, game.playerRect.y, PLAYER_WIDTH, PLAYER_HEIGHT);
+    /*sp_player.draw(renderer, game.playerRect.x,game.playerRect.y,
+                   game.playerRect.w,game.playerRect.h);*/
+
+    SDL_Rect sourceAnim = {game._player.playerSource.x,game._player.playerSource.y,game._player.playerSource.w,game._player.playerSource.h};
+    sourceAnimation.draw(renderer, game._player.playerDest.x,game._player.playerDest.y,
+                         game._player.playerDest.w,game._player.playerDest.h, &sourceAnim);
     //Je dessine mon bloc
     for (const Rect obstacle: game.vecAllObstacles) {
         sp_player.draw(renderer, obstacle.x, obstacle.y, obstacle.w, obstacle.h);
@@ -133,7 +144,8 @@ void SDLGame::sdlDraw() {
 void SDLGame::runProject() {
     SDL_Event event;
 
-    AI myAI(&game.playerRect, &game.dest);
+    animPlayer.loadClips(8);
+    AI myAI(&game._player.playerDest, &game._player.dest);
     AI *guardAI = new AI[game.getNbGardes()];
     for (int i = 0; i < game.getNbGardes(); ++i) {
         // Initialiser les gardes avec leurs positions
@@ -148,15 +160,25 @@ void SDLGame::runProject() {
             else if (event.type == SDL_MOUSEBUTTONDOWN)
                 if (event.button.button == SDL_BUTTON_LEFT) {
                     // Mettre à jour la position de destination avec les coordonnées du clic
-                    game.dest.x = event.button.x;
-                    game.dest.y = event.button.y;
+                    game._player.dest.x = event.button.x;
+                    game._player.dest.y = event.button.y;
                 }
 
         }
+
         sdlDraw();
 
         if (!myAI.estArrivee())
             myAI.mov(game.vecAllObstacles);
+
+        if(myAI.right)
+            animPlayer.animationRight();
+        else if(myAI.left)
+            animPlayer.animationLeft();
+        else if(myAI.up)
+            animPlayer.animationUp();
+        else
+            animPlayer.animationDown();
 
 //Garde 0
         if (!guardAI[0].estArrivee()) {

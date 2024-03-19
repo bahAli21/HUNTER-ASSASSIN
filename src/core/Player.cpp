@@ -2,7 +2,9 @@
 
 #include "Player.h"
 Player::Player() :health(100){
-    pos={WINDOW_W/2,WINDOW_H-PLAYER_HEIGHT-20};
+    playerDest={WINDOW_W/2,WINDOW_H-PLAYER_HEIGHT-20, PLAYER_WIDTH, PLAYER_HEIGHT};
+    playerSource = { 0,PLAYER_HEIGHT*8,PLAYER_WIDTH,PLAYER_HEIGHT};
+    dest = playerDest;
 }
 
 Player::~Player(){

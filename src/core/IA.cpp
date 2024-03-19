@@ -38,27 +38,60 @@ void AI::moveAgain(int distanceX, int distanceY, Rect obstacle) {
         if (distanceY != 0) {
             if (distanceY > 0) {
                 squareRect->y++;
+                down=true;
+                left=false;
+                right=false;
+                up=false;
             } else {
+                down=false;
+                left=false;
+                right=false;
+                up=true;
                 squareRect->y--;
             }
         } else if (distanceX != 0) { // Si la distance en y est nulle, je me déplace sur l'axe x
             if (distanceX > 0) {
                 squareRect->x++;
+                down=false;
+                left=false;
+                right=true;
+                up=false;
             } else {
                 squareRect->x--;
+                down=false;
+                left=true;
+                right=false;
+                up=false;
             }
         }
     } else {
         if (distanceX != 0) {
             if (distanceX > 0) {
                 squareRect->x++;
+                squareRect->x--;
+                down=false;
+                left=false;
+                right=true;
+                up=false;
             } else {
+                down=false;
+                left=true;
+                right=false;
+                up=false;
                 squareRect->x--;
             }
         } else if (distanceY != 0) { // Si la distance en y est nulle, je me déplace sur l'axe x
             if (distanceY > 0) {
                 squareRect->y++;
+                down=true;
+                left=false;
+                right=false;
+                up=false;
             } else  {
+                down=false;
+                left=false;
+                right=false;
+                up=true;
                 squareRect->y--;
             }
         }
@@ -84,15 +117,33 @@ void AI::contourObstacle(Rect obstacleRect) {
     // Choisir l'itinéraire le plus court
     if(obstacleRect.w >obstacleRect.h)
         if (leftDistance < rightDistance) {
+            down=false;
+            left=true;
+            right=false;
+            up=false;
             squareRect->x--;
         } else {
+            down=false;
+            left=false;
+            right=true;
+            up=false;
             squareRect->x++;
         }
     else
-    if(upDistance < downDistance)
+    if(upDistance < downDistance){
+        down=false;
+        left=false;
+        right=false;
+        up=true;
         squareRect->y--;
-    else
+    }else {
+        down=true;
+        left=false;
+        right=false;
+        up=false;
         squareRect->y++;
+    }
+
 }
 
 bool AI::destNotAvailable(const Rect &  rect1, const Rect & rect2) {

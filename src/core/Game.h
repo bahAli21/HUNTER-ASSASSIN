@@ -14,20 +14,24 @@
  * de la map et des gardes.
  */
 class Game {
-private:
+public:
     int nbGardes; /**<Le nombre de garde */
     Player _player; /**< Instance du joueur. */
     Map _gameMap; /**< Instance de la map du jeu. */
     Garde * allGardes ;/**<Un pointeur sur tous les Gardes du jeu. */
 public:
     std::vector<Rect> vecAllObstacles; /**< Vecteur contenant tous les obstacles du jeu. */
-    Rect dest; /**< Destination de L'IA. */
+   // Rect dest; /**< Destination de L'IA. */
     Rect * gardesDest;
     Rect * gardesRect ;
-    Rect playerRect = dest = { getConstPlayer().getPosition().x,
+   /* Rect playerRect = dest = { getConstPlayer().getPosition().x,
                                getConstPlayer().getPosition().y,
                                PLAYER_WIDTH,
-                               PLAYER_HEIGHT};
+                               PLAYER_HEIGHT}; */
+    /*SDL_Rect source = { 0,
+                         PLAYER_HEIGHT*8,
+                         PLAYER_WIDTH,
+                         PLAYER_HEIGHT};*/
 
 
     /**

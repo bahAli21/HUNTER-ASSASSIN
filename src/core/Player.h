@@ -4,6 +4,7 @@
 #include "point.h"
 #include "config.h"
 #include <cassert>
+#include "Rect.h"
 #include "Map.h"
 #include <iostream>
 
@@ -11,10 +12,13 @@
  * @brief Classe représentant le joueur dans le jeu.
  */
 class Player {
-private:
+public:
     Position pos; ///< Position actuelle du joueur.
     bool left, right, up, down; ///< Indicateurs de direction du joueur.
     int health; ///< Nombre de vies du joueur.
+    Rect playerDest ;
+    Rect playerSource;
+    Rect dest; /**< Destination de L'IA. */
 
 public:
     /**

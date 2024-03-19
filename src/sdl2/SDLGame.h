@@ -1,7 +1,7 @@
 #ifndef HUNTERASSASSIN_SDLGAME_H
 #define HUNTERASSASSIN_SDLGAME_H
 
-#include "SDLSprite.h"
+#include "SDLAnimation.h" //inclu SDLSprite.h
 #include "../core/Game.h"
 #include "SDL.h"
 #include "../core/config.h"
@@ -13,9 +13,10 @@ private:
     Game game; /**< Instance de la classe Game. */
     SDL_Window * window; /**< Fenêtre SDL pour l'affichage. */
     SDL_Renderer * renderer; /**< Rendu SDL pour l'affichage. */
-
     SDLSprite sp_player; /**< Sprite SDL pour le joueur. */
     SDLSprite sp_garde; /**< Sprite SDL pour les gardes. */
+    SDLSprite sourceAnimation;
+    SDLAnimation animPlayer;
     //Sprite pour la map
     SDLSprite sp_greyBoxe; // representer par 'g'
     SDLSprite sp_redBoxe1;// representer par 'i'

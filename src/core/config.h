@@ -20,14 +20,14 @@
 
 /// \def WINDOW_W
 /// Largeur de la fenêtre.
-#define WINDOW_W 900 // 550 chez Gold
+#define WINDOW_W 500 // 550 chez Gold
 
 /// \def CLIPS_SIZE
 /// Taille du tableau de sprite a utiliser pour l'animation.
 #define CLIPS_SIZE = 6
 /// \def WINDOW_H
 /// Hauteur de la fenêtre.
-#define WINDOW_H 400 // 850 chez Gold
+#define WINDOW_H 600 // 850 chez Gold
 
 /// \def PLAYER_WIDTH
 /// Largeur du joueur.

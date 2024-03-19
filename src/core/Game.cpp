@@ -13,7 +13,7 @@ Game::Game(int nbGardes): _player(), nbGardes(nbGardes) {
             Y = rand() %((WINDOW_H/2)-30);
             collision = false;
 
-            Rect rectTmp = {X, Y, PLAYER_WIDTH+30, PLAYER_HEIGHT+30};
+            Rect rectTmp = {X, Y, 30,30};
 
             // Je vérifie la collision avec les obstacles
             for (const auto& obstacle : vecAllObstacles) {
@@ -37,12 +37,12 @@ Game::Game(int nbGardes): _player(), nbGardes(nbGardes) {
         allGardes[i].setPositionY(Y);
         gardesDest[i] = {allGardes[i].getPosition().x,
                         allGardes[i].getPosition().y,
-                    PLAYER_WIDTH,
-                    PLAYER_HEIGHT};
+                    PLAYER_WIDTH-50,
+                    PLAYER_HEIGHT-50};
         gardesRect[i] = {allGardes[i].getPosition().x,
                        allGardes[i].getPosition().y,
-                       PLAYER_WIDTH,
-                       PLAYER_HEIGHT};
+                       PLAYER_WIDTH-50,
+                       PLAYER_HEIGHT-50};
     }
 }
 

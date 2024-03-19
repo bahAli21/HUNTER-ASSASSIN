@@ -20,6 +20,7 @@ public:
      */
     AI(Rect* squareRect, Rect* destRect);
     AI();
+    bool left, right, down, up;
 
     /**
      * @brief Vérifie si le carré est arrivé à sa destination.

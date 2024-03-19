@@ -38,16 +38,16 @@ void SDLSprite::loadSpriteFile(const char *filename, SDL_Renderer *renderer) {
 }
 
 // Dessiner le sprite
-void SDLSprite::draw(SDL_Renderer *renderer, int x, int y, int w, int h) const {
+void SDLSprite::draw(SDL_Renderer *renderer, int x, int y, int w, int h, SDL_Rect* recSource) const {
     if (_texture == nullptr) {
         // TODO: Gére l'erreur (par exemple, aucune texture à dessiner)
         //SDL_Log("Aucune texture à dessiner !\n");
         return;
     }
+        // Définir le rectangle de destination pour le dessin
+        SDL_Rect destRect = {x, y, w, h};
+        SDL_RenderCopy(renderer, _texture, recSource, &destRect);
 
-    // Définir le rectangle de destination pour le dessin
-    SDL_Rect destRect = {x, y, w, h};
-    SDL_RenderCopy(renderer, _texture, nullptr, &destRect);
 }
 
 // Obtenir la texture
