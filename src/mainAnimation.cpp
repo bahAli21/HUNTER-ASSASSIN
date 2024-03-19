@@ -109,6 +109,8 @@ void AttackUp() {
 
 //Je charge mon image source (pour en faire une animation video
 void loadClips() {
+    //WALK
+    Walk();
     //UP
     //index=22 for normal attack
     AttackInit(contenu.attackUp, 22);
@@ -229,6 +231,7 @@ void handleInput() {
     }
 }
 
+/*
 void animationUp(int idxAtt) {
     contenu.player.source.x = contenu.attackUp[idxAtt].x;
     contenu.player.source.y = contenu.attackUp[idxAtt].y;
@@ -253,7 +256,7 @@ void animationUpReverse(int idxAtt) {
         contenu.player.dest.w  = PLAYER_WIDTH;
     }
 }
-
+*/
 void updatePlayer() {
     int animation_speed = SDL_GetTicks() / 170;
     int idx = animation_speed % 6;
@@ -265,37 +268,38 @@ void updatePlayer() {
          contenu.player.source.y =  contenu.player_up_clips[idx].y;
          contenu.player.dest.y -= vitesse;
          contenu.player.direction = 0;
+         contenu.keyBoard ='_';
     }
     if ( contenu.moving_left) {
 
          contenu.player.source.x =  contenu.player_left_clips[idx].x;
          contenu.player.source.y =  contenu.player_left_clips[idx].y;
          contenu.player.dest.x -= vitesse;
-        contenu.player.direction = 3;
-
+         contenu.player.direction = 3;
+         contenu.keyBoard ='_';
     }
     if ( contenu.moving_down) {
         contenu.player.source.x = contenu.player_down_clips[idx].x;
         contenu.player.source.y = contenu.player_down_clips[idx].y;
         contenu.player.dest.y += vitesse;
         contenu.player.direction= 2;
-
+        contenu.keyBoard ='_';
     }
     if ( contenu.moving_right) {
         contenu.player.source.x = contenu.player_right_clips[idx].x;
         contenu.player.source.y = contenu.player_right_clips[idx].y;
         contenu.player.dest.x += vitesse;
         contenu.player.direction = 1;
+        contenu.keyBoard ='_';
     }
 
-    if(contenu.player.direction == 0 && contenu.attack) {
+    if(contenu.player.direction == 0) {
         //animationUpReverse(idxAtt);
         //animationUp(idxAtt);
-        int tab1[] = {5,6};
+        int tab1[] = {5,6}; //Bien trouver les tab à faire demain
         int tab2[] = {0,1};
         int tab3[] = {1, 2};
         UP(idxAtt,tab1, tab2, tab3, contenu.keyBoard);
-
     }
 
 
