@@ -32,7 +32,8 @@
 /// \def PLAYER_WIDTH
 /// Largeur du joueur.
 #define PLAYER_WIDTH 64  //Ne le change jamais Gold
-
+#define WIDTH_A  64
+#define HEIGHT_A  64
 /// \def PLAYER_HEIGHT
 /// Hauteur du joueur.
 #define PLAYER_HEIGHT 64 //Ne le change jamais Gold

@@ -4,7 +4,7 @@
 //J'ai converti le temps en second
 float SDLGame::temps() { return float(SDL_GetTicks()) / CLOCKS_PER_SEC; }
 
-SDLGame::SDLGame() : game(2),animPlayer(renderer,"../data/sprite_Player.bmp", PLAYER_HEIGHT*4, game._player) {
+SDLGame::SDLGame() : game(2) {
 
     // Initialisation de SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -52,7 +52,8 @@ SDLGame::SDLGame() : game(2),animPlayer(renderer,"../data/sprite_Player.bmp", PL
     const char *path = "../data/mur.bmp";
     sp_player.loadSpriteFile(path, renderer);
     sp_garde.loadSpriteFile(path, renderer);
-    sourceAnimation.loadSpriteFile(animPlayer.animationIMG,renderer);
+    sourceAnimation.loadSpriteFile("../data/sprite_Player.bmp",renderer);
+
 }
 
 SDLGame::~SDLGame() {
@@ -143,8 +144,9 @@ void SDLGame::sdlDraw() {
 
 void SDLGame::runProject() {
     SDL_Event event;
-
-    animPlayer.loadClips(8);
+    SDLAnimation animPlayer(renderer,"../data/sprite_Player.bmp", PLAYER_HEIGHT*9, game._player);
+    animPlayer.loadClips(11);
+    //animImg = animPlayer.animationIMG;
     AI myAI(&game._player.playerDest, &game._player.dest);
     AI *guardAI = new AI[game.getNbGardes()];
     for (int i = 0; i < game.getNbGardes(); ++i) {
@@ -153,6 +155,9 @@ void SDLGame::runProject() {
     }
     Uint32 lastGuardDestinationChangeTime = SDL_GetTicks();
     bool isOpen = true;
+    const Uint8* state = SDL_GetKeyboardState(NULL);
+
+    //contenu.attack = state[SDL_SCANCODE_Q] > 0;
     while (isOpen) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT)
@@ -168,17 +173,18 @@ void SDLGame::runProject() {
 
         sdlDraw();
 
-        if (!myAI.estArrivee())
-            myAI.mov(game.vecAllObstacles);
-
-        if(myAI.right)
+        /*if (!myAI.estArrivee())
+            myAI.mov(game.vecAllObstacles);*/
+        animPlayer.animationUp();
+        /*
+        if(state[SDL_SCANCODE_RIGHT] > 0)
             animPlayer.animationRight();
-        else if(myAI.left)
+        if(state[SDL_SCANCODE_LEFT] > 0)
             animPlayer.animationLeft();
-        else if(myAI.up)
-            animPlayer.animationUp();
-        else
-            animPlayer.animationDown();
+        if(state[SDL_SCANCODE_UP] > 0)
+
+        if( state[SDL_SCANCODE_DOWN] > 0)
+            animPlayer.animationDown();*/
 
 //Garde 0
         if (!guardAI[0].estArrivee()) {

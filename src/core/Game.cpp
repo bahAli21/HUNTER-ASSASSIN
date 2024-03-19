@@ -37,12 +37,12 @@ Game::Game(int nbGardes): _player(), nbGardes(nbGardes) {
         allGardes[i].setPositionY(Y);
         gardesDest[i] = {allGardes[i].getPosition().x,
                         allGardes[i].getPosition().y,
-                    PLAYER_WIDTH-50,
-                    PLAYER_HEIGHT-50};
+                    PLAYER_WIDTH-40,
+                    PLAYER_HEIGHT-40};
         gardesRect[i] = {allGardes[i].getPosition().x,
                        allGardes[i].getPosition().y,
-                       PLAYER_WIDTH-50,
-                       PLAYER_HEIGHT-50};
+                       PLAYER_WIDTH-40,
+                       PLAYER_HEIGHT-40};
     }
 }
 

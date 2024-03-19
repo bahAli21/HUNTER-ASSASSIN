@@ -2,8 +2,8 @@
 
 #include "Player.h"
 Player::Player() :health(100){
-    playerDest={WINDOW_W/2,WINDOW_H-PLAYER_HEIGHT-20, PLAYER_WIDTH, PLAYER_HEIGHT};
-    playerSource = { 0,PLAYER_HEIGHT*8,PLAYER_WIDTH,PLAYER_HEIGHT};
+    playerDest={WINDOW_W/2-70,WINDOW_H-PLAYER_HEIGHT*4, PLAYER_WIDTH, PLAYER_HEIGHT};
+    playerSource = { 0,PLAYER_HEIGHT*9,PLAYER_WIDTH,PLAYER_HEIGHT};
     dest = playerDest;
 }
 

@@ -16,7 +16,7 @@ private:
     SDLSprite sp_player; /**< Sprite SDL pour le joueur. */
     SDLSprite sp_garde; /**< Sprite SDL pour les gardes. */
     SDLSprite sourceAnimation;
-    SDLAnimation animPlayer;
+    char * animImg;
     //Sprite pour la map
     SDLSprite sp_greyBoxe; // representer par 'g'
     SDLSprite sp_redBoxe1;// representer par 'i'
@@ -59,6 +59,6 @@ public:
      */
     float temps();
 
-};
+} ;
 
 #endif //HUNTERASSASSIN_SDLGAME_H
