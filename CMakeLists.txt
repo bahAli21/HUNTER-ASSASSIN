@@ -27,13 +27,17 @@ add_executable(hunterassassin src/sdl2/mainProject.cpp
         src/core/Map.cpp
         #src/core/Map.h
         src/core/Garde.cpp
+        src/sdl2/SDLAnimation.h
         #src/core/Garde.h
+        src/sdl2/SDLAnimation.h
+        src/sdl2/SDLAnimation.cpp
 )
 
 add_executable(Animation src/mainAnimation.cpp
         #map/map.h
         map/map.cpp
         map/color.h
+
 )
 
 add_executable(JeuTxt src/txt/main_txt.cpp
