@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include <windows.h>
+//#include <windows.h>
 #include <unistd.h>
 
 #include "winTxt.h"
@@ -10,6 +10,7 @@
 
 void Display(WinTXT &win, Game &g)
 {
+
 	const Map &map = g.getConstMap();
 	const Player & player = g.getConstPlayer();
 	const Garde *gardes = g.getAllGardes();
@@ -37,8 +38,10 @@ void txtRun(Game &g)
 
 	do
 	{
+        sleep(3);
+        termClear();
         Display(win, g);
-		Sleep(3);
+
 
 
         chKey = win.getCh();
