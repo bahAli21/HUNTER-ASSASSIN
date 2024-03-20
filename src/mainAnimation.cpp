@@ -11,6 +11,13 @@ struct Player {
 
 };
 
+enum {
+    NORTH = 0,
+    WEST = 1,
+    EAST = 3,
+    SOUTH = 2
+};
+
 //Structure Point
 struct Position {
     int x;
@@ -74,37 +81,16 @@ void Walk() {
 
 void AttackInit(Position tabPos[], int index) {
     for (int i = 0; i < 7; ++i) {
-        tabPos[i].x = (1 + 3*i) * WIDTH_A;
+        tabPos[i].x = (1 + 3*i) * (WIDTH_A);
         tabPos[i].y = HEIGHT_A * index;
     }
 }
 
-void makeAnimation(int index, Position tabPos[], int posLargeSprite[]) {
+void makeAnimation(int index, Position tabPos[]) {
     contenu.player.source.x = tabPos[index].x;
     contenu.player.source.y = tabPos[index].y;
-    if( index == posLargeSprite[0] || index == posLargeSprite[1]) {
-        contenu.player.source.w  = PLAYER_WIDTH*2;
-        contenu.player.dest.w  = PLAYER_WIDTH*2;
-    } else {
-        contenu.player.source.w  = PLAYER_WIDTH;
-        contenu.player.dest.w  = PLAYER_WIDTH;
-
-    }
-}
-
-void AttackUpReverse() {
-    for (int i = 0; i < 7; ++i) {
-        contenu.attackUpReverse[i].x = (1 + 3*i) * WIDTH_A;
-        contenu.attackUpReverse[i].y = HEIGHT_A * 34;
-    }
-}
-
-void AttackUp() {
-    //up first Animation
-    for (int i = 0; i < 7; ++i) {
-            contenu.attackUp[i].x = (1 + 3*i) * WIDTH_A;
-            contenu.attackUp[i].y = HEIGHT_A * 22;
-    }
+    contenu.player.source.w  = PLAYER_WIDTH*2;
+    contenu.player.dest.w  = PLAYER_WIDTH*2;
 }
 
 //Je charge mon image source (pour en faire une animation video
@@ -146,63 +132,63 @@ void loadClips() {
 }
 
 //ALL ANIMATION SEQUENCE USE w , x and s
-void UP(int idxAtt, int tab1[], int tab2[], int tab3[], char c) {
+void UP(int idxAtt, char c) {
      if(c == 'w') {
          //Animation Attack up normal
-         makeAnimation(idxAtt,contenu.attackUp, tab1);
+         makeAnimation(idxAtt,contenu.attackUp);
      }
      if(c == 'x') {
          //Animation Attack up reverse
-         makeAnimation(idxAtt,contenu.attackUpReverse, tab2);
+         makeAnimation(idxAtt,contenu.attackUpReverse);
      }
     if (c == 's') {
         //Animation Attack up stabbed
-        makeAnimation(idxAtt,contenu.attackUpStabbed, tab3);
+        makeAnimation(idxAtt,contenu.attackUpStabbed);
     }
 }
 
-void LEFT(int idxAtt, int tab1[], int tab2[], int tab3[], char c) {
+void LEFT(int idxAtt, char c) {
     if(c == 'w') {
         //Animation Attack up normal
-        makeAnimation(idxAtt,contenu.attackLeft, tab1);
+        makeAnimation(idxAtt,contenu.attackLeft);
     }
     if(c == 'x') {
         //Animation Attack up reverse
-        makeAnimation(idxAtt,contenu.attackLeftReverse, tab2);
+        makeAnimation(idxAtt,contenu.attackLeftReverse);
     }
     if (c == 's') {
         //Animation Attack up stabbed
-        makeAnimation(idxAtt,contenu.attackLeftStabbed, tab3);
+        makeAnimation(idxAtt,contenu.attackLeftStabbed);
     }
 }
 
-void DOWN(int idxAtt, int tab1[], int tab2[], int tab3[], char c) {
+void DOWN(int idxAtt, char c) {
     if(c == 'w') {
         //Animation Attack up normal
-        makeAnimation(idxAtt,contenu.attackDown, tab1);
+        makeAnimation(idxAtt,contenu.attackDown);
     }
     if(c == 'x') {
         //Animation Attack up reverse
-        makeAnimation(idxAtt,contenu.attackDownReverse, tab2);
+        makeAnimation(idxAtt,contenu.attackDownReverse);
     }
     if (c == 's') {
         //Animation Attack up stabbed
-        makeAnimation(idxAtt,contenu.attackDownStabbed, tab3);
+        makeAnimation(idxAtt,contenu.attackDownStabbed);
     }
 }
 
-void RIGHT(int idxAtt, int tab1[], int tab2[], int tab3[], char c) {
+void RIGHT(int idxAtt, char c) {
     if(c == 'w') {
         //Animation Attack up normal
-        makeAnimation(idxAtt,contenu.attackRight, tab1);
+        makeAnimation(idxAtt,contenu.attackRight);
     }
     if(c == 'x') {
         //Animation Attack up reverse
-        makeAnimation(idxAtt,contenu.attackRightReverse, tab2);
+        makeAnimation(idxAtt,contenu.attackRightReverse);
     }
     if (c == 's') {
         //Animation Attack up stabbed
-        makeAnimation(idxAtt,contenu.attackRightStabbed, tab3);
+        makeAnimation(idxAtt,contenu.attackRightStabbed);
     }
 }
 
@@ -231,85 +217,63 @@ void handleInput() {
     }
 }
 
-/*
-void animationUp(int idxAtt) {
-    contenu.player.source.x = contenu.attackUp[idxAtt].x;
-    contenu.player.source.y = contenu.attackUp[idxAtt].y;
-    if( idxAtt == 5 || idxAtt == 6) {
-        contenu.player.source.w  = PLAYER_WIDTH*2;
-        contenu.player.dest.w  = PLAYER_WIDTH*2;
-    } else {
-        contenu.player.source.w  = PLAYER_WIDTH;
-        contenu.player.dest.w  = PLAYER_WIDTH;
-
-    }
+void walkingAnimation(Position tabPos[], float speed, int indexClips, int direction) {
+    contenu.player.source.w  = PLAYER_WIDTH;
+    contenu.player.dest.w  = PLAYER_WIDTH;
+    contenu.player.source.x =  tabPos[indexClips].x;
+    contenu.player.source.y =  tabPos[indexClips].y;
+    contenu.player.direction = direction;
+    contenu.keyBoard ='_';
+    if(direction == NORTH)
+        contenu.player.dest.y += speed;
+    if(direction == EAST)
+        contenu.player.dest.x += speed;
+    if(direction == WEST)
+        contenu.player.dest.x += speed;
+    if(direction == SOUTH)
+        contenu.player.dest.y += speed;
 }
 
-void animationUpReverse(int idxAtt) {
-    contenu.player.source.x = contenu.attackUpReverse[idxAtt].x;
-    contenu.player.source.y = contenu.attackUpReverse[idxAtt].y;
-    if( idxAtt == 0 || idxAtt == 1) {
-        contenu.player.source.w  = PLAYER_WIDTH*2;
-        contenu.player.dest.w  = PLAYER_WIDTH*2;
-    } else {
-        contenu.player.source.w  = PLAYER_WIDTH;
-        contenu.player.dest.w  = PLAYER_WIDTH;
-    }
-}
-*/
 void updatePlayer() {
     int animation_speed = SDL_GetTicks() / 170;
     int idx = animation_speed % 6;
     int idxAtt= animation_speed % 6;
     float vitesse=2.4;
 
-    if ( contenu.moving_up) {
-         contenu.player.source.x =  contenu.player_up_clips[idx].x;
-         contenu.player.source.y =  contenu.player_up_clips[idx].y;
-         contenu.player.dest.y -= vitesse;
-         contenu.player.direction = 0;
-         contenu.keyBoard ='_';
+    if (contenu.moving_up) {
+         walkingAnimation(contenu.player_up_clips, -vitesse, idx, NORTH);
     }
-    if ( contenu.moving_left) {
-
-         contenu.player.source.x =  contenu.player_left_clips[idx].x;
-         contenu.player.source.y =  contenu.player_left_clips[idx].y;
-         contenu.player.dest.x -= vitesse;
-         contenu.player.direction = 3;
-         contenu.keyBoard ='_';
+    if (contenu.moving_left) {
+         walkingAnimation(contenu.player_left_clips, -vitesse, idx, EAST);
     }
-    if ( contenu.moving_down) {
-        contenu.player.source.x = contenu.player_down_clips[idx].x;
-        contenu.player.source.y = contenu.player_down_clips[idx].y;
-        contenu.player.dest.y += vitesse;
-        contenu.player.direction= 2;
-        contenu.keyBoard ='_';
+    if (contenu.moving_down) {
+        walkingAnimation(contenu.player_down_clips, +vitesse, idx, SOUTH);
     }
-    if ( contenu.moving_right) {
-        contenu.player.source.x = contenu.player_right_clips[idx].x;
-        contenu.player.source.y = contenu.player_right_clips[idx].y;
-        contenu.player.dest.x += vitesse;
-        contenu.player.direction = 1;
-        contenu.keyBoard ='_';
+    if (contenu.moving_right) {
+        walkingAnimation(contenu.player_right_clips, +vitesse, idx, WEST);
     }
 
-    if(contenu.player.direction == 0) {
-        //animationUpReverse(idxAtt);
-        //animationUp(idxAtt);
-        int tab1[] = {5,6}; //Bien trouver les tab à faire demain
-        int tab2[] = {0,1};
-        int tab3[] = {1, 2};
-        UP(idxAtt,tab1, tab2, tab3, contenu.keyBoard);
+    //All Animation
+    if(contenu.player.direction == NORTH) {
+        UP(idxAtt,contenu.keyBoard);
     }
 
+    if(contenu.player.direction == EAST) {
+        LEFT(idxAtt,contenu.keyBoard);
+    }
 
-
+    if(contenu.player.direction == SOUTH) {
+        DOWN(idxAtt,contenu.keyBoard);
+    }
+    if(contenu.player.direction == WEST) {
+        RIGHT(idxAtt,contenu.keyBoard);
+    }
+    contenu.keyBoard = ' '; //don't repeat animation
 }
 
 
 int main(int argc, char* args[]) {
      SDL_Init(SDL_INIT_VIDEO);
-
      contenu.window = SDL_CreateWindow(WINDOW_TITLE, WINDOW_X, WINDOW_Y, WINDOW_W, WINDOW_H, SDL_WINDOW_SHOWN);
      contenu.renderer = SDL_CreateRenderer( contenu.window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
 
@@ -329,6 +293,7 @@ int main(int argc, char* args[]) {
         SDL_RenderClear(contenu.renderer);
         handleInput();
         updatePlayer();
+
         SDL_RenderClear(contenu.renderer);
         //mapGame.makeMap(contenu.renderer);
         SDL_RenderCopy( contenu.renderer,  contenu.player.tex, & contenu.player.source, & contenu.player.dest);
