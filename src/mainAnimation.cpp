@@ -1,7 +1,17 @@
 #include <iostream>
-#include <SDL.h>
+#include "SDL.h"
+#include <SDL_ttf.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
+
 #include "core/config.h"
 #include "../map/map.h"
+/***************************************AUDIO SDL_MIXER******************************************/
+
+
+
+/*******************************************ANIMATION*********************************************/
+
 //Mon joueur
 struct Player {
     SDL_Texture* tex;
@@ -28,6 +38,8 @@ struct Position {
 struct Contenu {
     SDL_Window* window;
     SDL_Renderer* renderer;
+    Mix_Music *music;
+    Mix_Chunk * effect;
     Player player;
     //Nombre de sprite a utilise 7 car on revien a la position de depart (1,2,3,4,5,6,1)
     Position player_left_clips[7];
@@ -213,7 +225,13 @@ void handleInput() {
             SDL_DestroyWindow(contenu.window);
             SDL_Quit();
             exit(0);
-        }
+        } /*else if (event.type == SDL_KEYDOWN) {
+            // Vérifier si la touche 's' est enfoncée
+            if (event.key.keysym.sym == SDLK_s) {
+                // Jouer l'effet sonore
+                Mix_PlayChannel(-1, contenu.effect, 0);
+            }
+        }*/
     }
 }
 
@@ -273,37 +291,79 @@ void updatePlayer() {
 
 
 int main(int argc, char* args[]) {
-     SDL_Init(SDL_INIT_VIDEO);
-     contenu.window = SDL_CreateWindow(WINDOW_TITLE, WINDOW_X, WINDOW_Y, WINDOW_W, WINDOW_H, SDL_WINDOW_SHOWN);
-     contenu.renderer = SDL_CreateRenderer( contenu.window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+    // Initialisation de la SDL avec le support vidéo et audio
+    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
 
-     SDL_Surface* player_img = SDL_LoadBMP("../data/sprite_Player.bmp");
+    // Création de la fenêtre
+    contenu.window = SDL_CreateWindow(WINDOW_TITLE, WINDOW_X, WINDOW_Y, WINDOW_W, WINDOW_H, SDL_WINDOW_SHOWN);
+    contenu.renderer = SDL_CreateRenderer(contenu.window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
 
-     contenu.player.tex = SDL_CreateTextureFromSurface( contenu.renderer, player_img);
-     contenu.player.source = {0, PLAYER_HEIGHT*8, PLAYER_WIDTH, PLAYER_HEIGHT};
-     contenu.player.dest = {100, 100, PLAYER_WIDTH , PLAYER_HEIGHT};
-     SDL_FreeSurface(player_img);
+    // Chargement de l'image du joueur
+    SDL_Surface* player_img = SDL_LoadBMP("../data/sprite_Player.bmp");
+    contenu.player.tex = SDL_CreateTextureFromSurface(contenu.renderer, player_img);
+    contenu.player.source = {0, PLAYER_HEIGHT*8, PLAYER_WIDTH, PLAYER_HEIGHT};
+    contenu.player.dest = {100, 100, PLAYER_WIDTH , PLAYER_HEIGHT};
+    SDL_FreeSurface(player_img);
 
+    // Chargement des clips pour l'animation
     loadClips();
+
+    // Initialisation de la carte du jeu
     Map mapGame;
     mapGame.initAllRectangle();
 
-    while (true) {
-        SDL_SetRenderDrawColor(contenu.renderer, 255,255,255, 255);
-        SDL_RenderClear(contenu.renderer);
-        handleInput();
-        updatePlayer();
-
-        SDL_RenderClear(contenu.renderer);
-        //mapGame.makeMap(contenu.renderer);
-        SDL_RenderCopy( contenu.renderer,  contenu.player.tex, & contenu.player.source, & contenu.player.dest);
-        SDL_RenderPresent( contenu.renderer);
+    //LA PARTIE AUDIO AVEC SDL_MIXER
+    // Chargement de la musique
+    contenu.music= Mix_LoadMUS("../data/audio/music_test.mp3");
+    if (contenu.music == nullptr) {
+        std::cerr << "Erreur lors du chargement de la musique : " << Mix_GetError() << std::endl;
+        Mix_CloseAudio();
+        SDL_Quit();
+        return 1;
     }
 
-    SDL_DestroyWindow( contenu.window);
-    SDL_DestroyRenderer( contenu.renderer);
-    SDL_Quit();
+    // Chargement de l'effet sonore
+    contenu.effect = Mix_LoadWAV("../data/audio/effet_test.mp3");
+    if (contenu.effect == nullptr) {
+        std::cerr << "Erreur lors du chargement de l'effet sonore : " << Mix_GetError() << std::endl;
+        Mix_FreeMusic(contenu.music);
+        Mix_CloseAudio();
+        SDL_Quit();
+        return 1;
+    }
 
+    // Lecture de la musique en boucle
+    Mix_PlayMusic(contenu.music, -1);
+
+    // Boucle principale du jeu
+    while (true) {
+        // Effacement de l'écran
+        SDL_SetRenderDrawColor(contenu.renderer, 255,255,255, 255);
+        SDL_RenderClear(contenu.renderer);
+
+        // Gestion des entrées
+        handleInput();
+
+        // Mise à jour du joueur
+        updatePlayer();
+
+        // Affichage de la carte et du joueur
+        //
+        // mapGame.makeMap(contenu.renderer);
+        SDL_RenderCopy(contenu.renderer, contenu.player.tex, &contenu.player.source, &contenu.player.dest);
+
+        // Affichage à l'écran
+        SDL_RenderPresent(contenu.renderer);
+    }
+
+    // Libération de la mémoire et fermeture de la SDL
+    //Mix_FreeMusic(contenu.music);
+    //Mix_FreeChunk(contenu.effect);
+    //Mix_CloseAudio();
+    SDL_DestroyWindow(contenu.window);
+    SDL_DestroyRenderer(contenu.renderer);
+    SDL_Quit();
 
     return 0;
 }
+
