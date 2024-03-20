@@ -27,7 +27,7 @@
 #define CLIPS_SIZE = 6
 /// \def WINDOW_H
 /// Hauteur de la fenêtre.
-#define WINDOW_H 950 // 950 chez Gold 600 chez Aliou
+#define WINDOW_H 450 // 950 chez Gold 600 chez Aliou
 
 /// \def PLAYER_WIDTH
 /// Largeur du joueur.
