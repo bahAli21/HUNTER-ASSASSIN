@@ -24,7 +24,7 @@
 
 /// \def CLIPS_SIZE
 /// Taille du tableau de sprite a utiliser pour l'animation.
-#define CLIPS_SIZE = 6
+#define LEN 44
 /// \def WINDOW_H
 /// Hauteur de la fenêtre.
 #define WINDOW_H 450 // 950 chez Gold 600 chez Aliou

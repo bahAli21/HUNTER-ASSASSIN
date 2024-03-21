@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD 23)
 # Définition des chemins de sortie pour les exécutables
 set(NOYAUTEST_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(HunterAssassin_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-
+set(OBJ_DIR ${PROJECT_SOURCE_DIR}/obj)
 # Définition des dossiers sources
 set(SRC_CORE_DIR ./src/core)
 set(SRC_SDL2_DIR ./src/sdl2)
@@ -21,7 +21,11 @@ set(SRC_CORE ${SRC_CORE_DIR}/Game.cpp ${SRC_CORE_DIR}/Garde.cpp ${SRC_CORE_DIR}/
 set(HEADER_CORE ${SRC_CORE_DIR}/Game.h ${SRC_CORE_DIR}/Garde.h ${SRC_CORE_DIR}/IA.h ${SRC_CORE_DIR}/Player.h ${SRC_CORE_DIR}/point.h ${SRC_CORE_DIR}/Rect.h ${SRC_CORE_DIR}/config.h)
 set(SRC_SDL2 ${SRC_SDL2_DIR}/mainProject.cpp ${SRC_SDL2_DIR}/SDLGame.cpp ${SRC_SDL2_DIR}/SDLGame.h ${SRC_SDL2_DIR}/SDLSprite.h ${SRC_SDL2_DIR}/SDLSprite.cpp)
 set(SRC_TXT ${SRC_TXT_DIR}/main_txt.cpp ${SRC_TXT_DIR}/gameTxt.cpp ${SRC_TXT_DIR}/winTxt.h ${SRC_TXT_DIR}/winTxt.cpp ${SRC_TXT_DIR}/gameTxt.h)
-set(SRC_ANIMATION ${PROJECT_SOURCE_DIR}/src/mainAnimation.cpp ${PROJECT_SOURCE_DIR}/map/map.cpp ${PROJECT_SOURCE_DIR}/map/map.h)
+set(SRC_ANIMATION ${PROJECT_SOURCE_DIR}/src/mainAnimation.cpp ${PROJECT_SOURCE_DIR}/map/map.cpp ${PROJECT_SOURCE_DIR}/map/map.h
+        src/sdl2/SDLTtf.h
+        src/sdl2/SDLTtf.cpp
+        src/sdl2/SDLSound.h
+        src/sdl2/SDLSound.cpp)
 
 # Configuration des librairies SDL2 en fonction du système d'exploitation
 if (WIN32)
@@ -65,6 +69,11 @@ add_executable(Animation ${SRC_ANIMATION})
 set_target_properties(HunterAssassin PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${HunterAssassin_OUTPUT_PATH})
 set_target_properties(Animation PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${HunterAssassin_OUTPUT_PATH})
 set_target_properties(JeuTxt PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${HunterAssassin_OUTPUT_PATH})
+
+# Configuration de la sortie pour les fichiers objets
+set_target_properties(HunterAssassin PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${OBJ_DIR})
+set_target_properties(Animation PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${OBJ_DIR})
+set_target_properties(JeuTxt PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${OBJ_DIR})
 
 # Options de compilation C++
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ggdb")

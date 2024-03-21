@@ -4,7 +4,7 @@
 #include "SDLAnimation.h" //inclu SDLSprite.h
 #include "../core/Game.h"
 #include "SDL.h"
-#include ""
+//#include ""
 #include "../core/config.h"
 /**
  * @brief La classe gérant le jeu avec un affichage SDL.
