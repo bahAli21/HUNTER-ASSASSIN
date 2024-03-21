@@ -3,13 +3,8 @@
 #include <SDL_ttf.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
-
 #include "core/config.h"
 #include "../map/map.h"
-/***************************************AUDIO SDL_MIXER******************************************/
-
-
-
 /*******************************************ANIMATION*********************************************/
 
 //Mon joueur
@@ -77,6 +72,83 @@ struct Contenu {
     bool moving_down;
     bool attack;
 } contenu;
+
+/***************************************AUDIO SDL_MIXER******************************************/
+
+/**
+ * @brief Fonction pour initialiser SDL Mixer.
+ *
+ * Cette fonction initialise SDL Mixer avec les paramètres spécifiés.
+ *
+ * @param frequency Fréquence audio en Hz.
+ * @param format Format audio.
+ * @param channels Nombre de canaux audio.
+ * @param chunksize Taille du tampon audio en octets.
+ * @return true si l'initialisation est réussie, false sinon.
+ */
+bool initSDL_Mixer(int frequency, Uint16 format, int channels, int chunksize) {
+    if (Mix_OpenAudio(frequency, format, channels, chunksize) < 0) {
+        std::cerr << "Erreur lors de l'initialisation de SDL_mixer : " << Mix_GetError() << std::endl;
+        SDL_Quit();
+        return false;
+    }
+    return true;
+}
+
+/**
+ * @brief Fonction pour charger une musique.
+ *
+ * Cette fonction charge un fichier audio donné comme musique.
+ *
+ * @param filename Chemin du fichier audio.
+ * @return Pointeur vers la musique chargée.
+ */
+Mix_Music* loadMusic(const char* filename) {
+    Mix_Music* music = Mix_LoadMUS(filename);
+    if (music == nullptr) {
+        std::cerr << "Erreur lors du chargement de la musique : " << Mix_GetError() << std::endl;
+    }
+    return music;
+}
+
+/**
+ * @brief Fonction pour charger un effet sonore.
+ *
+ * Cette fonction charge un fichier audio donné comme effet sonore.
+ *
+ * @param filename Chemin du fichier audio.
+ * @return Pointeur vers l'effet sonore chargé.
+ */
+Mix_Chunk* loadSoundEffect(const char* filename) {
+    Mix_Chunk* effect = Mix_LoadWAV(filename);
+    if (effect == nullptr) {
+        std::cerr << "Erreur lors du chargement de l'effet sonore : " << Mix_GetError() << std::endl;
+    }
+    return effect;
+}
+
+/**
+ * @brief Fonction pour jouer une musique.
+ *
+ * Cette fonction joue une musique donnée en boucle.
+ *
+ * @param music Pointeur vers la musique à jouer.
+ */
+void playMusic(Mix_Music* music) {
+    Mix_PlayMusic(music, -1);
+}
+
+/**
+ * @brief Fonction pour jouer un effet sonore.
+ *
+ * Cette fonction joue un effet sonore donné une fois.
+ *
+ * @param effect Pointeur vers l'effet sonore à jouer.
+ */
+void playSoundEffect(Mix_Chunk* effect) {
+    /**@param channel, chunk and loop*/
+    Mix_PlayChannel(-1, effect, 0);
+}
 
 void Walk() {
     for (int i = 0; i < 6; ++i) {
@@ -225,13 +297,13 @@ void handleInput() {
             SDL_DestroyWindow(contenu.window);
             SDL_Quit();
             exit(0);
-        } /*else if (event.type == SDL_KEYDOWN) {
+        } else if (event.type == SDL_KEYDOWN) {
             // Vérifier si la touche 's' est enfoncée
             if (event.key.keysym.sym == SDLK_s) {
-                // Jouer l'effet sonore
-                Mix_PlayChannel(-1, contenu.effect, 0);
+                // Lecture de l'effet sonore une fois
+                playSoundEffect(contenu.effect);
             }
-        }*/
+        }
     }
 }
 
@@ -289,7 +361,6 @@ void updatePlayer() {
     contenu.keyBoard = ' '; //don't repeat animation
 }
 
-
 int main(int argc, char* args[]) {
     // Initialisation de la SDL avec le support vidéo et audio
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
@@ -312,20 +383,23 @@ int main(int argc, char* args[]) {
     Map mapGame;
     mapGame.initAllRectangle();
 
-    //LA PARTIE AUDIO AVEC SDL_MIXER
+    // Initialisation de SDL Mixer
+    if (!initSDL_Mixer(44100, MIX_DEFAULT_FORMAT, 2, 2048)) {
+        SDL_Quit();
+        return 1;
+    }
+
     // Chargement de la musique
-    contenu.music= Mix_LoadMUS("../data/audio/music_test.mp3");
+     contenu.music = loadMusic("../data/audio/music_test.mp3");
     if (contenu.music == nullptr) {
-        std::cerr << "Erreur lors du chargement de la musique : " << Mix_GetError() << std::endl;
         Mix_CloseAudio();
         SDL_Quit();
         return 1;
     }
 
     // Chargement de l'effet sonore
-    contenu.effect = Mix_LoadWAV("../data/audio/effet_test.mp3");
+    contenu.effect = loadSoundEffect("../data/audio/son.wav");
     if (contenu.effect == nullptr) {
-        std::cerr << "Erreur lors du chargement de l'effet sonore : " << Mix_GetError() << std::endl;
         Mix_FreeMusic(contenu.music);
         Mix_CloseAudio();
         SDL_Quit();
@@ -333,7 +407,7 @@ int main(int argc, char* args[]) {
     }
 
     // Lecture de la musique en boucle
-    Mix_PlayMusic(contenu.music, -1);
+    playMusic(contenu.music);
 
     // Boucle principale du jeu
     while (true) {
@@ -357,9 +431,9 @@ int main(int argc, char* args[]) {
     }
 
     // Libération de la mémoire et fermeture de la SDL
-    //Mix_FreeMusic(contenu.music);
-    //Mix_FreeChunk(contenu.effect);
-    //Mix_CloseAudio();
+    Mix_FreeMusic(contenu.music);
+    Mix_FreeChunk(contenu.effect);
+    Mix_CloseAudio();
     SDL_DestroyWindow(contenu.window);
     SDL_DestroyRenderer(contenu.renderer);
     SDL_Quit();
