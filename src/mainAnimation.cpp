@@ -230,7 +230,7 @@ void handleInput() {
             // Vérifier si la touche 's' est enfoncée
             if (event.key.keysym.sym == SDLK_s) {
                 // Lecture de l'effet sonore une fois
-                sound.PlayeChunk(contenu.effect);
+                sound.PlayChunk(contenu.effect);
             }
         }
     }
@@ -333,7 +333,7 @@ int main(int argc, char* args[]) {
 
 
     // Lecture de la musique en boucle
-    sound.PlayeMusic(contenu.music);
+    sound.PlayMusic(contenu.music);
     SDLTtf affichageTxt;
     TTF_Font * fontScore = affichageTxt.loadFont("../data/font/scoreFont.ttf", 14);
     SDL_Color colorScore = {120,200, 16};

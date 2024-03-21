@@ -1,65 +1,69 @@
 #ifndef HUNTERASSASSIN_SDLGAME_H
 #define HUNTERASSASSIN_SDLGAME_H
 
-#include "SDLAnimation.h" //inclu SDLSprite.h
+#include "SDLAnimation.h" // include SDLSprite.h
 #include "../core/Game.h"
 #include "SDL.h"
-//#include ""
 #include "../core/config.h"
+
 /**
- * @brief La classe gérant le jeu avec un affichage SDL.
+ * @brief Class managing the game with SDL display.
  */
 class SDLGame {
 private:
-    Game game; /**< Instance de la classe Game. */
-    SDL_Window * window; /**< Fenêtre SDL pour l'affichage. */
-    SDL_Renderer * renderer; /**< Rendu SDL pour l'affichage. */
-    SDLSprite sp_player; /**< Sprite SDL pour le joueur. */
-    SDLSprite sp_garde; /**< Sprite SDL pour les gardes. */
+    Game game; /**< Instance of the Game class. */
+    SDL_Window *window; /**< SDL window for display. */
+    SDL_Renderer *renderer; /**< SDL rendering context for display. */
+    SDLSprite sp_player; /**< SDL sprite for the player. */
+    SDLSprite sp_garde; /**< SDL sprite for the guards. */
     SDLSprite sourceAnimation;
-    char * animImg;
-    //Sprite pour la map
-    SDLSprite sp_greyBoxe; // representer par 'g'
-    SDLSprite sp_redBoxe1;// representer par 'i'
-    SDLSprite sp_redBoxe2;// representer par 'j'
-    SDLSprite sp_redBoxe3;// representer par 'k'
-    SDLSprite sp_redBoxe4;// representer par 'l'
-    SDLSprite sp_door; // representer par '|'
-    SDLSprite sp_smallBoxe; // representer par 'b'
-    SDLSprite sp_blueDoor; // representer par 'd'
-    SDLSprite sp_wall1; // representer par '#'
-    SDLSprite sp_wall2;// representer par 'p'
-    SDLSprite sp_moqGrey;// representer par '_'
-    SDLSprite sp_moqBlack;// representer par '.'
+    char *animImg;
+    // Sprite for the map
+    SDLSprite sp_greyBoxe; // represented by 'g'
+    SDLSprite sp_redBoxe1; // represented by 'i'
+    SDLSprite sp_redBoxe2; // represented by 'j'
+    SDLSprite sp_redBoxe3; // represented by 'k'
+    SDLSprite sp_redBoxe4; // represented by 'l'
+    SDLSprite sp_door; // represented by '|'
+    SDLSprite sp_smallBoxe; // represented by 'b'
+    SDLSprite sp_blueDoor; // represented by 'd'
+    SDLSprite sp_wall1; // represented by '#'
+    SDLSprite sp_wall2; // represented by 'p'
+    SDLSprite sp_moqGrey; // represented by '_'
+    SDLSprite sp_moqBlack; // represented by '.'
 
 public:
-    void drawTheMap(const Map & map) const;
     /**
-     * @brief Constructeur par défaut de la classe SDLGame.
+     * @brief Draws the map using SDL.
+     * @param map The map to be drawn.
      */
-    SDLGame ();
+    void drawTheMap(const Map &map) const;
 
     /**
-     * @brief Destructeur de la classe SDLGame.
+     * @brief Default constructor of the SDLGame class.
      */
-    ~SDLGame ();
+    SDLGame();
 
     /**
-     * @brief Méthode principale pour exécuter le jeu.
+     * @brief Destructor of the SDLGame class.
+     */
+    ~SDLGame();
+
+    /**
+     * @brief Main method to run the game.
      */
     void runProject();
 
     /**
-     * @brief Méthode pour dessiner le jeu avec SDL.
+     * @brief Method to draw the game with SDL.
      */
     void sdlDraw();
 
     /**
-     * @brief Méthode pour obtenir le temps.
-     * @return Le temps écoulé depuis le début du jeu.
+     * @brief Method to get the elapsed time.
+     * @return The time elapsed since the start of the game.
      */
     float temps();
-
-} ;
+};
 
 #endif //HUNTERASSASSIN_SDLGAME_H

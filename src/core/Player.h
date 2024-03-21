@@ -9,119 +9,119 @@
 #include <iostream>
 
 /**
- * @brief Classe représentant le joueur dans le jeu.
+ * @brief Class representing the player in the game.
  */
 class Player {
 public:
-    Position pos; ///< Position actuelle du joueur.
-    bool left, right, up, down; ///< Indicateurs de direction du joueur.
-    int health; ///< Nombre de vies du joueur.
-    Rect playerDest ;
-    Rect playerSource;
-    Rect dest; /**< Destination de L'IA. */
+    Position pos; ///< Current position of the player.
+    bool left, right, up, down; ///< Direction indicators of the player.
+    int health; ///< Health points of the player.
+    Rect playerDest; ///< Destination of the player.
+    Rect playerSource; ///< Source of the player.
+    Rect dest; /**< Destination of the AI. */
 
 public:
     /**
-     * @brief Déplace le joueur vers la gauche sur la carte spécifiée.
-     * @param map La carte sur laquelle le joueur se déplace.
+     * @brief Moves the player to the left on the specified map.
+     * @param map The map on which the player moves.
      */
     void goLeft(const Map &map);
 
     /**
-     * @brief Déplace le joueur vers la droite sur la carte spécifiée.
-     * @param map La carte sur laquelle le joueur se déplace.
+     * @brief Moves the player to the right on the specified map.
+     * @param map The map on which the player moves.
      */
     void goRight(const Map &map);
 
     /**
-     * @brief Déplace le joueur vers le haut sur la carte spécifiée.
-     * @param map La carte sur laquelle le joueur se déplace.
+     * @brief Moves the player upward on the specified map.
+     * @param map The map on which the player moves.
      */
     void goUp(const Map &map);
 
     /**
-     * @brief Déplace le joueur vers le bas sur la carte spécifiée.
-     * @param map La carte sur laquelle le joueur se déplace.
+     * @brief Moves the player downward on the specified map.
+     * @param map The map on which the player moves.
      */
     void goDown(const Map &map);
 
     /**
-     * @brief Obtient la position actuelle du joueur.
-     * @return La position actuelle du joueur.
+     * @brief Gets the current position of the player.
+     * @return The current position of the player.
      */
     Position getPosition() const;
 
     /**
-     * @brief Définit la position horizontale du joueur.
-     * @param _x La nouvelle position horizontale.
+     * @brief Sets the horizontal position of the player.
+     * @param _x The new horizontal position.
      */
     void setPositionX(int _x);
 
     /**
-     * @brief Définit la position verticale du joueur.
-     * @param _y La nouvelle position verticale.
+     * @brief Sets the vertical position of the player.
+     * @param _y The new vertical position.
      */
     void setPositionY(int _y);
 
     /**
-     * @brief Obtient le nombre de vies du joueur.
-     * @return Le nombre de vies du joueur.
+     * @brief Gets the health points of the player.
+     * @return The health points of the player.
      */
     int getHealth() const;
 
     /**
-     * @brief Définit le nombre de vies du joueur.
-     * @param _health Le nouveau nombre de vies.
+     * @brief Sets the health points of the player.
+     * @param _health The new health points.
      */
     void setHealth(int _health);
 
     /**
-     * @brief Constructeur par défaut de la classe Player.
+     * @brief Default constructor of the Player class.
      */
     Player();
 
     /**
-     * @brief Destructeur de la classe Player.
+     * @brief Destructor of the Player class.
      */
     ~Player();
 
     /**
-     * @brief Méthode de test pour la régression.
-     * Utilisée pour tester les fonctionnalités de la classe Player.
+     * @brief Regression testing method.
+     * Used to test the functionalities of the Player class.
      */
     static void testRegression();
 };
 
-// Définition des fonctions inline
+// Inline function definitions
 
 /**
- * @brief Obtient la position actuelle du joueur.
- * @return La position actuelle du joueur.
+ * @brief Gets the current position of the player.
+ * @return The current position of the player.
  */
 inline Position Player::getPosition() const { return pos; }
 
 /**
- * @brief Définit la position horizontale du joueur.
- * @param _x La nouvelle position horizontale.
+ * @brief Sets the horizontal position of the player.
+ * @param _x The new horizontal position.
  */
 inline void Player::setPositionX(int _x) { pos.x = _x; }
 
 /**
- * @brief Définit la position verticale du joueur.
- * @param _y La nouvelle position verticale.
+ * @brief Sets the vertical position of the player.
+ * @param _y The new vertical position.
  */
 inline void Player::setPositionY(int _y) { pos.y = _y; }
 
 /**
- * @brief Obtient le nombre de vies du joueur.
- * @return Le nombre de vies du joueur.
+ * @brief Gets the health points of the player.
+ * @return The health points of the player.
  */
 inline int Player::getHealth() const { return health; }
 
 /**
- * @brief Définit le nombre de vies du joueur.
- * @param _health Le nouveau nombre de vies.
+ * @brief Sets the health points of the player.
+ * @param _health The new health points.
  */
 inline void Player::setHealth(int _health) { health = _health; }
 
-#endif //HUNTERASSASSIN_PLAYER_H
+#endif // HUNTERASSASSIN_PLAYER_H

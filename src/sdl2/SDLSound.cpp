@@ -26,12 +26,12 @@ Mix_Music *SDLSound::LoadMusicFromFile(const char *pathMusic) {
     return music;
 }
 
-void SDLSound::PlayeChunk(Mix_Chunk *chunk) {
+void SDLSound::PlayChunk(Mix_Chunk *chunk) {
     /**@param channel, chunk and loop*/
     Mix_PlayChannel(-1, chunk, 0);
 }
 
-void SDLSound::PlayeMusic(Mix_Music *music) {
+void SDLSound::PlayMusic(Mix_Music *music) {
     Mix_PlayMusic(music, -1);
 }
 

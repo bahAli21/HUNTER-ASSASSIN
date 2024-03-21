@@ -8,89 +8,86 @@
 #include "Garde.h"
 
 /**
- * @brief Classe représentant le jeu.
+ * @brief Class representing the game.
  *
- * Cette classe gère les opérations liées au jeu, telles que l'initialisation du joueur,
- * de la map et des gardes.
+ * This class manages operations related to the game, such as player initialization,
+ * map handling, and guard management.
  */
 class Game {
 public:
-    int nbGardes; /**<Le nombre de garde */
-    Player _player; /**< Instance du joueur. */
-    Map _gameMap; /**< Instance de la map du jeu. */
-    Garde * allGardes ;/**<Un pointeur sur tous les Gardes du jeu. */
+    int nbGardes; /**< The number of guards. */
+    Player _player; /**< Instance of the player. */
+    Map _gameMap; /**< Instance of the game map. */
+    Garde *allGardes; /**< Pointer to all guards in the game. */
 public:
-    std::vector<Rect> vecAllObstacles; /**< Vecteur contenant tous les obstacles du jeu. */
-   // Rect dest; /**< Destination de L'IA. */
-    Rect * gardesDest;
-    Rect * gardesRect ;
-   /* Rect playerRect = dest = { getConstPlayer().getPosition().x,
-                               getConstPlayer().getPosition().y,
-                               PLAYER_WIDTH,
-                               PLAYER_HEIGHT}; */
-    /*SDL_Rect source = { 0,
-                         PLAYER_HEIGHT*8,
-                         PLAYER_WIDTH,
-                         PLAYER_HEIGHT};*/
-
+    std::vector<Rect> vecAllObstacles; /**< Vector containing all obstacles in the game. */
 
     /**
-     * @brief Constructeur par défaut de la classe Game.
+     * @brief Default constructor of the Game class.
+     *
+     * @param nbGardes The number of guards.
      */
     Game(int nbGardes);
 
     /**
-     * @brief Destructeur de la classe Game.
+     * @brief Destructor of the Game class.
      */
     ~Game();
 
     /**
-     * @brief Gère l'entrée du clavier.
+     * @brief Handles keyboard input.
      *
-     * Cette fonction détermine l'action à entreprendre en fonction de la touche pressée.
-     * Elle permet au joueur de se déplacer sur la carte et interagit avec les éléments du jeu.
+     * This function determines the action to take based on the pressed key.
+     * It allows the player to move on the map and interact with game elements.
      *
-     * @param touche La touche pressée par le joueur.
-     * @return true si le joueur a effectué une action, sinon false.
+     * @param touche The key pressed by the player.
+     * @return true if the player performed an action, false otherwise.
      */
     bool toucheClavier(const char touche);
 
+    /**
+     * @brief Checks for collision between two rectangles.
+     *
+     * @param rect1 The first rectangle.
+     * @param rect2 The second rectangle.
+     * @return true if the rectangles collide, false otherwise.
+     */
     bool checkCollision(const Rect& rect1, const Rect& rect2);
 
     /**
-     * @brief Obtient une référence constante vers l'objet Player.
+     * @brief Gets a constant reference to the Player object.
      *
-     * @return Une référence constante vers l'objet Player associé au jeu.
+     * @return A constant reference to the Player object associated with the game.
      */
-    inline const Player &getConstPlayer() { return _player; }
+    inline const Player& getConstPlayer() { return _player; }
 
     /**
-     * @brief Obtient une référence constante vers l'objet Map.
+     * @brief Gets a constant reference to the Map object.
      *
-     * @return Une référence constante vers l'objet Map associé au jeu.
+     * @return A constant reference to the Map object associated with the game.
      */
-    inline const Map &getConstMap() { return _gameMap; }
+    inline const Map& getConstMap() { return _gameMap; }
 
     /**
-     * @brief Obtient un pointeur vers tous les gardes du jeu.
+     * @brief Gets a pointer to all guards in the game.
      *
-     * @return Un pointeur vers les gardes du jeu.
+     * @return A pointer to the guards in the game.
      */
     inline const Garde* getAllGardes() { return allGardes; }
 
     /**
-     * @brief Obtient le nombre de gardes dans le jeu.
+     * @brief Gets the number of guards in the game.
      *
-     * @return Le nombre de gardes.
+     * @return The number of guards.
      */
     inline int getNbGardes() const { return nbGardes; }
 
     /**
-     * @brief Définit le nombre de gardes dans le jeu.
+     * @brief Sets the number of guards in the game.
      *
-     * @param nb Le nouveau nombre de gardes.
+     * @param nb The new number of guards.
      */
     inline void setNbGardes(int nb) { nbGardes = nb; }
 };
 
-#endif //HUNTERASSASSIN_GAME_H
+#endif // HUNTERASSASSIN_GAME_H

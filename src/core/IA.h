@@ -2,77 +2,84 @@
 #define HUNTERASSASSIN_ARTIFICIALINTELLIGENCE_H
 
 #include "Rect.h"
-#include "vector"
+#include <vector>
 #include <iostream>
 #include <cmath>
 #include "config.h"
-const int SQUARE_SIZE =  20;
+
+const int SQUARE_SIZE = 20;
+
 /**
  * @class AI
- * @brief Classe définissant l'intelligence artificielle pour le jeu.
+ * @brief Class defining the artificial intelligence for the game.
  */
 class AI {
 public:
     /**
-     * @brief Constructeur de la classe AI.
-     * @param squareRect Pointeur vers le rectangle représentant le carré contrôlé par l'IA.
-     * @param destRect Pointeur vers le rectangle représentant la destination du carré.
+     * @brief Constructor of the AI class.
+     * @param squareRect Pointer to the rectangle representing the square controlled by the AI.
+     * @param destRect Pointer to the rectangle representing the destination of the square.
      */
     AI(Rect* squareRect, Rect* destRect);
+
+    /**
+     * @brief Default constructor of the AI class.
+     */
     AI();
+
     bool left, right, down, up;
 
     /**
-     * @brief Vérifie si le carré est arrivé à sa destination.
-     * @return True si le carré est arrivé à sa destination, sinon False.
+     * @brief Checks if the square has reached its destination.
+     * @return True if the square has reached its destination, otherwise False.
      */
     bool estArrivee();
 
     /**
-     * @brief Gère le mouvement du carré contrôlé par l'IA.
-     * @param obstacles Tableau de tous les Rectangle représentant un obstacle à éviter.
+     * @brief Handles the movement of the square controlled by the AI.
+     * @param obstacles Vector of all rectangles representing obstacles to avoid.
      */
     void mov(std::vector<Rect>& obstacles);
 
     /**
-     * @brief Vérifie s'il y a une collision entre deux rectangles.
-     * @param rect2 Rectangle avec lequel vérifier la collision.
-     * @return True s'il y a une collision, sinon False.
+     * @brief Checks for collision between two rectangles.
+     * @param rect2 Rectangle to check collision with.
+     * @return True if there is a collision, otherwise False.
      */
     bool collision(const Rect& rect2);
 
     /**
-     * @brief Contourne un obstacle en choisissant le chemin le plus court.
-     * @param obstacleRect Rectangle représentant l'obstacle à contourner.
+     * @brief Bypasses an obstacle by choosing the shortest path.
+     * @param obstacleRect Rectangle representing the obstacle to bypass.
      */
     void contourObstacle(Rect obstacleRect);
 
     /**
-     * @brief Déplace le carré contrôlé par l'IA en fonction des distances spécifiées sur les axes x et y.
-     * @param distanceX Distance sur l'axe x.
-     * @param distanceY Distance sur l'axe y.
-     * @param obstacle Rectangle représentant l'obstacle à contourner..
+     * @brief Moves the square controlled by the AI based on the specified distances on the x and y axes.
+     * @param distanceX Distance on the x-axis.
+     * @param distanceY Distance on the y-axis.
+     * @param obstacle Rectangle representing the obstacle to bypass.
      */
     void moveAgain(int distanceX, int distanceY, Rect obstacle);
 
     /**
-     * @brief Vérifie si le pixel est libre.
-     * @param obstacles Tableau de tous les Rectangle représentant un obstacle à éviter.
-     * @return True si le pixel est libre, sinon False.
+     * @brief Checks if the pixel is free.
+     * @param obstacles Vector of all rectangles representing obstacles to avoid.
+     * @return True if the pixel is free, otherwise False.
      */
     bool freePixel(std::vector<Rect>& obstacles);
 
     /**
-     * @brief Vérifie si la destination est disponible.
-     * @param rect1 Rectangle représentant la position actuelle.
-     * @param rect2 Rectangle représentant la destination.
-     * @return True si la destination est disponible, sinon False.
+     * @brief Checks if the destination is available.
+     * @param rect1 Rectangle representing the current position.
+     * @param rect2 Rectangle representing the destination.
+     * @return True if the destination is available, otherwise False.
      */
-    bool destNotAvailable(const Rect &  rect1, const Rect & rect2);
+    bool destNotAvailable(const Rect &rect1, const Rect &rect2);
 
 private:
-    Rect* squareRect; ///< Pointeur vers le rectangle représentant le carré contrôlé par l'IA.
-    Rect* destRect; ///< Pointeur vers le rectangle représentant la destination du carré.
+    Rect* squareRect; ///< Pointer to the rectangle representing the square controlled by the AI.
+    Rect* destRect; ///< Pointer to the rectangle representing the destination of the square.
 };
 
-#endif //HUNTERASSASSIN_ARTIFICIALINTELLIGENCE_H
+#endif // HUNTERASSASSIN_ARTIFICIALINTELLIGENCE_H

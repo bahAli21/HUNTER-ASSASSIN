@@ -6,11 +6,11 @@
 #define HUNTERASSASSIN_POINT_H
 
 /**
- * @brief Structure représentant une position dans un espace 2D.
+ * @brief Structure representing a position in a 2D space.
  */
 struct Position {
-    int x; ///< Coordonnée x de la position.
-    int y; ///< Coordonnée y de la position.
+    int x; ///< x-coordinate of the position.
+    int y; ///< y-coordinate of the position.
 };
 
-#endif //HUNTERASSASSIN_POINT_H
+#endif // HUNTERASSASSIN_POINT_H

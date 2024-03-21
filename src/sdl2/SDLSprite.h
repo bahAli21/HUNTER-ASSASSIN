@@ -1,6 +1,6 @@
 /**
  * @file SDLSprite.h
- * @brief Définition de la classe SDLSprite
+ * @brief Definition of the SDLSprite class
  */
 
 #ifndef HUNTERASSASSIN_SDLSPRITE_H
@@ -11,55 +11,64 @@
 
 /**
  * @class SDLSprite
- * @brief Classe pour la manipulation de sprites SDL
+ * @brief Class for handling SDL sprites
  */
 class SDLSprite {
 public:
-    SDL_Surface *_surface; /**< Surface SDL pour le sprite */
-    SDL_Texture *_texture; /**< Texture SDL pour le sprite */
+    SDL_Surface *_surface; /**< SDL surface for the sprite */
+    SDL_Texture *_texture; /**< SDL texture for the sprite */
 public:
     /**
-     * @brief Constructeur par défaut de la classe SDLSprite
+     * @brief Default constructor of the SDLSprite class
      */
     SDLSprite();
 
     /**
-     * @brief Destructeur de la classe SDLSprite
+     * @brief Destructor of the SDLSprite class
      */
     ~SDLSprite();
 
     /**
-     * @brief Constructeur de copie de la classe SDLSprite
-     * @param im L'instance de SDLSprite à copier
+     * @brief Copy constructor of the SDLSprite class
+     * @param im The instance of SDLSprite to copy
      */
     SDLSprite(const SDLSprite &im);
 
     /**
-     * @brief Charge un fichier image en tant que sprite
-     * @param filename Le chemin du fichier image
-     * @param renderer Le renderer SDL pour charger la texture
+     * @brief Load an image file as a sprite
+     * @param filename The path of the image file
+     * @param renderer The SDL renderer to load the texture
      */
     void loadSpriteFile(const char *filename, SDL_Renderer *renderer);
 
     /**
-     * @brief Dessine le sprite sur le renderer SDL
-     * @param renderer Le renderer SDL sur lequel dessiner
-     * @param x La position horizontale du sprite
-     * @param y La position verticale du sprite
-     * @param w La largeur du sprite (par défaut 24)
-     * @param h La hauteur du sprite (par défaut 37)
+     * @brief Draw the sprite on the SDL renderer
+     * @param renderer The SDL renderer to draw on
+     * @param x The horizontal position of the sprite
+     * @param y The vertical position of the sprite
+     * @param w The width of the sprite (default is 64)
+     * @param h The height of the sprite (default is 64)
+     * @param recSource The source rectangle for clipping (default is nullptr)
      */
-    void draw(SDL_Renderer *renderer, int x, int y, int w = 64, int h = 64, SDL_Rect* recSource= nullptr) const;
-    void drawAnimationSequence(SDL_Renderer *renderer, Rect rectSource, Rect rectPlayer);
+    void draw(SDL_Renderer *renderer, int x, int y, int w = 64, int h = 64, SDL_Rect* recSource = nullptr) const;
+
     /**
-     * @brief Obtient la texture SDL du sprite
-     * @return La texture SDL du sprite
+     * @brief Draw an animation sequence of the sprite on the SDL renderer
+     * @param renderer The SDL renderer to draw on
+     * @param rectSource The source rectangle for clipping
+     * @param rectPlayer The destination rectangle for rendering
+     */
+    void drawAnimationSequence(SDL_Renderer *renderer, Rect rectSource, Rect rectPlayer);
+
+    /**
+     * @brief Get the SDL texture of the sprite
+     * @return The SDL texture of the sprite
      */
     SDL_Texture *getTexture() const;
 
     /**
-     * @brief Définit la surface SDL du sprite
-     * @param surf La surface SDL à définir
+     * @brief Set the SDL surface of the sprite
+     * @param surf The SDL surface to set
      */
     void setSurface(SDL_Surface *surf);
 };

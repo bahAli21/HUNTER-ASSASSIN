@@ -6,13 +6,13 @@
 #define HUNTERASSASSIN_RECT_H
 
 /**
- * @brief Structure représentant un rectangle dans un espace 2D.
+ * @brief Structure representing a rectangle in a 2D space.
  */
 struct Rect {
-    int x; ///< Coordonnée x du coin supérieur gauche du rectangle.
-    int y; ///< Coordonnée y du coin supérieur gauche du rectangle.
-    int w; ///< Largeur du rectangle.
-    int h; ///< Hauteur du rectangle.
+    int x; ///< x-coordinate of the top-left corner of the rectangle.
+    int y; ///< y-coordinate of the top-left corner of the rectangle.
+    int w; ///< Width of the rectangle.
+    int h; ///< Height of the rectangle.
 };
 
-#endif //HUNTERASSASSIN_RECT_H
+#endif // HUNTERASSASSIN_RECT_H

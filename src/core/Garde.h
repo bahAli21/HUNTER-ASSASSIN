@@ -8,116 +8,116 @@
 #include <iostream>
 
 /**
- * @brief Classe représentant le Garde dans le jeu.
+ * @brief Class representing the Guard in the game.
  */
 class Garde {
 private:
-    Position pos; ///< Position actuelle du Garde.
-    bool left, right, up, down; ///< Indicateurs de direction du Garde.
-    int health; ///< Nombre de vies du Garde.
+    Position pos; ///< Current position of the Guard.
+    bool left, right, up, down; ///< Direction indicators of the Guard.
+    int health; ///< Health points of the Guard.
 
 public:
     /**
-     * @brief Déplace le Garde vers la gauche sur la carte spécifiée.
-     * @param map La carte sur laquelle le Garde se déplace.
+     * @brief Moves the Guard to the left on the specified map.
+     * @param map The map on which the Guard moves.
      */
     void goLeft(const Map &map);
 
     /**
-     * @brief Déplace le Garde vers la droite sur la carte spécifiée.
-     * @param map La carte sur laquelle le Garde se déplace.
+     * @brief Moves the Guard to the right on the specified map.
+     * @param map The map on which the Guard moves.
      */
     void goRight(const Map &map);
 
     /**
-     * @brief Déplace le Garde vers le haut sur la carte spécifiée.
-     * @param map La carte sur laquelle le Garde se déplace.
+     * @brief Moves the Guard upward on the specified map.
+     * @param map The map on which the Guard moves.
      */
     void goUp(const Map &map);
 
     /**
-     * @brief Déplace le Garde vers le bas sur la carte spécifiée.
-     * @param map La carte sur laquelle le Garde se déplace.
+     * @brief Moves the Guard downward on the specified map.
+     * @param map The map on which the Guard moves.
      */
     void goDown(const Map &map);
 
     /**
-     * @brief Obtient la position actuelle du Garde.
-     * @return La position actuelle du Garde.
+     * @brief Gets the current position of the Guard.
+     * @return The current position of the Guard.
      */
     Position getPosition() const;
 
     /**
-     * @brief Définit la position horizontale du Garde.
-     * @param _x La nouvelle position horizontale.
+     * @brief Sets the horizontal position of the Guard.
+     * @param _x The new horizontal position.
      */
     void setPositionX(int _x);
 
     /**
-     * @brief Définit la position verticale du Garde.
-     * @param _y La nouvelle position verticale.
+     * @brief Sets the vertical position of the Guard.
+     * @param _y The new vertical position.
      */
     void setPositionY(int _y);
 
     /**
-     * @brief Obtient le nombre de vies du Garde.
-     * @return Le nombre de vies du Garde.
+     * @brief Gets the health points of the Guard.
+     * @return The health points of the Guard.
      */
     int getHealth() const;
 
     /**
-     * @brief Définit le nombre de vies du Garde.
-     * @param _health Le nouveau nombre de vies.
+     * @brief Sets the health points of the Guard.
+     * @param _health The new health points.
      */
     void setHealth(int _health);
 
     /**
-     * @brief Constructeur par défaut de la classe Garde.
+     * @brief Default constructor of the Guard class.
      */
     Garde();
 
     /**
-     * @brief Destructeur de la classe Garde.
+     * @brief Destructor of the Guard class.
      */
     ~Garde();
 
     /**
-     * @brief Méthode de test pour la régression.
-     * Utilisée pour tester les fonctionnalités de la classe Garde.
+     * @brief Regression testing method.
+     * Used to test the functionalities of the Guard class.
      */
     static void testRegression();
 };
 
-// Définition des fonctions inline
+// Inline function definitions
 
 /**
- * @brief Obtient la position actuelle du Garde.
- * @return La position actuelle du Garde.
+ * @brief Gets the current position of the Guard.
+ * @return The current position of the Guard.
  */
 inline Position Garde::getPosition() const { return pos; }
 
 /**
- * @brief Définit la position horizontale du Garde.
- * @param _x La nouvelle position horizontale.
+ * @brief Sets the horizontal position of the Guard.
+ * @param _x The new horizontal position.
  */
 inline void Garde::setPositionX(int _x) { pos.x = _x; }
 
 /**
- * @brief Définit la position verticale du Garde.
- * @param _y La nouvelle position verticale.
+ * @brief Sets the vertical position of the Guard.
+ * @param _y The new vertical position.
  */
 inline void Garde::setPositionY(int _y) { pos.y = _y; }
 
 /**
- * @brief Obtient le nombre de vies du Garde.
- * @return Le nombre de vies du Garde.
+ * @brief Gets the health points of the Guard.
+ * @return The health points of the Guard.
  */
 inline int Garde::getHealth() const { return health; }
 
 /**
- * @brief Définit le nombre de vies du Garde.
- * @param _health Le nouveau nombre de vies.
+ * @brief Sets the health points of the Guard.
+ * @param _health The new health points.
  */
 inline void Garde::setHealth(int _health) { health = _health; }
 
-#endif //HUNTERASSASSIN_Garde_H
+#endif // HUNTERASSASSIN_Garde_H
