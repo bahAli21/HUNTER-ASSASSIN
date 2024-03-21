@@ -18,14 +18,18 @@ set(SRC_TXT_DIR ./src/txt)
 
 # Définition des fichiers sources pour chaque composant
 set(SRC_CORE ${SRC_CORE_DIR}/Game.cpp ${SRC_CORE_DIR}/Garde.cpp ${SRC_CORE_DIR}/IA.cpp ${SRC_CORE_DIR}/Player.cpp)
-set(HEADER_CORE ${SRC_CORE_DIR}/Game.h ${SRC_CORE_DIR}/Garde.h ${SRC_CORE_DIR}/IA.h ${SRC_CORE_DIR}/Player.h ${SRC_CORE_DIR}/point.h ${SRC_CORE_DIR}/Rect.h ${SRC_CORE_DIR}/config.h)
-set(SRC_SDL2 ${SRC_SDL2_DIR}/mainProject.cpp ${SRC_SDL2_DIR}/SDLGame.cpp ${SRC_SDL2_DIR}/SDLGame.h ${SRC_SDL2_DIR}/SDLSprite.h ${SRC_SDL2_DIR}/SDLSprite.cpp)
+set(HEADER_CORE ${SRC_CORE_DIR}/Game.h ${SRC_CORE_DIR}/Garde.h ${SRC_CORE_DIR}/IA.h ${SRC_CORE_DIR}/Player.h ${SRC_CORE_DIR}/point.h ${SRC_CORE_DIR}/Rect.h ${SRC_CORE_DIR}/config.h
+        src/core/Direction.h)
+set(SRC_SDL2 ${SRC_SDL2_DIR}/mainProject.cpp ${SRC_SDL2_DIR}/SDLGame.cpp ${SRC_SDL2_DIR}/SDLGame.h ${SRC_SDL2_DIR}/SDLSprite.h ${SRC_SDL2_DIR}/SDLSprite.cpp
+        src/sdl2/SDLAnimation.cpp
+)
 set(SRC_TXT ${SRC_TXT_DIR}/main_txt.cpp ${SRC_TXT_DIR}/gameTxt.cpp ${SRC_TXT_DIR}/winTxt.h ${SRC_TXT_DIR}/winTxt.cpp ${SRC_TXT_DIR}/gameTxt.h)
 set(SRC_ANIMATION ${PROJECT_SOURCE_DIR}/src/mainAnimation.cpp ${PROJECT_SOURCE_DIR}/map/map.cpp ${PROJECT_SOURCE_DIR}/map/map.h
         src/sdl2/SDLTtf.h
         src/sdl2/SDLTtf.cpp
         src/sdl2/SDLSound.h
-        src/sdl2/SDLSound.cpp)
+        src/sdl2/SDLSound.cpp
+        src/core/Direction.h)
 
 # Configuration des librairies SDL2 en fonction du système d'exploitation
 if (WIN32)

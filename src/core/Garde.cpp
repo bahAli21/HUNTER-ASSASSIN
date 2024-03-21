@@ -10,23 +10,19 @@ Garde::~Garde(){
     health=0;
 }
 
-void Garde::goLeft(const Map &map) {
-    if(map.freePixel(pos.x,pos.y))
+void Garde::goLeft() {
         setPositionX(pos.x-1);
 }
 
-void Garde::goRight(const Map &map) {
-    if(map.freePixel(pos.x,pos.y))
+void Garde::goRight() {
         setPositionX(pos.x+1);
 }
 
-void Garde::goUp(const Map &map) {
-    if(map.freePixel(pos.x,pos.y))
+void Garde::goUp() {
         setPositionX(pos.y-1);
 }
 
-void Garde::goDown(const Map &map) {
-    if(map.freePixel(pos.x,pos.y))
+void Garde::goDown() {
         setPositionX(pos.y+1);
 }
 

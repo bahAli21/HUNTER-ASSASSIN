@@ -95,6 +95,7 @@ $(function(){initNavTree('class_s_d_l_ttf.html',''); initResizable(); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_s_d_l_ttf-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SDLTtf Class Reference</div></div>
 </div><!--header-->
@@ -113,15 +114,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2d2d7924bf4b758bb140267c28399849" id="r_a2d2d7924bf4b758bb140267c28399849"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d2d7924bf4b758bb140267c28399849">~SDLTtf</a> ()</td></tr>
 <tr class="memdesc:a2d2d7924bf4b758bb140267c28399849"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="class_s_d_l_ttf.html" title="The SDLTtf class provides functionality to work with TrueType fonts in SDL.">SDLTtf</a> object.  <br /></td></tr>
 <tr class="separator:a2d2d7924bf4b758bb140267c28399849"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15f5d37727848a154c6f0c2db318b7b1" id="r_a15f5d37727848a154c6f0c2db318b7b1"><td class="memItemLeft" align="right" valign="top">TTF_Font *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15f5d37727848a154c6f0c2db318b7b1">loadFont</a> (const char *fontPath, int size)</td></tr>
-<tr class="memdesc:a15f5d37727848a154c6f0c2db318b7b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a TrueType font from a file.  <br /></td></tr>
-<tr class="separator:a15f5d37727848a154c6f0c2db318b7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66c25f23c9ad3bfce971f1186fa2e418" id="r_a66c25f23c9ad3bfce971f1186fa2e418"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66c25f23c9ad3bfce971f1186fa2e418">loadFromFont</a> (SDL_Renderer *renderer, TTF_Font *font, const char *message, SDL_Color color)</td></tr>
 <tr class="memdesc:a66c25f23c9ad3bfce971f1186fa2e418"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads text from a font and renders it onto a surface.  <br /></td></tr>
 <tr class="separator:a66c25f23c9ad3bfce971f1186fa2e418"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a005ca6b34dcbaf1cf86661085d1035b5" id="r_a005ca6b34dcbaf1cf86661085d1035b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a005ca6b34dcbaf1cf86661085d1035b5">Draw</a> (SDL_Renderer *renderer, <a class="el" href="struct_position.html">Position</a> posMessage)</td></tr>
 <tr class="memdesc:a005ca6b34dcbaf1cf86661085d1035b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the text onto the renderer at the specified position.  <br /></td></tr>
 <tr class="separator:a005ca6b34dcbaf1cf86661085d1035b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a15f5d37727848a154c6f0c2db318b7b1" id="r_a15f5d37727848a154c6f0c2db318b7b1"><td class="memItemLeft" align="right" valign="top">static TTF_Font *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15f5d37727848a154c6f0c2db318b7b1">loadFont</a> (const char *fontPath, int size)</td></tr>
+<tr class="memdesc:a15f5d37727848a154c6f0c2db318b7b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a TrueType font from a file.  <br /></td></tr>
+<tr class="separator:a15f5d37727848a154c6f0c2db318b7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="class_s_d_l_ttf.html" title="The SDLTtf class provides functionality to work with TrueType fonts in SDL.">SDLTtf</a> class provides functionality to work with TrueType fonts in SDL. </p>
@@ -200,6 +204,9 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">TTF_Font * SDLTtf::loadFont </td>
@@ -212,6 +219,11 @@ Public Member Functions</h2></td></tr>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Loads a TrueType font from a file. </p>

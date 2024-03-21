@@ -8,7 +8,7 @@ SDLSound::SDLSound(int frequency, Uint16 format, int channels, int chunksize) {
     }
 }
 
-SDLSound::~SDLSound() {}
+SDLSound::~SDLSound() = default;
 
 Mix_Chunk *SDLSound::LoadChunkFromFile(const char *pathChunk) {
     Mix_Chunk* effect = Mix_LoadWAV(pathChunk);

@@ -27,7 +27,7 @@ public:
      */
     AI();
 
-    bool left, right, down, up;
+    bool left{}, right{}, down{}, up{}; /**< Direction indicators for AI-controlled movement. */
 
     /**
      * @brief Checks if the square has reached its destination.
@@ -75,11 +75,11 @@ public:
      * @param rect2 Rectangle representing the destination.
      * @return True if the destination is available, otherwise False.
      */
-    bool destNotAvailable(const Rect &rect1, const Rect &rect2);
+    static bool destNotAvailable(const Rect &rect1, const Rect &rect2);
 
 private:
-    Rect* squareRect; ///< Pointer to the rectangle representing the square controlled by the AI.
-    Rect* destRect; ///< Pointer to the rectangle representing the destination of the square.
+    Rect* squareRect{}; /**< Pointer to the rectangle representing the square controlled by the AI. */
+    Rect* destRect{}; /**< Pointer to the rectangle representing the destination of the square. */
 };
 
 #endif // HUNTERASSASSIN_ARTIFICIALINTELLIGENCE_H

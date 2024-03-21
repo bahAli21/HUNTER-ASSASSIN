@@ -11,13 +11,6 @@ SDLSprite::~SDLSprite() {
     }
 }
 
-// Constructeur de copie
-SDLSprite::SDLSprite(const SDLSprite &imSp) {
-    // Copie la surface et la texture depuis l'objet source
-    _surface = imSp._surface;
-    _texture = imSp._texture;
-}
-
 // Je Charge une image à partir d'un fichier
 void SDLSprite::loadSpriteFile(const char *filename, SDL_Renderer *renderer) {
     // Chargons l'image depuis le fichier
@@ -49,14 +42,3 @@ void SDLSprite::draw(SDL_Renderer *renderer, int x, int y, int w, int h, SDL_Rec
         SDL_RenderCopy(renderer, _texture, recSource, &destRect);
 
 }
-
-// Obtenir la texture
-SDL_Texture* SDLSprite::getTexture() const {
-    return _texture;
-}
-
-// Définir la surface
-void SDLSprite::setSurface(SDL_Surface *surface) {
-    _surface = surface;
-}
-

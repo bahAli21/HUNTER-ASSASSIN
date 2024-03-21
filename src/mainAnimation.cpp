@@ -73,7 +73,6 @@ struct Contenu {
     bool moving_right;
     bool moving_up;
     bool moving_down;
-    bool attack;
 } contenu;
 
 //Global

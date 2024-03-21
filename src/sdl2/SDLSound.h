@@ -34,7 +34,7 @@ public:
      * @param pathChunk The path to the sound chunk file.
      * @return A pointer to the loaded sound chunk.
      */
-    Mix_Chunk* LoadChunkFromFile(const char* pathChunk);
+    static Mix_Chunk* LoadChunkFromFile(const char* pathChunk);
 
     /**
      * @brief Loads music from a file.
@@ -42,21 +42,21 @@ public:
      * @param pathMusic The path to the music file.
      * @return A pointer to the loaded music.
      */
-    Mix_Music* LoadMusicFromFile(const char* pathMusic);
+    static Mix_Music* LoadMusicFromFile(const char* pathMusic);
 
     /**
      * @brief Plays a sound chunk.
      *
      * @param chunk A pointer to the sound chunk to be played.
      */
-    void PlayChunk(Mix_Chunk* chunk);
+    static void PlayChunk(Mix_Chunk* chunk);
 
     /**
      * @brief Plays music.
      *
      * @param music A pointer to the music to be played.
      */
-    void PlayMusic(Mix_Music* music);
+    static void PlayMusic(Mix_Music* music);
 };
 
 #endif //HUNTERASSASSIN_SDLSOUND_H

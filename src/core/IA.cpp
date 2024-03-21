@@ -3,7 +3,7 @@
 
 AI::AI(Rect* squareRect, Rect* destRect) : squareRect(squareRect), destRect(destRect) {}
 
-AI::AI() {}
+AI::AI() = default;
 
 bool AI::estArrivee() {
     return (squareRect->x == destRect->x && squareRect->y == destRect->y);
@@ -166,7 +166,7 @@ bool AI::destNotAvailable(const Rect &  rect1, const Rect & rect2) {
 
 bool AI::freePixel(std::vector<Rect>& obstacles) {
     Rect rect= {destRect->x,destRect->y,SQUARE_SIZE,SQUARE_SIZE};
-    for (const Rect& obstacle: obstacles) {
+    for(const Rect& obstacle: obstacles) {
         if(destNotAvailable(rect, obstacle))
             return false;
     }

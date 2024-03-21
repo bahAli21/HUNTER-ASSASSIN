@@ -14,8 +14,9 @@
  */
 class SDLTtf {
 private:
-    SDL_Texture* _texture; ///< The texture used for rendering text.
-    SDL_Surface* _surface; ///< The surface used for rendering text.
+    //{} vide par defaut
+    SDL_Texture* _texture{}; ///< The texture used for rendering text.
+    SDL_Surface* _surface{}; ///< The surface used for rendering text.
 
 public:
     /**
@@ -35,7 +36,7 @@ public:
      * @param size The font size.
      * @return A pointer to the loaded font.
      */
-    TTF_Font* loadFont(const char* fontPath, int size);
+    static TTF_Font* loadFont(const char* fontPath, int size);
 
     /**
      * @brief Loads text from a font and renders it onto a surface.

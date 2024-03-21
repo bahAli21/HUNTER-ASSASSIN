@@ -1,6 +1,5 @@
 var struct_contenu =
 [
-    [ "attack", "struct_contenu.html#abf0da89ffbc0f0a007540eb7763c8432", null ],
     [ "attackDown", "struct_contenu.html#ac4f24e8de302e2fa1ad51388fd5c81c9", null ],
     [ "attackDownReverse", "struct_contenu.html#aa7022a8a87e6ddaf3c08b8c120dda3ba", null ],
     [ "attackDownStabbed", "struct_contenu.html#ada14774c63e7e891860d2258ab9d6106", null ],

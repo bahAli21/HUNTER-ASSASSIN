@@ -114,24 +114,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a90c10d7451fadaf15fbe213c66b78e78" id="r_a90c10d7451fadaf15fbe213c66b78e78"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90c10d7451fadaf15fbe213c66b78e78">~SDLSprite</a> ()</td></tr>
 <tr class="memdesc:a90c10d7451fadaf15fbe213c66b78e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of the <a class="el" href="class_s_d_l_sprite.html" title="Class for handling SDL sprites.">SDLSprite</a> class.  <br /></td></tr>
 <tr class="separator:a90c10d7451fadaf15fbe213c66b78e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ce5bfa510494613ed21120737aa607c" id="r_a2ce5bfa510494613ed21120737aa607c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ce5bfa510494613ed21120737aa607c">SDLSprite</a> (const <a class="el" href="class_s_d_l_sprite.html">SDLSprite</a> &amp;im)</td></tr>
-<tr class="memdesc:a2ce5bfa510494613ed21120737aa607c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor of the <a class="el" href="class_s_d_l_sprite.html" title="Class for handling SDL sprites.">SDLSprite</a> class.  <br /></td></tr>
-<tr class="separator:a2ce5bfa510494613ed21120737aa607c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbb8225fbc4c7a776669e7d1d432f5e9" id="r_acbb8225fbc4c7a776669e7d1d432f5e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbb8225fbc4c7a776669e7d1d432f5e9">loadSpriteFile</a> (const char *filename, SDL_Renderer *renderer)</td></tr>
 <tr class="memdesc:acbb8225fbc4c7a776669e7d1d432f5e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load an image file as a sprite.  <br /></td></tr>
 <tr class="separator:acbb8225fbc4c7a776669e7d1d432f5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb81059c3f76b50394fe49ba1ff3cd7a" id="r_afb81059c3f76b50394fe49ba1ff3cd7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb81059c3f76b50394fe49ba1ff3cd7a">draw</a> (SDL_Renderer *renderer, int x, int y, int w=64, int h=64, SDL_Rect *recSource=nullptr) const</td></tr>
 <tr class="memdesc:afb81059c3f76b50394fe49ba1ff3cd7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw the sprite on the SDL renderer.  <br /></td></tr>
 <tr class="separator:afb81059c3f76b50394fe49ba1ff3cd7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5f71f3046b1ae10168a2f0f92392001" id="r_af5f71f3046b1ae10168a2f0f92392001"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5f71f3046b1ae10168a2f0f92392001">drawAnimationSequence</a> (SDL_Renderer *renderer, <a class="el" href="struct_rect.html">Rect</a> rectSource, <a class="el" href="struct_rect.html">Rect</a> rectPlayer)</td></tr>
-<tr class="memdesc:af5f71f3046b1ae10168a2f0f92392001"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw an animation sequence of the sprite on the SDL renderer.  <br /></td></tr>
-<tr class="separator:af5f71f3046b1ae10168a2f0f92392001"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee88fbbcd183f123b0409c6fbd62a78f" id="r_aee88fbbcd183f123b0409c6fbd62a78f"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee88fbbcd183f123b0409c6fbd62a78f">getTexture</a> () const</td></tr>
-<tr class="memdesc:aee88fbbcd183f123b0409c6fbd62a78f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the SDL texture of the sprite.  <br /></td></tr>
-<tr class="separator:aee88fbbcd183f123b0409c6fbd62a78f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4c76895b52e96229f102f5779c9f6ef" id="r_ae4c76895b52e96229f102f5779c9f6ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4c76895b52e96229f102f5779c9f6ef">setSurface</a> (SDL_Surface *surf)</td></tr>
-<tr class="memdesc:ae4c76895b52e96229f102f5779c9f6ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the SDL surface of the sprite.  <br /></td></tr>
-<tr class="separator:ae4c76895b52e96229f102f5779c9f6ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -144,7 +132,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>Class for handling SDL sprites. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a363783721deef3d34e89ddce870c380b" name="a363783721deef3d34e89ddce870c380b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a363783721deef3d34e89ddce870c380b">&#9670;&#160;</a></span>SDLSprite() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a363783721deef3d34e89ddce870c380b">&#9670;&#160;</a></span>SDLSprite()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -178,31 +166,6 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Destructor of the <a class="el" href="class_s_d_l_sprite.html" title="Class for handling SDL sprites.">SDLSprite</a> class. </p>
-
-</div>
-</div>
-<a id="a2ce5bfa510494613ed21120737aa607c" name="a2ce5bfa510494613ed21120737aa607c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ce5bfa510494613ed21120737aa607c">&#9670;&#160;</a></span>SDLSprite() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SDLSprite::SDLSprite </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_s_d_l_sprite.html">SDLSprite</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>im</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Copy constructor of the <a class="el" href="class_s_d_l_sprite.html" title="Class for handling SDL sprites.">SDLSprite</a> class. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">im</td><td>The instance of <a class="el" href="class_s_d_l_sprite.html" title="Class for handling SDL sprites.">SDLSprite</a> to copy </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -261,62 +224,6 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af5f71f3046b1ae10168a2f0f92392001" name="af5f71f3046b1ae10168a2f0f92392001"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5f71f3046b1ae10168a2f0f92392001">&#9670;&#160;</a></span>drawAnimationSequence()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SDLSprite::drawAnimationSequence </td>
-          <td>(</td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_rect.html">Rect</a></td>          <td class="paramname"><span class="paramname"><em>rectSource</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_rect.html">Rect</a></td>          <td class="paramname"><span class="paramname"><em>rectPlayer</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Draw an animation sequence of the sprite on the SDL renderer. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">renderer</td><td>The SDL renderer to draw on </td></tr>
-    <tr><td class="paramname">rectSource</td><td>The source rectangle for clipping </td></tr>
-    <tr><td class="paramname">rectPlayer</td><td>The destination rectangle for rendering </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="aee88fbbcd183f123b0409c6fbd62a78f" name="aee88fbbcd183f123b0409c6fbd62a78f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee88fbbcd183f123b0409c6fbd62a78f">&#9670;&#160;</a></span>getTexture()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SDL_Texture * SDLSprite::getTexture </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the SDL texture of the sprite. </p>
-<dl class="section return"><dt>Returns</dt><dd>The SDL texture of the sprite </dd></dl>
-
-</div>
-</div>
 <a id="acbb8225fbc4c7a776669e7d1d432f5e9" name="acbb8225fbc4c7a776669e7d1d432f5e9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acbb8225fbc4c7a776669e7d1d432f5e9">&#9670;&#160;</a></span>loadSpriteFile()</h2>
 
@@ -341,31 +248,6 @@ Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">filename</td><td>The path of the image file </td></tr>
     <tr><td class="paramname">renderer</td><td>The SDL renderer to load the texture </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ae4c76895b52e96229f102f5779c9f6ef" name="ae4c76895b52e96229f102f5779c9f6ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4c76895b52e96229f102f5779c9f6ef">&#9670;&#160;</a></span>setSurface()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SDLSprite::setSurface </td>
-          <td>(</td>
-          <td class="paramtype">SDL_Surface *</td>          <td class="paramname"><span class="paramname"><em>surf</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set the SDL surface of the sprite. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">surf</td><td>The SDL surface to set </td></tr>
   </table>
   </dd>
 </dl>

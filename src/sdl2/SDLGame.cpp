@@ -1,10 +1,6 @@
 #include "SDLGame.h"
 
-
-//J'ai converti le temps en second
-float SDLGame::temps() { return float(SDL_GetTicks()) / CLOCKS_PER_SEC; }
-
-SDLGame::SDLGame() : game(2) {
+SDLGame::SDLGame() : game(2){
 
     // Initialisation de SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -46,14 +42,10 @@ SDLGame::SDLGame() : game(2) {
 
     // Initialisation de tous les sprites
 
-
-    //pour l'instant que le joueur
     // TODO On choisi le chemein depuis executable bin (donc on remonte une fois et on passe dans data)
     const char *path = "../data/mur.bmp";
     sp_player.loadSpriteFile(path, renderer);
     sp_garde.loadSpriteFile(path, renderer);
-    sourceAnimation.loadSpriteFile("../data/sprite_Player.bmp",renderer);
-
 }
 
 SDLGame::~SDLGame() {
@@ -62,7 +54,7 @@ SDLGame::~SDLGame() {
     SDL_Quit();
 }
 
-void SDLGame::drawTheMap(const Map &map) const {
+/*void SDLGame::drawTheMap(const Map &map) const {
     for (int i = 0; i < map.getDimX(); ++i) {
         for (int j = 0; j < map.getDimY(); ++j) {
             // je dessine le sprite approprié en fonction de l'objet de la carte
@@ -109,27 +101,12 @@ void SDLGame::drawTheMap(const Map &map) const {
             }
         }
     }
-}
+} */
 
 void SDLGame::sdlDraw() {
     // Je Remplis l'écran de blanc
     SDL_SetRenderDrawColor(renderer, 230, 240, 255, 255);
     SDL_RenderClear(renderer);
-
-    //const Player &m_player = game.getConstPlayer();
-    const Garde *m_gardes = game.getAllGardes();
-    const Map &m_map = game.getConstMap();
-
-    //Je dessine ma map. pas encore complet, j'attends plus que golden
-    drawTheMap(m_map);
-
-    //Je dessine mon joueur
-    /*sp_player.draw(renderer, game.playerRect.x,game.playerRect.y,
-                   game.playerRect.w,game.playerRect.h);*/
-
-    SDL_Rect sourceAnim = {game._player.playerSource.x,game._player.playerSource.y,game._player.playerSource.w,game._player.playerSource.h};
-    sourceAnimation.draw(renderer, game._player.playerDest.x,game._player.playerDest.y,
-                         game._player.playerDest.w,game._player.playerDest.h, &sourceAnim);
     //Je dessine mon bloc
     for (const Rect obstacle: game.vecAllObstacles) {
         sp_player.draw(renderer, obstacle.x, obstacle.y, obstacle.w, obstacle.h);
@@ -139,92 +116,28 @@ void SDLGame::sdlDraw() {
         sp_garde.draw(renderer, game.gardesRect[i].x, game.gardesRect[i].y, game.gardesRect[i].w, game.gardesRect[i].h);
     }
 }
-#include <thread>
-#include <vector>
 
 void SDLGame::runProject() {
     SDL_Event event;
-    SDLAnimation animPlayer(renderer,"../data/sprite_Player.bmp", PLAYER_HEIGHT*9, game._player);
-    animPlayer.loadClips(11);
-    //animImg = animPlayer.animationIMG;
-    AI myAI(&game._player.playerDest, &game._player.dest);
-    AI *guardAI = new AI[game.getNbGardes()];
-    for (int i = 0; i < game.getNbGardes(); ++i) {
-        // Initialiser les gardes avec leurs positions
-        guardAI[i] = AI(&game.gardesRect[i], &game.gardesDest[i]); // Créer une instance de l'IA pour chaque garde
-    }
+    SDLAnimation playerAnimation(renderer, "../data/sprite_Player.bmp", game._player);
     Uint32 lastGuardDestinationChangeTime = SDL_GetTicks();
     bool isOpen = true;
-    const Uint8* state = SDL_GetKeyboardState(NULL);
-
-    //contenu.attack = state[SDL_SCANCODE_Q] > 0;
+    playerAnimation.loadClips();
     while (isOpen) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT)
                 isOpen = false;
             else if (event.type == SDL_MOUSEBUTTONDOWN)
                 if (event.button.button == SDL_BUTTON_LEFT) {
-                    // Mettre à jour la position de destination avec les coordonnées du clic
-                    game._player.dest.x = event.button.x;
-                    game._player.dest.y = event.button.y;
+                    game.updatePlayerDest(event.button.x, event.button.y);
                 }
-
         }
-
         sdlDraw();
-
-        /*if (!myAI.estArrivee())
-            myAI.mov(game.vecAllObstacles);*/
-        animPlayer.animationUp();
-        /*
-        if(state[SDL_SCANCODE_RIGHT] > 0)
-            animPlayer.animationRight();
-        if(state[SDL_SCANCODE_LEFT] > 0)
-            animPlayer.animationLeft();
-        if(state[SDL_SCANCODE_UP] > 0)
-
-        if( state[SDL_SCANCODE_DOWN] > 0)
-            animPlayer.animationDown();*/
-
-//Garde 0
-        if (!guardAI[0].estArrivee()) {
-            guardAI[0].mov(game.vecAllObstacles);
-        } else {
-            Uint32 currentTime = SDL_GetTicks();
-            if(currentTime - lastGuardDestinationChangeTime >= 3000) {
-                int newGuardX, newGuardY;
-                do {
-                    newGuardX = rand() % (WINDOW_W - PLAYER_WIDTH - 10);
-                    newGuardY = rand() % (WINDOW_H - PLAYER_HEIGHT - 10);
-                    game.gardesDest[0].x = newGuardX;
-                    game.gardesDest[0].y = newGuardY;
-                } while (!guardAI[0].freePixel(game.vecAllObstacles));
-                lastGuardDestinationChangeTime = currentTime;
-            }
-
-        }
-        //Garde 1
-
-
-
-        /*for (int i = 0; i < game.getNbGardes(); ++i) {
-            if (!guardAI[i].estArrivee()) {
-                guardAI[i].mov(game.vecAllObstacles);
-            } else {
-                Uint32 currentTime = SDL_GetTicks();
-                if(currentTime - lastGuardDestinationChangeTime >= 3000) {
-                    int newGuardX, newGuardY;
-                    do {
-                        newGuardX = rand() % (WINDOW_W - PLAYER_WIDTH - 10);
-                        newGuardY = rand() % (WINDOW_H - PLAYER_HEIGHT - 10);
-                        game.gardesDest[i].x = newGuardX;
-                        game.gardesDest[i].y = newGuardY;
-                    } while (!guardAI[i].freePixel(game.vecAllObstacles));
-                    lastGuardDestinationChangeTime = currentTime;
-                }
-
-            }
-        }*/
+        playerAnimation.handleInput();
+        playerAnimation.updatePlayer();
+        playerAnimation.DrawAnimation(renderer);
+        game.movingPlayerByAI();
+        game.movingGuardByAI(lastGuardDestinationChangeTime);
         SDL_Delay(15);
         SDL_RenderPresent(renderer);
     }

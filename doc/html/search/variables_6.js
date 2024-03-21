@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['idx_0',['idx',['../class_s_d_l_animation.html#aa9c402192cfcffc956cab547d5b53e6b',1,'SDLAnimation']]]
+  ['h_0',['h',['../struct_rect.html#af9111a21106ba65952da60320ea91df6',1,'Rect']]],
+  ['health_1',['health',['../class_player.html#aad33b52bfe73c4c978a3135172f286a0',1,'Player']]]
 ];

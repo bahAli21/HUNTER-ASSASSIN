@@ -1,9 +1,15 @@
 #include "Game.h"
 
-Game::Game(int nbGardes): _player(), nbGardes(nbGardes) {
+Game::Game(int nbGardes): _player(), nbGardes(nbGardes),
+PlayerAI(_player.playerDest, _player.dest) {
     allGardes = new Garde[nbGardes];
     gardesDest = new Rect[nbGardes];
     gardesRect = new Rect[nbGardes];
+    guardAI = new AI[getNbGardes()];
+    for (int i = 0; i < getNbGardes(); ++i) {
+        // Initialiser les gardes avec leurs positions
+        guardAI[i] = AI(&gardesRect[i], &gardesDest[i]); // Créer une instance de l'IA pour chaque garde
+    }
     srand(time(NULL));
     for(int i = 0; i < nbGardes; ++i){
         int X, Y;
@@ -22,7 +28,6 @@ Game::Game(int nbGardes): _player(), nbGardes(nbGardes) {
                     break;
                 }
             }
-
             // Je vérifie la collision avec les gardes déjà générés
             for (int j = 0; j < i; ++j) {
                 Rect rect= {allGardes[j].getPosition().x, allGardes[j].getPosition().y, PLAYER_WIDTH, PLAYER_HEIGHT};
@@ -59,10 +64,7 @@ bool Game::checkCollision(const Rect& rect1, const Rect& rect2) {
     int rect2Bottom = rect2.y + rect2.h;
 
     // Vérification sur les collisions
-    if (rect1Right >= rect2Left && rect1Left <= rect2Right && rect1Bottom >= rect2Top && rect1Top <= rect2Bottom)
-        return true;
-    else
-        return false;
+    return (rect1Right >= rect2Left && rect1Left <= rect2Right && rect1Bottom >= rect2Top && rect1Top <= rect2Bottom);
 }
 
 
@@ -76,23 +78,50 @@ bool Game::toucheClavier(const char touche)
     switch (touche)
     {
         case 'z':
-            _player.goUp(_gameMap);
+            _player.goUp();
             break;
         case 'q':
-            _player.goLeft(_gameMap);
+            _player.goLeft();
             break;
         case 's':
-            _player.goDown(_gameMap);
+            _player.goDown();
             break;
         case 'd':
-            _player.goRight(_gameMap);
+            _player.goRight();
             break;
     }
 
-    if (_gameMap.getObject(_player.getPosition().x, _player.getPosition().y) == '|')
-    {
-        _gameMap.openTheDoor(_player.getPosition().x, _player.getPosition().y);
-        return true;
-    }
     return false;
+}
+
+void Game::movingGuardByAI(Uint32 lastGuardDestinationChangeTime) {
+    for (int i = 0; i < getNbGardes(); ++i) {
+        if (!guardAI[i].estArrivee()) {
+            guardAI[i].mov(vecAllObstacles);
+        } else {
+            Uint32 currentTime = SDL_GetTicks();
+            if(currentTime - lastGuardDestinationChangeTime >= 3000) {
+                int newGuardX, newGuardY;
+                do {
+                    newGuardX = rand() % (WINDOW_W - PLAYER_WIDTH - 10);
+                    newGuardY = rand() % (WINDOW_H - PLAYER_HEIGHT - 10);
+                    gardesDest[i].x = newGuardX;
+                    gardesDest[i].y = newGuardY;
+                } while (!guardAI[i].freePixel(vecAllObstacles));
+                lastGuardDestinationChangeTime = currentTime;
+            }
+
+        }
+    }
+}
+
+void Game::movingPlayerByAI() {
+    if (!PlayerAI.estArrivee())
+        PlayerAI.mov(vecAllObstacles);
+}
+
+void Game::updatePlayerDest(int x, int y) {
+    // Mettre à jour la position de destination avec les coordonnées du clic
+    _player.dest->x = x;
+    _player.dest->y = y;
 }

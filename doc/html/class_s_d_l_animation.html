@@ -95,57 +95,120 @@ $(function(){initNavTree('class_s_d_l_animation.html',''); initResizable(); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_s_d_l_animation-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SDLAnimation Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
+<p>Class for handling player animations using SDL.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_s_d_l_animation_8h_source.html">SDLAnimation.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a30dc4d546dfaf9b3ab5c78ff95b5052f" id="r_a30dc4d546dfaf9b3ab5c78ff95b5052f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30dc4d546dfaf9b3ab5c78ff95b5052f">SDLAnimation</a> (SDL_Renderer *renderer, char *_animationIMG, int _sourceY, <a class="el" href="class_player.html">Player</a> _player)</td></tr>
-<tr class="separator:a30dc4d546dfaf9b3ab5c78ff95b5052f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c04646a85275bf6093ee6856b3170c1" id="r_a7c04646a85275bf6093ee6856b3170c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c04646a85275bf6093ee6856b3170c1">SDLAnimation</a> (SDL_Renderer *renderer, const char *path, const <a class="el" href="class_player.html">Player</a> &amp;_player)</td></tr>
+<tr class="memdesc:a7c04646a85275bf6093ee6856b3170c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="class_s_d_l_animation.html" title="Class for handling player animations using SDL.">SDLAnimation</a> class.  <br /></td></tr>
+<tr class="separator:a7c04646a85275bf6093ee6856b3170c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11838246303fec4bae08e0ad681d7372" id="r_a11838246303fec4bae08e0ad681d7372"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11838246303fec4bae08e0ad681d7372">~SDLAnimation</a> ()</td></tr>
+<tr class="memdesc:a11838246303fec4bae08e0ad681d7372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for <a class="el" href="class_s_d_l_animation.html" title="Class for handling player animations using SDL.">SDLAnimation</a> class.  <br /></td></tr>
 <tr class="separator:a11838246303fec4bae08e0ad681d7372"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6070f7718501650179ff31f3b94a5db2" id="r_a6070f7718501650179ff31f3b94a5db2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6070f7718501650179ff31f3b94a5db2">loadClips</a> (int indiceDepart, int width=<a class="el" href="config_8h.html#a89e2ac9092225702ac543695d0771d38">PLAYER_WIDTH</a>, int height=<a class="el" href="config_8h.html#a2712b06fd52f25adca031d05c3e0c09b">PLAYER_HEIGHT</a>)</td></tr>
-<tr class="separator:a6070f7718501650179ff31f3b94a5db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31309ce1f8fd7c475bca4c9acf2d5964" id="r_a31309ce1f8fd7c475bca4c9acf2d5964"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31309ce1f8fd7c475bca4c9acf2d5964">animationUp</a> ()</td></tr>
-<tr class="separator:a31309ce1f8fd7c475bca4c9acf2d5964"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb69989f706ad3ff6d1b0550642c78a4" id="r_aeb69989f706ad3ff6d1b0550642c78a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb69989f706ad3ff6d1b0550642c78a4">animationLeft</a> ()</td></tr>
-<tr class="separator:aeb69989f706ad3ff6d1b0550642c78a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee67f3d3e47923f478927c82bac7fa31" id="r_aee67f3d3e47923f478927c82bac7fa31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee67f3d3e47923f478927c82bac7fa31">animationDown</a> ()</td></tr>
-<tr class="separator:aee67f3d3e47923f478927c82bac7fa31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9020c88f08d960ee07b98a8d9c21dd66" id="r_a9020c88f08d960ee07b98a8d9c21dd66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9020c88f08d960ee07b98a8d9c21dd66">animationRight</a> ()</td></tr>
-<tr class="separator:a9020c88f08d960ee07b98a8d9c21dd66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10607df263d53443a7e02c3ee06ba6af" id="r_a10607df263d53443a7e02c3ee06ba6af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10607df263d53443a7e02c3ee06ba6af">Walk</a> ()</td></tr>
+<tr class="memdesc:a10607df263d53443a7e02c3ee06ba6af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates walking animation.  <br /></td></tr>
+<tr class="separator:a10607df263d53443a7e02c3ee06ba6af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c3cd70354a44528c37e076d5460b678" id="r_a3c3cd70354a44528c37e076d5460b678"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c3cd70354a44528c37e076d5460b678">makeAnimation</a> (int index, <a class="el" href="struct_position.html">Position</a> tabPos[]) const</td></tr>
+<tr class="memdesc:a3c3cd70354a44528c37e076d5460b678"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates animation frames.  <br /></td></tr>
+<tr class="separator:a3c3cd70354a44528c37e076d5460b678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a198ff43454c9230cf2e07755d227d360" id="r_a198ff43454c9230cf2e07755d227d360"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a198ff43454c9230cf2e07755d227d360">loadClips</a> ()</td></tr>
+<tr class="memdesc:a198ff43454c9230cf2e07755d227d360"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads animation clips.  <br /></td></tr>
+<tr class="separator:a198ff43454c9230cf2e07755d227d360"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d28ed739819e5fdb08bdf177353b12e" id="r_a1d28ed739819e5fdb08bdf177353b12e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d28ed739819e5fdb08bdf177353b12e">handleInput</a> ()</td></tr>
+<tr class="memdesc:a1d28ed739819e5fdb08bdf177353b12e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles input from keyboard.  <br /></td></tr>
+<tr class="separator:a1d28ed739819e5fdb08bdf177353b12e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6ba976a1c735c5e6333271141be916b" id="r_aa6ba976a1c735c5e6333271141be916b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6ba976a1c735c5e6333271141be916b">walkingAnimation</a> (<a class="el" href="struct_position.html">Position</a> tabPos[], int speed, int indexClips, int direction)</td></tr>
+<tr class="memdesc:aa6ba976a1c735c5e6333271141be916b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs walking animation.  <br /></td></tr>
+<tr class="separator:aa6ba976a1c735c5e6333271141be916b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72828e74ddf525e6cd2043e8824625fa" id="r_a72828e74ddf525e6cd2043e8824625fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72828e74ddf525e6cd2043e8824625fa">updatePlayer</a> ()</td></tr>
+<tr class="memdesc:a72828e74ddf525e6cd2043e8824625fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates player state.  <br /></td></tr>
+<tr class="separator:a72828e74ddf525e6cd2043e8824625fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a148ca4a1c2dceab9b5b6edea029e14c8" id="r_a148ca4a1c2dceab9b5b6edea029e14c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a148ca4a1c2dceab9b5b6edea029e14c8">DrawAnimation</a> (SDL_Renderer *renderer) const</td></tr>
+<tr class="memdesc:a148ca4a1c2dceab9b5b6edea029e14c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws animation on renderer.  <br /></td></tr>
+<tr class="separator:a148ca4a1c2dceab9b5b6edea029e14c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3897fd0f1924408c1f00e42c1a6af9c7" id="r_a3897fd0f1924408c1f00e42c1a6af9c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3897fd0f1924408c1f00e42c1a6af9c7">UP</a> (int idxAtt, char c)</td></tr>
+<tr class="memdesc:a3897fd0f1924408c1f00e42c1a6af9c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles movement animation for moving upwards.  <br /></td></tr>
+<tr class="separator:a3897fd0f1924408c1f00e42c1a6af9c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa24f9424cb0e974d91a5aa000275a685" id="r_aa24f9424cb0e974d91a5aa000275a685"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa24f9424cb0e974d91a5aa000275a685">LEFT</a> (int idxAtt, char c)</td></tr>
+<tr class="memdesc:aa24f9424cb0e974d91a5aa000275a685"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles movement animation for moving leftwards.  <br /></td></tr>
+<tr class="separator:aa24f9424cb0e974d91a5aa000275a685"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e7c1fd2c71ea84eff598b78e194d470" id="r_a8e7c1fd2c71ea84eff598b78e194d470"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e7c1fd2c71ea84eff598b78e194d470">DOWN</a> (int idxAtt, char c)</td></tr>
+<tr class="memdesc:a8e7c1fd2c71ea84eff598b78e194d470"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles movement animation for moving downwards.  <br /></td></tr>
+<tr class="separator:a8e7c1fd2c71ea84eff598b78e194d470"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a953abd6195b5b3a90a435bf538e7efd7" id="r_a953abd6195b5b3a90a435bf538e7efd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a953abd6195b5b3a90a435bf538e7efd7">RIGHT</a> (int idxAtt, char c)</td></tr>
+<tr class="memdesc:a953abd6195b5b3a90a435bf538e7efd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles movement animation for moving rightwards.  <br /></td></tr>
+<tr class="separator:a953abd6195b5b3a90a435bf538e7efd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ad991f737e2ad6d1940a78ab6030f85fe" id="r_ad991f737e2ad6d1940a78ab6030f85fe"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad991f737e2ad6d1940a78ab6030f85fe">AttackInit</a> (<a class="el" href="struct_position.html">Position</a> tabPos[], int index)</td></tr>
+<tr class="memdesc:ad991f737e2ad6d1940a78ab6030f85fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes attack animation.  <br /></td></tr>
+<tr class="separator:ad991f737e2ad6d1940a78ab6030f85fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a142ee5cf4c9af4319c838eaa72f88c0b" id="r_a142ee5cf4c9af4319c838eaa72f88c0b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a142ee5cf4c9af4319c838eaa72f88c0b">animationIMG</a></td></tr>
-<tr class="separator:a142ee5cf4c9af4319c838eaa72f88c0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9c402192cfcffc956cab547d5b53e6b" id="r_aa9c402192cfcffc956cab547d5b53e6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9c402192cfcffc956cab547d5b53e6b">idx</a></td></tr>
-<tr class="separator:aa9c402192cfcffc956cab547d5b53e6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7cadad6b7d8943d4706179e3e4e347e" id="r_ab7cadad6b7d8943d4706179e3e4e347e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7cadad6b7d8943d4706179e3e4e347e">animation_speed</a></td></tr>
-<tr class="separator:ab7cadad6b7d8943d4706179e3e4e347e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b8677e110e4672c121eb5b15371a0ec" id="r_a2b8677e110e4672c121eb5b15371a0ec"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b8677e110e4672c121eb5b15371a0ec">vitesse</a></td></tr>
-<tr class="separator:a2b8677e110e4672c121eb5b15371a0ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaae9ab70fa3e51cc99058ddc73b7fad" id="r_aeaae9ab70fa3e51cc99058ddc73b7fad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaae9ab70fa3e51cc99058ddc73b7fad">posLeftClips</a></td></tr>
-<tr class="separator:aeaae9ab70fa3e51cc99058ddc73b7fad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d372103810ec4dca0afaa2bc8782996" id="r_a7d372103810ec4dca0afaa2bc8782996"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d372103810ec4dca0afaa2bc8782996">posRightClips</a></td></tr>
-<tr class="separator:a7d372103810ec4dca0afaa2bc8782996"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13fd801fe21ce7918951ddaf3a69fa64" id="r_a13fd801fe21ce7918951ddaf3a69fa64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13fd801fe21ce7918951ddaf3a69fa64">posDownClips</a></td></tr>
-<tr class="separator:a13fd801fe21ce7918951ddaf3a69fa64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac49f31a5aaf5501aea8a04e2ef2505e3" id="r_ac49f31a5aaf5501aea8a04e2ef2505e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac49f31a5aaf5501aea8a04e2ef2505e3">posUpClips</a></td></tr>
-<tr class="separator:ac49f31a5aaf5501aea8a04e2ef2505e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a292c587b3044e977b27a082fa02efb6b" id="r_a292c587b3044e977b27a082fa02efb6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a292c587b3044e977b27a082fa02efb6b">player</a></td></tr>
 <tr class="separator:a292c587b3044e977b27a082fa02efb6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a788779bd254f217bd1bc880591a32786" id="r_a788779bd254f217bd1bc880591a32786"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a788779bd254f217bd1bc880591a32786">nbClips</a></td></tr>
-<tr class="separator:a788779bd254f217bd1bc880591a32786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59f4432d00ee775ce24798e67d304fe2" id="r_a59f4432d00ee775ce24798e67d304fe2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_s_d_l_sprite.html">SDLSprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59f4432d00ee775ce24798e67d304fe2">allAnimation</a></td></tr>
+<tr class="separator:a59f4432d00ee775ce24798e67d304fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8edd4c53e958ab6e71bf9b4a08d97b23" id="r_a8edd4c53e958ab6e71bf9b4a08d97b23"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8edd4c53e958ab6e71bf9b4a08d97b23">player_left_clips</a> [7] {}</td></tr>
+<tr class="separator:a8edd4c53e958ab6e71bf9b4a08d97b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba298dda054a171981778c1e700cccfd" id="r_aba298dda054a171981778c1e700cccfd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba298dda054a171981778c1e700cccfd">player_right_clips</a> [7] {}</td></tr>
+<tr class="separator:aba298dda054a171981778c1e700cccfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1814ae583a16441a65420cc007d793e2" id="r_a1814ae583a16441a65420cc007d793e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1814ae583a16441a65420cc007d793e2">player_up_clips</a> [7] {}</td></tr>
+<tr class="separator:a1814ae583a16441a65420cc007d793e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add5a81191da182081fd4125f6ef62d4c" id="r_add5a81191da182081fd4125f6ef62d4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add5a81191da182081fd4125f6ef62d4c">player_down_clips</a> [7] {}</td></tr>
+<tr class="separator:add5a81191da182081fd4125f6ef62d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a840ad745e964ff99b3da90d38830cae3" id="r_a840ad745e964ff99b3da90d38830cae3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a840ad745e964ff99b3da90d38830cae3">attackUp</a> [7] {}</td></tr>
+<tr class="separator:a840ad745e964ff99b3da90d38830cae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d8caf59d9259bf39f726ba3b7082fff" id="r_a3d8caf59d9259bf39f726ba3b7082fff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d8caf59d9259bf39f726ba3b7082fff">attackUpReverse</a> [7] {}</td></tr>
+<tr class="separator:a3d8caf59d9259bf39f726ba3b7082fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a06fc0eae60d16214b4053f2e6feefd" id="r_a2a06fc0eae60d16214b4053f2e6feefd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a06fc0eae60d16214b4053f2e6feefd">attackLeft</a> [7] {}</td></tr>
+<tr class="separator:a2a06fc0eae60d16214b4053f2e6feefd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46fcd9faa7b2c45e86b78f4633bec44d" id="r_a46fcd9faa7b2c45e86b78f4633bec44d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46fcd9faa7b2c45e86b78f4633bec44d">attackLeftReverse</a> [7] {}</td></tr>
+<tr class="separator:a46fcd9faa7b2c45e86b78f4633bec44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad8e4f7429335547a0cb2cea7588a8d0" id="r_aad8e4f7429335547a0cb2cea7588a8d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad8e4f7429335547a0cb2cea7588a8d0">attackDown</a> [7] {}</td></tr>
+<tr class="separator:aad8e4f7429335547a0cb2cea7588a8d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a556ea58c3602b06f6614c9a05d04f478" id="r_a556ea58c3602b06f6614c9a05d04f478"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a556ea58c3602b06f6614c9a05d04f478">attackDownReverse</a> [7] {}</td></tr>
+<tr class="separator:a556ea58c3602b06f6614c9a05d04f478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ce3fd00a046b18086571e434da7784a" id="r_a1ce3fd00a046b18086571e434da7784a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ce3fd00a046b18086571e434da7784a">attackRight</a> [7] {}</td></tr>
+<tr class="separator:a1ce3fd00a046b18086571e434da7784a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24b299fb9be2f26e4e66dcf41eacd44c" id="r_a24b299fb9be2f26e4e66dcf41eacd44c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24b299fb9be2f26e4e66dcf41eacd44c">attackRightReverse</a> [7] {}</td></tr>
+<tr class="separator:a24b299fb9be2f26e4e66dcf41eacd44c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3670f07685223cfafc7e4421f615351c" id="r_a3670f07685223cfafc7e4421f615351c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3670f07685223cfafc7e4421f615351c">attackUpStabbed</a> [7] {}</td></tr>
+<tr class="separator:a3670f07685223cfafc7e4421f615351c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1afa1aa8e84b559b7316d3f45fd139c9" id="r_a1afa1aa8e84b559b7316d3f45fd139c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1afa1aa8e84b559b7316d3f45fd139c9">attackLeftStabbed</a> [7] {}</td></tr>
+<tr class="separator:a1afa1aa8e84b559b7316d3f45fd139c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4071e4d974f46a7c8adc134d74003c0" id="r_ab4071e4d974f46a7c8adc134d74003c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4071e4d974f46a7c8adc134d74003c0">attackDownStabbed</a> [7] {}</td></tr>
+<tr class="separator:ab4071e4d974f46a7c8adc134d74003c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac27b2adfe8f308c3bad325173d9f3313" id="r_ac27b2adfe8f308c3bad325173d9f3313"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac27b2adfe8f308c3bad325173d9f3313">attackRightStabbed</a> [7] {}</td></tr>
+<tr class="separator:ac27b2adfe8f308c3bad325173d9f3313"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2187239c970594110f17d8843bb26be0" id="r_a2187239c970594110f17d8843bb26be0"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2187239c970594110f17d8843bb26be0">keyBoard</a> {}</td></tr>
+<tr class="separator:a2187239c970594110f17d8843bb26be0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ca856096ac11efb0789c5cea0194f01" id="r_a3ca856096ac11efb0789c5cea0194f01"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ca856096ac11efb0789c5cea0194f01">moving_left</a> {}</td></tr>
+<tr class="separator:a3ca856096ac11efb0789c5cea0194f01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2533c3025e4c8a653710f673abf3b5ef" id="r_a2533c3025e4c8a653710f673abf3b5ef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2533c3025e4c8a653710f673abf3b5ef">moving_right</a> {}</td></tr>
+<tr class="separator:a2533c3025e4c8a653710f673abf3b5ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2e1c5ff56792bcd84847f1a9288036b" id="r_ae2e1c5ff56792bcd84847f1a9288036b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2e1c5ff56792bcd84847f1a9288036b">moving_up</a> {}</td></tr>
+<tr class="separator:ae2e1c5ff56792bcd84847f1a9288036b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacbf495bf06318aca223462f89e7bde4" id="r_aacbf495bf06318aca223462f89e7bde4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacbf495bf06318aca223462f89e7bde4">moving_down</a> {}</td></tr>
+<tr class="separator:aacbf495bf06318aca223462f89e7bde4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a30dc4d546dfaf9b3ab5c78ff95b5052f" name="a30dc4d546dfaf9b3ab5c78ff95b5052f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30dc4d546dfaf9b3ab5c78ff95b5052f">&#9670;&#160;</a></span>SDLAnimation()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class for handling player animations using SDL. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7c04646a85275bf6093ee6856b3170c1" name="a7c04646a85275bf6093ee6856b3170c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c04646a85275bf6093ee6856b3170c1">&#9670;&#160;</a></span>SDLAnimation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -158,20 +221,25 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>_animationIMG</em>, </span></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>path</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>_sourceY</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_player.html">Player</a></td>          <td class="paramname"><span class="paramname"><em>_player</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="class_player.html">Player</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>_player</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructor for <a class="el" href="class_s_d_l_animation.html" title="Class for handling player animations using SDL.">SDLAnimation</a> class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>SDL_Renderer object for rendering. </td></tr>
+    <tr><td class="paramname">path</td><td>Path to sprite image. </td></tr>
+    <tr><td class="paramname">_player</td><td><a class="el" href="class_player.html" title="Class representing the player in the game.">Player</a> object. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -180,6 +248,9 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">SDLAnimation::~SDLAnimation </td>
@@ -188,13 +259,20 @@ Public Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Destructor for <a class="el" href="class_s_d_l_animation.html" title="Class for handling player animations using SDL.">SDLAnimation</a> class. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aee67f3d3e47923f478927c82bac7fa31" name="aee67f3d3e47923f478927c82bac7fa31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee67f3d3e47923f478927c82bac7fa31">&#9670;&#160;</a></span>animationDown()</h2>
+<a id="ad991f737e2ad6d1940a78ab6030f85fe" name="ad991f737e2ad6d1940a78ab6030f85fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad991f737e2ad6d1940a78ab6030f85fe">&#9670;&#160;</a></span>AttackInit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -203,98 +281,140 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void SDLAnimation::animationDown </td>
+          <td class="memname">void SDLAnimation::AttackInit </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="struct_position.html">Position</a></td>          <td class="paramname"><span class="paramname"><em>tabPos</em>[], </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
+<p>Initializes attack animation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tabPos</td><td>Array of positions for animation. </td></tr>
+    <tr><td class="paramname">index</td><td>Index of animation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="aeb69989f706ad3ff6d1b0550642c78a4" name="aeb69989f706ad3ff6d1b0550642c78a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb69989f706ad3ff6d1b0550642c78a4">&#9670;&#160;</a></span>animationLeft()</h2>
+<a id="a8e7c1fd2c71ea84eff598b78e194d470" name="a8e7c1fd2c71ea84eff598b78e194d470"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e7c1fd2c71ea84eff598b78e194d470">&#9670;&#160;</a></span>DOWN()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void SDLAnimation::animationLeft </td>
+          <td class="memname">void SDLAnimation::DOWN </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idxAtt</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
+
+<p>Handles movement animation for moving downwards. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idxAtt</td><td>Index of the attack animation. </td></tr>
+    <tr><td class="paramname">c</td><td>Character representing the direction of animation. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a9020c88f08d960ee07b98a8d9c21dd66" name="a9020c88f08d960ee07b98a8d9c21dd66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9020c88f08d960ee07b98a8d9c21dd66">&#9670;&#160;</a></span>animationRight()</h2>
+<a id="a148ca4a1c2dceab9b5b6edea029e14c8" name="a148ca4a1c2dceab9b5b6edea029e14c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a148ca4a1c2dceab9b5b6edea029e14c8">&#9670;&#160;</a></span>DrawAnimation()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void SDLAnimation::animationRight </td>
+          <td class="memname">void SDLAnimation::DrawAnimation </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
+
+<p>Draws animation on renderer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>SDL_Renderer object for rendering. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a31309ce1f8fd7c475bca4c9acf2d5964" name="a31309ce1f8fd7c475bca4c9acf2d5964"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31309ce1f8fd7c475bca4c9acf2d5964">&#9670;&#160;</a></span>animationUp()</h2>
+<a id="a1d28ed739819e5fdb08bdf177353b12e" name="a1d28ed739819e5fdb08bdf177353b12e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d28ed739819e5fdb08bdf177353b12e">&#9670;&#160;</a></span>handleInput()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void SDLAnimation::animationUp </td>
+          <td class="memname">void SDLAnimation::handleInput </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
+
+<p>Handles input from keyboard. </p>
 
 </div>
 </div>
-<a id="a6070f7718501650179ff31f3b94a5db2" name="a6070f7718501650179ff31f3b94a5db2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6070f7718501650179ff31f3b94a5db2">&#9670;&#160;</a></span>loadClips()</h2>
+<a id="aa24f9424cb0e974d91a5aa000275a685" name="aa24f9424cb0e974d91a5aa000275a685"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa24f9424cb0e974d91a5aa000275a685">&#9670;&#160;</a></span>LEFT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SDLAnimation::LEFT </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idxAtt</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handles movement animation for moving leftwards. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idxAtt</td><td>Index of the attack animation. </td></tr>
+    <tr><td class="paramname">c</td><td>Character representing the direction of animation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a198ff43454c9230cf2e07755d227d360" name="a198ff43454c9230cf2e07755d227d360"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a198ff43454c9230cf2e07755d227d360">&#9670;&#160;</a></span>loadClips()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -302,77 +422,454 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">void SDLAnimation::loadClips </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>indiceDepart</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>width</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="config_8h.html#a89e2ac9092225702ac543695d0771d38">PLAYER_WIDTH</a></span>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>height</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="config_8h.html#a2712b06fd52f25adca031d05c3e0c09b">PLAYER_HEIGHT</a></span></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Loads animation clips. </p>
+
+</div>
+</div>
+<a id="a3c3cd70354a44528c37e076d5460b678" name="a3c3cd70354a44528c37e076d5460b678"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c3cd70354a44528c37e076d5460b678">&#9670;&#160;</a></span>makeAnimation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SDLAnimation::makeAnimation </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_position.html">Position</a></td>          <td class="paramname"><span class="paramname"><em>tabPos</em>[]</span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates animation frames. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Index of animation. </td></tr>
+    <tr><td class="paramname">tabPos</td><td>Array of positions for animation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a953abd6195b5b3a90a435bf538e7efd7" name="a953abd6195b5b3a90a435bf538e7efd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a953abd6195b5b3a90a435bf538e7efd7">&#9670;&#160;</a></span>RIGHT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SDLAnimation::RIGHT </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idxAtt</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handles movement animation for moving rightwards. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idxAtt</td><td>Index of the attack animation. </td></tr>
+    <tr><td class="paramname">c</td><td>Character representing the direction of animation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3897fd0f1924408c1f00e42c1a6af9c7" name="a3897fd0f1924408c1f00e42c1a6af9c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3897fd0f1924408c1f00e42c1a6af9c7">&#9670;&#160;</a></span>UP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SDLAnimation::UP </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idxAtt</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handles movement animation for moving upwards. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idxAtt</td><td>Index of the attack animation. </td></tr>
+    <tr><td class="paramname">c</td><td>Character representing the direction of animation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a72828e74ddf525e6cd2043e8824625fa" name="a72828e74ddf525e6cd2043e8824625fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72828e74ddf525e6cd2043e8824625fa">&#9670;&#160;</a></span>updatePlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SDLAnimation::updatePlayer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates player state. </p>
+
+</div>
+</div>
+<a id="a10607df263d53443a7e02c3ee06ba6af" name="a10607df263d53443a7e02c3ee06ba6af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10607df263d53443a7e02c3ee06ba6af">&#9670;&#160;</a></span>Walk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SDLAnimation::Walk </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initiates walking animation. </p>
+
+</div>
+</div>
+<a id="aa6ba976a1c735c5e6333271141be916b" name="aa6ba976a1c735c5e6333271141be916b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6ba976a1c735c5e6333271141be916b">&#9670;&#160;</a></span>walkingAnimation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SDLAnimation::walkingAnimation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_position.html">Position</a></td>          <td class="paramname"><span class="paramname"><em>tabPos</em>[], </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>speed</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>indexClips</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>direction</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Performs walking animation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tabPos</td><td>Array of positions for animation. </td></tr>
+    <tr><td class="paramname">speed</td><td>Animation speed. </td></tr>
+    <tr><td class="paramname">indexClips</td><td>Index of animation clip. </td></tr>
+    <tr><td class="paramname">direction</td><td>Direction of movement. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ab7cadad6b7d8943d4706179e3e4e347e" name="ab7cadad6b7d8943d4706179e3e4e347e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab7cadad6b7d8943d4706179e3e4e347e">&#9670;&#160;</a></span>animation_speed</h2>
+<a id="a59f4432d00ee775ce24798e67d304fe2" name="a59f4432d00ee775ce24798e67d304fe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59f4432d00ee775ce24798e67d304fe2">&#9670;&#160;</a></span>allAnimation</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int SDLAnimation::animation_speed</td>
+          <td class="memname"><a class="el" href="class_s_d_l_sprite.html">SDLSprite</a> SDLAnimation::allAnimation</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Sprite object containing all animations. </p>
 
 </div>
 </div>
-<a id="a142ee5cf4c9af4319c838eaa72f88c0b" name="a142ee5cf4c9af4319c838eaa72f88c0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a142ee5cf4c9af4319c838eaa72f88c0b">&#9670;&#160;</a></span>animationIMG</h2>
+<a id="aad8e4f7429335547a0cb2cea7588a8d0" name="aad8e4f7429335547a0cb2cea7588a8d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad8e4f7429335547a0cb2cea7588a8d0">&#9670;&#160;</a></span>attackDown</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* SDLAnimation::animationIMG</td>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::attackDown[7] {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Array of positions for attacking downwards animation. </p>
 
 </div>
 </div>
-<a id="aa9c402192cfcffc956cab547d5b53e6b" name="aa9c402192cfcffc956cab547d5b53e6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9c402192cfcffc956cab547d5b53e6b">&#9670;&#160;</a></span>idx</h2>
+<a id="a556ea58c3602b06f6614c9a05d04f478" name="a556ea58c3602b06f6614c9a05d04f478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a556ea58c3602b06f6614c9a05d04f478">&#9670;&#160;</a></span>attackDownReverse</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int SDLAnimation::idx</td>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::attackDownReverse[7] {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Array of positions for reverse attacking downwards animation. </p>
 
 </div>
 </div>
-<a id="a788779bd254f217bd1bc880591a32786" name="a788779bd254f217bd1bc880591a32786"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a788779bd254f217bd1bc880591a32786">&#9670;&#160;</a></span>nbClips</h2>
+<a id="ab4071e4d974f46a7c8adc134d74003c0" name="ab4071e4d974f46a7c8adc134d74003c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4071e4d974f46a7c8adc134d74003c0">&#9670;&#160;</a></span>attackDownStabbed</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int SDLAnimation::nbClips</td>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::attackDownStabbed[7] {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Array of positions for attacking downwards with stabbing animation. </p>
+
+</div>
+</div>
+<a id="a2a06fc0eae60d16214b4053f2e6feefd" name="a2a06fc0eae60d16214b4053f2e6feefd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a06fc0eae60d16214b4053f2e6feefd">&#9670;&#160;</a></span>attackLeft</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::attackLeft[7] {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of positions for attacking left animation. </p>
+
+</div>
+</div>
+<a id="a46fcd9faa7b2c45e86b78f4633bec44d" name="a46fcd9faa7b2c45e86b78f4633bec44d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46fcd9faa7b2c45e86b78f4633bec44d">&#9670;&#160;</a></span>attackLeftReverse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::attackLeftReverse[7] {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of positions for reverse attacking left animation. </p>
+
+</div>
+</div>
+<a id="a1afa1aa8e84b559b7316d3f45fd139c9" name="a1afa1aa8e84b559b7316d3f45fd139c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1afa1aa8e84b559b7316d3f45fd139c9">&#9670;&#160;</a></span>attackLeftStabbed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::attackLeftStabbed[7] {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of positions for attacking left with stabbing animation. </p>
+
+</div>
+</div>
+<a id="a1ce3fd00a046b18086571e434da7784a" name="a1ce3fd00a046b18086571e434da7784a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ce3fd00a046b18086571e434da7784a">&#9670;&#160;</a></span>attackRight</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::attackRight[7] {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of positions for attacking right animation. </p>
+
+</div>
+</div>
+<a id="a24b299fb9be2f26e4e66dcf41eacd44c" name="a24b299fb9be2f26e4e66dcf41eacd44c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24b299fb9be2f26e4e66dcf41eacd44c">&#9670;&#160;</a></span>attackRightReverse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::attackRightReverse[7] {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of positions for reverse attacking right animation. </p>
+
+</div>
+</div>
+<a id="ac27b2adfe8f308c3bad325173d9f3313" name="ac27b2adfe8f308c3bad325173d9f3313"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac27b2adfe8f308c3bad325173d9f3313">&#9670;&#160;</a></span>attackRightStabbed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::attackRightStabbed[7] {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of positions for attacking right with stabbing animation. </p>
+
+</div>
+</div>
+<a id="a840ad745e964ff99b3da90d38830cae3" name="a840ad745e964ff99b3da90d38830cae3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a840ad745e964ff99b3da90d38830cae3">&#9670;&#160;</a></span>attackUp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::attackUp[7] {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of positions for attacking upwards animation. </p>
+
+</div>
+</div>
+<a id="a3d8caf59d9259bf39f726ba3b7082fff" name="a3d8caf59d9259bf39f726ba3b7082fff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d8caf59d9259bf39f726ba3b7082fff">&#9670;&#160;</a></span>attackUpReverse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::attackUpReverse[7] {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of positions for reverse attacking upwards animation. </p>
+
+</div>
+</div>
+<a id="a3670f07685223cfafc7e4421f615351c" name="a3670f07685223cfafc7e4421f615351c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3670f07685223cfafc7e4421f615351c">&#9670;&#160;</a></span>attackUpStabbed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::attackUpStabbed[7] {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of positions for attacking upwards with stabbing animation. </p>
+
+</div>
+</div>
+<a id="a2187239c970594110f17d8843bb26be0" name="a2187239c970594110f17d8843bb26be0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2187239c970594110f17d8843bb26be0">&#9670;&#160;</a></span>keyBoard</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char SDLAnimation::keyBoard {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Key pressed by player. </p>
+
+</div>
+</div>
+<a id="aacbf495bf06318aca223462f89e7bde4" name="aacbf495bf06318aca223462f89e7bde4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacbf495bf06318aca223462f89e7bde4">&#9670;&#160;</a></span>moving_down</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SDLAnimation::moving_down {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Flag indicating down movement. </p>
+
+</div>
+</div>
+<a id="a3ca856096ac11efb0789c5cea0194f01" name="a3ca856096ac11efb0789c5cea0194f01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ca856096ac11efb0789c5cea0194f01">&#9670;&#160;</a></span>moving_left</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SDLAnimation::moving_left {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Flag indicating left movement. </p>
+
+</div>
+</div>
+<a id="a2533c3025e4c8a653710f673abf3b5ef" name="a2533c3025e4c8a653710f673abf3b5ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2533c3025e4c8a653710f673abf3b5ef">&#9670;&#160;</a></span>moving_right</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SDLAnimation::moving_right {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Flag indicating right movement. </p>
+
+</div>
+</div>
+<a id="ae2e1c5ff56792bcd84847f1a9288036b" name="ae2e1c5ff56792bcd84847f1a9288036b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2e1c5ff56792bcd84847f1a9288036b">&#9670;&#160;</a></span>moving_up</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SDLAnimation::moving_up {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Flag indicating up movement. </p>
 
 </div>
 </div>
@@ -387,76 +884,67 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p><a class="el" href="class_player.html" title="Class representing the player in the game.">Player</a> object for animation. </p>
 
 </div>
 </div>
-<a id="a13fd801fe21ce7918951ddaf3a69fa64" name="a13fd801fe21ce7918951ddaf3a69fa64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13fd801fe21ce7918951ddaf3a69fa64">&#9670;&#160;</a></span>posDownClips</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_position.html">Position</a> * SDLAnimation::posDownClips</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aeaae9ab70fa3e51cc99058ddc73b7fad" name="aeaae9ab70fa3e51cc99058ddc73b7fad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeaae9ab70fa3e51cc99058ddc73b7fad">&#9670;&#160;</a></span>posLeftClips</h2>
+<a id="add5a81191da182081fd4125f6ef62d4c" name="add5a81191da182081fd4125f6ef62d4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add5a81191da182081fd4125f6ef62d4c">&#9670;&#160;</a></span>player_down_clips</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_position.html">Position</a>* SDLAnimation::posLeftClips</td>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::player_down_clips[7] {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Array of positions for down movement animation. </p>
 
 </div>
 </div>
-<a id="a7d372103810ec4dca0afaa2bc8782996" name="a7d372103810ec4dca0afaa2bc8782996"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d372103810ec4dca0afaa2bc8782996">&#9670;&#160;</a></span>posRightClips</h2>
+<a id="a8edd4c53e958ab6e71bf9b4a08d97b23" name="a8edd4c53e958ab6e71bf9b4a08d97b23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8edd4c53e958ab6e71bf9b4a08d97b23">&#9670;&#160;</a></span>player_left_clips</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_position.html">Position</a> * SDLAnimation::posRightClips</td>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::player_left_clips[7] {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Array of positions for left movement animation. </p>
 
 </div>
 </div>
-<a id="ac49f31a5aaf5501aea8a04e2ef2505e3" name="ac49f31a5aaf5501aea8a04e2ef2505e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac49f31a5aaf5501aea8a04e2ef2505e3">&#9670;&#160;</a></span>posUpClips</h2>
+<a id="aba298dda054a171981778c1e700cccfd" name="aba298dda054a171981778c1e700cccfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba298dda054a171981778c1e700cccfd">&#9670;&#160;</a></span>player_right_clips</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_position.html">Position</a> * SDLAnimation::posUpClips</td>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::player_right_clips[7] {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Array of positions for right movement animation. </p>
 
 </div>
 </div>
-<a id="a2b8677e110e4672c121eb5b15371a0ec" name="a2b8677e110e4672c121eb5b15371a0ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b8677e110e4672c121eb5b15371a0ec">&#9670;&#160;</a></span>vitesse</h2>
+<a id="a1814ae583a16441a65420cc007d793e2" name="a1814ae583a16441a65420cc007d793e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1814ae583a16441a65420cc007d793e2">&#9670;&#160;</a></span>player_up_clips</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float SDLAnimation::vitesse</td>
+          <td class="memname"><a class="el" href="struct_position.html">Position</a> SDLAnimation::player_up_clips[7] {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Array of positions for up movement animation. </p>
 
 </div>
 </div>

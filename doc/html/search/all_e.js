@@ -1,26 +1,9 @@
 var searchData=
 [
-  ['pause_0',['pause',['../class_win_t_x_t.html#a3e8793fd263bb51a62ec8a5e89904c49',1,'WinTXT']]],
-  ['playchunk_1',['PlayChunk',['../class_s_d_l_sound.html#a3f8c412e0212193b3d99518031eb9be7',1,'SDLSound']]],
-  ['player_2',['Player',['../class_player.html',1,'Player'],['../class_player.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8',1,'Player::Player()']]],
-  ['player_3',['player',['../struct_contenu.html#a09d1c9c9bc065cf779ab9ba709cb49b5',1,'Contenu::player'],['../class_s_d_l_animation.html#a292c587b3044e977b27a082fa02efb6b',1,'SDLAnimation::player']]],
-  ['player_2ecpp_4',['Player.cpp',['../_player_8cpp.html',1,'']]],
-  ['player_2eh_5',['Player.h',['../_player_8h.html',1,'']]],
-  ['player_5fdown_5fclips_6',['player_down_clips',['../struct_contenu.html#a6b95ad0736fbce3502fde258313afbbd',1,'Contenu']]],
-  ['player_5fheight_7',['PLAYER_HEIGHT',['../config_8h.html#a2712b06fd52f25adca031d05c3e0c09b',1,'config.h']]],
-  ['player_5fleft_5fclips_8',['player_left_clips',['../struct_contenu.html#aec0168b6f3b19cc1cf55fe4822608541',1,'Contenu']]],
-  ['player_5fright_5fclips_9',['player_right_clips',['../struct_contenu.html#aa4d923b28f011592a89faaf37f97f3ff',1,'Contenu']]],
-  ['player_5fup_5fclips_10',['player_up_clips',['../struct_contenu.html#a958ce82bd92c113d3e1215cdf06002f9',1,'Contenu']]],
-  ['player_5fwidth_11',['PLAYER_WIDTH',['../config_8h.html#a89e2ac9092225702ac543695d0771d38',1,'config.h']]],
-  ['playerdest_12',['playerDest',['../class_player.html#a7301af7d35ff9e875e9da16ecb4a69e8',1,'Player']]],
-  ['playersource_13',['playerSource',['../class_player.html#a5ae983845c3b0915c69ebaa08725b2a2',1,'Player']]],
-  ['playmusic_14',['PlayMusic',['../class_s_d_l_sound.html#a6f12bdc26f6045822b44a28e0b5e49fa',1,'SDLSound']]],
-  ['point_2eh_15',['point.h',['../point_8h.html',1,'']]],
-  ['pos_16',['pos',['../class_player.html#a98003c68a7d91ade8af724a0c49dd02f',1,'Player']]],
-  ['posdownclips_17',['posDownClips',['../class_s_d_l_animation.html#a13fd801fe21ce7918951ddaf3a69fa64',1,'SDLAnimation']]],
-  ['position_18',['Position',['../struct_position.html',1,'']]],
-  ['posleftclips_19',['posLeftClips',['../class_s_d_l_animation.html#aeaae9ab70fa3e51cc99058ddc73b7fad',1,'SDLAnimation']]],
-  ['posrightclips_20',['posRightClips',['../class_s_d_l_animation.html#a7d372103810ec4dca0afaa2bc8782996',1,'SDLAnimation']]],
-  ['posupclips_21',['posUpClips',['../class_s_d_l_animation.html#ac49f31a5aaf5501aea8a04e2ef2505e3',1,'SDLAnimation']]],
-  ['print_22',['print',['../class_win_t_x_t.html#a407cce45e7f81546540f4f8a9b85ce45',1,'WinTXT::print(int x, int y, char c)'],['../class_win_t_x_t.html#ad021d5fb9862b9ea7985f8cef50451e2',1,'WinTXT::print(int x, int y, char *c)']]]
+  ['rect_0',['Rect',['../struct_rect.html',1,'']]],
+  ['rect_2eh_1',['Rect.h',['../_rect_8h.html',1,'']]],
+  ['renderer_2',['renderer',['../struct_contenu.html#ae96584bab27f8ad6fc3357ce57095989',1,'Contenu']]],
+  ['right_3',['right',['../class_a_i.html#a8ad44c0b0c926339287626d376996540',1,'AI']]],
+  ['right_4',['RIGHT',['../class_s_d_l_animation.html#a953abd6195b5b3a90a435bf538e7efd7',1,'SDLAnimation::RIGHT()'],['../main_animation_8cpp.html#af18af51e0cf3dbcf8727b8021980c51f',1,'RIGHT():&#160;mainAnimation.cpp']]],
+  ['runproject_5',['runProject',['../class_s_d_l_game.html#ad77887b0e535ee0473f87bca5db8c884',1,'SDLGame']]]
 ];

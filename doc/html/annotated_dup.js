@@ -4,7 +4,6 @@ var annotated_dup =
     [ "Contenu", "struct_contenu.html", "struct_contenu" ],
     [ "Game", "class_game.html", "class_game" ],
     [ "Garde", "class_garde.html", "class_garde" ],
-    [ "Map", "class_map.html", "class_map" ],
     [ "Player", "class_player.html", "class_player" ],
     [ "Position", "struct_position.html", "struct_position" ],
     [ "Rect", "struct_rect.html", "struct_rect" ],

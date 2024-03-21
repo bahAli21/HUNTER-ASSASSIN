@@ -111,6 +111,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1d5d2a907bfd31b00a5a08c51b912576" id="r_a1d5d2a907bfd31b00a5a08c51b912576"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d5d2a907bfd31b00a5a08c51b912576">Game</a> (int <a class="el" href="#a3fb748cfce917c7d1dac7dc338c04c44">nbGardes</a>)</td></tr>
 <tr class="memdesc:a1d5d2a907bfd31b00a5a08c51b912576"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor of the <a class="el" href="class_game.html" title="Class representing the game.">Game</a> class.  <br /></td></tr>
 <tr class="separator:a1d5d2a907bfd31b00a5a08c51b912576"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3a26fdfc2678ad9381a562a98dda811" id="r_af3a26fdfc2678ad9381a562a98dda811"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3a26fdfc2678ad9381a562a98dda811">movingGuardByAI</a> (Uint32 lastGuardDestinationChangeTime)</td></tr>
+<tr class="memdesc:af3a26fdfc2678ad9381a562a98dda811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the guards based on <a class="el" href="class_a_i.html" title="Class defining the artificial intelligence for the game.">AI</a> decisions.  <br /></td></tr>
+<tr class="separator:af3a26fdfc2678ad9381a562a98dda811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3deed340700181f9979e1ed43df83d22" id="r_a3deed340700181f9979e1ed43df83d22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3deed340700181f9979e1ed43df83d22">movingPlayerByAI</a> ()</td></tr>
+<tr class="memdesc:a3deed340700181f9979e1ed43df83d22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the player based on <a class="el" href="class_a_i.html" title="Class defining the artificial intelligence for the game.">AI</a> decisions.  <br /></td></tr>
+<tr class="separator:a3deed340700181f9979e1ed43df83d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1762229c179cdc59b7a6abb88e58adb9" id="r_a1762229c179cdc59b7a6abb88e58adb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1762229c179cdc59b7a6abb88e58adb9">updatePlayerDest</a> (int x, int y)</td></tr>
+<tr class="memdesc:a1762229c179cdc59b7a6abb88e58adb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates player destination coordinates.  <br /></td></tr>
+<tr class="separator:a1762229c179cdc59b7a6abb88e58adb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3d112ca6e0e55150d2fdbc704474530" id="r_ae3d112ca6e0e55150d2fdbc704474530"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3d112ca6e0e55150d2fdbc704474530">~Game</a> ()</td></tr>
 <tr class="memdesc:ae3d112ca6e0e55150d2fdbc704474530"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of the <a class="el" href="class_game.html" title="Class representing the game.">Game</a> class.  <br /></td></tr>
 <tr class="separator:ae3d112ca6e0e55150d2fdbc704474530"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,8 +132,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a76f4360601ed7230dcf8501b0abc2bb3" id="r_a76f4360601ed7230dcf8501b0abc2bb3"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_player.html">Player</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76f4360601ed7230dcf8501b0abc2bb3">getConstPlayer</a> ()</td></tr>
 <tr class="memdesc:a76f4360601ed7230dcf8501b0abc2bb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a constant reference to the <a class="el" href="class_player.html" title="Class representing the player in the game.">Player</a> object.  <br /></td></tr>
 <tr class="separator:a76f4360601ed7230dcf8501b0abc2bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d8cc78cf68f601ed2da748683a163d2" id="r_a8d8cc78cf68f601ed2da748683a163d2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_map.html">Map</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d8cc78cf68f601ed2da748683a163d2">getConstMap</a> ()</td></tr>
-<tr class="memdesc:a8d8cc78cf68f601ed2da748683a163d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a constant reference to the <a class="el" href="class_map.html" title="Classe représentant une carte dans le jeu.">Map</a> object.  <br /></td></tr>
+<tr class="memitem:a8d8cc78cf68f601ed2da748683a163d2" id="r_a8d8cc78cf68f601ed2da748683a163d2"><td class="memItemLeft" align="right" valign="top">const Map &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d8cc78cf68f601ed2da748683a163d2">getConstMap</a> ()</td></tr>
+<tr class="memdesc:a8d8cc78cf68f601ed2da748683a163d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a constant reference to the Map object.  <br /></td></tr>
 <tr class="separator:a8d8cc78cf68f601ed2da748683a163d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ad9fb4d0993e02f64c46e65d7f99d92" id="r_a2ad9fb4d0993e02f64c46e65d7f99d92"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_garde.html">Garde</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ad9fb4d0993e02f64c46e65d7f99d92">getAllGardes</a> ()</td></tr>
 <tr class="memdesc:a2ad9fb4d0993e02f64c46e65d7f99d92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a pointer to all guards in the game.  <br /></td></tr>
@@ -142,10 +151,18 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a3fb748cfce917c7d1dac7dc338c04c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6717016dffe40ca1f80435cba428205" id="r_af6717016dffe40ca1f80435cba428205"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6717016dffe40ca1f80435cba428205">_player</a></td></tr>
 <tr class="separator:af6717016dffe40ca1f80435cba428205"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a079d7b193341b3a295f0a06109ab6dd8" id="r_a079d7b193341b3a295f0a06109ab6dd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_map.html">Map</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a079d7b193341b3a295f0a06109ab6dd8">_gameMap</a></td></tr>
+<tr class="memitem:a079d7b193341b3a295f0a06109ab6dd8" id="r_a079d7b193341b3a295f0a06109ab6dd8"><td class="memItemLeft" align="right" valign="top">Map&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a079d7b193341b3a295f0a06109ab6dd8">_gameMap</a></td></tr>
 <tr class="separator:a079d7b193341b3a295f0a06109ab6dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad960f075f36634cfe45278a6b66acef2" id="r_ad960f075f36634cfe45278a6b66acef2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_garde.html">Garde</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad960f075f36634cfe45278a6b66acef2">allGardes</a></td></tr>
 <tr class="separator:ad960f075f36634cfe45278a6b66acef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5f7782edd36ad9eecd8ad0c4452399f" id="r_ae5f7782edd36ad9eecd8ad0c4452399f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_rect.html">Rect</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5f7782edd36ad9eecd8ad0c4452399f">gardesDest</a></td></tr>
+<tr class="separator:ae5f7782edd36ad9eecd8ad0c4452399f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1be94a55b101ffb260fb84da60d3fd04" id="r_a1be94a55b101ffb260fb84da60d3fd04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_rect.html">Rect</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1be94a55b101ffb260fb84da60d3fd04">gardesRect</a></td></tr>
+<tr class="separator:a1be94a55b101ffb260fb84da60d3fd04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afecef6dd11c8b3d14b8de09e4617bc31" id="r_afecef6dd11c8b3d14b8de09e4617bc31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_i.html">AI</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afecef6dd11c8b3d14b8de09e4617bc31">PlayerAI</a></td></tr>
+<tr class="separator:afecef6dd11c8b3d14b8de09e4617bc31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e65deed353e36766060ff37a4d481bd" id="r_a9e65deed353e36766060ff37a4d481bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_i.html">AI</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e65deed353e36766060ff37a4d481bd">guardAI</a></td></tr>
+<tr class="separator:a9e65deed353e36766060ff37a4d481bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa92737d76da7cb6838a427a9524e9991" id="r_aa92737d76da7cb6838a427a9524e9991"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_rect.html">Rect</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa92737d76da7cb6838a427a9524e9991">vecAllObstacles</a></td></tr>
 <tr class="separator:aa92737d76da7cb6838a427a9524e9991"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -267,7 +284,7 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_map.html">Map</a> &amp; Game::getConstMap </td>
+          <td class="memname">const Map &amp; Game::getConstMap </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
@@ -280,8 +297,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Gets a constant reference to the <a class="el" href="class_map.html" title="Classe représentant une carte dans le jeu.">Map</a> object. </p>
-<dl class="section return"><dt>Returns</dt><dd>A constant reference to the <a class="el" href="class_map.html" title="Classe représentant une carte dans le jeu.">Map</a> object associated with the game. </dd></dl>
+<p>Gets a constant reference to the Map object. </p>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the Map object associated with the game. </dd></dl>
 
 </div>
 </div>
@@ -338,6 +355,50 @@ Public Attributes</h2></td></tr>
 
 <p>Gets the number of guards in the game. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of guards. </dd></dl>
+
+</div>
+</div>
+<a id="af3a26fdfc2678ad9381a562a98dda811" name="af3a26fdfc2678ad9381a562a98dda811"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3a26fdfc2678ad9381a562a98dda811">&#9670;&#160;</a></span>movingGuardByAI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::movingGuardByAI </td>
+          <td>(</td>
+          <td class="paramtype">Uint32</td>          <td class="paramname"><span class="paramname"><em>lastGuardDestinationChangeTime</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Moves the guards based on <a class="el" href="class_a_i.html" title="Class defining the artificial intelligence for the game.">AI</a> decisions. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lastGuardDestinationChangeTime</td><td>Time of the last guard destination change. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3deed340700181f9979e1ed43df83d22" name="a3deed340700181f9979e1ed43df83d22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3deed340700181f9979e1ed43df83d22">&#9670;&#160;</a></span>movingPlayerByAI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::movingPlayerByAI </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Moves the player based on <a class="el" href="class_a_i.html" title="Class defining the artificial intelligence for the game.">AI</a> decisions. </p>
 
 </div>
 </div>
@@ -401,6 +462,36 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a1762229c179cdc59b7a6abb88e58adb9" name="a1762229c179cdc59b7a6abb88e58adb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1762229c179cdc59b7a6abb88e58adb9">&#9670;&#160;</a></span>updatePlayerDest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::updatePlayerDest </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates player destination coordinates. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>New x-coordinate of player destination. </td></tr>
+    <tr><td class="paramname">y</td><td>New y-coordinate of player destination. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a079d7b193341b3a295f0a06109ab6dd8" name="a079d7b193341b3a295f0a06109ab6dd8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a079d7b193341b3a295f0a06109ab6dd8">&#9670;&#160;</a></span>_gameMap</h2>
@@ -409,7 +500,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_map.html">Map</a> Game::_gameMap</td>
+          <td class="memname">Map Game::_gameMap</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -447,6 +538,51 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ae5f7782edd36ad9eecd8ad0c4452399f" name="ae5f7782edd36ad9eecd8ad0c4452399f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5f7782edd36ad9eecd8ad0c4452399f">&#9670;&#160;</a></span>gardesDest</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_rect.html">Rect</a>* Game::gardesDest</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointer to all guards in the game. </p>
+
+</div>
+</div>
+<a id="a1be94a55b101ffb260fb84da60d3fd04" name="a1be94a55b101ffb260fb84da60d3fd04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1be94a55b101ffb260fb84da60d3fd04">&#9670;&#160;</a></span>gardesRect</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_rect.html">Rect</a>* Game::gardesRect</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointer to all guards in the game. </p>
+
+</div>
+</div>
+<a id="a9e65deed353e36766060ff37a4d481bd" name="a9e65deed353e36766060ff37a4d481bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e65deed353e36766060ff37a4d481bd">&#9670;&#160;</a></span>guardAI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_a_i.html">AI</a>* Game::guardAI</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointer to <a class="el" href="class_a_i.html" title="Class defining the artificial intelligence for the game.">AI</a> objects for guards. </p>
+
+</div>
+</div>
 <a id="a3fb748cfce917c7d1dac7dc338c04c44" name="a3fb748cfce917c7d1dac7dc338c04c44"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3fb748cfce917c7d1dac7dc338c04c44">&#9670;&#160;</a></span>nbGardes</h2>
 
@@ -459,6 +595,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>The number of guards. </p>
+
+</div>
+</div>
+<a id="afecef6dd11c8b3d14b8de09e4617bc31" name="afecef6dd11c8b3d14b8de09e4617bc31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afecef6dd11c8b3d14b8de09e4617bc31">&#9670;&#160;</a></span>PlayerAI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_a_i.html">AI</a> Game::PlayerAI</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p><a class="el" href="class_a_i.html" title="Class defining the artificial intelligence for the game.">AI</a> object for player. </p>
 
 </div>
 </div>

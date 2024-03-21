@@ -4,7 +4,6 @@ var class_a_i =
     [ "AI", "class_a_i.html#a64ec60281e9eb8496f16525615db54b7", null ],
     [ "collision", "class_a_i.html#a226f8388ce36c2575464aede760a6583", null ],
     [ "contourObstacle", "class_a_i.html#ab73aed05564597e42eb645bfd2a59995", null ],
-    [ "destNotAvailable", "class_a_i.html#afb068ce7996071e48b59ceb8512d7d44", null ],
     [ "estArrivee", "class_a_i.html#a92ec660e52d6199d824cb625ac80e1c7", null ],
     [ "freePixel", "class_a_i.html#a68f753756e6a487526c7592f4ef29aa2", null ],
     [ "mov", "class_a_i.html#a91ac0685a61db1c37096bdbfa2fd1b19", null ],

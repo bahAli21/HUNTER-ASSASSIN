@@ -4,7 +4,6 @@
 #include "Player.h"
 #include "Rect.h"
 #include "IA.h"
-#include "Map.h"
 #include "Garde.h"
 
 /**
@@ -19,6 +18,11 @@ public:
     Player _player; /**< Instance of the player. */
     Map _gameMap; /**< Instance of the game map. */
     Garde *allGardes; /**< Pointer to all guards in the game. */
+    Rect *gardesDest; /**< Pointer to all guards in the game. */
+    Rect *gardesRect; /**< Pointer to all guards in the game. */
+    AI PlayerAI; /**< AI object for player. */
+    AI *guardAI; /**< Pointer to AI objects for guards. */
+
 public:
     std::vector<Rect> vecAllObstacles; /**< Vector containing all obstacles in the game. */
 
@@ -28,6 +32,26 @@ public:
      * @param nbGardes The number of guards.
      */
     Game(int nbGardes);
+
+    /**
+     * @brief Moves the guards based on AI decisions.
+     *
+     * @param lastGuardDestinationChangeTime Time of the last guard destination change.
+     */
+    void movingGuardByAI(Uint32 lastGuardDestinationChangeTime);
+
+    /**
+     * @brief Moves the player based on AI decisions.
+     */
+    void movingPlayerByAI();
+
+    /**
+     * @brief Updates player destination coordinates.
+     *
+     * @param x New x-coordinate of player destination.
+     * @param y New y-coordinate of player destination.
+     */
+    void updatePlayerDest(int x, int y);
 
     /**
      * @brief Destructor of the Game class.

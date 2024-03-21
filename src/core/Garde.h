@@ -4,7 +4,6 @@
 #include "point.h"
 #include "config.h"
 #include <cassert>
-#include "Map.h"
 #include <iostream>
 
 /**
@@ -21,25 +20,25 @@ public:
      * @brief Moves the Guard to the left on the specified map.
      * @param map The map on which the Guard moves.
      */
-    void goLeft(const Map &map);
+    void goLeft();
 
     /**
      * @brief Moves the Guard to the right on the specified map.
      * @param map The map on which the Guard moves.
      */
-    void goRight(const Map &map);
+    void goRight();
 
     /**
      * @brief Moves the Guard upward on the specified map.
      * @param map The map on which the Guard moves.
      */
-    void goUp(const Map &map);
+    void goUp();
 
     /**
      * @brief Moves the Guard downward on the specified map.
      * @param map The map on which the Guard moves.
      */
-    void goDown(const Map &map);
+    void goDown();
 
     /**
      * @brief Gets the current position of the Guard.

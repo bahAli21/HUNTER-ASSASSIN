@@ -17,7 +17,6 @@ class SDLSprite {
 public:
     SDL_Surface *_surface; /**< SDL surface for the sprite */
     SDL_Texture *_texture; /**< SDL texture for the sprite */
-public:
     /**
      * @brief Default constructor of the SDLSprite class
      */
@@ -27,12 +26,6 @@ public:
      * @brief Destructor of the SDLSprite class
      */
     ~SDLSprite();
-
-    /**
-     * @brief Copy constructor of the SDLSprite class
-     * @param im The instance of SDLSprite to copy
-     */
-    SDLSprite(const SDLSprite &im);
 
     /**
      * @brief Load an image file as a sprite
@@ -52,25 +45,6 @@ public:
      */
     void draw(SDL_Renderer *renderer, int x, int y, int w = 64, int h = 64, SDL_Rect* recSource = nullptr) const;
 
-    /**
-     * @brief Draw an animation sequence of the sprite on the SDL renderer
-     * @param renderer The SDL renderer to draw on
-     * @param rectSource The source rectangle for clipping
-     * @param rectPlayer The destination rectangle for rendering
-     */
-    void drawAnimationSequence(SDL_Renderer *renderer, Rect rectSource, Rect rectPlayer);
-
-    /**
-     * @brief Get the SDL texture of the sprite
-     * @return The SDL texture of the sprite
-     */
-    SDL_Texture *getTexture() const;
-
-    /**
-     * @brief Set the SDL surface of the sprite
-     * @param surf The SDL surface to set
-     */
-    void setSurface(SDL_Surface *surf);
 };
 
 #endif // HUNTERASSASSIN_SDLSPRITE_H
