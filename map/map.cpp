@@ -19,7 +19,7 @@ void Map::drawObstacle(SDL_Renderer * renderer, char * path, SDL_Rect destinatio
 
 void Map::makeMap(SDL_Renderer * renderer) {
     //drawMoquette(renderer);
-    for(int i=0; i<48;i++){
+    for(int i=0; i<49;i++){
         drawObstacle(renderer,imgPaths[i],recTab[i]);
     }
 }
@@ -27,10 +27,10 @@ void Map::makeMap(SDL_Renderer * renderer) {
 void Map::initAllRectangle() {
     //destination
     const int tailleRecTab = 50;
-    int recTabX[tailleRecTab] = {0,200,0,250,271,421,271,421,271,421,-25,0,675,270,270,395,270,270,70,70,70,170,170,170,70,70,70,70,70,70,70,70,70,500,500,500,603,603,603,500,500,500,500,500,500,500,500,500};
-    int recTabY[tailleRecTab] = {0,900,900,900,799,799,480,480,130,130,0,-25,0,540,190,190,859,-3,190,509,800,70,389,680,70,389,680,70,389,680,140,459,750,190,509,800,70,389,680,70,389,680,70,389,680,140,459,750};
-    int recTabW[tailleRecTab] = {700,50,200,450,20,19,19,19,19,19,50,700,50,170,45,45,170,170,130,130,130,30,30,30,130,130,130,30,30,30,20,20,20,130,130,130,30,30,30,130,130,130,30,30,30,20,20,20};
-    int recTabH[tailleRecTab] = {950,50,50,50,60,60,60,60,60,60,910,50,910,260,295,295,43,135,30,30,30,149,149,149,30,30,30,70,70,70,50,50,50,30,30,30,149,149,149,30,30,30,70,70,70,50,50,50};
+    int recTabX[tailleRecTab] = {0,200,0,250,271,421,271,421,271,421,-25,0,675,270,270,395,270,270,70,70,70,170,170,170,70,70,70,70,70,70,70,70,70,500,500,500,603,603,603,500,500,500,500,500,500,500,500,500,100};
+    int recTabY[tailleRecTab] = {0,900,900,900,799,799,480,480,130,130,0,-25,0,540,190,190,859,-3,190,509,800,70,389,680,70,389,680,70,389,680,140,459,750,190,509,800,70,389,680,70,389,680,70,389,680,140,459,750,270};
+    int recTabW[tailleRecTab] = {700,50,200,450,20,19,19,19,19,19,50,700,50,170,45,45,170,170,130,130,130,30,30,30,130,130,130,30,30,30,20,20,20,130,130,130,30,30,30,130,130,130,30,30,30,20,20,20,100};
+    int recTabH[tailleRecTab] = {950,50,50,50,60,60,60,60,60,60,910,50,910,260,295,295,43,135,30,30,30,149,149,149,30,30,30,70,70,70,50,50,50,30,30,30,149,149,149,30,30,30,70,70,70,50,50,50,50};
     for(int i=0; i<tailleRecTab; i++){
         recTab[i].x = recTabX[i];
         recTab[i].y = recTabY[i];
@@ -42,19 +42,19 @@ void Map::initAllRectangle() {
     pathTexture(imgPaths,"../data/texture.bmp",1); // O moquette
     pathTexture(imgPaths,"../data/porte.bmp",1); // 1 porte
     pathTexture(imgPaths,"../data/mur-entree.bmp",2); // 2 3 mur
-    pathTexture(imgPaths,"../data/porte jaune.bmp",6); // 4 5 6 7 8 9
-    pathTexture(imgPaths,"../data/block.bmp",8); //
-    pathTexture(imgPaths,"../data/bas.bmp",3);
-    pathTexture(imgPaths,"../data/droite.bmp",3);
-    pathTexture(imgPaths,"../data/haut.bmp",3);
-    pathTexture(imgPaths,"../data/gauche.bmp",3);
-    pathTexture(imgPaths,"../data/portesBlocks.bmp",3);
-    pathTexture(imgPaths,"../data/bas.bmp",3);
-    pathTexture(imgPaths,"../data/droite.bmp",3);
-    pathTexture(imgPaths,"../data/haut.bmp",3);
-    pathTexture(imgPaths,"../data/gauche.bmp",3);
-    pathTexture(imgPaths,"../data/portesBlocks.bmp",3);
-
+    pathTexture(imgPaths,"../data/porte jaune.bmp",6); // portes jaunes 4 5 6 7 8 9
+    pathTexture(imgPaths,"../data/block.bmp",8); // bordure gauche 10, bordure haut 11, bordure droite 12, block 13,  piliers 14 15, block bas 16, block haut 17
+    pathTexture(imgPaths,"../data/bas.bmp",3); // block bas cote gauche 18 19 20
+    pathTexture(imgPaths,"../data/droite.bmp",3); // block droit cote gauche 21 22 23
+    pathTexture(imgPaths,"../data/haut.bmp",3); // block haut cote gauche 24 25 26
+    pathTexture(imgPaths,"../data/gauche.bmp",3); // block gauche coté gauche 27 28 29
+    pathTexture(imgPaths,"../data/portesBlocks.bmp",3); // portes des blocks cote gauche 30 31 32
+    pathTexture(imgPaths,"../data/bas.bmp",3); // block bas cote droit 33 34 35
+    pathTexture(imgPaths,"../data/droite.bmp",3); // block droit cote droit 36 37 38
+    pathTexture(imgPaths,"../data/haut.bmp",3); // block haut cote droit 39 40 41
+    pathTexture(imgPaths,"../data/gauche.bmp",3); // block gauche coté droit 42 43 44
+    pathTexture(imgPaths,"../data/portesBlocks.bmp",3); // portes des blocks cote droit 45 46 47
+    pathTexture(imgPaths,"../data/block_H.bmp",1); //
 }
 
 void Map::pathTexture(vector<char *> &imgPaths, char *image, int repetition) {
