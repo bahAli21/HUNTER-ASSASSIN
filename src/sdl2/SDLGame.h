@@ -16,7 +16,7 @@ private:
     SDL_Renderer *renderer; /**< SDL rendering context for display. */
     SDLSprite sp_player; /**< SDL sprite for the player. */
     SDLSprite sp_garde; /**< SDL sprite for the guards. */
-
+    Position camera {};
 public:
     /**
      * @brief Draws the map using SDL.
