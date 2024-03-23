@@ -1,7 +1,7 @@
 #include "Game.h"
 
 Game::Game(int nbGardes): _player(), nbGardes(nbGardes),
-PlayerAI(_player.playerDest, _player.dest) {
+    PlayerAI(_player.playerDest, _player.dest) {
     allGardes = new Garde[nbGardes];
     gardesDest = new Rect[nbGardes];
     gardesRect = new Rect[nbGardes];
@@ -49,6 +49,8 @@ PlayerAI(_player.playerDest, _player.dest) {
                        PLAYER_WIDTH-40,
                        PLAYER_HEIGHT-40};
     }
+    vecAllObstacles.push_back({WINDOW_W / 4 +20, 150, WINDOW_W / 4 - 25, SQUARE_SIZE});
+    vecAllObstacles.push_back({WINDOW_W / 4, 150, WINDOW_W / 4 - 25, SQUARE_SIZE});
 }
 
 // Méthode pour vérifier la collision entre deux rectangles

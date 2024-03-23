@@ -340,13 +340,11 @@ int main(int argc, char* args[]) {
     SDLTtf affichageNumber;
     affichageTxt.loadFromFont(contenu.renderer, fontScore, "SCORE: ", colorScore);
     int nb = 0;
-    char buf[33];
-    itoa(nb, buf, 10);
+    //Comme en LIFSE
+    char buf[LEN];
     affichageNumber.loadFromFont(contenu.renderer, fontScore, buf, colorNumber);
     // Boucle principale du jeu
     while (true) {
-        //Comme en LIFSE
-        char buf[LEN];
         //Radix represente la base dans la quelle j'affiche mes chiffres pour moi c'est la base 10
         itoa(nb, buf, 10);
         // Effacement de l'écran

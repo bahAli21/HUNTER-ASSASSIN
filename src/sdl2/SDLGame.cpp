@@ -35,19 +35,8 @@ SDLGame::SDLGame() : game(2){
 
 //Une petite map ;
 // Remplissage du vecteur avec les obstacles du tableau
-    //game.vecAllObstacles.push_back({WINDOW_W / 2 - 80, 50, WINDOW_W / 2 - 25, SQUARE_SIZE});
-    //game.vecAllObstacles.push_back({WINDOW_W / 4, WINDOW_H / 2 - 20, 25, WINDOW_W / 2 - 25});
-    //game.vecAllObstacles.push_back({WINDOW_W / 2 + 20, WINDOW_H / 2 - 20, 25, WINDOW_W / 2 - 25});
-    //game.vecAllObstacles.push_back({WINDOW_W / 2 - 80, WINDOW_H - 70, WINDOW_W / 2 - 25, SQUARE_SIZE});
-    //Bloc horizontale
-    game.vecAllObstacles.push_back({WINDOW_W / 4, 50, WINDOW_W / 4 - 25, SQUARE_SIZE});
-    game.vecAllObstacles.push_back({WINDOW_W / 4, 150, WINDOW_W / 4 - 25, SQUARE_SIZE});
-    //Bloc verticale
-    //game.vecAllObstacles.push_back({WINDOW_W / 4, 50, WINDOW_W / 2 - 25, SQUARE_SIZE});
-    game.vecAllObstacles.push_back({WINDOW_W / 4-20, 50, SQUARE_SIZE, WINDOW_W / 4 - 54});
-    game.vecAllObstacles.push_back({WINDOW_W / 2 -30, 50, SQUARE_SIZE, WINDOW_W / 4 - 105});
-    // Initialisation de tous les sprites
-
+    //game.vecAllObstacles.push_back({WINDOW_W / 4 +20, 150, WINDOW_W / 4 - 25, SQUARE_SIZE+10});
+    //game.vecAllObstacles.push_back({WINDOW_W / 4, 150, WINDOW_W / 4 - 25, SQUARE_SIZE});
     // TODO On choisi le chemein depuis executable bin (donc on remonte une fois et on passe dans data)
     const char *path = "../data/mur.bmp";
     sp_player.loadSpriteFile(path, renderer);
@@ -117,7 +106,7 @@ void SDLGame::sdlDraw() {
     //Je dessine mon bloc
     sp_player.draw(renderer, game._player.playerDest->x, game._player.playerDest->y, 20, 20);
     for (const Rect obstacle: game.vecAllObstacles) {
-        sp_player.draw(renderer, obstacle.x-camera.x, obstacle.y-camera.y, obstacle.w, obstacle.h);
+        sp_player.draw(renderer, obstacle.x, obstacle.y, obstacle.w, obstacle.h);
     }
     //Je dessine tous les gardes
     for (int i = 0; i < game.getNbGardes(); ++i) {
