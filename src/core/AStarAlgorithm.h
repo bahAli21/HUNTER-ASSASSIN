@@ -122,10 +122,19 @@ namespace AStar
         CoordinateList findPath(Vec2i source_, Vec2i target_);
 
         /**
-         * @brief Ajoute une collision à la liste des obstacles dans le monde.
-         * @param coordinates_ Les coordonnées de la collision à ajouter.
+         * @brief Ajoute une collision représentée par un rectangle à la liste des obstacles dans le monde.
+         *
+         * Cette méthode permet d'ajouter un obstacle sous forme de rectangle à la liste des obstacles
+         * considérés par l'algorithme A*. Les coordonnées spécifiées représentent le coin supérieur gauche
+         * du rectangle obstacle, et la largeur et la hauteur définissent les dimensions du rectangle.
+         * Chaque point à l'intérieur du rectangle sera considéré comme une collision par l'algorithme A*.
+         *
+         * @param topLeft Les coordonnées du coin supérieur gauche du rectangle obstacle.
+         * @param width La largeur du rectangle obstacle (par défaut 0).
+         * @param height La hauteur du rectangle obstacle (par défaut 0).
          */
-        void addCollision(Vec2i coordinates_);
+        void addCollision(Vec2i topLeft, int width = 0, int height = 0);
+
 
         /**
          * @brief Supprime une collision de la liste des obstacles dans le monde.
