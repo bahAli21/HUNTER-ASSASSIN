@@ -134,5 +134,50 @@ void AStar::Generator::setHeuristic(HeuristicFunction heuristic_)
     heuristic = heuristic_;
 }
 
+/**
+ * @brief Ajoute une collision à la liste des obstacles dans le monde.
+ *
+ * Cette fonction prend les coordonnées de la collision à ajouter en entrée
+ * et les ajoute à la liste walls de l'objet Generator, représentant les obstacles dans le monde.
+ *
+ * @param coordinates_ Les coordonnées de la collision à ajouter.
+ */
+void AStar::Generator::addCollision(Vec2i coordinates_)
+{
+    walls.push_back(coordinates_);
+}
+
+/**
+ * @brief Supprime une collision de la liste des obstacles dans le monde.
+ *
+ * Cette fonction prend les coordonnées de la collision à supprimer en entrée,
+ * recherche ces coordonnées dans la liste walls et les supprime si elles sont trouvées.
+ *
+ * @param coordinates_ Les coordonnées de la collision à supprimer.
+ */
+void AStar::Generator::removeCollision(Vec2i coordinates_)
+{
+    // Recherche la collision à supprimer dans la liste walls
+    auto it = std::find(walls.begin(), walls.end(), coordinates_);
+
+    // Si la collision est trouvée, la supprime de la liste
+    if (it != walls.end()) {
+        walls.erase(it);
+    }
+}
+
+/**
+ * @brief Efface toutes les collisions de la liste des obstacles dans le monde.
+ *
+ * Cette fonction supprime toutes les collisions de la liste walls de l'objet Generator,
+ * effaçant ainsi tous les obstacles dans le monde.
+ */
+void AStar::Generator::clearCollisions()
+{
+    walls.clear();
+}
+
+
+
 
 
