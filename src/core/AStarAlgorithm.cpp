@@ -135,16 +135,25 @@ void AStar::Generator::setHeuristic(HeuristicFunction heuristic_)
 }
 
 /**
- * @brief Ajoute une collision à la liste des obstacles dans le monde.
- *
- * Cette fonction prend les coordonnées de la collision à ajouter en entrée
- * et les ajoute à la liste walls de l'objet Generator, représentant les obstacles dans le monde.
- *
- * @param coordinates_ Les coordonnées de la collision à ajouter.
- */
-void AStar::Generator::addCollision(Vec2i coordinates_)
+         * @brief Ajoute une collision représentée par un rectangle à la liste des obstacles dans le monde.
+         *
+         * Cette méthode permet d'ajouter un obstacle sous forme de rectangle à la liste des obstacles
+         * considérés par l'algorithme A*. Les coordonnées spécifiées représentent le coin supérieur gauche
+         * du rectangle obstacle, et la largeur et la hauteur définissent les dimensions du rectangle.
+         * Chaque point à l'intérieur du rectangle sera considéré comme une collision par l'algorithme A*.
+         *
+         * @param topLeft Les coordonnées du coin supérieur gauche du rectangle obstacle.
+         * @param width La largeur du rectangle obstacle (par défaut 0).
+         * @param height La hauteur du rectangle obstacle (par défaut 0).
+         */
+void AStar::Generator::addCollision(Vec2i topLeft, int width, int height)
 {
-    walls.push_back(coordinates_);
+    // Ajouter les coordonnées de tous les points du rectangle obstacle à la liste des murs
+    for (int x = topLeft.x; x < topLeft.x + width; ++x) {
+        for (int y = topLeft.y; y < topLeft.y + height; ++y) {
+            walls.push_back({x, y});
+        }
+    }
 }
 
 /**
