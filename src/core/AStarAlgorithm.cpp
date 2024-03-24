@@ -317,3 +317,31 @@ bool AStar::Generator::detectCollision(Vec2i coordinates_)
     }
     return false;
 }
+
+
+//Un point
+
+AStar::Vec2i AStar::Heuristic::getDelta(Vec2i source_, Vec2i target_)
+{
+    return{ abs(source_.x - target_.x),  abs(source_.y - target_.y) };
+}
+
+
+AStar::uint AStar::Heuristic::manhattan(Vec2i source_, Vec2i target_)
+{
+    //auto permet d'affecter automatiquement le type de retour de getDelta a delta
+    auto delta = getDelta(source_, target_);
+    return static_cast<uint>(10 * (delta.x + delta.y));
+}
+
+AStar::uint AStar::Heuristic::euclidean(Vec2i source_, Vec2i target_)
+{
+    auto delta = getDelta(source_, target_);
+    return static_cast<uint>(10 * sqrt(pow(delta.x, 2) + pow(delta.y, 2)));
+}
+
+AStar::uint AStar::Heuristic::octagonal(Vec2i source_, Vec2i target_)
+{
+    auto delta = getDelta(source_, target_);
+    return 10 * (delta.x + delta.y) + (-6) * std::min(delta.x, delta.y);
+}
