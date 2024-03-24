@@ -24,7 +24,9 @@ set(SRC_CORE ${SRC_CORE_DIR}/Game.cpp ${SRC_CORE_DIR}/Garde.cpp #${SRC_CORE_DIR}
 set(HEADER_CORE ${SRC_CORE_DIR}/Game.h ${SRC_CORE_DIR}/Garde.h
         ${SRC_CORE_DIR}/IA.h ${SRC_CORE_DIR}/Player.h ${SRC_CORE_DIR}/point.h
         ${SRC_CORE_DIR}/Rect.h ${SRC_CORE_DIR}/config.h
-        src/core/Direction.h)
+        src/core/Direction.h
+        src/core/AStarAlgorithm.cpp
+        src/core/AStarAlgorithm.h)
 
 set(SRC_SDL2 ${SRC_SDL2_DIR}/mainProject.cpp ${SRC_SDL2_DIR}/SDLGame.cpp
         ${SRC_SDL2_DIR}/SDLGame.h ${SRC_SDL2_DIR}/SDLSprite.h ${SRC_SDL2_DIR}/SDLSprite.cpp
