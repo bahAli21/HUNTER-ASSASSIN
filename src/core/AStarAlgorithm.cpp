@@ -258,7 +258,62 @@ AStar::CoordinateList AStar::Generator::findPath(Vec2i source_, Vec2i target_)
 }
 
 
+/**
+ * @brief Recherche un nœud dans une liste par ses coordonnées.
+ *
+ * Cette méthode parcourt une liste de nœuds et recherche un nœud dont les coordonnées
+ * correspondent à celles spécifiées. Si un tel nœud est trouvé, un pointeur vers ce nœud
+ * est retourné. Sinon, la valeur nullptr est retournée.
+ *
+ * @param nodes_ La liste de nœuds dans laquelle effectuer la recherche.
+ * @param coordinates_ Les coordonnées du nœud à rechercher.
+ * @return Un pointeur vers le nœud recherché, ou nullptr s'il n'est pas trouvé.
+ */
 
+AStar::Node* AStar::Generator::findNodeOnList(NodeSet& nodes_, Vec2i coordinates_)
+{
+    for (auto node : nodes_) {
+        if (node->coordinates == coordinates_) {
+            return node;
+        }
+    }
+    return nullptr;
+}
 
+/**
+ * @brief Libère la mémoire allouée pour les nœuds dans une liste.
+ *
+ * Cette méthode parcourt une liste de nœuds et libère la mémoire allouée pour chaque nœud.
+ * Elle supprime chaque nœud de la liste et libère la mémoire associée à l'aide de l'opérateur delete.
+ *
+ * @param nodes_ La liste de nœuds dont la mémoire doit être libérée.
+ */
 
+void AStar::Generator::releaseNodes(NodeSet& nodes_)
+{
+    for (auto it = nodes_.begin(); it != nodes_.end();) {
+        delete *it;
+        it = nodes_.erase(it);
+    }
+}
 
+/**
+ * @brief Détermine si des coordonnées spécifiées représentent une collision.
+ *
+ * Cette méthode vérifie si les coordonnées spécifiées sont en dehors des limites du monde
+ * ou correspondent à une position occupée par un mur. Si c'est le cas, elle retourne true,
+ * indiquant une collision. Sinon, elle retourne false.
+ *
+ * @param coordinates_ Les coordonnées à vérifier.
+ * @return true si les coordonnées représentent une collision, sinon false.
+ */
+
+bool AStar::Generator::detectCollision(Vec2i coordinates_)
+{
+    if (coordinates_.x < 0 || coordinates_.x >= worldSize.x ||
+        coordinates_.y < 0 || coordinates_.y >= worldSize.y ||
+        std::find(walls.begin(), walls.end(), coordinates_) != walls.end()) {
+        return true;
+    }
+    return false;
+}
