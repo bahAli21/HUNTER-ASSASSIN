@@ -177,6 +177,87 @@ void AStar::Generator::clearCollisions()
     walls.clear();
 }
 
+/**
+ * @brief Recherche un chemin de la source vers la cible en utilisant l'algorithme A*.
+ *
+ * Cette méthode utilise l'algorithme A* pour trouver un chemin de la source à la cible
+ * dans l'environnement donné. Elle prend en compte les obstacles, la taille de la grille,
+ * les mouvements diagonaux et une fonction heuristique pour estimer le coût restant.
+ *
+ * @param source_ Les coordonnées de la source.
+ * @param target_ Les coordonnées de la cible.
+ * @return Une liste de coordonnées représentant le chemin trouvé de la source à la cible.
+ */
+AStar::CoordinateList AStar::Generator::findPath(Vec2i source_, Vec2i target_)
+{
+    Node *current = nullptr; // Nœud actuel dans l'algorithme
+    NodeSet openSet, closedSet; // Ensembles de nœuds ouverts et fermés
+    openSet.reserve(100); // Réserve de la mémoire pour optimiser les performances
+    closedSet.reserve(100); // Réserve de la mémoire pour optimiser les performances
+    openSet.push_back(new Node(source_)); // Ajoute le nœud de départ à l'ensemble des nœuds ouverts
+
+    // Tant qu'il y a des nœuds dans l'ensemble des nœuds ouverts
+    while (!openSet.empty()) {
+        auto current_it = openSet.begin();
+        current = *current_it;
+
+        // Recherche du nœud avec le score le plus bas dans l'ensemble des nœuds ouverts
+        for (auto it = openSet.begin(); it != openSet.end(); it++) {
+            auto node = *it;
+            if (node->getScore() <= current->getScore()) {
+                current = node;
+                current_it = it;
+            }
+        }
+
+        // Si le nœud actuel correspond à la cible, le chemin est trouvé
+        if (current->coordinates == target_) {
+            break;
+        }
+
+        // Déplace le nœud actuel de l'ensemble des nœuds ouverts à l'ensemble des nœuds fermés
+        closedSet.push_back(current);
+        openSet.erase(current_it);
+
+        // Parcours des directions possibles pour générer les successeurs du nœud actuel
+        for (uint i = 0; i < directions; ++i) {
+            Vec2i newCoordinates(current->coordinates + direction[i]);
+            if (detectCollision(newCoordinates) ||
+                findNodeOnList(closedSet, newCoordinates)) {
+                continue; // Si la position est un obstacle ou est déjà évaluée, passe à la suivante
+            }
+
+            // Calcul du coût total pour atteindre le successeur
+            uint totalCost = current->G + ((i < 4) ? 10 : 14); // Coût 10 pour les déplacements horizontaux/verticaux, 14 pour les diagonales
+
+            // Recherche du successeur dans l'ensemble des nœuds ouverts
+            Node *successor = findNodeOnList(openSet, newCoordinates);
+            if (successor == nullptr) { // Si le successeur n'existe pas dans l'ensemble des nœuds ouverts
+                successor = new Node(newCoordinates, current); // Crée un nouveau nœud
+                successor->G = totalCost; // Met à jour le coût G du successeur
+                successor->H = heuristic(successor->coordinates, target_); // Calcule et met à jour le coût H du successeur
+                openSet.push_back(successor); // Ajoute le successeur à l'ensemble des nœuds ouverts
+            }
+            else if (totalCost < successor->G) { // Si le coût total pour atteindre le successeur est inférieur à son coût G actuel
+                successor->parent = current; // Met à jour le parent du successeur
+                successor->G = totalCost; // Met à jour le coût G du successeur
+            }
+        }
+    }
+
+    CoordinateList path; // Chemin trouvé
+    while (current != nullptr) { // Reconstitution du chemin en suivant les parents à partir du nœud final
+        path.push_back(current->coordinates);
+        current = current->parent;
+    }
+
+    releaseNodes(openSet); // Libère la mémoire allouée pour les nœuds dans l'ensemble des nœuds ouverts
+    releaseNodes(closedSet); // Libère la mémoire allouée pour les nœuds dans l'ensemble des nœuds fermés
+
+    return path; // Retourne le chemin trouvé
+}
+
+
 
 
 
