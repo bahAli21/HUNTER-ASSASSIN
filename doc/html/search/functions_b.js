@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['right_0',['RIGHT',['../class_s_d_l_animation.html#a953abd6195b5b3a90a435bf538e7efd7',1,'SDLAnimation::RIGHT()'],['../main_animation_8cpp.html#af18af51e0cf3dbcf8727b8021980c51f',1,'RIGHT():&#160;mainAnimation.cpp']]],
-  ['runproject_1',['runProject',['../class_s_d_l_game.html#ad77887b0e535ee0473f87bca5db8c884',1,'SDLGame']]]
+  ['octagonal_0',['octagonal',['../class_a_star_1_1_heuristic.html#a57ebed547ffe01a20e379e8e8902872d',1,'AStar::Heuristic']]],
+  ['operator_3d_3d_1',['operator==',['../struct_a_star_1_1_vec2i.html#a71da61fc86680097b3c8978f77d4cb53',1,'AStar::Vec2i']]]
 ];

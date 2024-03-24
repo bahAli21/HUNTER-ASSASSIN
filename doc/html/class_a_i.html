@@ -133,6 +133,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a68f753756e6a487526c7592f4ef29aa2" id="r_a68f753756e6a487526c7592f4ef29aa2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68f753756e6a487526c7592f4ef29aa2">freePixel</a> (std::vector&lt; <a class="el" href="struct_rect.html">Rect</a> &gt; &amp;obstacles)</td></tr>
 <tr class="memdesc:a68f753756e6a487526c7592f4ef29aa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the pixel is free.  <br /></td></tr>
 <tr class="separator:a68f753756e6a487526c7592f4ef29aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a521a0bc1be1f31fa551cf1288695941a" id="r_a521a0bc1be1f31fa551cf1288695941a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a521a0bc1be1f31fa551cf1288695941a">AI</a> (<a class="el" href="struct_rect.html">Rect</a> *squareRect, <a class="el" href="struct_rect.html">Rect</a> *destRect)</td></tr>
+<tr class="memdesc:a521a0bc1be1f31fa551cf1288695941a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de la classe <a class="el" href="class_a_i.html" title="Class defining the artificial intelligence for the game.">AI</a>.  <br /></td></tr>
+<tr class="separator:a521a0bc1be1f31fa551cf1288695941a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64ec60281e9eb8496f16525615db54b7" id="r_a64ec60281e9eb8496f16525615db54b7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64ec60281e9eb8496f16525615db54b7">AI</a> ()</td></tr>
+<tr class="separator:a64ec60281e9eb8496f16525615db54b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92ec660e52d6199d824cb625ac80e1c7" id="r_a92ec660e52d6199d824cb625ac80e1c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92ec660e52d6199d824cb625ac80e1c7">estArrivee</a> ()</td></tr>
+<tr class="memdesc:a92ec660e52d6199d824cb625ac80e1c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si le carré est arrivé à sa destination.  <br /></td></tr>
+<tr class="separator:a92ec660e52d6199d824cb625ac80e1c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7fa55acef49e8730527c2e28a6ae8c8" id="r_ac7fa55acef49e8730527c2e28a6ae8c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7fa55acef49e8730527c2e28a6ae8c8">mov</a> (std::vector&lt; <a class="el" href="struct_rect.html">Rect</a> &gt; obstacleRect)</td></tr>
+<tr class="memdesc:ac7fa55acef49e8730527c2e28a6ae8c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère le mouvement du carré contrôlé par l'IA.  <br /></td></tr>
+<tr class="separator:ac7fa55acef49e8730527c2e28a6ae8c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a226f8388ce36c2575464aede760a6583" id="r_a226f8388ce36c2575464aede760a6583"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a226f8388ce36c2575464aede760a6583">collision</a> (const <a class="el" href="struct_rect.html">Rect</a> &amp;rect2)</td></tr>
+<tr class="memdesc:a226f8388ce36c2575464aede760a6583"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie s'il y a une collision entre deux rectangles.  <br /></td></tr>
+<tr class="separator:a226f8388ce36c2575464aede760a6583"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab73aed05564597e42eb645bfd2a59995" id="r_ab73aed05564597e42eb645bfd2a59995"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab73aed05564597e42eb645bfd2a59995">contourObstacle</a> (<a class="el" href="struct_rect.html">Rect</a> obstacleRect)</td></tr>
+<tr class="memdesc:ab73aed05564597e42eb645bfd2a59995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contourne un obstacle en choisissant le chemin le plus court.  <br /></td></tr>
+<tr class="separator:ab73aed05564597e42eb645bfd2a59995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0718b5b45dde802b9392411a9538dd7c" id="r_a0718b5b45dde802b9392411a9538dd7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0718b5b45dde802b9392411a9538dd7c">moveAgain</a> (int distanceX, int distanceY)</td></tr>
+<tr class="memdesc:a0718b5b45dde802b9392411a9538dd7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplace le carré contrôlé par l'IA en fonction des distances spécifiées sur les axes x et y.  <br /></td></tr>
+<tr class="separator:a0718b5b45dde802b9392411a9538dd7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68f753756e6a487526c7592f4ef29aa2" id="r_a68f753756e6a487526c7592f4ef29aa2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68f753756e6a487526c7592f4ef29aa2">freePixel</a> (std::vector&lt; <a class="el" href="struct_rect.html">Rect</a> &gt; &amp;obstacles)</td></tr>
+<tr class="separator:a68f753756e6a487526c7592f4ef29aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb068ce7996071e48b59ceb8512d7d44" id="r_afb068ce7996071e48b59ceb8512d7d44"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb068ce7996071e48b59ceb8512d7d44">destNotAvailable</a> (const <a class="el" href="struct_rect.html">Rect</a> &amp;rect1, const <a class="el" href="struct_rect.html">Rect</a> &amp;rect2)</td></tr>
+<tr class="separator:afb068ce7996071e48b59ceb8512d7d44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -153,9 +177,10 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class defining the artificial intelligence for the game. </p>
+<p>Classe définissant l'intelligence artificielle pour le jeu. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a521a0bc1be1f31fa551cf1288695941a" name="a521a0bc1be1f31fa551cf1288695941a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a521a0bc1be1f31fa551cf1288695941a">&#9670;&#160;</a></span>AI() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a521a0bc1be1f31fa551cf1288695941a">&#9670;&#160;</a></span>AI() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -185,7 +210,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a64ec60281e9eb8496f16525615db54b7" name="a64ec60281e9eb8496f16525615db54b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64ec60281e9eb8496f16525615db54b7">&#9670;&#160;</a></span>AI() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a64ec60281e9eb8496f16525615db54b7">&#9670;&#160;</a></span>AI() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -211,9 +236,56 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a521a0bc1be1f31fa551cf1288695941a" name="a521a0bc1be1f31fa551cf1288695941a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a521a0bc1be1f31fa551cf1288695941a">&#9670;&#160;</a></span>AI() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AI::AI </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_rect.html">Rect</a> *</td>          <td class="paramname"><span class="paramname"><em>squareRect</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_rect.html">Rect</a> *</td>          <td class="paramname"><span class="paramname"><em>destRect</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructeur de la classe <a class="el" href="class_a_i.html" title="Class defining the artificial intelligence for the game.">AI</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">squareRect</td><td>Pointeur vers le rectangle représentant le carré contrôlé par l'IA. </td></tr>
+    <tr><td class="paramname">destRect</td><td>Pointeur vers le rectangle représentant la destination du carré. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a64ec60281e9eb8496f16525615db54b7" name="a64ec60281e9eb8496f16525615db54b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64ec60281e9eb8496f16525615db54b7">&#9670;&#160;</a></span>AI() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AI::AI </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a226f8388ce36c2575464aede760a6583" name="a226f8388ce36c2575464aede760a6583"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a226f8388ce36c2575464aede760a6583">&#9670;&#160;</a></span>collision()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a226f8388ce36c2575464aede760a6583">&#9670;&#160;</a></span>collision() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -238,8 +310,34 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a226f8388ce36c2575464aede760a6583" name="a226f8388ce36c2575464aede760a6583"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a226f8388ce36c2575464aede760a6583">&#9670;&#160;</a></span>collision() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AI::collision </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_rect.html">Rect</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rect2</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie s'il y a une collision entre deux rectangles. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rect2</td><td>Rectangle avec lequel vérifier la collision. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True s'il y a une collision, sinon False. </dd></dl>
+
+</div>
+</div>
 <a id="ab73aed05564597e42eb645bfd2a59995" name="ab73aed05564597e42eb645bfd2a59995"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab73aed05564597e42eb645bfd2a59995">&#9670;&#160;</a></span>contourObstacle()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab73aed05564597e42eb645bfd2a59995">&#9670;&#160;</a></span>contourObstacle() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -263,8 +361,33 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ab73aed05564597e42eb645bfd2a59995" name="ab73aed05564597e42eb645bfd2a59995"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab73aed05564597e42eb645bfd2a59995">&#9670;&#160;</a></span>contourObstacle() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AI::contourObstacle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_rect.html">Rect</a></td>          <td class="paramname"><span class="paramname"><em>obstacleRect</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Contourne un obstacle en choisissant le chemin le plus court. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obstacleRect</td><td>Rectangle représentant l'obstacle à contourner. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="afb068ce7996071e48b59ceb8512d7d44" name="afb068ce7996071e48b59ceb8512d7d44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb068ce7996071e48b59ceb8512d7d44">&#9670;&#160;</a></span>destNotAvailable()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afb068ce7996071e48b59ceb8512d7d44">&#9670;&#160;</a></span>destNotAvailable() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -302,8 +425,29 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="afb068ce7996071e48b59ceb8512d7d44" name="afb068ce7996071e48b59ceb8512d7d44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb068ce7996071e48b59ceb8512d7d44">&#9670;&#160;</a></span>destNotAvailable() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AI::destNotAvailable </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_rect.html">Rect</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rect1</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_rect.html">Rect</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rect2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a92ec660e52d6199d824cb625ac80e1c7" name="a92ec660e52d6199d824cb625ac80e1c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92ec660e52d6199d824cb625ac80e1c7">&#9670;&#160;</a></span>estArrivee()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a92ec660e52d6199d824cb625ac80e1c7">&#9670;&#160;</a></span>estArrivee() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -322,8 +466,28 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a92ec660e52d6199d824cb625ac80e1c7" name="a92ec660e52d6199d824cb625ac80e1c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92ec660e52d6199d824cb625ac80e1c7">&#9670;&#160;</a></span>estArrivee() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AI::estArrivee </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si le carré est arrivé à sa destination. </p>
+<dl class="section return"><dt>Returns</dt><dd>True si le carré est arrivé à sa destination, sinon False. </dd></dl>
+
+</div>
+</div>
 <a id="a68f753756e6a487526c7592f4ef29aa2" name="a68f753756e6a487526c7592f4ef29aa2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68f753756e6a487526c7592f4ef29aa2">&#9670;&#160;</a></span>freePixel()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a68f753756e6a487526c7592f4ef29aa2">&#9670;&#160;</a></span>freePixel() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -348,8 +512,25 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a68f753756e6a487526c7592f4ef29aa2" name="a68f753756e6a487526c7592f4ef29aa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68f753756e6a487526c7592f4ef29aa2">&#9670;&#160;</a></span>freePixel() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AI::freePixel </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="struct_rect.html">Rect</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>obstacles</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a91ac0685a61db1c37096bdbfa2fd1b19" name="a91ac0685a61db1c37096bdbfa2fd1b19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91ac0685a61db1c37096bdbfa2fd1b19">&#9670;&#160;</a></span>mov()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a91ac0685a61db1c37096bdbfa2fd1b19">&#9670;&#160;</a></span>mov() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -373,8 +554,63 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ac7fa55acef49e8730527c2e28a6ae8c8" name="ac7fa55acef49e8730527c2e28a6ae8c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7fa55acef49e8730527c2e28a6ae8c8">&#9670;&#160;</a></span>mov() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AI::mov </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="struct_rect.html">Rect</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>obstacleRect</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère le mouvement du carré contrôlé par l'IA. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obstacleRect</td><td>Rectangle représentant un obstacle à éviter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0718b5b45dde802b9392411a9538dd7c" name="a0718b5b45dde802b9392411a9538dd7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0718b5b45dde802b9392411a9538dd7c">&#9670;&#160;</a></span>moveAgain() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AI::moveAgain </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>distanceX</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>distanceY</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Déplace le carré contrôlé par l'IA en fonction des distances spécifiées sur les axes x et y. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">distanceX</td><td>Distance sur l'axe x. </td></tr>
+    <tr><td class="paramname">distanceY</td><td>Distance sur l'axe y. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a1d55f384f296983165e706ad3d490ddd" name="a1d55f384f296983165e706ad3d490ddd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d55f384f296983165e706ad3d490ddd">&#9670;&#160;</a></span>moveAgain()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d55f384f296983165e706ad3d490ddd">&#9670;&#160;</a></span>moveAgain() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -469,7 +705,9 @@ Public Attributes</h2></td></tr>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>D:/CLion-Project/NewForkHunterAssassin/HUNTER-ASSASSIN/src/core/<a class="el" href="_i_a_8h_source.html">IA.h</a></li>
+<li>D:/CLion-Project/NewForkHunterAssassin/HUNTER-ASSASSIN/src/core/<a class="el" href="new_i_a_8h_source.html">newIA.h</a></li>
 <li>D:/CLion-Project/NewForkHunterAssassin/HUNTER-ASSASSIN/src/core/<a class="el" href="_i_a_8cpp.html">IA.cpp</a></li>
+<li>D:/CLion-Project/NewForkHunterAssassin/HUNTER-ASSASSIN/src/core/<a class="el" href="new_i_a_8cpp.html">newIA.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

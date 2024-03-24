@@ -1,5 +1,11 @@
 var annotated_dup =
 [
+    [ "AStar", "namespace_a_star.html", [
+      [ "Generator", "class_a_star_1_1_generator.html", "class_a_star_1_1_generator" ],
+      [ "Heuristic", "class_a_star_1_1_heuristic.html", null ],
+      [ "Node", "struct_a_star_1_1_node.html", "struct_a_star_1_1_node" ],
+      [ "Vec2i", "struct_a_star_1_1_vec2i.html", "struct_a_star_1_1_vec2i" ]
+    ] ],
     [ "AI", "class_a_i.html", "class_a_i" ],
     [ "Contenu", "struct_contenu.html", "struct_contenu" ],
     [ "Game", "class_game.html", "class_game" ],

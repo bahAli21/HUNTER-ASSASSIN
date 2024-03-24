@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['walk_0',['Walk',['../class_s_d_l_animation.html#a10607df263d53443a7e02c3ee06ba6af',1,'SDLAnimation::Walk()'],['../main_animation_8cpp.html#a377ca2f31bf0fa2d1df934e2f73ea190',1,'Walk():&#160;mainAnimation.cpp']]],
-  ['walkinganimation_1',['walkingAnimation',['../class_s_d_l_animation.html#aa6ba976a1c735c5e6333271141be916b',1,'SDLAnimation::walkingAnimation()'],['../main_animation_8cpp.html#a545411df695f2f5241932d38fdecfe47',1,'walkingAnimation():&#160;mainAnimation.cpp']]],
-  ['wintxt_2',['WinTXT',['../class_win_t_x_t.html#ad471ddd48d2a7c43acccd1204e419527',1,'WinTXT']]]
+  ['termclear_0',['termClear',['../win_txt_8cpp.html#abfddca010a6ceb2c5292c98247a434ce',1,'termClear():&#160;winTxt.cpp'],['../win_txt_8h.html#abfddca010a6ceb2c5292c98247a434ce',1,'termClear():&#160;winTxt.cpp']]],
+  ['terminit_1',['termInit',['../win_txt_8cpp.html#a67191e6d920e10b82b0868cb240228ae',1,'winTxt.cpp']]],
+  ['termmove_2',['termMove',['../win_txt_8cpp.html#a0038303af38e1a50f24e3d4e33a4635b',1,'winTxt.cpp']]],
+  ['testregression_3',['testRegression',['../class_garde.html#a5bd96184bc0fda81004a917905da1d26',1,'Garde']]],
+  ['toucheclavier_4',['toucheClavier',['../class_game.html#a6bfe59b4589968fda684b5e1190c8b85',1,'Game']]],
+  ['txtrun_5',['txtRun',['../game_txt_8cpp.html#a307fd8196eb718cac18d81c8aa23f151',1,'txtRun(Game &amp;g):&#160;gameTxt.cpp'],['../game_txt_8h.html#a307fd8196eb718cac18d81c8aa23f151',1,'txtRun(Game &amp;g):&#160;gameTxt.cpp']]]
 ];

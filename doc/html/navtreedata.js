@@ -25,13 +25,21 @@
 var NAVTREE =
 [
   [ "HUNTER ASSASSIN", "index.html", [
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ]
+      ] ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Related Symbols", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -49,8 +57,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_direction_8h.html",
-"struct_rect.html#a1e37b6f8a4fb0d68ba22c8fffffab0a4"
+"_a_star_algorithm_8cpp.html",
+"main_animation_8cpp.html#af94185cc2597ad3a470d2c8568e3d3d2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['main_5ftxt_2ecpp_0',['main_txt.cpp',['../main__txt_8cpp.html',1,'']]],
-  ['mainanimation_2ecpp_1',['mainAnimation.cpp',['../main_animation_8cpp.html',1,'']]],
-  ['mainproject_2ecpp_2',['mainProject.cpp',['../main_project_8cpp.html',1,'']]]
+  ['ia_2ecpp_0',['IA.cpp',['../_i_a_8cpp.html',1,'']]],
+  ['ia_2eh_1',['IA.h',['../_i_a_8h.html',1,'']]]
 ];

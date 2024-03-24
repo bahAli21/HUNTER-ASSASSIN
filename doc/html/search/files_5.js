@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['player_2ecpp_0',['Player.cpp',['../_player_8cpp.html',1,'']]],
-  ['player_2eh_1',['Player.h',['../_player_8h.html',1,'']]],
-  ['point_2eh_2',['point.h',['../point_8h.html',1,'']]]
+  ['main_5ftxt_2ecpp_0',['main_txt.cpp',['../main__txt_8cpp.html',1,'']]],
+  ['mainanimation_2ecpp_1',['mainAnimation.cpp',['../main_animation_8cpp.html',1,'']]],
+  ['mainproject_2ecpp_2',['mainProject.cpp',['../main_project_8cpp.html',1,'']]]
 ];

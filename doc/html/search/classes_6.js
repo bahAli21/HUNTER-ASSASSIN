@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wintxt_0',['WinTXT',['../class_win_t_x_t.html',1,'']]]
+  ['rect_0',['Rect',['../struct_rect.html',1,'']]]
 ];

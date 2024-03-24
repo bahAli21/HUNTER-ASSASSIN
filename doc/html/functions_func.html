@@ -96,6 +96,7 @@ $(function(){initNavTree('functions_func.html',''); initResizable(); });
 <div class="textblock">Here is a list of all functions with links to the classes they belong to:</div>
 
 <h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
+<li>addCollision()&#160;:&#160;<a class="el" href="class_a_star_1_1_generator.html#a1314d3d8b5ef3e7644e3a136752f401a">AStar::Generator</a></li>
 <li>AI()&#160;:&#160;<a class="el" href="class_a_i.html#a521a0bc1be1f31fa551cf1288695941a">AI</a></li>
 <li>AttackInit()&#160;:&#160;<a class="el" href="class_s_d_l_animation.html#ad991f737e2ad6d1940a78ab6030f85fe">SDLAnimation</a></li>
 </ul>
@@ -104,6 +105,7 @@ $(function(){initNavTree('functions_func.html',''); initResizable(); });
 <h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
 <li>checkCollision()&#160;:&#160;<a class="el" href="class_game.html#a3be57026ab50336f5d3fef2eb5c25533">Game</a></li>
 <li>clear()&#160;:&#160;<a class="el" href="class_win_t_x_t.html#a1b4cb203533f78bed29498591631f436">WinTXT</a></li>
+<li>clearCollisions()&#160;:&#160;<a class="el" href="class_a_star_1_1_generator.html#a75668206fc8ed93eb334c5aef6b61991">AStar::Generator</a></li>
 <li>collision()&#160;:&#160;<a class="el" href="class_a_i.html#a226f8388ce36c2575464aede760a6583">AI</a></li>
 <li>contourObstacle()&#160;:&#160;<a class="el" href="class_a_i.html#ab73aed05564597e42eb645bfd2a59995">AI</a></li>
 </ul>
@@ -121,10 +123,12 @@ $(function(){initNavTree('functions_func.html',''); initResizable(); });
 
 <h3><a id="index_e" name="index_e"></a>- e -</h3><ul>
 <li>estArrivee()&#160;:&#160;<a class="el" href="class_a_i.html#a92ec660e52d6199d824cb625ac80e1c7">AI</a></li>
+<li>euclidean()&#160;:&#160;<a class="el" href="class_a_star_1_1_heuristic.html#af2e188e7ffd5e43ee4bb89959c3b6251">AStar::Heuristic</a></li>
 </ul>
 
 
 <h3><a id="index_f" name="index_f"></a>- f -</h3><ul>
+<li>findPath()&#160;:&#160;<a class="el" href="class_a_star_1_1_generator.html#a65c03f62439cf8f8a7705e2904d23a69">AStar::Generator</a></li>
 <li>freePixel()&#160;:&#160;<a class="el" href="class_a_i.html#a68f753756e6a487526c7592f4ef29aa2">AI</a></li>
 </ul>
 
@@ -132,6 +136,7 @@ $(function(){initNavTree('functions_func.html',''); initResizable(); });
 <h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
 <li>Game()&#160;:&#160;<a class="el" href="class_game.html#a1d5d2a907bfd31b00a5a08c51b912576">Game</a></li>
 <li>Garde()&#160;:&#160;<a class="el" href="class_garde.html#a4563b22b8d96b4f76fc586eb35c88b6c">Garde</a></li>
+<li>Generator()&#160;:&#160;<a class="el" href="class_a_star_1_1_generator.html#a53e5afad8e1b1558019390ed549cc267">AStar::Generator</a></li>
 <li>getAllGardes()&#160;:&#160;<a class="el" href="class_game.html#a2ad9fb4d0993e02f64c46e65d7f99d92">Game</a></li>
 <li>getCh()&#160;:&#160;<a class="el" href="class_win_t_x_t.html#a418c66475403586ac57a80eceb409166">WinTXT</a></li>
 <li>getConstMap()&#160;:&#160;<a class="el" href="class_game.html#a8d8cc78cf68f601ed2da748683a163d2">Game</a></li>
@@ -139,6 +144,7 @@ $(function(){initNavTree('functions_func.html',''); initResizable(); });
 <li>getHealth()&#160;:&#160;<a class="el" href="class_garde.html#afec44f75dba598cbc895706e7599a5bf">Garde</a>, <a class="el" href="class_player.html#a518eb6e16ed51238b7c1511ccfe6572f">Player</a></li>
 <li>getNbGardes()&#160;:&#160;<a class="el" href="class_game.html#a4ea4ac5113d2f0ba9320f79ffb3c8ada">Game</a></li>
 <li>getPosition()&#160;:&#160;<a class="el" href="class_garde.html#af1f57bc4f4e49c0011ff44814da9cbfd">Garde</a></li>
+<li>getScore()&#160;:&#160;<a class="el" href="struct_a_star_1_1_node.html#a3376b2803d0cc381ada65cdeb58f2b3e">AStar::Node</a></li>
 <li>goDown()&#160;:&#160;<a class="el" href="class_garde.html#acdcaef601ad759a2e97f8d2ab51a96f0">Garde</a>, <a class="el" href="class_player.html#a1c44f69b025c6b217dd74cebccfa2c81">Player</a></li>
 <li>goLeft()&#160;:&#160;<a class="el" href="class_garde.html#a3132c2b06a7b2abfa3b79fd07d495b53">Garde</a>, <a class="el" href="class_player.html#a3bce535d99e9146b6c0dfbae9f179ba9">Player</a></li>
 <li>goRight()&#160;:&#160;<a class="el" href="class_garde.html#a637a8452412e7b07e58fb39e48519f11">Garde</a>, <a class="el" href="class_player.html#ae0d2ad4d3ad0d9b5198c2fa32d3830c5">Player</a></li>
@@ -164,10 +170,22 @@ $(function(){initNavTree('functions_func.html',''); initResizable(); });
 
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
 <li>makeAnimation()&#160;:&#160;<a class="el" href="class_s_d_l_animation.html#a3c3cd70354a44528c37e076d5460b678">SDLAnimation</a></li>
+<li>manhattan()&#160;:&#160;<a class="el" href="class_a_star_1_1_heuristic.html#a0aff6d4b375794c8391f8b16ba223551">AStar::Heuristic</a></li>
 <li>mov()&#160;:&#160;<a class="el" href="class_a_i.html#a91ac0685a61db1c37096bdbfa2fd1b19">AI</a></li>
 <li>moveAgain()&#160;:&#160;<a class="el" href="class_a_i.html#a1d55f384f296983165e706ad3d490ddd">AI</a></li>
 <li>movingGuardByAI()&#160;:&#160;<a class="el" href="class_game.html#af3a26fdfc2678ad9381a562a98dda811">Game</a></li>
 <li>movingPlayerByAI()&#160;:&#160;<a class="el" href="class_game.html#a3deed340700181f9979e1ed43df83d22">Game</a></li>
+</ul>
+
+
+<h3><a id="index_n" name="index_n"></a>- n -</h3><ul>
+<li>Node()&#160;:&#160;<a class="el" href="struct_a_star_1_1_node.html#acb8d367b342d19c94bb32e16c28291fb">AStar::Node</a></li>
+</ul>
+
+
+<h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
+<li>octagonal()&#160;:&#160;<a class="el" href="class_a_star_1_1_heuristic.html#a57ebed547ffe01a20e379e8e8902872d">AStar::Heuristic</a></li>
+<li>operator==()&#160;:&#160;<a class="el" href="struct_a_star_1_1_vec2i.html#a71da61fc86680097b3c8978f77d4cb53">AStar::Vec2i</a></li>
 </ul>
 
 
@@ -181,6 +199,7 @@ $(function(){initNavTree('functions_func.html',''); initResizable(); });
 
 
 <h3><a id="index_r" name="index_r"></a>- r -</h3><ul>
+<li>removeCollision()&#160;:&#160;<a class="el" href="class_a_star_1_1_generator.html#a482dc1936655f0da1874872f5467f89a">AStar::Generator</a></li>
 <li>RIGHT()&#160;:&#160;<a class="el" href="class_s_d_l_animation.html#a953abd6195b5b3a90a435bf538e7efd7">SDLAnimation</a></li>
 <li>runProject()&#160;:&#160;<a class="el" href="class_s_d_l_game.html#ad77887b0e535ee0473f87bca5db8c884">SDLGame</a></li>
 </ul>
@@ -193,10 +212,13 @@ $(function(){initNavTree('functions_func.html',''); initResizable(); });
 <li>SDLSound()&#160;:&#160;<a class="el" href="class_s_d_l_sound.html#a325aa2d8b87e87f2fd1477bd69fd4da4">SDLSound</a></li>
 <li>SDLSprite()&#160;:&#160;<a class="el" href="class_s_d_l_sprite.html#a363783721deef3d34e89ddce870c380b">SDLSprite</a></li>
 <li>SDLTtf()&#160;:&#160;<a class="el" href="class_s_d_l_ttf.html#af960d9517752048e2fd0fa36d9de5845">SDLTtf</a></li>
+<li>setDiagonalMovement()&#160;:&#160;<a class="el" href="class_a_star_1_1_generator.html#a608b09bc181a3945237274df7fcc4b73">AStar::Generator</a></li>
 <li>setHealth()&#160;:&#160;<a class="el" href="class_garde.html#a5d689b9b8c63eec0877b271fe098b642">Garde</a>, <a class="el" href="class_player.html#a5847642dc89943489753796d2781e16c">Player</a></li>
+<li>setHeuristic()&#160;:&#160;<a class="el" href="class_a_star_1_1_generator.html#ac881d49d09ac5ae53e1607492d4e1b33">AStar::Generator</a></li>
 <li>setNbGardes()&#160;:&#160;<a class="el" href="class_game.html#a5328f8dd36d2dfe6f89ff5b241a0445f">Game</a></li>
 <li>setPositionX()&#160;:&#160;<a class="el" href="class_garde.html#a3c8c301df5b3bc7c75544ecf4139f96a">Garde</a></li>
 <li>setPositionY()&#160;:&#160;<a class="el" href="class_garde.html#a6588e1f29d77471b1ad64846c2bb2e82">Garde</a></li>
+<li>setWorldSize()&#160;:&#160;<a class="el" href="class_a_star_1_1_generator.html#a21167376afcc9fc79461298f47c17b95">AStar::Generator</a></li>
 </ul>
 
 

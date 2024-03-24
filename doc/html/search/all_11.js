@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['up_0',['up',['../class_a_i.html#a916852f10bae96746ce0c2c58f509791',1,'AI']]],
-  ['up_1',['UP',['../class_s_d_l_animation.html#a3897fd0f1924408c1f00e42c1a6af9c7',1,'SDLAnimation::UP()'],['../main_animation_8cpp.html#a2dc335655ab47f2d4e5992be6d3b564a',1,'UP():&#160;mainAnimation.cpp']]],
-  ['updateplayer_2',['updatePlayer',['../class_s_d_l_animation.html#a72828e74ddf525e6cd2043e8824625fa',1,'SDLAnimation::updatePlayer()'],['../main_animation_8cpp.html#a9e55dbb80a29480351146c3dbb1fa6b2',1,'updatePlayer():&#160;mainAnimation.cpp']]],
-  ['updateplayerdest_3',['updatePlayerDest',['../class_game.html#a1762229c179cdc59b7a6abb88e58adb9',1,'Game']]]
+  ['termclear_0',['termClear',['../win_txt_8cpp.html#abfddca010a6ceb2c5292c98247a434ce',1,'termClear():&#160;winTxt.cpp'],['../win_txt_8h.html#abfddca010a6ceb2c5292c98247a434ce',1,'termClear():&#160;winTxt.cpp']]],
+  ['terminit_1',['termInit',['../win_txt_8cpp.html#a67191e6d920e10b82b0868cb240228ae',1,'winTxt.cpp']]],
+  ['termmove_2',['termMove',['../win_txt_8cpp.html#a0038303af38e1a50f24e3d4e33a4635b',1,'winTxt.cpp']]],
+  ['testregression_3',['testRegression',['../class_garde.html#a5bd96184bc0fda81004a917905da1d26',1,'Garde']]],
+  ['tex_4',['tex',['../class_player.html#a03edf472827016a1f501be1c06aacf1c',1,'Player']]],
+  ['toucheclavier_5',['toucheClavier',['../class_game.html#a6bfe59b4589968fda684b5e1190c8b85',1,'Game']]],
+  ['txtrun_6',['txtRun',['../game_txt_8cpp.html#a307fd8196eb718cac18d81c8aa23f151',1,'txtRun(Game &amp;g):&#160;gameTxt.cpp'],['../game_txt_8h.html#a307fd8196eb718cac18d81c8aa23f151',1,'txtRun(Game &amp;g):&#160;gameTxt.cpp']]]
 ];
