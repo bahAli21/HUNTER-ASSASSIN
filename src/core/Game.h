@@ -3,7 +3,7 @@
 
 #include "Player.h"
 #include "Rect.h"
-#include "newIA.h"
+#include "IA.h"
 #include "Garde.h"
 
 /**
