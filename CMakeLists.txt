@@ -15,18 +15,26 @@ set(OBJ_DIR ${PROJECT_SOURCE_DIR}/obj)
 set(SRC_CORE_DIR ./src/core)
 set(SRC_SDL2_DIR ./src/sdl2)
 set(SRC_TXT_DIR ./src/txt)
+set(SRC_ASTAR_DIR ./src/Part2)
 
+set(SRC_ASTAR ${SRC_ASTAR_DIR}/Game.cpp ${SRC_ASTAR_DIR}/Level.cpp ${SRC_ASTAR_DIR}/TextureLoader.cpp
+        ${SRC_ASTAR_DIR}/Unit.cpp ${SRC_ASTAR_DIR}/Vector2D.cpp ${SRC_ASTAR_DIR}/main.cpp
+        src/Part2/SDLAnimation.h
+        src/Part2/SDLAnimation.cpp
+        ${SRC_SDL2_DIR}/SDLSprite.h ${SRC_SDL2_DIR}/SDLSprite.cpp ${SRC_CORE_DIR}/Player.cpp
+)
 # Définition des fichiers sources pour chaque composant
-set(SRC_CORE ${SRC_CORE_DIR}/Game.cpp ${SRC_CORE_DIR}/Garde.cpp #${SRC_CORE_DIR}/IA.cpp
+set(SRC_CORE ${SRC_CORE_DIR}/Game.cpp ${SRC_CORE_DIR}/Garde.cpp ${SRC_CORE_DIR}/IA.cpp
         ${SRC_CORE_DIR}/Player.cpp
-        ${SRC_CORE_DIR}/newIA.cpp
+        #${SRC_CORE_DIR}/newIA.cpp
+
 )
 set(HEADER_CORE ${SRC_CORE_DIR}/Game.h ${SRC_CORE_DIR}/Garde.h
         ${SRC_CORE_DIR}/IA.h ${SRC_CORE_DIR}/Player.h ${SRC_CORE_DIR}/point.h
         ${SRC_CORE_DIR}/Rect.h ${SRC_CORE_DIR}/config.h
         src/core/Direction.h
-        src/core/AStarAlgorithm.cpp
-        src/core/AStarAlgorithm.h)
+        src/core/Arrow.h
+)
 
 set(SRC_SDL2 ${SRC_SDL2_DIR}/mainProject.cpp ${SRC_SDL2_DIR}/SDLGame.cpp
         ${SRC_SDL2_DIR}/SDLGame.h ${SRC_SDL2_DIR}/SDLSprite.h ${SRC_SDL2_DIR}/SDLSprite.cpp
@@ -42,7 +50,9 @@ set(SRC_ANIMATION ${PROJECT_SOURCE_DIR}/src/mainAnimation.cpp
         src/sdl2/SDLTtf.cpp
         src/sdl2/SDLSound.h
         src/sdl2/SDLSound.cpp
-        src/core/Direction.h)
+        src/core/Direction.h
+
+)
 
 # Configuration des librairies SDL2 en fonction du système d'exploitation
 if (WIN32)
@@ -78,14 +88,17 @@ if (UNIX)
 endif (UNIX)
 
 # Définition des exécutables
+
 add_executable(HunterAssassin ${SRC_CORE} ${HEADER_CORE} ${SRC_SDL2})
 add_executable(JeuTxt ${SRC_CORE} ${HEADER_CORE} ${SRC_TXT})
 add_executable(Animation ${SRC_ANIMATION})
+add_executable(ASTAR ${SRC_ASTAR})
 
 # Configuration des propriétés des exécutables
 set_target_properties(HunterAssassin PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${HunterAssassin_OUTPUT_PATH})
 set_target_properties(Animation PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${HunterAssassin_OUTPUT_PATH})
 set_target_properties(JeuTxt PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${HunterAssassin_OUTPUT_PATH})
+set_target_properties(ASTAR PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${HunterAssassin_OUTPUT_PATH})
 
 # Configuration de la sortie pour les fichiers objets
 set_target_properties(HunterAssassin PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${OBJ_DIR})
@@ -99,15 +112,17 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ggdb")
 target_include_directories(Animation PUBLIC ${SRC_CORE_DIR} ${SRC_SDL2_DIR} ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR})
 target_include_directories(HunterAssassin PUBLIC ${SRC_CORE_DIR} ${SRC_SDL2_DIR} ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR})
 target_include_directories(JeuTxt PUBLIC ${SRC_CORE_DIR} ${SRC_TXT})
+target_include_directories(ASTAR PUBLIC ${SRC_CORE_DIR} ${SRC_SDL2_DIR} ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR})
 
 # Liaison des librairies
 target_link_directories(HunterAssassin PUBLIC ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY} ${SDL2_MIXER_LIBRARY})
 target_link_directories(Animation PUBLIC ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY} ${SDL2_MIXER_LIBRARY})
-
+target_link_directories(ASTAR PUBLIC ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY} ${SDL2_MIXER_LIBRARY})
 # Configuration des librairies selon le système d'exploitation
 if (WIN32)
     target_link_libraries(HunterAssassin mingw32 SDL2main SDL2 SDL2_image SDL2_ttf SDL2_mixer)
     target_link_libraries(Animation mingw32 SDL2main SDL2 SDL2_image SDL2_ttf SDL2_mixer)
+    target_link_libraries(ASTAR mingw32 SDL2main SDL2 SDL2_image SDL2_ttf SDL2_mixer)
 endif (WIN32)
 
 if (UNIX)
