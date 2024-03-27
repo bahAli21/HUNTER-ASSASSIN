@@ -61,7 +61,7 @@ void Map::initPathMap2(){
     pathTexture(imgPaths,"../data/imgMap1/porte.bmp",1); // 1 porte
     pathTexture(imgPaths,"../data/imgMap1/mur-entree.bmp",2); // 2 3 mur
     pathTexture(imgPaths,"../data/imgMap1/porte jaune.bmp",6); // portes jaunes 4 5 6 7 8 9
-    pathTexture(imgPaths,"../data/imgMap1/block.bmp",8); // bordure gauche 10, bordure haut 11, bordure droite 12, block 13,  piliers 14 15, block bas 16, block haut 17
+    pathTexture(imgPaths,"../data/imgMap2/block2.bmp",8); // bordure gauche 10, bordure haut 11, bordure droite 12, block 13,  piliers 14 15, block bas 16, block haut 17
     pathTexture(imgPaths,"../data/imgMap1/bas.bmp",3); // block bas cote gauche 18 19 20
     pathTexture(imgPaths,"../data/imgMap1/droite.bmp",3); // block droit cote gauche 21 22 23
     pathTexture(imgPaths,"../data/imgMap1/haut.bmp",3); // block haut cote gauche 24 25 26
@@ -95,8 +95,8 @@ void Map::initAllRectangle() {
     }
 
     //chemin
-    initPathMap1();
-    //initPathMap2();
+    //initPathMap1();
+    initPathMap2();
 
 }
 
@@ -115,7 +115,6 @@ void Map::openDoor() {
     for(int i=4; i<=9; i++){
         if(recTab[i].y + recTab[i].h > recTab[i].y)
             recTab[i].h--;
-        sleep(1);
     }
     //isOpen = true;
 }
