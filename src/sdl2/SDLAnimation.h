@@ -10,30 +10,33 @@
 #include "SDLSprite.h"
 #include "../core/Direction.h"
 
+
 /**
  * @brief Class for handling player animations using SDL.
  */
 class SDLAnimation {
 public:
     Player player; /**< Player object for animation. */
+    SDLSprite fireArrow;
+    /** Pour les autre sprite aussi */
     SDLSprite allAnimation; /**< Sprite object containing all animations. */
-    Position player_left_clips[7]{}; /**< Array of positions for left movement animation. */
-    Position player_right_clips[7]{}; /**< Array of positions for right movement animation. */
-    Position player_up_clips[7]{}; /**< Array of positions for up movement animation. */
-    Position player_down_clips[7]{}; /**< Array of positions for down movement animation. */
-    Position attackUp[7]{}; /**< Array of positions for attacking upwards animation. */
+    Position player_left_clips[9]{}; /**< Array of positions for left movement animation. */
+    Position player_right_clips[9]{}; /**< Array of positions for right movement animation. */
+    Position player_up_clips[9]{}; /**< Array of positions for up movement animation. */
+    Position player_down_clips[9]{}; /**< Array of positions for down movement animation. */
+    Position attackUp[13]{}; /**< Array of positions for attacking upwards animation. */
     Position attackUpReverse[7]{}; /**< Array of positions for reverse attacking upwards animation. */
-    Position attackLeft[7]{}; /**< Array of positions for attacking left animation. */
+    Position attackLeft[13]{}; /**< Array of positions for attacking left animation. */
     Position attackLeftReverse[7]{}; /**< Array of positions for reverse attacking left animation. */
-    Position attackDown[7]{}; /**< Array of positions for attacking downwards animation. */
+    Position attackDown[13]{}; /**< Array of positions for attacking downwards animation. */
     Position attackDownReverse[7]{}; /**< Array of positions for reverse attacking downwards animation. */
-    Position attackRight[7]{}; /**< Array of positions for attacking right animation. */
+    Position attackRight[13]{}; /**< Array of positions for attacking right animation. */
     Position attackRightReverse[7]{}; /**< Array of positions for reverse attacking right animation. */
     Position attackUpStabbed[7]{}; /**< Array of positions for attacking upwards with stabbing animation. */
     Position attackLeftStabbed[7]{}; /**< Array of positions for attacking left with stabbing animation. */
     Position attackDownStabbed[7]{}; /**< Array of positions for attacking downwards with stabbing animation. */
     Position attackRightStabbed[7]{}; /**< Array of positions for attacking right with stabbing animation. */
-
+    Position PlayerHurtClips[7];
     /**
      * @brief Constructor for SDLAnimation class.
      * @param renderer SDL_Renderer object for rendering.
@@ -41,13 +44,17 @@ public:
      * @param _player Player object.
      */
     SDLAnimation(SDL_Renderer* renderer, const char * path, const Player& _player);
-
+    const Uint8* state;
+    void updateArrowPos(int idxAtt, int speed);
     /**
      * @brief Destructor for SDLAnimation class.
      */
     ~SDLAnimation();
-
+    void Arrow(SDL_Renderer * renderer) const;
     char keyBoard{}; /**< Key pressed by player. */
+    char keyBoardD{}; /**< Key pressed by player. */
+    char keyBoardK{}; /**< Key pressed by player. */
+    bool isDraw = false;
     bool moving_left{}; /**< Flag indicating left movement. */
     bool moving_right{}; /**< Flag indicating right movement. */
     bool moving_up{}; /**< Flag indicating up movement. */
@@ -56,7 +63,7 @@ public:
     /**
      * @brief Initiates walking animation.
      */
-    void Walk();
+    void Walk(Position tabPos[], int index);
 
     /**
      * @brief Initializes attack animation.
