@@ -9,6 +9,7 @@ using namespace std;
 #include "time.h"
 #include "math.h"
 #include "stdlib.h"
+#include "unistd.h"
 #ifndef HUNTERASSASSIN_MAP_H
 #define HUNTERASSASSIN_MAP_H
 
@@ -23,6 +24,9 @@ public:
     void initAllRectangle();
     void initPathMap1();
     void initPathMap2();
+    void openDoor();
+    void closeDoor();
+    bool isOpen = true;
     void drawObstacle(SDL_Renderer * renderer, char * path, SDL_Rect destination);
     //void drawMoquette(SDL_Renderer * renderer);
     void makeMap(SDL_Renderer * renderer);
