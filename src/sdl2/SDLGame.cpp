@@ -104,7 +104,7 @@ void SDLGame::sdlDraw() {
     SDL_SetRenderDrawColor(renderer, 230, 240, 255, 255);
     SDL_RenderClear(renderer);
     //Je dessine mon bloc
-    sp_player.draw(renderer, game._player.playerDest->x, game._player.playerDest->y, 20, 20);
+    //sp_player.draw(renderer, game._player.playerDest->x, game._player.playerDest->y, 20, 20);
     for (const Rect obstacle: game.vecAllObstacles) {
         sp_player.draw(renderer, obstacle.x, obstacle.y, obstacle.w, obstacle.h);
     }
@@ -116,7 +116,7 @@ void SDLGame::sdlDraw() {
 
 void SDLGame::runProject() {
     SDL_Event event;
-    SDLAnimation playerAnimation(renderer, "../data/sprite_Player.bmp", game._player);
+    SDLAnimation playerAnimation(renderer, "../data/player_red.bmp", game._player);
     Uint32 lastGuardDestinationChangeTime = SDL_GetTicks();
     bool isOpen = true;
     playerAnimation.loadClips();
@@ -129,19 +129,20 @@ void SDLGame::runProject() {
                     game.updatePlayerDest(event.button.x, event.button.y);
                 }
         }
-        if(playerAnimation.moving_up && camera.y>0)
+        /*if(playerAnimation.moving_up && camera.y>0)
             camera.y -=5;
         if(playerAnimation.moving_left && camera.x>0)
             camera.x -=5;
         if(playerAnimation.moving_down && camera.y<WINDOW_H)
             camera.y +=5;
         if(playerAnimation.moving_right && camera.x<WINDOW_W)
-            camera.x +=5;
+            camera.x +=5;*/
         sdlDraw();
-        //playerAnimation.handleInput();
-        //playerAnimation.updatePlayer();
-        //playerAnimation.DrawAnimation(renderer);
-        game.movingPlayerByAI();
+        playerAnimation.handleInput();
+        playerAnimation.updatePlayer();
+        playerAnimation.DrawAnimation(renderer);
+       // playerAnimation.Arrow(renderer);
+        //game.movingPlayerByAI();
         game.movingGuardByAI(lastGuardDestinationChangeTime);
         SDL_Delay(15);
         SDL_RenderPresent(renderer);
