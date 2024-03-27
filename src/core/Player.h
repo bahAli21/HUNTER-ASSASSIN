@@ -7,6 +7,8 @@
 #include "Rect.h"
 #include "../../map/map.h"
 #include <iostream>
+#include "vector"
+#include "Arrow.h"
 
 /**
  * @brief Class representing the player in the game.
@@ -20,12 +22,14 @@ public:
     Rect * playerSource; ///< Source of the player.
     Rect * dest; /**< Destination of the AI. */
     int direction; /**< Direction indicators of the player.*/
+    std::vector<Arrow> listArrow; /**< Liste des tuiles du niveau. */
 
 public:
     /**
      * @brief Moves the player to the left on the specified map.
      * @param map The map on which the player moves.
      */
+     void createArrow();
     void goLeft() const;
 
     /**
