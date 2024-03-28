@@ -137,14 +137,14 @@ void SDLAnimation::walkingAnimation(Position tabPos[], int speed, int indexClips
         player.playerDest->y += speed;
 }
 
-void SDLAnimation::updateArrowPos(int idxAtt, int speed) {
-        for (auto arrow: player.listArrow) {
-            //arrow.arrowPos.y -=speed;
-            //arrow.arrowPos.x -=speed;
-            arrow.arrowPos.x +=speed;
-            //arrow.arrowPos.y +=speed;
-
+void SDLAnimation::updateArrowPos() {
+    for (auto& arrow: player.listArrow) {
+        if(arrow.direction == EAST || arrow.direction == WEST)
+            arrow.arrowPos.x += arrow.speed;
+        if(arrow.direction == NORTH || arrow.direction == SOUTH)
+            arrow.arrowPos.y += arrow.speed;
     }
+
 }
 
 void SDLAnimation::Arrow(SDL_Renderer * renderer) const {
@@ -153,10 +153,11 @@ void SDLAnimation::Arrow(SDL_Renderer * renderer) const {
     for (auto arrow: player.listArrow){
         SDL_Rect tmp = {arrow.arrowPos.x,
                         arrow.arrowPos.y,
-                        fireArrow._surface->w,
-                        fireArrow._surface->h};
+                        50,
+                        fireArrow._surface->h-20};
 
-        SDL_RenderCopyEx(renderer, fireArrow._texture,
+        SDL_RenderCopyEx(renderer,
+                         fireArrow._texture,
                          nullptr,
                          &tmp,
                          arrow.angleRotate,
@@ -164,8 +165,6 @@ void SDLAnimation::Arrow(SDL_Renderer * renderer) const {
                          SDL_FLIP_NONE);
 
     }
-
-
 }
 
 void SDLAnimation::updatePlayer() {
@@ -178,20 +177,27 @@ void SDLAnimation::updatePlayer() {
 
 
     if (moving_up) {
+        player.direction = NORTH;
         walkingAnimation(player_up_clips, -vitesse, idx, NORTH);
     }
     if (moving_left) {
+        player.direction = EAST;
         walkingAnimation(player_left_clips, -vitesse, idx, EAST);
     }
     if (moving_down) {
+        player.direction = SOUTH;
         walkingAnimation(player_down_clips, +vitesse, idx, SOUTH);
     }
     if (moving_right) {
+        player.direction = WEST;
         walkingAnimation(player_right_clips, +vitesse, idx, WEST);
     }
 
-    if(state[SDL_SCANCODE_S] > 0 && idxAtt==8)
+    if(state[SDL_SCANCODE_S] > 0 && idxAtt==8) {
         player.createArrow();
+    }
+    updateArrowPos();
+
     if(keyBoardK == 'k')
         makeAnimation(idxDead, PlayerHurtClips);
 
@@ -211,7 +217,7 @@ void SDLAnimation::updatePlayer() {
             RIGHT(idxAtt,keyBoard);
         }
      keyBoard = ' '; //don't repeat animation
-    updateArrowPos(8, 1);
+
 }
 
 void SDLAnimation::DrawAnimation(SDL_Renderer * renderer) const {

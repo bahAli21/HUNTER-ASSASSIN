@@ -45,7 +45,7 @@ public:
      */
     SDLAnimation(SDL_Renderer* renderer, const char * path, const Player& _player);
     const Uint8* state;
-    void updateArrowPos(int idxAtt, int speed);
+    void updateArrowPos();
     /**
      * @brief Destructor for SDLAnimation class.
      */
