@@ -173,6 +173,7 @@ void SDLAnimation::updatePlayer() {
     int idxAtt= animation_speed % 13; //for animation frame
     int idxDead = animation_speed % 6;
     int vitesse=2;
+    bool deathAnimationPlayed;
     //idxAtt = 8; //Ne touche jamais gold //Maitennt on tire la fleche si idxAtt = 8
 
 
@@ -200,8 +201,22 @@ void SDLAnimation::updatePlayer() {
     }
     updateArrowPos();
 
-    if(keyBoardK == 'k')
+    if(keyBoardK == 'k' && !deathAnimationPlayed) {
+        // Marque que l'animation de mort a été déclenchée
+        deathAnimationPlayed = true;
+
+        // je Joue l'animation de mort
+        int deadAnimationFrames = PlayerHurtClips.size();
         makeAnimation(idxDead, PlayerHurtClips);
+
+        // Vérifie si l'animation de mort est terminée
+        if (idxDead >= deadAnimationFrames - 1) {
+            // Réinitialisons idxDead pour arrêter l'animation
+            idxDead = deadAnimationFrames - 1;
+        }
+    }
+    //if(keyBoardK == 'k')
+       // makeAnimation(idxDead, PlayerHurtClips);
 
 
         if(player.direction == NORTH) {
