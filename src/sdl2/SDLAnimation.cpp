@@ -1,9 +1,10 @@
 #include "SDLAnimation.h"
 
-SDLAnimation::SDLAnimation(SDL_Renderer* renderer, const char * path, const Player& _player): player(_player) {
+SDLAnimation::SDLAnimation(SDL_Renderer* renderer, const char * path, const Player& _player): player(_player),
+sound(44100, MIX_DEFAULT_FORMAT, 2, 248){
     allAnimation.loadSpriteFile(path, renderer);
     fireArrow.loadSpriteFile("../data/imgAnimation/fire-arrow.bmp", renderer);
-
+    shootEffect = SDLSound::LoadChunkFromFile("../data/audio/shootEffect.wav");
 }
 
 SDLAnimation::~SDLAnimation() = default;
@@ -144,7 +145,6 @@ void SDLAnimation::updateArrowPos() {
         if(arrow.direction == NORTH || arrow.direction == SOUTH)
             arrow.arrowPos.y += arrow.speed;
     }
-
 }
 
 void SDLAnimation::Arrow(SDL_Renderer * renderer) const {
@@ -169,7 +169,7 @@ void SDLAnimation::Arrow(SDL_Renderer * renderer) const {
 
 void SDLAnimation::updatePlayer() {
     int animation_speed = SDL_GetTicks() / 170;
-    int idx = animation_speed % 8;//for walking frame
+    int idx = animation_speed % 7;//for walking frame
     int idxAtt= animation_speed % 13; //for animation frame
     int idxDead = animation_speed % 6;
     int vitesse=2;
@@ -195,6 +195,8 @@ void SDLAnimation::updatePlayer() {
 
     if(state[SDL_SCANCODE_S] > 0 && idxAtt==8) {
         player.createArrow();
+        // Lecture de l'effet sonore une fois
+        SDLSound::PlayChunk(shootEffect);
     }
     updateArrowPos();
 

@@ -9,6 +9,8 @@
 #include "../core/Rect.h"
 #include "SDLSprite.h"
 #include "../core/Direction.h"
+#include "SDLSound.h"
+#include "SDL_mixer.h"
 
 
 /**
@@ -18,6 +20,8 @@ class SDLAnimation {
 public:
     Player player; /**< Player object for animation. */
     SDLSprite fireArrow;
+    SDLSound sound;
+    Mix_Chunk * shootEffect;
     /** Pour les autre sprite aussi */
     SDLSprite allAnimation; /**< Sprite object containing all animations. */
     Position player_left_clips[9]{}; /**< Array of positions for left movement animation. */
