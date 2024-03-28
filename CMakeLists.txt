@@ -17,18 +17,29 @@ set(SRC_SDL2_DIR ./src/sdl2)
 set(SRC_TXT_DIR ./src/txt)
 set(SRC_ASTAR_DIR ./src/Part2)
 
-set(SRC_ASTAR ${SRC_ASTAR_DIR}/Game.cpp ${SRC_ASTAR_DIR}/Level.cpp ${SRC_ASTAR_DIR}/TextureLoader.cpp
-        ${SRC_ASTAR_DIR}/Unit.cpp ${SRC_ASTAR_DIR}/Vector2D.cpp ${SRC_ASTAR_DIR}/main.cpp
-        src/Part2/SDLAnimation.h
-        src/Part2/SDLAnimation.cpp
-        ${SRC_SDL2_DIR}/SDLSprite.h ${SRC_SDL2_DIR}/SDLSprite.cpp ${SRC_CORE_DIR}/Player.cpp
+set(SRC_ASTAR ${SRC_ASTAR_DIR}/Game.cpp
+        ${SRC_ASTAR_DIR}/Level.cpp
+        ${SRC_ASTAR_DIR}/TextureLoader.cpp
+        ${SRC_ASTAR_DIR}/Unit.cpp
+        ${SRC_ASTAR_DIR}/Vector2D.cpp
+        ${SRC_ASTAR_DIR}/main.cpp
+        ${SRC_SDL2_DIR}/SDLAnimation.cpp
+        ${SRC_SDL2_DIR}/SDLSprite.h
+        ${SRC_SDL2_DIR}/SDLSprite.cpp
+        ${SRC_CORE_DIR}/Player.cpp
+        ${SRC_SDL2_DIR}/SDLSound.cpp
+        ${SRC_CORE_DIR}/Game.cpp
+        ${SRC_CORE_DIR}/IA.cpp
+        ${SRC_CORE_DIR}/Garde.cpp
 )
+
 # Définition des fichiers sources pour chaque composant
 set(SRC_CORE ${SRC_CORE_DIR}/Game.cpp ${SRC_CORE_DIR}/Garde.cpp ${SRC_CORE_DIR}/IA.cpp
         ${SRC_CORE_DIR}/Player.cpp
         #${SRC_CORE_DIR}/newIA.cpp
         src/sdl2/SDLSound.cpp
 )
+
 set(HEADER_CORE ${SRC_CORE_DIR}/Game.h ${SRC_CORE_DIR}/Garde.h
         ${SRC_CORE_DIR}/IA.h ${SRC_CORE_DIR}/Player.h ${SRC_CORE_DIR}/point.h
         ${SRC_CORE_DIR}/Rect.h ${SRC_CORE_DIR}/config.h
@@ -54,7 +65,6 @@ set(SRC_ANIMATION ${PROJECT_SOURCE_DIR}/src/mainAnimation.cpp
         src/sdl2/SDLSound.h
         src/sdl2/SDLSound.cpp
         src/core/Direction.h
-
 )
 
 # Configuration des librairies SDL2 en fonction du système d'exploitation
