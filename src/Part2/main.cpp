@@ -37,7 +37,7 @@ int main(int argc, char* args[]) {
                 SDL_GetWindowSize(window, &windowWidth, &windowHeight);
 
                 // Je démarre le jeu.
-                Game game(window, renderer, windowWidth, windowHeight);
+                GameAstar game(window, renderer, windowWidth, windowHeight);
 
                 // Nettoyage.
                 SDL_DestroyRenderer(renderer);
