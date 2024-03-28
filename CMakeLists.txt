@@ -27,13 +27,16 @@ set(SRC_ASTAR ${SRC_ASTAR_DIR}/Game.cpp ${SRC_ASTAR_DIR}/Level.cpp ${SRC_ASTAR_D
 set(SRC_CORE ${SRC_CORE_DIR}/Game.cpp ${SRC_CORE_DIR}/Garde.cpp ${SRC_CORE_DIR}/IA.cpp
         ${SRC_CORE_DIR}/Player.cpp
         #${SRC_CORE_DIR}/newIA.cpp
-
+        src/sdl2/SDLSound.cpp
 )
 set(HEADER_CORE ${SRC_CORE_DIR}/Game.h ${SRC_CORE_DIR}/Garde.h
         ${SRC_CORE_DIR}/IA.h ${SRC_CORE_DIR}/Player.h ${SRC_CORE_DIR}/point.h
         ${SRC_CORE_DIR}/Rect.h ${SRC_CORE_DIR}/config.h
         src/core/Direction.h
         src/core/Arrow.h
+        src/sdl2/SDLTtf.h
+        src/sdl2/SDLTtf.cpp
+        src/sdl2/SDLSound.h
 )
 
 set(SRC_SDL2 ${SRC_SDL2_DIR}/mainProject.cpp ${SRC_SDL2_DIR}/SDLGame.cpp
