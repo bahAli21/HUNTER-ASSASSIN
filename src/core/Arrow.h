@@ -2,6 +2,7 @@
 #include "point.h"
 struct Arrow{
     int direction;
-    Position arrowPos;
+    Rect arrowPos;
     double angleRotate;
+    int speed;
 };
