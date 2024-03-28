@@ -5,6 +5,8 @@ sound(44100, MIX_DEFAULT_FORMAT, 2, 248){
     allAnimation.loadSpriteFile(path, renderer);
     fireArrow.loadSpriteFile("../data/imgAnimation/fire-arrow.bmp", renderer);
     shootEffect = SDLSound::LoadChunkFromFile("../data/audio/shootEffect.wav");
+    ptrStop = new int;
+    *ptrStop = 0;
 }
 
 SDLAnimation::~SDLAnimation() = default;
@@ -90,7 +92,6 @@ void SDLAnimation::RIGHT(int idxAtt, char c) {
 }
 
 void SDLAnimation::handleInput() {
-    SDL_Event event;
     state = SDL_GetKeyboardState(nullptr);
 
     moving_left = state[SDL_SCANCODE_LEFT] > 0;
@@ -100,21 +101,16 @@ void SDLAnimation::handleInput() {
 
     if(state[SDL_SCANCODE_K] > 0)
         keyBoardK = 'k';
-    if(state[SDL_SCANCODE_D] > 0) {
-        if(isDraw)
-            isDraw= false;
-        else
-            isDraw = true;
-    }
+
     if (state[SDL_SCANCODE_S] > 0)
         keyBoard = 's';
 
-    while (SDL_PollEvent(&event)) {
+    /*while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {
             SDL_Quit();
             exit(0);
         }
-    }
+    }*/
 }
 
 
@@ -171,9 +167,9 @@ void SDLAnimation::updatePlayer() {
     int animation_speed = SDL_GetTicks() / 170;
     int idx = animation_speed % 7;//for walking frame
     int idxAtt= animation_speed % 13; //for animation frame
-    int idxDead = animation_speed % 6;
+    int  idxDead = animation_speed % 5;
     int vitesse=2;
-    bool deathAnimationPlayed;
+
     //idxAtt = 8; //Ne touche jamais gold //Maitennt on tire la fleche si idxAtt = 8
 
 
@@ -200,23 +196,10 @@ void SDLAnimation::updatePlayer() {
         SDLSound::PlayChunk(shootEffect);
     }
     updateArrowPos();
-
-    if(keyBoardK == 'k' && !deathAnimationPlayed) {
-        // Marque que l'animation de mort a été déclenchée
-        deathAnimationPlayed = true;
-
-        // je Joue l'animation de mort
-        int deadAnimationFrames = PlayerHurtClips.size();
-        makeAnimation(idxDead, PlayerHurtClips);
-
-        // Vérifie si l'animation de mort est terminée
-        if (idxDead >= deadAnimationFrames - 1) {
-            // Réinitialisons idxDead pour arrêter l'animation
-            idxDead = deadAnimationFrames - 1;
-        }
-    }
-    //if(keyBoardK == 'k')
-       // makeAnimation(idxDead, PlayerHurtClips);
+    if (idxAtt>5)
+        *ptrStop = 1;
+    if(keyBoardK == 'k' && *ptrStop==0)
+         makeAnimation(idxDead, PlayerHurtClips);
 
 
         if(player.direction == NORTH) {
@@ -238,11 +221,13 @@ void SDLAnimation::updatePlayer() {
 }
 
 void SDLAnimation::DrawAnimation(SDL_Renderer * renderer) const {
+
     Arrow(renderer);
     SDL_RenderCopy(renderer,
                    allAnimation._texture,
                    reinterpret_cast<const SDL_Rect *>(player.playerSource),
                    reinterpret_cast<const SDL_Rect *>(player.playerDest));
+
 
 }
 

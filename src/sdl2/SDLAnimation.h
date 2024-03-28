@@ -21,6 +21,8 @@ public:
     Player player; /**< Player object for animation. */
     SDLSprite fireArrow;
     SDLSound sound;
+    bool deathAnimationPlayed = false;
+    int * ptrStop;
     Mix_Chunk * shootEffect;
     /** Pour les autre sprite aussi */
     SDLSprite allAnimation; /**< Sprite object containing all animations. */
