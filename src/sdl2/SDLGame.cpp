@@ -39,7 +39,7 @@ SDLGame::SDLGame() : game(2){
     //game.vecAllObstacles.push_back({WINDOW_W / 4, 150, WINDOW_W / 4 - 25, SQUARE_SIZE});
     // TODO On choisi le chemein depuis executable bin (donc on remonte une fois et on passe dans data)
     const char *path = "../data/mur.bmp";
-    sp_player.loadSpriteFile(path, renderer);
+    //sp_player.loadSpriteFile(path, renderer);
     sp_garde.loadSpriteFile(path, renderer);
     camera = {0,0};
 }
@@ -126,7 +126,7 @@ void SDLGame::runProject() {
                 isOpen = false;
             else if (event.type == SDL_MOUSEBUTTONDOWN)
                 if (event.button.button == SDL_BUTTON_LEFT) {
-                    game.updatePlayerDest(event.button.x, event.button.y);
+                    //game.updatePlayerDest(event.button.x, event.button.y);
                 }
         }
         /*if(playerAnimation.moving_up && camera.y>0)
@@ -137,7 +137,8 @@ void SDLGame::runProject() {
             camera.y +=5;
         if(playerAnimation.moving_right && camera.x<WINDOW_W)
             camera.x +=5;*/
-        sdlDraw();
+        //sdlDraw();
+        SDL_RenderClear(renderer);
         playerAnimation.handleInput();
         playerAnimation.updatePlayer();
         playerAnimation.DrawAnimation(renderer);
