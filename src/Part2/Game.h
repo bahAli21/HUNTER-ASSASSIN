@@ -7,13 +7,14 @@
 #include "Unit.h"
 #include "Level.h"
 #include "../sdl2/SDLAnimation.h"
+#include "../core/Game.h"
 
 /**
  * @brief Classe représentant le jeu principal.
  *
  * Cette classe gère la logique principale du jeu.
  */
-class Game
+class GameAstar
 {
 private:
     enum class PlacementMode {
@@ -31,13 +32,13 @@ public:
      * @param windowWidth Largeur de la fenêtre.
      * @param windowHeight Hauteur de la fenêtre.
      */
-    Game(SDL_Window* window, SDL_Renderer* renderer, int windowWidth, int windowHeight);
+    GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth, int windowHeight);
 
     /**
      * @brief Destructeur de la classe Game.
      */
-    ~Game();
-
+    ~GameAstar();
+     Game g;
 private:
     /**
      * @brief Traite les événements du jeu.

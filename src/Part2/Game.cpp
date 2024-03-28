@@ -1,9 +1,9 @@
 #include "Game.h"
 
 // Constructeur de la classe Game avec par defaut le mode 1(Ajout des murs)
-Game::Game(SDL_Window* window, SDL_Renderer* renderer, int windowWidth, int windowHeight) :
+GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth, int windowHeight) :
   placementModeCurrent(PlacementMode::wall),
-        _player(),
+        g(0),
         level(renderer, windowWidth-tileSize, windowHeight-tileSize) {
 
     // Initialisation du jeu
@@ -22,7 +22,8 @@ Game::Game(SDL_Window* window, SDL_Renderer* renderer, int windowWidth, int wind
         // Temps pour chaque frame (80 fps)
         const float dT = 1.0f / 100.0f;
 
-
+        SDLAnimation playerAnimation(renderer, "../data/player_red.bmp", g._player);
+        playerAnimation.loadClips();
         // Boucle principale du jeu
         bool running = true;
         while (running) {
@@ -30,29 +31,38 @@ Game::Game(SDL_Window* window, SDL_Renderer* renderer, int windowWidth, int wind
             auto time2 = std::chrono::system_clock::now();
             std::chrono::duration<float> timeDelta = time2 - time1;
             float timeDeltaFloat = timeDelta.count();
+            //SDL_RenderClear(renderer);
 
             // Si suffisamment de temps s'est écoulé, je génère la prochaine frame
             if (timeDeltaFloat >= dT) {
                 // Mise à jour du temps pour la prochaine frame
                 time1 = time2;
-
+                // Affichage des coordonnées du joueur
                 // Traitement des événements, mise à jour et dessin du jeu
                 processEvents(renderer, running);
+                SDL_RenderClear(renderer);
                 update(dT);
                 draw(renderer);
+
+                playerAnimation.handleInput();
+                playerAnimation.updatePlayer();
+                playerAnimation.DrawAnimation(renderer);
+                SDL_Delay(15);
+                // Met à jour l'affichage
+                SDL_RenderPresent(renderer);
             }
         }
     }
 }
 
 // Destructeur de la classe Game
-Game::~Game() {
+GameAstar::~GameAstar() {
     // Nettoyage des ressources
     TextureLoader::deallocateTextures(); // Libère toutes les textures
 }
 
 // Traitement des événements du jeu
-void Game::processEvents(SDL_Renderer* renderer, bool& running) {
+void GameAstar::processEvents(SDL_Renderer* renderer, bool& running) {
     // Variables pour le suivi du clic de souris
     bool mouseDownThisFrame = false;
 
@@ -133,17 +143,16 @@ void Game::processEvents(SDL_Renderer* renderer, bool& running) {
 }
 
 // Mettre à jour l'état du jeu
-void Game::update(float dT) {
+void GameAstar::update(float dT) {
     // Mettre à jour les unités
     for (Unit & unitSelected : listUnits)
         unitSelected.update(dT, level, listUnits);
 }
 
 // Dessine le contenu du jeu
-void Game::draw(SDL_Renderer* renderer) {
+void GameAstar::draw(SDL_Renderer* renderer) {
     // Efface l'écran
     SDL_SetRenderDrawColor(renderer, 57, 51, 82, 0.37);
-    SDL_RenderClear(renderer);
 
     //SDLAnimation playerAnimation(renderer, "../data/sprite_Player.bmp", _player);
     //playerAnimation.loadClips();
@@ -162,17 +171,16 @@ void Game::draw(SDL_Renderer* renderer) {
         SDL_RenderCopy(renderer, textureOverlay, NULL, &rect);
     }
 
-    // Met à jour l'affichage
-    SDL_RenderPresent(renderer);
+
 }
 
 // Ajoute une unités/Enemy à la position donnée
-void Game::addUnit(SDL_Renderer* renderer, Vector2D posMouse) {
+void GameAstar::addUnit(SDL_Renderer* renderer, Vector2D posMouse) {
     listUnits.push_back(Unit(renderer, posMouse));
 }
 
 // Supprime les unités/Enemy à la position de la souris
-void Game::removeUnitsAtMousePosition(Vector2D posMouse) {
+void GameAstar::removeUnitsAtMousePosition(Vector2D posMouse) {
     for (int i = 0; i < listUnits.size(); i++) {
         auto& unitSelected = listUnits[i];
         if (unitSelected.checkOverlap(posMouse, 0.0f)) {
@@ -181,3 +189,5 @@ void Game::removeUnitsAtMousePosition(Vector2D posMouse) {
         }
     }
 }
+
+
