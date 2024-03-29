@@ -7,6 +7,7 @@
 #include "./sdl2/SDLSound.h"
 #include "core/config.h"
 #include "../map/map.h"
+#include "core/AStarAlgorithm.h"
 
 /*******************************************ANIMATION*********************************************/
 
@@ -38,6 +39,7 @@ struct Contenu {
     SDL_Renderer* renderer;
     Mix_Music *music;
     Mix_Chunk * effect;
+    int mouseX, mouseY;
     Player player;
     //Nombre de sprite a utilise 7 car on revien a la position de depart (1,2,3,4,5,6,1)
     Position player_left_clips[7];
@@ -232,6 +234,17 @@ void handleInput() {
                 sound.PlayChunk(contenu.effect);
             }
         }
+        if (event.type == SDL_MOUSEBUTTONDOWN) {
+            if (event.button.button == SDL_BUTTON_LEFT) {
+                 contenu.mouseX = event.button.x;
+                 contenu.mouseY = event.button.y;
+            }else{
+                contenu.mouseX = contenu.player.dest.x;
+                contenu.mouseY = contenu.player.dest.y;
+
+         }
+        }
+
     }
 }
 
@@ -311,7 +324,13 @@ int main(int argc, char* args[]) {
     Map mapGame;
     mapGame.initAllRectangle();
 
-
+    // Instance de AStar::Generator
+   // AStar::Generator generator;
+    //generator.setWorldSize({WINDOW_W, WINDOW_H}); // Taille de la fenêtre
+    //SDL_Rect obst1 = {WINDOW_W/2 -20, 60, 20, 140};
+    //SDL_Rect obst2 = {WINDOW_W/2 -20, 280, 20, 140};
+    //generator.addCollision({obst1.x, obst1.y}, 30, 150);
+    //generator.addCollision({obst2.x, obst2.y}, 30, 150);
 
     // Chargement de la musique
     contenu.music = sound.LoadMusicFromFile("../data/audio/music_test.mp3");
@@ -344,7 +363,19 @@ int main(int argc, char* args[]) {
     char buf[LEN];
     affichageNumber.loadFromFont(contenu.renderer, fontScore, buf, colorNumber);
     // Boucle principale du jeu
+    SDL_Event event;
+    //AStar::CoordinateList path = {{200, 300}, {220,300},
+                                  //{240,300}, {220,280}, {220,260},
+                                  //{220,240}}
+
+   // AStar::CoordinateList path ;
+    AStar::Vec2i sourceTestPos ;
+
     while (true) {
+        sourceTestPos = {contenu.player.dest.x, contenu.player.dest.y};
+
+        // Trouver un chemin du rectangle (position actuelle) à la position du clic
+        //path = generator.findPath(sourceTestPos, {contenu.mouseX, contenu.mouseY});
         //Radix represente la base dans la quelle j'affiche mes chiffres pour moi c'est la base 10
         itoa(nb, buf, 10);
         // Effacement de l'écran
@@ -356,7 +387,22 @@ int main(int argc, char* args[]) {
 
         // Mise à jour du joueur
         updatePlayer();
+        // Déplacer le rectangle le long du chemin trouvé
+        /*for (const auto& coordinate : path) {
+            // Déplacez votre rectangle à la position (coordinate.x, coordinate.y)
+            // Dessinez le rectangle à sa nouvelle position sur le rendu SDL
+            SDL_SetRenderDrawColor(contenu.renderer, 0, 255, 0, 255); // Couleur rouge
+            SDL_Rect rect = {coordinate.x-2, coordinate.y-2, 2, 2};
+            SDL_RenderFillRect(contenu.renderer, &rect);
+            //SDL_Delay(100);
+        }*/
 
+        //Draw obstacle
+
+        SDL_SetRenderDrawColor(contenu.renderer, 255, 0, 0, 255); // Couleur rouge
+
+        //SDL_RenderFillRect(contenu.renderer, &obst1);
+        //SDL_RenderFillRect(contenu.renderer, &obst2);
         // Affichage de la carte et du joueur
         //
         // mapGame.makeMap(contenu.renderer);
