@@ -2,7 +2,7 @@
 //#include "Game.h"
 
 // Définition des constantes de vitesse et de taille pour les instances de la classe Unit
-const float Unit::speed = 5.0f; // La vitesse de déplacement de l'unité
+const float Unit::speed = 4.0f; // La vitesse de déplacement de l'unité
 const float Unit::size = 0.4f; // La taille de l'unité
 
 // Constructeur de la classe Unit
@@ -15,15 +15,22 @@ Unit::Unit(SDL_Renderer* renderer, Vector2D setPos) :
 }
 
 // Fonction de mise à jour de l'unité
-void Unit::update(float dT, Level& level, std::vector<Unit>& listUnits) {
+int Unit::update(float dT, Level& level, std::vector<Unit>& listUnits, Player &_player) {
+    int animation_speed = SDL_GetTicks() / 170;
+    int idx = animation_speed % 7;//for walking frame
+
     // Calcul de la distance à la cible depuis la position actuelle de l'unité
     float distanceToTarget = (level.getTargetPos() - pos).magnitude(); //Un type vecteur est retourner par la difference , magnitude() pour l'heristic
 
     // Calcul de la distance à déplacer pendant cette frame
     //En physique d = v * t haha
     float distanceMove = speed * dT;
-    if (distanceMove > distanceToTarget) //Yes destination atteinte
+    if (distanceMove > distanceToTarget) {
+        //Yes destination atteinte
         distanceMove = distanceToTarget;
+        _player.canShootNow = true;
+    }else
+        _player.canShootNow = false;
     // Calcul de la direction de déplacement combinant la direction du champ de flux et de la séparation normale
     Vector2D directionNormalFlowField(level.getFlowNormal((int)pos.x, (int)pos.y)); //Recupere la direction de la tuile
     Vector2D directionNormalSeparation(computeNormalSeparation(listUnits));
@@ -43,7 +50,6 @@ void Unit::update(float dT, Level& level, std::vector<Unit>& listUnits) {
                 float angleBtw = abs(normalToOther.angleBetween(directionNormalCombined));
                 if (angleBtw < 3.14159265359f / 4.0f)
                     moveOk = false;
-
             }
         }
     }
@@ -52,21 +58,54 @@ void Unit::update(float dT, Level& level, std::vector<Unit>& listUnits) {
     if (moveOk) {
         const float spacing = 0.35f; // Marge de sécurité pour éviter les collisions avec les murs
         int x = (int)(pos.x + posAdd.x + copysign(spacing, posAdd.x)); // Ajustement de la coordonnée x avec la marge de sécurité
-        int y = (int)(pos.y);
-        if (posAdd.x != 0.0f && !level.isTileWall(x, y)) // Vérification de collision sur l'axe x
-            pos.x += posAdd.x;
+        int y = (int)(pos.y + posAdd.y + copysign(spacing, posAdd.y)); // Ajustement de la coordonnée y avec la marge de sécurité
 
-        x = (int)(pos.x);
-        y = (int)(pos.y + posAdd.y + copysign(spacing, posAdd.y)); // Ajustement de la coordonnée y avec la marge de sécurité
-        if (posAdd.y != 0.0f && !level.isTileWall(x, y)) // Vérification de collision sur l'axe y
+        if (posAdd.x != 0.0f && !level.isTileWall(x, (int)pos.y)) {
+            // Vérification de collision sur l'axe x
+            pos.x += posAdd.x;
+            _player.playerDest->x += 1 * (int)copysign(1, posAdd.x); // Déplace le joueur vers la gauche ou la droite selon la direction de la cible
+            int vitesse = 1 * (int)copysign(1, posAdd.x);
+            if (vitesse < 0) {
+                _player.direction = EAST;
+                // Si la vitesse est négative, l'unité se déplace vers la gauche
+                _player.WalkingAnimation(_player.player_left_clips, vitesse, idx, WEST); // Utilise l'animation pour le mouvement vers la gauche
+
+            } else {
+                _player.direction = WEST;
+                // Si la vitesse est positive, l'unité se déplace vers la droite
+                _player.WalkingAnimation(_player.player_right_clips, vitesse, idx, EAST); // Utilise l'animation pour le mouvement vers la droite
+            }
+        }
+
+        if (posAdd.y != 0.0f && !level.isTileWall((int)pos.x, y)) {
+            // Vérification de collision sur l'axe y
             pos.y += posAdd.y;
+            _player.playerDest->y += 1 * (int)copysign(1, posAdd.y); // Déplace le joueur vers le haut ou le bas selon la direction de la cible
+            int vitesse = 1 * (int)copysign(1, posAdd.y);
+            if (vitesse < 0) {
+                _player.direction = NORTH;
+                // Si la vitesse est négative, l'unité se déplace vers le haut
+                _player.WalkingAnimation(_player.player_up_clips, vitesse, idx, NORTH); // Utilise l'animation pour le mouvement vers le haut
+            } else {
+                _player.direction = SOUTH;
+                // Si la vitesse est positive, l'unité se déplace vers le bas
+                _player.WalkingAnimation(_player.player_down_clips, vitesse, idx, SOUTH); // Utilise l'animation pour le mouvement vers le bas
+            }
+        }
     }
 
 
+   //_player.updateArrowPos();
     // Calcul de la position de dessin en fonction de la position actuelle
     const float fKeep = 0.93f;
     posDraw = posDraw * fKeep + pos * (1.0f - fKeep);
+
+    //Je retourne la direction du player
+    return _player.direction;
 }
+
+
+
 
 // Fonction de dessin de l'unité
 void Unit::draw(SDL_Renderer* renderer, int tileSize) {
