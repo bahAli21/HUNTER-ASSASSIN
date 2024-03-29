@@ -47,5 +47,5 @@
 /// @def LEN
 /// Size of buffer.
 #define LEN 44
-#define ARR_SPEED 3
+#define ARR_SPEED 6
 #endif // HUNTERASSASSIN_CONFIG_H
