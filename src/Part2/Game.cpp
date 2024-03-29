@@ -22,8 +22,9 @@ GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth
         // Temps pour chaque frame (80 fps)
         const float dT = 1.0f / 100.0f;
 
-        SDLAnimation playerAnimation(renderer, "../data/player_red.bmp", g._player);
-        playerAnimation.loadClips();
+        SDLAnimation playerAnimation(renderer, "../data/player.bmp", g._player);
+        Vector2D playerPosTuile((float)g._player.playerDest->x / tileSize, (float)g._player.playerDest->y / tileSize);
+        addUnit(renderer, playerPosTuile);
         // Boucle principale du jeu
         bool running = true;
         while (running) {
@@ -31,7 +32,6 @@ GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth
             auto time2 = std::chrono::system_clock::now();
             std::chrono::duration<float> timeDelta = time2 - time1;
             float timeDeltaFloat = timeDelta.count();
-            //SDL_RenderClear(renderer);
 
             // Si suffisamment de temps s'est écoulé, je génère la prochaine frame
             if (timeDeltaFloat >= dT) {
@@ -41,11 +41,10 @@ GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth
                 // Traitement des événements, mise à jour et dessin du jeu
                 processEvents(renderer, running);
                 SDL_RenderClear(renderer);
-                update(dT);
-                draw(renderer);
-
+                int dir = update(dT);
                 playerAnimation.handleInput();
-                playerAnimation.updatePlayer();
+                playerAnimation.updatePlayer(dir);
+                draw(renderer);
                 playerAnimation.DrawAnimation(renderer);
                 SDL_Delay(15);
                 // Met à jour l'affichage
@@ -143,10 +142,12 @@ void GameAstar::processEvents(SDL_Renderer* renderer, bool& running) {
 }
 
 // Mettre à jour l'état du jeu
-void GameAstar::update(float dT) {
+int GameAstar::update(float dT) {
     // Mettre à jour les unités
-    for (Unit & unitSelected : listUnits)
-        unitSelected.update(dT, level, listUnits);
+    int dir = 1;
+    for (auto & unitSelected : listUnits)
+         dir = unitSelected.update(dT, level, listUnits, g._player);
+    return dir;
 }
 
 // Dessine le contenu du jeu

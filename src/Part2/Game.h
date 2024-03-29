@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <chrono>
-#include <memory>
+//#include <memory>
 #include "SDL.h"
 #include "Unit.h"
 #include "Level.h"
@@ -37,6 +37,7 @@ public:
     /**
      * @brief Destructeur de la classe Game.
      */
+
     ~GameAstar();
      Game g;
 private:
@@ -53,7 +54,7 @@ private:
      *
      * @param dT Temps écoulé depuis la dernière mise à jour.
      */
-    void update(float dT);
+    int update(float dT);
 
     /**
      * @brief Dessine le contenu du jeu.
@@ -78,7 +79,7 @@ private:
     void removeUnitsAtMousePosition(Vector2D posMouse);
 
     int mouseDownStatus = 0; /**< Statut de la souris (clic ou pas de clic). */
-    const int tileSize = 48; /**< Taille des sprites en unités de Mapping (tiles). */
+    const int tileSize = 28; /**< Taille des sprites en unités de Mapping (tiles). */
     Level level; /**< Niveau du jeu. */
     std::vector<Unit> listUnits; /**< Liste dynamique des unités. */
     SDL_Texture* textureOverlay = nullptr; /**< Texture de superposition. */
