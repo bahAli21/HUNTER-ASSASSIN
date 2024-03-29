@@ -1,7 +1,5 @@
 #include "Level.h"
 
-
-
 Level::Level(SDL_Renderer* renderer, int setTileCountX, int setTileCountY) :
     tileCountX(setTileCountX), tileCountY(setTileCountY) {
     textureTileWall = TextureLoader::loadTexture(renderer, "Tile Wall.bmp");
@@ -159,7 +157,11 @@ void Level::calculateDistances() {
     listIndicesToCheck.push(indexTarget);
 
     //The offset of the neighboring tiles to be checked.
-    const int listNeighbors[][2] = { { -1, 0}, {1, 0}, {0, -1}, {0, 1} };
+    const int listNeighbors[][2] = {{-1, 0},
+                                    {1, 0},
+                                    {0, -1},
+                                    {0, 1}
+    };
 
     //Loop through the queue and assign distance to each tile.
     while (!listIndicesToCheck.empty()) {
@@ -167,9 +169,9 @@ void Level::calculateDistances() {
         listIndicesToCheck.pop();
 
         //Check each of the neighbors;
-        for (int count = 0; count < 4; count++) {
-            int neighborX = listNeighbors[count][0] + indexCurrent % tileCountX;
-            int neighborY = listNeighbors[count][1] + indexCurrent / tileCountX;
+        for(auto listNeighbor : listNeighbors) {
+            int neighborX = listNeighbor[0] + indexCurrent % tileCountX;
+            int neighborY = listNeighbor[1] + indexCurrent / tileCountX;
             int indexNeighbor = neighborX + neighborY * tileCountX;
 
             //Ensure that the neighbor exists and isn't a wall.
@@ -192,7 +194,11 @@ void Level::calculateDistances() {
 
 void Level::calculateFlowDirections() {
     // The offset of the neighboring tiles to be checked (only horizontal and vertical).
-    const int listNeighbors[][2] = { {-1, 0}, {0, -1}, {0, 1}, {1, 0} };
+    const int listNeighbors[][2] = {{-1, 0},
+                                    {0, -1},
+                                    {0, 1},
+                                    {1, 0}
+    };
 
     for (int indexCurrent = 0; indexCurrent < listTiles.size(); indexCurrent++) {
         // Ensure that the tile has been assigned a distance value.
@@ -203,9 +209,9 @@ void Level::calculateFlowDirections() {
             int bestDirectionY = 0;
 
             // Check each of the neighbors (only horizontal and vertical).
-            for (int count = 0; count < 4; count++) {
-                int offsetX = listNeighbors[count][0];
-                int offsetY = listNeighbors[count][1];
+            for(auto listNeighbor : listNeighbors) {
+                int offsetX = listNeighbor[0]; //represente x
+                int offsetY = listNeighbor[1];// represente y
 
                 int neighborX = offsetX + indexCurrent % tileCountX;
                 int neighborY = offsetY + indexCurrent / tileCountX;
