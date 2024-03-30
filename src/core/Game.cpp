@@ -2,6 +2,7 @@
 
 Game::Game(int nbGardes): _player(), nbGardes(nbGardes),
     PlayerAI(_player.playerDest, _player.dest) {
+
     allGardes = new Garde[nbGardes];
     gardesDest = new Rect[nbGardes];
     gardesRect = new Rect[nbGardes];
@@ -51,6 +52,42 @@ Game::Game(int nbGardes): _player(), nbGardes(nbGardes),
     }
     vecAllObstacles.push_back({WINDOW_W / 4 +20, 150, WINDOW_W / 4 - 25, SQUARE_SIZE});
     vecAllObstacles.push_back({WINDOW_W / 4, 150, WINDOW_W / 4 - 25, SQUARE_SIZE});
+    addGardeAndPlayers();
+}
+
+void Game::addGardeAndPlayers() {
+    srand(time(NULL));
+    Rect source = {PLAYER_WIDTH/2, PLAYER_HEIGHT*21, PLAYER_WIDTH, PLAYER_HEIGHT*2};
+    Rect dest = {WINDOW_W/2 -PLAYER_WIDTH,WINDOW_H - PLAYER_HEIGHT*2, PLAYER_WIDTH, PLAYER_HEIGHT};
+    listeOfPlayers.emplace_back(&source, &dest, 0, 100,"../data/player.bmp", "BAH", 1, 21);
+    const char * pathSpriteGarde;
+    for (int i = 0; i < nbGardes; ++i) {
+        int newX, newY;
+        if (i == 0) {
+            // Génération des coordonnées pour le garde 0
+            newX = rand() % 91 + 10; // entre 10 et 100
+            newY = rand() % 91 + 10; // entre 10 et 100
+            pathSpriteGarde = "../data/garde1.bmp";
+        } else if (i == 1) {
+            // Génération des coordonnées pour le garde 1
+            newX = rand() % 101 + 200; // entre 200 et 300
+            newY = rand() % 101 + 200; // entre 200 et 300
+            pathSpriteGarde = "../data/garde2.bmp";
+        } else if (i == 2) {
+            // Génération des coordonnées pour le garde 2
+            newX = rand() % 91 + 100; // entre 100 et 200
+            newY = rand() % (WINDOW_H / 2); // entre 0 et WINDOW_H/2
+            pathSpriteGarde = "../data/garde3.bmp";
+        } else {
+            // Génération des coordonnées pour le garde 3
+            newX = rand() % 91 + 10; // entre 10 et 100
+            newY = rand() % (WINDOW_H / 2); // entre 0 et WINDOW_H/2
+            pathSpriteGarde = "../data/garde4.bmp";
+        }
+        Rect dest = {newX, newY, PLAYER_WIDTH, PLAYER_HEIGHT*2};
+        std::string gardeName = "Garde " + std::to_string(i + 1);
+        listeOfGardes.emplace_back(&source, &dest, rand() % 3, (i+1)*10,pathSpriteGarde, gardeName, rand() % 5, rand() % 5);
+    }
 }
 
 // Méthode pour vérifier la collision entre deux rectangles

@@ -2,9 +2,14 @@
 #define HUNTERASSASSIN_GAME_H
 
 #include "Player.h"
+#include "_Player.h"
+#include "_Garde.h"
 #include "Rect.h"
 #include "IA.h"
 #include "Garde.h"
+#include <cstdlib>
+#include <ctime>
+
 
 /**
  * @brief Class representing the game.
@@ -23,7 +28,11 @@ public:
     AI PlayerAI; /**< AI object for player. */
     AI *guardAI; /**< Pointer to AI objects for guards. */
 
+    std::vector<_Garde> listeOfGardes;
+    std::vector<_Player> listeOfPlayers; //Default player index 0
+
 public:
+    void addGardeAndPlayers();
     std::vector<Rect> vecAllObstacles; /**< Vector containing all obstacles in the game. */
 
     /**
