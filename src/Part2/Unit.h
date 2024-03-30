@@ -6,9 +6,11 @@
 #include "Level.h"
 #include "TextureLoader.h"
 #include "../core/Player.h"
+#include "../core/_Player.h"
 #include "../sdl2/SDLAnimation.h"
 #include "../core/Game.h"
 #include "../core/Direction.h"
+
 
 // Forward declaration de la classe Game
 //class Game;
@@ -34,7 +36,7 @@ public:
      * @param level Le niveau sur lequel l'unité évolue.
      * @param listUnits La liste des unités présentes dans le jeu.
      */
-    int update(float dT, Level& level, std::vector<Unit>& listUnits, Player &_player);
+    int update(float dT, Level& level, std::vector<Unit>& listUnits, Character &_player);
 
     /**
      * @brief Dessine l'unité sur l'écran.

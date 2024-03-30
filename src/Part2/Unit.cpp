@@ -15,7 +15,7 @@ Unit::Unit(SDL_Renderer* renderer, Vector2D setPos) :
 }
 
 // Fonction de mise à jour de l'unité
-int Unit::update(float dT, Level& level, std::vector<Unit>& listUnits, Player &_player) {
+int Unit::update(float dT, Level& level, std::vector<Unit>& listUnits, Character &_player) {
     int animation_speed = SDL_GetTicks() / 170;
     int idx = animation_speed % 7;//for walking frame
 
@@ -63,7 +63,7 @@ int Unit::update(float dT, Level& level, std::vector<Unit>& listUnits, Player &_
         if (posAdd.x != 0.0f && !level.isTileWall(x, (int)pos.y)) {
             // Vérification de collision sur l'axe x
             pos.x += posAdd.x;
-            _player.playerDest->x += 1 * (int)copysign(1, posAdd.x); // Déplace le joueur vers la gauche ou la droite selon la direction de la cible
+            _player.dest->x += 1 * (int)copysign(1, posAdd.x); // Déplace le joueur vers la gauche ou la droite selon la direction de la cible
             int vitesse = 1 * (int)copysign(1, posAdd.x);
             if (vitesse < 0) {
                 _player.direction = EAST;
@@ -80,7 +80,7 @@ int Unit::update(float dT, Level& level, std::vector<Unit>& listUnits, Player &_
         if (posAdd.y != 0.0f && !level.isTileWall((int)pos.x, y)) {
             // Vérification de collision sur l'axe y
             pos.y += posAdd.y;
-            _player.playerDest->y += 1 * (int)copysign(1, posAdd.y); // Déplace le joueur vers le haut ou le bas selon la direction de la cible
+            _player.dest->y += 1 * (int)copysign(1, posAdd.y); // Déplace le joueur vers le haut ou le bas selon la direction de la cible
             int vitesse = 1 * (int)copysign(1, posAdd.y);
             if (vitesse < 0) {
                 _player.direction = NORTH;
