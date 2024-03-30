@@ -27,10 +27,13 @@ set(SRC_ASTAR ${SRC_ASTAR_DIR}/Game.cpp
         ${SRC_SDL2_DIR}/SDLSprite.h
         ${SRC_SDL2_DIR}/SDLSprite.cpp
         ${SRC_CORE_DIR}/Player.cpp
+        ${SRC_CORE_DIR}/_Player.cpp
+        ${SRC_CORE_DIR}/Character.cpp
         ${SRC_SDL2_DIR}/SDLSound.cpp
         ${SRC_CORE_DIR}/Game.cpp
         ${SRC_CORE_DIR}/IA.cpp
         ${SRC_CORE_DIR}/Garde.cpp
+        ${SRC_CORE_DIR}/_Garde.cpp
 )
 
 # Définition des fichiers sources pour chaque composant
