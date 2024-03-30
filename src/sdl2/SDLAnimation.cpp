@@ -1,8 +1,8 @@
 #include "SDLAnimation.h"
 
-SDLAnimation::SDLAnimation(SDL_Renderer* renderer, const char * path, Player _player): player(_player),
+SDLAnimation::SDLAnimation(SDL_Renderer* renderer, Character _player): player(_player),
 sound(44100, MIX_DEFAULT_FORMAT, 2, 248){
-    allAnimation.loadSpriteFile(path, renderer);
+    allAnimation.loadSpriteFile(_player.theSpritePath, renderer);
     fireArrow.loadSpriteFile("../data/imgAnimation/fire-arrow.bmp", renderer);
     shootEffect = SDLSound::LoadChunkFromFile("../data/audio/shootEffect.wav");
     ptrStop = new int;
@@ -13,11 +13,6 @@ SDLAnimation::~SDLAnimation() = default;
 
 void SDLAnimation::handleInput() {
     state = SDL_GetKeyboardState(nullptr);
-
-    player.moving_left = state[SDL_SCANCODE_LEFT] > 0;
-    player.moving_right = state[SDL_SCANCODE_RIGHT] > 0;
-    player.moving_up = state[SDL_SCANCODE_UP] > 0;
-    player.moving_down = state[SDL_SCANCODE_DOWN] > 0;
 
     if(state[SDL_SCANCODE_K] > 0)
         keyBoardK = 'k';
@@ -85,8 +80,8 @@ void SDLAnimation::DrawAnimation(SDL_Renderer * renderer) const {
     drawArrow(renderer);
     SDL_RenderCopy(renderer,
                    allAnimation._texture,
-                   reinterpret_cast<const SDL_Rect *>(player.playerSource),
-                   reinterpret_cast<const SDL_Rect *>(player.playerDest));
+                   reinterpret_cast<const SDL_Rect *>(player.source),
+                   reinterpret_cast<const SDL_Rect *>(player.dest));
 
 }
 

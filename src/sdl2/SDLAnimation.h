@@ -4,6 +4,7 @@
 #include "../core/config.h"
 #include "../core/point.h"
 #include "../core/Player.h"
+#include "../core/_Player.h"
 #include "../core/Garde.h"
 #include "SDL.h"
 #include "../core/Rect.h"
@@ -18,7 +19,7 @@
  */
 class SDLAnimation {
 public:
-    Player player; /**< Player object for animation. */
+    Character player; /**< Player object for animation. */
     SDLSprite fireArrow;
     SDLSound sound;
     bool deathAnimationPlayed = false;
@@ -33,7 +34,7 @@ public:
      * @param path Path to sprite image.
      * @param _player Player object.
      */
-    SDLAnimation(SDL_Renderer* renderer, const char * path,  Player _player);
+    SDLAnimation(SDL_Renderer* renderer, Character _player);
     const Uint8* state;
     /**
      * @brief Destructor for SDLAnimation class.
