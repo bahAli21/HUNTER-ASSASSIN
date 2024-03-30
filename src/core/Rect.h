@@ -9,6 +9,7 @@ struct Rect {
     int y; ///< y-coordinate of the top-left corner of the rectangle.
     int w; ///< Width of the rectangle.
     int h; ///< Height of the rectangle.
+
 };
 
 #endif // HUNTERASSASSIN_RECT_H
