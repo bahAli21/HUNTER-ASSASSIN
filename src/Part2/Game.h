@@ -54,7 +54,8 @@ private:
      *
      * @param dT Temps écoulé depuis la dernière mise à jour.
      */
-    int update(float dT);
+    int updatePlayer(float dT);
+    int updateGardes(float dT);
 
     /**
      * @brief Dessine le contenu du jeu.

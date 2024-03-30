@@ -3,7 +3,7 @@
 // Constructeur de la classe Game avec par defaut le mode 1(Ajout des murs)
 GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth, int windowHeight) :
   placementModeCurrent(PlacementMode::wall),
-        g(0),
+        g(4),
         level(renderer, windowWidth-tileSize, windowHeight-tileSize) {
 
     // Initialisation du jeu
@@ -22,7 +22,29 @@ GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth
         // Temps pour chaque frame (80 fps)
         const float dT = 1.0f / 100.0f;
 
-        SDLAnimation playerAnimation(renderer, "../data/player.bmp", g._player);
+        //debut
+        // Afficher les informations de la liste sur la console
+        SDL_Log("Informations sur la listeOfGardes :");
+        for (const auto& garde : g.listeOfPlayers) {
+            SDL_Log("Source : x = %d, y = %d, w = %d, h = %d", garde.source->x, garde.source->y, garde.source->w, garde.source->h);
+            SDL_Log("Dest : x = %d, y = %d, w = %d, h = %d", garde.dest->x, garde.dest->y, garde.dest->w, garde.dest->h);
+            SDL_Log("Direction : %d", garde.direction);
+            SDL_Log("Health : %d", garde.getHealth());
+            SDL_Log("Name : %s", garde.getName().c_str());
+            SDL_Log("Level : %d", garde.getLevel());
+            SDL_Log("Identifiant : %d", garde.getIdentifier());
+        }
+
+        //fin
+        // Je Cree une instance de SDLAnimation pour chaque Joueur
+        SDLAnimation playerAnimation(renderer, g.listeOfPlayers[0]);
+
+        // Je Cree une instance de SDLAnimation pour chaque garde
+        std::vector<SDLAnimation> gardeAnimations;
+        for (auto & listeOfGarde : g.listeOfGardes) {
+            gardeAnimations.emplace_back(renderer, listeOfGarde);
+        }
+
         Vector2D playerPosTuile((float)g._player.playerDest->x / tileSize, (float)g._player.playerDest->y / tileSize);
         addUnit(renderer, playerPosTuile);
         // Boucle principale du jeu
@@ -41,11 +63,21 @@ GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth
                 // Traitement des événements, mise à jour et dessin du jeu
                 processEvents(renderer, running);
                 SDL_RenderClear(renderer);
-                int dir = update(dT);
-                playerAnimation.handleInput();
-                playerAnimation.updatePlayer(dir);
                 draw(renderer);
-                playerAnimation.DrawAnimation(renderer);
+
+                    int dir = updatePlayer(dT);
+                    playerAnimation.handleInput();
+                    playerAnimation.updatePlayer(dir);
+                    playerAnimation.DrawAnimation(renderer);
+
+                // je Met à jour les animations des gardes
+                for (auto& gardeAnimation : gardeAnimations) {
+                    int directionGarde = updateGardes(dT);
+                    gardeAnimation.handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
+                    gardeAnimation.updatePlayer(directionGarde); // je mets à jour l'animation du garde
+                    gardeAnimation.DrawAnimation(renderer); // Dessiner l'animation du garde
+                }
+
                 SDL_Delay(15);
                 // Met à jour l'affichage
                 SDL_RenderPresent(renderer);
@@ -142,11 +174,21 @@ void GameAstar::processEvents(SDL_Renderer* renderer, bool& running) {
 }
 
 // Mettre à jour l'état du jeu
-int GameAstar::update(float dT) {
+int GameAstar::updatePlayer(float dT) {
     // Mettre à jour les unités
     int dir = 1;
     for (auto & unitSelected : listUnits)
-         dir = unitSelected.update(dT, level, listUnits, g._player);
+         dir = unitSelected.update(dT, level, listUnits, g.listeOfPlayers[0]);
+    return dir;
+}
+
+// Mettre à jour l'état du jeu
+int GameAstar::updateGardes(float dT) {
+    // Mettre à jour les unités
+    int dir = 1;
+    for (auto & unitSelected : listUnits)
+        for(auto garde: g.listeOfGardes)
+            dir = unitSelected.update(dT, level, listUnits, garde);
     return dir;
 }
 
