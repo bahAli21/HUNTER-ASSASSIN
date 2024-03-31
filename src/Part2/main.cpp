@@ -1,6 +1,7 @@
 #include <iostream>
 #include "SDL.h"
 #include "Game.h"
+#include "../core/config.h"
 
 int main(int argc, char* args[]) {
     // J'initialise le générateur de nombres aléatoires avec l'heure actuelle pour obtenir des nombres différents à chaque exécution du jeu.
@@ -12,7 +13,7 @@ int main(int argc, char* args[]) {
         return 1;
     } else {
         // Je crée la fenêtre.
-        SDL_Window* window = SDL_CreateWindow("Simulation de Flux de Terrain", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 668, 568, 0);
+        SDL_Window* window = SDL_CreateWindow("Simulation de Flux de Terrain", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_W, WINDOW_H, 0);
         if (window == nullptr) {
             std::cout << "Erreur : Je ne peux pas créer la fenêtre = " << SDL_GetError() << std::endl;
             return 1;
