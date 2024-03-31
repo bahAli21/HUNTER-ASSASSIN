@@ -3,7 +3,7 @@
 Game::Game(int nbGardes): _player(), nbGardes(nbGardes),
     PlayerAI(_player.playerDest, _player.dest) {
 
-    allGardes = new Garde[nbGardes];
+   /* allGardes = new Garde[nbGardes];
     gardesDest = new Rect[nbGardes];
     gardesRect = new Rect[nbGardes];
     guardAI = new AI[getNbGardes()];
@@ -21,7 +21,6 @@ Game::Game(int nbGardes): _player(), nbGardes(nbGardes),
             collision = false;
 
             Rect rectTmp = {X, Y, 30,30};
-
             // Je vérifie la collision avec les obstacles
             for (const auto& obstacle : vecAllObstacles) {
                 if (checkCollision(rectTmp, obstacle)) {
@@ -52,42 +51,48 @@ Game::Game(int nbGardes): _player(), nbGardes(nbGardes),
     }
     vecAllObstacles.push_back({WINDOW_W / 4 +20, 150, WINDOW_W / 4 - 25, SQUARE_SIZE});
     vecAllObstacles.push_back({WINDOW_W / 4, 150, WINDOW_W / 4 - 25, SQUARE_SIZE});
+    */
     addGardeAndPlayers();
 }
 
 void Game::addGardeAndPlayers() {
+    const char * pathSpriteGarde[8];
+    Rect destGarde[8];
+    std::string gardeName[8];
     srand(time(NULL));
-    Rect source = {PLAYER_WIDTH/2, PLAYER_HEIGHT*21, PLAYER_WIDTH, PLAYER_HEIGHT*2};
-    Rect dest = {WINDOW_W/2 -PLAYER_WIDTH,WINDOW_H - PLAYER_HEIGHT*2, PLAYER_WIDTH, PLAYER_HEIGHT};
-    listeOfPlayers.emplace_back(&source, &dest, 0, 100,"../data/player.bmp", "BAH", 1, 21);
-    const char * pathSpriteGarde;
-    for (int i = 0; i < nbGardes; ++i) {
-        int newX, newY;
-        if (i == 0) {
-            // Génération des coordonnées pour le garde 0
-            newX = rand() % 91 + 10; // entre 10 et 100
-            newY = rand() % 91 + 10; // entre 10 et 100
-            pathSpriteGarde = "../data/garde1.bmp";
-        } else if (i == 1) {
-            // Génération des coordonnées pour le garde 1
-            newX = rand() % 101 + 200; // entre 200 et 300
-            newY = rand() % 101 + 200; // entre 200 et 300
-            pathSpriteGarde = "../data/garde2.bmp";
-        } else if (i == 2) {
-            // Génération des coordonnées pour le garde 2
-            newX = rand() % 91 + 100; // entre 100 et 200
-            newY = rand() % (WINDOW_H / 2); // entre 0 et WINDOW_H/2
-            pathSpriteGarde = "../data/garde3.bmp";
-        } else {
-            // Génération des coordonnées pour le garde 3
-            newX = rand() % 91 + 10; // entre 10 et 100
-            newY = rand() % (WINDOW_H / 2); // entre 0 et WINDOW_H/2
-            pathSpriteGarde = "../data/garde4.bmp";
-        }
-        Rect dest = {newX, newY, PLAYER_WIDTH, PLAYER_HEIGHT*2};
-        std::string gardeName = "Garde " + std::to_string(i + 1);
-        listeOfGardes.emplace_back(&source, &dest, rand() % 3, (i+1)*10,pathSpriteGarde, gardeName, rand() % 5, rand() % 5);
-    }
+
+    Rect source = {WIDTH_A/2, HEIGHT_A*21, WIDTH_A, HEIGHT_A*2};
+    Rect destPlayer = {WINDOW_W/2 -WIDTH_A,WINDOW_H - HEIGHT_A*2, WIDTH_A, HEIGHT_A};
+    listeOfPlayers.emplace_back(&source, &destPlayer, 0, 100,"../data/player.bmp", "BAH", 1, 21);
+
+    int newX[8], newY[8];
+    newX[0] = WIDTH_A*(+2);
+    newY[0] = 10;
+    newX[1] = WIDTH_A*(+3);
+    newY[1] = 10;
+    newX[2] = WIDTH_A*(+4);
+    newY[2] = 10;
+    newX[3] = WIDTH_A*(+5);
+    newY[3] = 10;
+    pathSpriteGarde[0] = "../data/garde1.bmp";
+    pathSpriteGarde[1] = "../data/garde2.bmp";
+    pathSpriteGarde[2] = "../data/garde3.bmp";
+    pathSpriteGarde[3] = "../data/garde4.bmp";
+
+    destGarde[0] = {newX[0], newY[0], WIDTH_A, HEIGHT_A*2};
+    destGarde[1] = {newX[1], newY[1], WIDTH_A, HEIGHT_A*2};
+    destGarde[2] = {newX[2], newY[2], WIDTH_A, HEIGHT_A*2};
+    destGarde[3] = {newX[3], newY[3], WIDTH_A, HEIGHT_A*2};
+
+    gardeName[0] = "Garde1 ";
+    gardeName[1] = "Garde2 ";
+    gardeName[2] = "Garde3 ";
+    gardeName[3] = "Garde4 ";
+
+    listeOfGardes.emplace_back(&source, &destGarde[0], 1, (1+1)*10,pathSpriteGarde[0], gardeName[0], 1, (1+1));
+    listeOfGardes.emplace_back(&source, &destGarde[1], 2, (1+2)*10,pathSpriteGarde[1], gardeName[1], 2, (1+2));
+    listeOfGardes.emplace_back(&source, &destGarde[2], 3, (1+3)*10,pathSpriteGarde[2], gardeName[2], 3, (1+3));
+    listeOfGardes.emplace_back(&source, &destGarde[3], 4, (1+4)*10,pathSpriteGarde[3], gardeName[3], 4, (1+4));
 }
 
 // Méthode pour vérifier la collision entre deux rectangles
