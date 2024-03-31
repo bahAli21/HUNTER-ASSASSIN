@@ -4,7 +4,7 @@ SDLAnimation::SDLAnimation(SDL_Renderer* renderer, Character _player): player(_p
 sound(44100, MIX_DEFAULT_FORMAT, 2, 248){
     allAnimation.loadSpriteFile(_player.theSpritePath, renderer);
     fireArrow.loadSpriteFile("../data/imgAnimation/fire-arrow.bmp", renderer);
-    shootEffect = SDLSound::LoadChunkFromFile("../data/audio/shootEffect.wav");
+    shootEffect = SDLSound::LoadChunkFromFile("../data/audio/fire_bow_sound.wav");
     ptrStop = new int;
     *ptrStop = 0;
 }
