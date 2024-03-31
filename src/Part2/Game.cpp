@@ -3,7 +3,7 @@
 // Constructeur de la classe Game avec par defaut le mode 1(Ajout des murs)
 GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth, int windowHeight) :
   placementModeCurrent(PlacementMode::wall),
-        g(4),
+        g(2),
         level(renderer, windowWidth-tileSize, windowHeight-tileSize) {
 
     // Initialisation du jeu
@@ -24,26 +24,20 @@ GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth
 
         //debut
         // Afficher les informations de la liste sur la console
-        SDL_Log("Informations sur la listeOfGardes :");
-        for (const auto& garde : g.listeOfPlayers) {
-            SDL_Log("Source : x = %d, y = %d, w = %d, h = %d", garde.source->x, garde.source->y, garde.source->w, garde.source->h);
-            SDL_Log("Dest : x = %d, y = %d, w = %d, h = %d", garde.dest->x, garde.dest->y, garde.dest->w, garde.dest->h);
-            SDL_Log("Direction : %d", garde.direction);
-            SDL_Log("Health : %d", garde.getHealth());
-            SDL_Log("Name : %s", garde.getName().c_str());
-            SDL_Log("Level : %d", garde.getLevel());
-            SDL_Log("Identifiant : %d", garde.getIdentifier());
-        }
+
 
         //fin
         // Je Cree une instance de SDLAnimation pour chaque Joueur
         SDLAnimation playerAnimation(renderer, g.listeOfPlayers[0]);
-
+        SDLAnimation gardeAnimation1(renderer, g.listeOfGardes[0]);
+        SDLAnimation gardeAnimation2(renderer, g.listeOfGardes[1]);
+        SDLAnimation gardeAnimation3(renderer, g.listeOfGardes[2]);
+        SDLAnimation gardeAnimation4(renderer, g.listeOfGardes[3]);
         // Je Cree une instance de SDLAnimation pour chaque garde
-        std::vector<SDLAnimation> gardeAnimations;
-        for (auto & listeOfGarde : g.listeOfGardes) {
-            gardeAnimations.emplace_back(renderer, listeOfGarde);
-        }
+       /* std::vector<SDLAnimation> gardeAnimations;
+        for (auto & Garde : g.listeOfGardes) {
+            gardeAnimations.emplace_back(renderer, Garde);
+        }*/
 
         Vector2D playerPosTuile((float)g._player.playerDest->x / tileSize, (float)g._player.playerDest->y / tileSize);
         addUnit(renderer, playerPosTuile);
@@ -65,20 +59,31 @@ GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth
                 SDL_RenderClear(renderer);
                 draw(renderer);
 
-                    int dir = updatePlayer(dT);
-                    playerAnimation.handleInput();
-                    playerAnimation.updatePlayer(dir);
-                    playerAnimation.DrawAnimation(renderer);
+                int dir = updatePlayer(dT);
+                playerAnimation.handleInput();
+                playerAnimation.updatePlayer(dir);
+                playerAnimation.DrawAnimation(renderer);
 
+                int directionGarde = updateGardes(dT);
                 // je Met à jour les animations des gardes
-                for (auto& gardeAnimation : gardeAnimations) {
-                    int directionGarde = updateGardes(dT);
-                    gardeAnimation.handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
-                    gardeAnimation.updatePlayer(directionGarde); // je mets à jour l'animation du garde
-                    gardeAnimation.DrawAnimation(renderer); // Dessiner l'animation du garde
-                }
+                gardeAnimation1.handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
+                gardeAnimation1.updatePlayer(directionGarde); // je mets à jour l'animation du garde
+                gardeAnimation1.DrawAnimation(renderer); // Dessine l'animation du garde
+                //Garde 2
+                gardeAnimation2.handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
+                gardeAnimation2.updatePlayer(directionGarde); // je mets à jour l'animation du garde
+                gardeAnimation2.DrawAnimation(renderer); // Dessine l'animation du garde
 
-                SDL_Delay(15);
+                gardeAnimation3.handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
+                gardeAnimation3.updatePlayer(directionGarde); // je mets à jour l'animation du garde
+                gardeAnimation3.DrawAnimation(renderer); // Dessine l'animation du garde
+
+                gardeAnimation4.handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
+                gardeAnimation4.updatePlayer(directionGarde); // je mets à jour l'animation du garde
+                gardeAnimation4.DrawAnimation(renderer); // Dessine l'animation du garde
+
+
+                SDL_Delay(5);
                 // Met à jour l'affichage
                 SDL_RenderPresent(renderer);
             }
