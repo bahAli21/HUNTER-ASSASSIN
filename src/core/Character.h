@@ -13,11 +13,13 @@ class Character{
 
 public:
 
-    Character(Rect * source, Rect * dest, int direction, int health, const char * theSpritePath);
+    Character(Rect * source, Rect * dest, int direction, int health, const char * theSpritePath, Position * _targetPos);
+    Character() = default;
     ~Character();
     int health; ///< Health points of the player.
     Rect * dest; ///< Destination of the player.
     Rect * source; ///< Source of the player.
+    Position * targetPos;
     int direction{}; /**< Direction indicators of the player.*/
     std::vector<Arrow> listArrow; /**< Liste des tuiles du niveau. */
     char shootKey;
