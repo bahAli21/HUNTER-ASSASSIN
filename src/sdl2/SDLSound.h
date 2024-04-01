@@ -22,7 +22,7 @@ public:
      * @param chunksize The size of audio chunks.
      */
     SDLSound(int frequency, Uint16 format, int channels, int chunksize);
-
+    SDLSound() = default;
     /**
      * @brief Destroys the SDLSound object.
      */
