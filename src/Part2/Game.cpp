@@ -2,9 +2,8 @@
 
 // Constructeur de la classe Game avec par defaut le mode 1(Ajout des murs)
 GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth, int windowHeight) :
-  placementModeCurrent(PlacementMode::wall),
-        g(2),
-        level(renderer, windowWidth-tileSize, windowHeight-tileSize) {
+placementModeCurrent(PlacementMode::wall), g(6),
+level(renderer, windowWidth-tileSize, windowHeight-tileSize) {
 
     // Initialisation du jeu
     if (window != nullptr && renderer != nullptr) {
@@ -29,15 +28,17 @@ GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth
         //fin
         // Je Cree une instance de SDLAnimation pour chaque Joueur
         SDLAnimation playerAnimation(renderer, g.listeOfPlayers[0]);
-        SDLAnimation gardeAnimation1(renderer, g.listeOfGardes[0]);
-        SDLAnimation gardeAnimation2(renderer, g.listeOfGardes[1]);
-        SDLAnimation gardeAnimation3(renderer, g.listeOfGardes[2]);
-        SDLAnimation gardeAnimation4(renderer, g.listeOfGardes[3]);
-        // Je Cree une instance de SDLAnimation pour chaque garde
-       /* std::vector<SDLAnimation> gardeAnimations;
-        for (auto & Garde : g.listeOfGardes) {
-            gardeAnimations.emplace_back(renderer, Garde);
-        }*/
+
+        // Déclarons un tableau pour stocker les animations des gardes
+        SDLAnimation gardeAnimations[6] = {
+                SDLAnimation(renderer, g.listeOfGardes[0]),
+                SDLAnimation(renderer, g.listeOfGardes[1]),
+                SDLAnimation(renderer, g.listeOfGardes[2]),
+                SDLAnimation(renderer, g.listeOfGardes[3]),
+                SDLAnimation(renderer, g.listeOfGardes[4]),
+                SDLAnimation(renderer, g.listeOfGardes[5])
+        };
+
 
         Vector2D playerPosTuile((float)g._player.playerDest->x / tileSize, (float)g._player.playerDest->y / tileSize);
         addUnit(renderer, playerPosTuile);
@@ -53,38 +54,23 @@ GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth
             if (timeDeltaFloat >= dT) {
                 // Mise à jour du temps pour la prochaine frame
                 time1 = time2;
-                // Affichage des coordonnées du joueur
                 // Traitement des événements, mise à jour et dessin du jeu
                 processEvents(renderer, running);
                 SDL_RenderClear(renderer);
                 draw(renderer);
 
-                int dir = updatePlayer(dT);
+                updatePlayer(dT);
+                updateGardes(dT);
                 playerAnimation.handleInput();
-                playerAnimation.updatePlayer(dir);
+                playerAnimation.updateCharacter(g.listeOfPlayers[0].direction);
                 playerAnimation.DrawAnimation(renderer);
 
-                int directionGarde = updateGardes(dT);
-                // je Met à jour les animations des gardes
-                gardeAnimation1.handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
-                gardeAnimation1.updatePlayer(directionGarde); // je mets à jour l'animation du garde
-                gardeAnimation1.DrawAnimation(renderer); // Dessine l'animation du garde
-                //Garde 2
-                gardeAnimation2.handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
-                gardeAnimation2.updatePlayer(directionGarde); // je mets à jour l'animation du garde
-                gardeAnimation2.DrawAnimation(renderer); // Dessine l'animation du garde
-
-                gardeAnimation3.handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
-                gardeAnimation3.updatePlayer(directionGarde); // je mets à jour l'animation du garde
-                gardeAnimation3.DrawAnimation(renderer); // Dessine l'animation du garde
-
-                gardeAnimation4.handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
-                gardeAnimation4.updatePlayer(directionGarde); // je mets à jour l'animation du garde
-                gardeAnimation4.DrawAnimation(renderer); // Dessine l'animation du garde
-
-
+                for (int i = 0; i < g.nbGardes; ++i) {
+                    gardeAnimations[i].handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
+                    gardeAnimations[i].updateCharacter(g.listeOfGardes[i].direction); // Mettre à jour l'animation du garde
+                    gardeAnimations[i].DrawAnimation(renderer); // Dessine l'animation du garde
+                }
                 SDL_Delay(5);
-                // Met à jour l'affichage
                 SDL_RenderPresent(renderer);
             }
         }
@@ -148,8 +134,27 @@ void GameAstar::processEvents(SDL_Renderer* renderer, bool& running) {
     // Obtenir la position de la souris
     int mouseX = 0, mouseY = 0;
     SDL_GetMouseState(&mouseX, &mouseY);
-    Vector2D posMouse((float)mouseX / tileSize, (float)mouseY / tileSize);
+
+    for (auto unitSelected: listUnits) {
+        if(unitSelected.distanceMove > unitSelected.distanceToTarget){
+            for (int i = 0; i < g.nbGardes; ++i) {
+                g.listeOfPlayers[0].targetPos = {rand()%((WINDOW_W-WIDTH_A)- WIDTH_A +1) + WIDTH_A,
+                                                rand()%((WINDOW_H-HEIGHT_A)- HEIGHT_A +1) + HEIGHT_A
+                };
+            }
+
+        }
+    }
+
+    //Player Move pos
+    //Demain il faut faire bouger les garde independament
+    Vector2D posMouse((float)g.listeOfPlayers[0].targetPos.x / tileSize,
+                      (float)g.listeOfPlayers[0].targetPos.y / tileSize);
     level.setTargetAndCalculateFlowField((int)posMouse.x, (int)posMouse.y);
+
+    for (int i = 0; i < g.nbGardes; ++i) {
+
+    }
 
     // Gére l'action du clic de souris
     if (mouseDownStatus > 0) {
@@ -179,22 +184,21 @@ void GameAstar::processEvents(SDL_Renderer* renderer, bool& running) {
 }
 
 // Mettre à jour l'état du jeu
-int GameAstar::updatePlayer(float dT) {
+void GameAstar::updatePlayer(float dT) {
     // Mettre à jour les unités
-    int dir = 1;
     for (auto & unitSelected : listUnits)
-         dir = unitSelected.update(dT, level, listUnits, g.listeOfPlayers[0]);
-    return dir;
+         unitSelected.update(dT, level, listUnits, g.listeOfPlayers[0]);
 }
 
 // Mettre à jour l'état du jeu
-int GameAstar::updateGardes(float dT) {
-    // Mettre à jour les unités
-    int dir = 1;
-    for (auto & unitSelected : listUnits)
-        for(auto garde: g.listeOfGardes)
-            dir = unitSelected.update(dT, level, listUnits, garde);
-    return dir;
+void GameAstar::updateGardes(float dT) {
+    for (auto & unitSelected : listUnits) {
+        for (int i = 0; i < g.nbGardes; ++i) {
+            unitSelected.update(dT, level, listUnits, g.listeOfGardes[i]);
+        }
+    }
+
+
 }
 
 // Dessine le contenu du jeu

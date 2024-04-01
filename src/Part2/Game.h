@@ -40,6 +40,8 @@ public:
 
     ~GameAstar();
      Game g;
+    int posX = 50;
+    int posY = 50;
 private:
     /**
      * @brief Traite les événements du jeu.
@@ -54,8 +56,8 @@ private:
      *
      * @param dT Temps écoulé depuis la dernière mise à jour.
      */
-    int updatePlayer(float dT);
-    int updateGardes(float dT);
+    void updatePlayer(float dT);
+    void updateGardes(float dT);
 
     /**
      * @brief Dessine le contenu du jeu.
