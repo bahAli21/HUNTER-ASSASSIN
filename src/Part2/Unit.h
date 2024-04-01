@@ -21,6 +21,8 @@
 class Unit
 {
 public:
+    float distanceToTarget;
+    float distanceMove;
     /**
      * @brief Constructeur de la classe Unit.
      *
@@ -36,7 +38,7 @@ public:
      * @param level Le niveau sur lequel l'unité évolue.
      * @param listUnits La liste des unités présentes dans le jeu.
      */
-    int update(float dT, Level& level, std::vector<Unit>& listUnits, Character &_player);
+    void update(float dT, Level& level, std::vector<Unit>& listUnits, Character &_player);
 
     /**
      * @brief Dessine l'unité sur l'écran.
