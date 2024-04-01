@@ -19,7 +19,7 @@
  */
 class SDLAnimation {
 public:
-    Character player; /**< Player object for animation. */
+    Character character; /**< Player object for animation. */
     SDLSprite fireArrow;
     SDLSound sound;
     bool deathAnimationPlayed = false;
@@ -35,6 +35,7 @@ public:
      * @param _player Player object.
      */
     SDLAnimation(SDL_Renderer* renderer, Character _player);
+    SDLAnimation();
     const Uint8* state;
     /**
      * @brief Destructor for SDLAnimation class.
@@ -51,7 +52,7 @@ public:
     /**
      * @brief Updates player state.
      */
-     void updatePlayer(int dirForTest);
+     void updateCharacter(int dirForTest);
 
     /**
      * @brief Draws animation on renderer.
