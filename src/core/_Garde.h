@@ -28,8 +28,8 @@ public:
      * @param _level The level of the player.
      * @param _identifier The identifier of the player.
      */
-    _Garde(Rect* source, Rect* dest, int direction, int health,const char * pathSprite,Position targetPos, std::string  _name, int _level, int _id)
-            : Character(source, dest, direction, health, pathSprite, targetPos), name(std::move(_name)), level(_level), id(_id) {}
+    _Garde(Rect* source, Rect* dest, int direction, int health,const char * pathSprite,Position * targetPos,int _speed, std::string  _name, int _level, int _id)
+            : Character(source, dest, direction, health, pathSprite, targetPos, _speed), name(std::move(_name)), level(_level), id(_id) {}
 
             // Getters and setters for name, level, and identifier
 
