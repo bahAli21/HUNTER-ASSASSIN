@@ -13,7 +13,7 @@ class Character{
 
 public:
 
-    Character(Rect * source, Rect * dest, int direction, int health, const char * theSpritePath, Position * _targetPos);
+    Character(Rect * source, Rect * dest, int direction, int health, const char * theSpritePath, Position * _targetPos,  int _speed);
     Character() = default;
     ~Character();
     int health; ///< Health points of the player.
@@ -23,6 +23,7 @@ public:
     int direction{}; /**< Direction indicators of the player.*/
     std::vector<Arrow> listArrow; /**< Liste des tuiles du niveau. */
     char shootKey;
+    int speed; /// La vitesse de déplacement du character
 
     const char * theSpritePath;
     //Walking clips

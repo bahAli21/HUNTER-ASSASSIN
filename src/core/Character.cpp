@@ -1,12 +1,13 @@
 #include "Character.h"
 
-Character::Character(Rect * _source, Rect * _dest, int _direction, int _health, const char * _theSpritePath, Position * _targetPos): shootKey('a') {
+Character::Character(Rect * _source, Rect * _dest, int _direction, int _health, const char * _theSpritePath, Position * _targetPos,  int _speed): shootKey('a') {
     source = new Rect{_source->x, _source->y, _source->w, _source->h};
     dest = new Rect{_dest->x, _dest->y, _dest->w, _dest->h};
     targetPos = new Position{_targetPos->x, _targetPos->y};
     direction = (_direction);
     health = (_health);
     theSpritePath = _theSpritePath;
+    speed = (_speed);
     loadClips();
 }
 
