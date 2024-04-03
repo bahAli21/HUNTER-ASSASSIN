@@ -95,8 +95,8 @@ void Map::initAllRectangle() {
     }
 
     //chemin
-    //initPathMap1();
-    initPathMap2();
+    initPathMap1();
+    //initPathMap2();
 
 }
 
@@ -116,6 +116,14 @@ void Map::openDoor() {
         if(recTab[i].y + recTab[i].h > recTab[i].y)
             recTab[i].h--;
     }
+    for(int i=30; i<=32; i++){
+        if(recTab[i].y + recTab[i].h > recTab[i].y)
+            recTab[i].h--;
+    }
+    for(int i=45; i<=47; i++){
+        if(recTab[i].y + recTab[i].h > recTab[i].y)
+            recTab[i].h--;
+    }
     //isOpen = true;
 }
 
@@ -127,6 +135,14 @@ void Map::closeDoor() {
     // portes jaunes
     for(int i=4; i<=9; i++){
         if(recTab[i].h < 60)
+            recTab[i].h ++;
+    }
+    for(int i=30; i<=32; i++){
+        if(recTab[i].h < 50)
+            recTab[i].h ++;
+    }
+    for(int i=45; i<=47; i++){
+        if(recTab[i].h < 50)
             recTab[i].h ++;
     }
     //isOpen = false;
