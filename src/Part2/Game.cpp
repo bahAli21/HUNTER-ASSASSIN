@@ -3,7 +3,7 @@
 // Constructeur de la classe Game avec par defaut le mode 1(Ajout des murs)
 GameAstar::GameAstar(SDL_Window* window, SDL_Renderer* renderer, int windowWidth, int windowHeight) :
 placementModeCurrent(PlacementMode::wall), g(6),
-level(renderer, windowWidth-tileSize, windowHeight-tileSize) {
+level(renderer, windowWidth, windowHeight) {
 
     // Initialisation du jeu
     if (window != nullptr && renderer != nullptr) {
@@ -40,7 +40,7 @@ level(renderer, windowWidth-tileSize, windowHeight-tileSize) {
         };
 
 
-        Vector2D playerPosTuile((float)g._player.playerDest->x / tileSize, (float)g._player.playerDest->y / tileSize);
+        Vector2D playerPosTuile((float)g._player.playerDest->x/tileSize, (float)g._player.playerDest->y/tileSize );
         addUnit(renderer, playerPosTuile);
         // Boucle principale du jeu
         bool running = true;
@@ -59,17 +59,18 @@ level(renderer, windowWidth-tileSize, windowHeight-tileSize) {
                 SDL_RenderClear(renderer);
                 draw(renderer);
 
-                updatePlayer(dT);
-                updateGardes(dT);
+
+                //updateGardes(dT);
                 playerAnimation.handleInput();
                 playerAnimation.updateCharacter(g.listeOfPlayers[0].direction);
-                playerAnimation.DrawAnimation(renderer);
+                //playerAnimation.DrawAnimation(renderer);
+                updatePlayer(dT, playerAnimation);
 
-                for (int i = 0; i < g.nbGardes; ++i) {
+                /*for (int i = 0; i < g.nbGardes; ++i) {
                     gardeAnimations[i].handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
                     gardeAnimations[i].updateCharacter(g.listeOfGardes[i].direction); // Mettre à jour l'animation du garde
                     gardeAnimations[i].DrawAnimation(renderer); // Dessine l'animation du garde
-                }
+                }*/
                 SDL_Delay(5);
                 SDL_RenderPresent(renderer);
             }
@@ -135,26 +136,24 @@ void GameAstar::processEvents(SDL_Renderer* renderer, bool& running) {
     int mouseX = 0, mouseY = 0;
     SDL_GetMouseState(&mouseX, &mouseY);
 
-    for (auto unitSelected: listUnits) {
-        if(unitSelected.distanceMove > unitSelected.distanceToTarget){
-            for (int i = 0; i < g.nbGardes; ++i) {
-                g.listeOfPlayers[0].targetPos = {rand()%((WINDOW_W-WIDTH_A)- WIDTH_A +1) + WIDTH_A,
-                                                rand()%((WINDOW_H-HEIGHT_A)- HEIGHT_A +1) + HEIGHT_A
-                };
-            }
+    //for (auto unitSelected: listUnits) {
+      /* if((int)listUnits[0].pos.x== (int)level.getTargetPos().x && (int)listUnits[0].pos.y== (int)level.getTargetPos().y){
+                g.listeOfPlayers[0].targetPos = new Position{rand()%((WINDOW_W-WIDTH_A)- WIDTH_A +1) + WIDTH_A,
+                                                rand()%((WINDOW_H-HEIGHT_A)- HEIGHT_A +1) + HEIGHT_A};
+        }*/
+   /* if((int)g.listeOfPlayers[0].dest->x == (int)level.getTargetPos().x * tileSize && (int)g.listeOfPlayers[0].dest->y== (int)level.getTargetPos().y *tileSize){
+        g.listeOfPlayers[0].targetPos = new Position{rand()%((WINDOW_W-WIDTH_A)- WIDTH_A +1) + WIDTH_A,
+                                                     rand()%((WINDOW_H-HEIGHT_A)- HEIGHT_A +1) + HEIGHT_A};
+    }*/
+    //}
 
-        }
-    }
+
 
     //Player Move pos
     //Demain il faut faire bouger les garde independament
-    Vector2D posMouse((float)g.listeOfPlayers[0].targetPos.x / tileSize,
-                      (float)g.listeOfPlayers[0].targetPos.y / tileSize);
-    level.setTargetAndCalculateFlowField((int)posMouse.x, (int)posMouse.y);
-
-    for (int i = 0; i < g.nbGardes; ++i) {
-
-    }
+    Vector2D posMouse((float)g.listeOfPlayers[0].targetPos->x / tileSize,
+                      (float)g.listeOfPlayers[0].targetPos->y / tileSize);
+    level.setTargetAndCalculateFlowField((int)mouseX/ tileSize, (int)mouseY/ tileSize);
 
     // Gére l'action du clic de souris
     if (mouseDownStatus > 0) {
@@ -184,10 +183,11 @@ void GameAstar::processEvents(SDL_Renderer* renderer, bool& running) {
 }
 
 // Mettre à jour l'état du jeu
-void GameAstar::updatePlayer(float dT) {
+void GameAstar::updatePlayer(float dT, SDLAnimation playerAnimation) {
     // Mettre à jour les unités
     for (auto & unitSelected : listUnits)
          unitSelected.update(dT, level, listUnits, g.listeOfPlayers[0]);
+    //playerAnimation.updateTest(dT, level);
 }
 
 // Mettre à jour l'état du jeu
@@ -213,7 +213,7 @@ void GameAstar::draw(SDL_Renderer* renderer) {
 
     // Dessine les unités
     for (auto& unitSelected : listUnits)
-        unitSelected.draw(renderer, tileSize);
+        unitSelected.draw(renderer, tileSize, g.listeOfPlayers[0]);
 
     // Dessine l'overlay si visible
     if (textureOverlay != nullptr && overlayVisible) {

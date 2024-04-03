@@ -56,7 +56,7 @@ private:
      *
      * @param dT Temps écoulé depuis la dernière mise à jour.
      */
-    void updatePlayer(float dT);
+    void updatePlayer(float dT, SDLAnimation playerAnimation);
     void updateGardes(float dT);
 
     /**
