@@ -12,7 +12,8 @@
 #include "../core/Direction.h"
 #include "SDLSound.h"
 #include "SDL_mixer.h"
-
+#include "../Part2/Vector2D.h"
+#include "../Part2/Level.h"
 
 /**
  * @brief Class for handling player animations using SDL.
@@ -61,6 +62,10 @@ public:
     void DrawAnimation(SDL_Renderer * renderer) const;
 
     void drawArrow(SDL_Renderer * renderer) const;
+
+    void updateTest(float dT, Level& level);
+    float distanceToTarget;
+    float distanceMove;
 };
 
 #endif //HUNTERASSASSIN_SDLANIMATION_H
