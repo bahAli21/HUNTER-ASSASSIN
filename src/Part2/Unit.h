@@ -46,7 +46,7 @@ public:
      * @param renderer Le renderer SDL.
      * @param tileSize La taille des tuiles du jeu.
      */
-    void draw(SDL_Renderer* renderer, int tileSize);
+    void draw(SDL_Renderer* renderer, int tileSize, Character character);
 
     /**
      * @brief Vérifie si l'unité chevauche une autre unité.
@@ -65,10 +65,11 @@ public:
      */
     Vector2D computeNormalSeparation(std::vector<Unit>& listUnits);
 
-private:
+public:
     Vector2D pos; /**< Position de l'unité dans le monde. */
     Vector2D posDraw; /**< Position de l'unité pour le dessin. */
     static const float speed; /**< Vitesse de l'unité. */
     static const float size; /**< Taille de l'unité. */
     SDL_Texture* texture = nullptr; /**< Texture de l'unité. */
+    SDL_Texture* textureArrow = nullptr; /**< Texture de la fleche. */
 };

@@ -2,8 +2,8 @@
 //#include "Game.h"
 
 // Définition des constantes de vitesse et de taille pour les instances de la classe Unit
-const float Unit::speed = 4.0f; // La vitesse de déplacement de l'unité
-const float Unit::size = 0.4f; // La taille de l'unité
+const float Unit::speed = 4.7f; // La vitesse de déplacement de l'unité
+const float Unit::size = 5; // La taille de l'unité
 
 // Constructeur de la classe Unit
 Unit::Unit(SDL_Renderer* renderer, Vector2D setPos) :
@@ -11,20 +11,25 @@ Unit::Unit(SDL_Renderer* renderer, Vector2D setPos) :
     // Initialisation de la position et de la position de dessin de l'unité
 
     // Chargement de la texture de l'unité
-    texture = TextureLoader::loadTexture(renderer, "Unit.bmp");
+    texture = TextureLoader::loadTexture(renderer, "player.bmp");
+    textureArrow = TextureLoader::loadTexture(renderer, "gold-arrow_1.bmp");
 }
 
 // Fonction de mise à jour de l'unité
 void Unit::update(float dT, Level& level, std::vector<Unit>& listUnits, Character &character) {
     int animation_speed = SDL_GetTicks() / 170;
     int idx = animation_speed % 7;//for walking frame
+    int idxAtt= animation_speed % 13; //for animation frame
+    int idxDead = animation_speed % 5;
 
     // Calcul de la distance à la cible depuis la position actuelle de l'unité
-     distanceToTarget = (level.getTargetPos() - pos).magnitude(); //Un type vecteur est retourner par la difference , magnitude() pour l'heristic
+    Vector2D targetPos(character.targetPos->x, character.targetPos->y);
+    Vector2D destCh(character.dest->x, character.dest->y);
+    distanceToTarget = (level.getTargetPos() - pos).magnitude(); //Un type vecteur est retourner par la difference , magnitude() pour l'heristic
 
     // Calcul de la distance à déplacer pendant cette frame
     //En physique d = v * t haha
-     distanceMove = speed * dT;
+    distanceMove = speed * dT;
     if (distanceMove > distanceToTarget) {
         //Yes destination atteinte
         distanceMove = distanceToTarget;
@@ -67,6 +72,7 @@ void Unit::update(float dT, Level& level, std::vector<Unit>& listUnits, Characte
             int vitesse = 1 * (int)copysign(1, posAdd.x);
             if (vitesse < 0) {
                 character.direction = EAST;
+                character.LEFT()
                 // Si la vitesse est négative, l'unité se déplace vers la gauche
                 character.WalkingAnimation(character.player_left_clips, vitesse, idx, WEST); // Utilise l'animation pour le mouvement vers la gauche
 
@@ -95,7 +101,7 @@ void Unit::update(float dT, Level& level, std::vector<Unit>& listUnits, Characte
     }
 
 
-   //character.updateArrowPos();
+    //character.updateArrowPos();
     // Calcul de la position de dessin en fonction de la position actuelle
     const float fKeep = 0.93f;
     posDraw = posDraw * fKeep + pos * (1.0f - fKeep);
@@ -104,9 +110,8 @@ void Unit::update(float dT, Level& level, std::vector<Unit>& listUnits, Characte
 
 
 
-
 // Fonction de dessin de l'unité
-void Unit::draw(SDL_Renderer* renderer, int tileSize) {
+void Unit::draw(SDL_Renderer* renderer, int tileSize, Character character) {
     if (renderer != nullptr) {
         // Dessin de l'unité à sa position de dessin
         SDL_Rect rect = {
@@ -114,7 +119,27 @@ void Unit::draw(SDL_Renderer* renderer, int tileSize) {
                 (int)((posDraw.y - size / 2) * tileSize),
                 (int)(size * tileSize),
                 (int)(size * tileSize) };
-        SDL_RenderCopy(renderer, texture, nullptr, &rect);
+
+        //Angle -90 (up) 0 ou 360 (right) 180(left) et 90(down)
+        for (auto arrow: character.listArrow){
+            SDL_Rect tmp = {arrow.arrowPos.x,
+                            arrow.arrowPos.y,
+                            50,
+                            50};
+
+            SDL_RenderCopyEx(renderer,
+                             textureArrow,
+                             nullptr,
+                             &tmp,
+                             arrow.angleRotate,
+                             nullptr,
+                             SDL_FLIP_NONE);
+
+        }
+
+        SDL_RenderCopy(renderer, texture,
+                       reinterpret_cast<const SDL_Rect *>(character.source),
+                       &rect);
     }
 }
 
