@@ -69,9 +69,9 @@ void Game::addGardeAndPlayers() {
     srand(time(NULL));
 
     Rect source = {WIDTH_A / 2, HEIGHT_A * 21, WIDTH_A, HEIGHT_A * 2};
-    Rect destPlayer = {WINDOW_W / 2 - WIDTH_A, WINDOW_H - HEIGHT_A * 2, WIDTH_A, HEIGHT_A};
-    Position targetPlayer = {200,200};
-    listeOfPlayers.emplace_back(&source, &destPlayer, 0, 100, "../data/player.bmp",targetPlayer, "BAH", 1, 21);
+    Rect destPlayer = {300, 300, WIDTH_A, HEIGHT_A};
+    Position targetPlayer = {300,300};
+    listeOfPlayers.emplace_back(&source, &destPlayer, 0, 100, "../data/player.bmp",&targetPlayer,3, "BAH", 1, 21);
 
     // Boucle pour créer les gardes en fonction de nbGardes
     for (int i = 0; i < nbGardes; ++i) {
@@ -104,7 +104,8 @@ void Game::addGardeAndPlayers() {
                                    i,
                                    (i + 1) * 10,
                                    pathSpriteGarde[i],
-                                   pointTarget,
+                                   &pointTarget,
+                                   3,
                                    gardeName[i],
                                    i + 1,
                                    (i + 1) + 1);
