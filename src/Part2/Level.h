@@ -6,7 +6,7 @@
 #include "SDL.h"
 #include "Vector2D.h"
 #include "TextureLoader.h"
-#include "SDLAnimation.h"
+
 /**
  * @brief Représente un niveau du jeu.
  *
