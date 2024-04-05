@@ -39,9 +39,14 @@ level(renderer, windowWidth, windowHeight) {
                 SDLAnimation(renderer, g.listeOfGardes[5])
         };
 
+        for (int i = 0; i < 6; ++i) {
+            gardeAnimations[i] = SDLAnimation(renderer, g.listeOfGardes[i]);
+            Vector2D gardePosTuile((float)g.listeOfGardes[i].dest->x/tileSize, (float)g.listeOfGardes[i].dest->y/tileSize);
+            addUnit(renderer, gardePosTuile);
+        }
 
-        Vector2D playerPosTuile((float)g._player.playerDest->x/tileSize, (float)g._player.playerDest->y/tileSize );
-        addUnit(renderer, playerPosTuile);
+        //Vector2D playerPosTuile((float)g.listeOfPlayers[0].dest->x/tileSize, (float)g.listeOfPlayers[0].dest->y/tileSize );
+        //addUnit(renderer, playerPosTuile);
         // Boucle principale du jeu
         bool running = true;
         while (running) {
@@ -60,17 +65,18 @@ level(renderer, windowWidth, windowHeight) {
                 draw(renderer);
 
 
-                //updateGardes(dT);
-                playerAnimation.handleInput();
-                playerAnimation.updateCharacter(g.listeOfPlayers[0].direction);
-                //playerAnimation.DrawAnimation(renderer);
-                updatePlayer(dT, playerAnimation);
-
-                /*for (int i = 0; i < g.nbGardes; ++i) {
-                    gardeAnimations[i].handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
-                    gardeAnimations[i].updateCharacter(g.listeOfGardes[i].direction); // Mettre à jour l'animation du garde
-                    gardeAnimations[i].DrawAnimation(renderer); // Dessine l'animation du garde
-                }*/
+                /*
+                 playerAnimation.handleInput();
+                 playerAnimation.updateCharacter(g.listeOfPlayers[0].direction);
+                 //playerAnimation.DrawAnimation(renderer);
+                 updatePlayer(dT, playerAnimation);
+                */
+                updateGardes(dT);
+                 for (int i = 0; i < g.nbGardes; ++i) {
+                     gardeAnimations[i].handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
+                     gardeAnimations[i].updateCharacter(g.listeOfGardes[i].direction); // Mettre à jour l'animation du garde
+                     gardeAnimations[i].DrawAnimation(renderer); // Dessine l'animation du garde
+                 }
                 SDL_Delay(5);
                 SDL_RenderPresent(renderer);
             }
@@ -140,25 +146,23 @@ void GameAstar::processEvents(SDL_Renderer* renderer, bool& running) {
     SDL_Log("-------------------------");
     SDL_Log("pos = (%d, %d)", (int)listUnits[0].pos.x, (int)listUnits[0].pos.y);
     SDL_Log("targetPos = (%d, %d)", (int)level.getTargetPos().x, (int)level.getTargetPos().y);
-       if((int)listUnits[0].pos.x == (int)level.getTargetPos().x && (int)listUnits[0].pos.y == (int)level.getTargetPos().y){
-                g.listeOfPlayers[0].targetPos = new Position{rand()%((WINDOW_W-WIDTH_A)- WIDTH_A +1) + WIDTH_A,
-                                                rand()%((WINDOW_H-HEIGHT_A)- HEIGHT_A +1) + HEIGHT_A};
-           SDL_Log("oui oui oui oui");
+
+    for (int i = 0; i < listUnits.size(); ++i) {
+        if ((int)listUnits[i].pos.x == (int)level.getTargetPos().x && (int)listUnits[i].pos.y == (int)level.getTargetPos().y) {
+            // Mettre à jour la position cible du garde
+            g.listeOfGardes[i].targetPos = new Position{
+                    rand()%((WINDOW_W-WIDTH_A)- WIDTH_A +1) + WIDTH_A,
+                    rand()%((WINDOW_H-HEIGHT_A)- HEIGHT_A +1) + HEIGHT_A
+            };
+            SDL_Log("oui oui oui oui");
         }
-   /* if((int)g.listeOfPlayers[0].dest->x == (int)level.getTargetPos().x * tileSize && (int)g.listeOfPlayers[0].dest->y== (int)level.getTargetPos().y *tileSize){
-        g.listeOfPlayers[0].targetPos = new Position{rand()%((WINDOW_W-WIDTH_A)- WIDTH_A +1) + WIDTH_A,
-                                                     rand()%((WINDOW_H-HEIGHT_A)- HEIGHT_A +1) + HEIGHT_A};
-    }*/
-    //}
 
+        // Mettre à jour le mouvement du garde
+        Vector2D posMouse(mouseX / tileSize, mouseY / tileSize);
+        level.setTargetAndCalculateFlowField((int)posMouse.x, (int)posMouse.y, g.listeOfGardes[i]);
+    }
 
-
-    //Player Move pos
-    //Demain il faut faire bouger les garde independament
-    Vector2D posMouse((float)g.listeOfPlayers[0].targetPos->x / tileSize,
-                      (float)g.listeOfPlayers[0].targetPos->y / tileSize);
-    level.setTargetAndCalculateFlowField((int)posMouse.x, (int)posMouse.y);
-
+    Vector2D posMouse(mouseX / tileSize, mouseY / tileSize);
     // Gére l'action du clic de souris
     if (mouseDownStatus > 0) {
         switch (mouseDownStatus) {
