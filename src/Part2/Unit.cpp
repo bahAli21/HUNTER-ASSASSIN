@@ -3,7 +3,7 @@
 
 // Définition des constantes de vitesse et de taille pour les instances de la classe Unit
 const float Unit::speed = 4.7f; // La vitesse de déplacement de l'unité
-const float Unit::size = 5; // La taille de l'unité
+const float Unit::size = 4; // La taille de l'unité
 
 // Constructeur de la classe Unit
 Unit::Unit(SDL_Renderer* renderer, Vector2D setPos) :
