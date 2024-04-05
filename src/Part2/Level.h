@@ -6,6 +6,8 @@
 #include "SDL.h"
 #include "Vector2D.h"
 #include "TextureLoader.h"
+#include "../core/Character.h"
+
 
 /**
  * @brief Représente un niveau du jeu.
@@ -76,7 +78,7 @@ public:
      * @param targetXNew Nouvelle coordonnée X de la cible.
      * @param targetYNew Nouvelle coordonnée Y de la cible.
      */
-    void setTargetAndCalculateFlowField(int targetXNew, int targetYNew);
+    void setTargetAndCalculateFlowField(int targetXNew, int targetYNew, Character & character);
 
     /**
      * @brief Récupère le vecteur normal du flux à une position donnée.
@@ -112,8 +114,8 @@ private:
 
     std::vector<Tile> listTiles; /**< Liste des tuiles du niveau. */
     const int tileCountX, tileCountY; /**< Nombre de tuiles en largeur et en hauteur. */
-    int targetX = -1, targetY = -1; /**< Coordonnées de la cible. */
-
+    int mouseX = -1, mouseY = -1; /**< Coordonnées de la cible. */
+    int tergetTestX = 100, tergetTestY = 100; /**< Coordonnées de la cible. */
     // Textures des tuiles
     SDL_Texture* textureTileWall = nullptr;
     SDL_Texture* textureTileTarget = nullptr;

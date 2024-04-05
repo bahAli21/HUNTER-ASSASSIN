@@ -36,7 +36,7 @@ void Level::draw(SDL_Renderer* renderer, int tileSize) {
 
     //Draw the target tile.
     if (textureTileTarget != nullptr) {
-        SDL_Rect rect = { targetX * tileSize, targetY * tileSize, tileSize, tileSize };
+        SDL_Rect rect = { mouseX * tileSize, mouseY * tileSize, tileSize, tileSize };
         SDL_RenderCopy(renderer, textureTileTarget, NULL, &rect);
     }
     
@@ -116,21 +116,23 @@ void Level::setTileWall(int x, int y, bool setWall) {
 
 
 Vector2D Level::getTargetPos() {
-    return Vector2D((float)targetX, (float)targetY);
+    return Vector2D((float)tergetTestX, (float)tergetTestY);
 }
 
 
-void Level::setTargetAndCalculateFlowField(int targetXNew, int targetYNew) {
+void Level::setTargetAndCalculateFlowField(int mouseXNew, int mouseYNew, Character & character) {
     //Check if the target is new.
-    if (targetX != targetXNew || targetY != targetYNew) {
-        targetX = targetXNew;
-        targetY = targetYNew;
+    mouseX = mouseXNew;
+    mouseY = mouseYNew;
+    if (tergetTestX != character.targetPos->x /28 || tergetTestY != character.targetPos->y /28) {
+        tergetTestX = character.targetPos->x /28;
+        tergetTestY = character.targetPos->y /28;
 
         //Ensure the target is in bounds. est dans la fenetre
-        int indexTarget = targetX + targetY * tileCountX;
+        int indexTarget = tergetTestX + tergetTestY * tileCountX;
         if (indexTarget > -1 && indexTarget < listTiles.size() &&
-            targetX > -1 && targetX < tileCountX &&
-            targetY > -1 && targetY < tileCountY) {
+                tergetTestX > -1 && tergetTestX < tileCountX &&
+                tergetTestY > -1 && tergetTestY < tileCountY) {
 
             //Reset the tile flow data.
             for (auto& tileSelected : listTiles) {
@@ -148,7 +150,7 @@ void Level::setTargetAndCalculateFlowField(int targetXNew, int targetYNew) {
 
 
 void Level::calculateDistances() {
-    int indexTarget = targetX + targetY * tileCountX;
+    int indexTarget = tergetTestX + tergetTestY * tileCountX;
 
     //Create a queue that will contain the indices to be checked.
     std::queue<int> listIndicesToCheck;
