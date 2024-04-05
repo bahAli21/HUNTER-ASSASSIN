@@ -137,10 +137,14 @@ void GameAstar::processEvents(SDL_Renderer* renderer, bool& running) {
     SDL_GetMouseState(&mouseX, &mouseY);
 
     //for (auto unitSelected: listUnits) {
-      /* if((int)listUnits[0].pos.x== (int)level.getTargetPos().x && (int)listUnits[0].pos.y== (int)level.getTargetPos().y){
+    SDL_Log("-------------------------");
+    SDL_Log("pos = (%d, %d)", (int)listUnits[0].pos.x, (int)listUnits[0].pos.y);
+    SDL_Log("targetPos = (%d, %d)", (int)level.getTargetPos().x, (int)level.getTargetPos().y);
+       if((int)listUnits[0].pos.x == (int)level.getTargetPos().x && (int)listUnits[0].pos.y == (int)level.getTargetPos().y){
                 g.listeOfPlayers[0].targetPos = new Position{rand()%((WINDOW_W-WIDTH_A)- WIDTH_A +1) + WIDTH_A,
                                                 rand()%((WINDOW_H-HEIGHT_A)- HEIGHT_A +1) + HEIGHT_A};
-        }*/
+           SDL_Log("oui oui oui oui");
+        }
    /* if((int)g.listeOfPlayers[0].dest->x == (int)level.getTargetPos().x * tileSize && (int)g.listeOfPlayers[0].dest->y== (int)level.getTargetPos().y *tileSize){
         g.listeOfPlayers[0].targetPos = new Position{rand()%((WINDOW_W-WIDTH_A)- WIDTH_A +1) + WIDTH_A,
                                                      rand()%((WINDOW_H-HEIGHT_A)- HEIGHT_A +1) + HEIGHT_A};
@@ -153,7 +157,7 @@ void GameAstar::processEvents(SDL_Renderer* renderer, bool& running) {
     //Demain il faut faire bouger les garde independament
     Vector2D posMouse((float)g.listeOfPlayers[0].targetPos->x / tileSize,
                       (float)g.listeOfPlayers[0].targetPos->y / tileSize);
-    level.setTargetAndCalculateFlowField((int)mouseX/ tileSize, (int)mouseY/ tileSize);
+    level.setTargetAndCalculateFlowField((int)posMouse.x, (int)posMouse.y);
 
     // Gére l'action du clic de souris
     if (mouseDownStatus > 0) {

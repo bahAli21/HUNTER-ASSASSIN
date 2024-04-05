@@ -72,7 +72,7 @@ void Unit::update(float dT, Level& level, std::vector<Unit>& listUnits, Characte
             int vitesse = 1 * (int)copysign(1, posAdd.x);
             if (vitesse < 0) {
                 character.direction = EAST;
-                character.LEFT()
+
                 // Si la vitesse est négative, l'unité se déplace vers la gauche
                 character.WalkingAnimation(character.player_left_clips, vitesse, idx, WEST); // Utilise l'animation pour le mouvement vers la gauche
 
