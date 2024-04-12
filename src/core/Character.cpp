@@ -1,13 +1,14 @@
 #include "Character.h"
 
-Character::Character(Rect * _source, Rect * _dest, int _direction, int _health, const char * _theSpritePath, Position * _targetPos,  int _speed): shootKey('a') {
+Character::Character(Rect * _source, Rect * _dest, int _direction, int _health, const char * _theSpritePath, Rect * _targetPos,  int _speed, std::vector<Position> _tabNoeud): shootKey('a') {
     source = new Rect{_source->x, _source->y, _source->w, _source->h};
     dest = new Rect{_dest->x, _dest->y, _dest->w, _dest->h};
-    targetPos = new Position{_targetPos->x, _targetPos->y};
+    targetPos = new Rect{_targetPos->x, _targetPos->y, 0, 0};
     direction = (_direction);
     health = (_health);
     theSpritePath = _theSpritePath;
     speed = (_speed);
+    tabNoeud = _tabNoeud;
     loadClips();
 }
 
@@ -37,7 +38,7 @@ void Character::makeAnimation(int index, Position *tabPos) const {
 }
 
 
-void Character::WalkingAnimation(Position *tabPos, int speed, int indexClips, int direction) const {
+void Character::WalkingAnimation(Position *tabPos, int speed, int indexClips, int _direction) {
     source->x =  tabPos[indexClips].x;
     source->y =  tabPos[indexClips].y;
     source->w = WIDTH_A * 2; // Multiplication par 2 pour l'animation de marche
@@ -46,11 +47,11 @@ void Character::WalkingAnimation(Position *tabPos, int speed, int indexClips, in
     // Réinitialisation de la taille du rectangle de destination
     dest->w = WIDTH_A*2;
     dest->h = HEIGHT_A*2;
-
+    this->direction = _direction;
     // Ajustement de la position en fonction de la direction
-    if(direction == 0 || direction == 2) // Haut ou Bas
+    if(this->direction == 0 || this->direction == 2) // Haut ou Bas
         dest->y += speed; // Division par 2 pour compenser la multiplication par 2
-    else if(direction == 1 || direction == 3) // Gauche ou Droite
+    else if(this->direction == 1 || this->direction == 3) // Gauche ou Droite
         dest->x += speed;
 
 }

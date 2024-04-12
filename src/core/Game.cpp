@@ -1,7 +1,7 @@
 #include "Game.h"
 
-Game::Game(int nbGardes): _player(), nbGardes(nbGardes),
-    PlayerAI(_player.playerDest, _player.dest) {
+
+Game::Game(int nbGardes): nbGardes(nbGardes){
 
    /* allGardes = new Garde[nbGardes];
     gardesDest = new Rect[nbGardes];
@@ -48,10 +48,9 @@ Game::Game(int nbGardes): _player(), nbGardes(nbGardes),
                        allGardes[i].getPosition().y,
                        PLAYER_WIDTH-40,
                        PLAYER_HEIGHT-40};
-    }
+    }*/
     vecAllObstacles.push_back({WINDOW_W / 4 +20, 150, WINDOW_W / 4 - 25, SQUARE_SIZE});
     vecAllObstacles.push_back({WINDOW_W / 4, 150, WINDOW_W / 4 - 25, SQUARE_SIZE});
-    */
     addGardeAndPlayers();
 }
 
@@ -67,49 +66,90 @@ void Game::addGardeAndPlayers() {
     Rect destGarde[8];
     std::string gardeName[8];
     srand(time(NULL));
+    std::vector<Rect> tabRectSource;
+     std::vector<Rect> tabRectDest;
+     //std::vector<Rect> tabRectTarget;
 
+    std::vector<Position> defaultNoeud{{-1,-1}}; //Les noeud ne concerne pas un character joueur mais les gardes"
     Rect source = {WIDTH_A / 2, HEIGHT_A * 21, WIDTH_A, HEIGHT_A * 2};
-    Rect destPlayer = {300, 300, WIDTH_A, HEIGHT_A};
-    Position targetPlayer = {300,300};
-    listeOfPlayers.emplace_back(&source, &destPlayer, 0, 100, "../data/player.bmp",&targetPlayer,3, "BAH", 1, 21);
+    Rect destPlayer = {300, 300, WIDTH_A, HEIGHT_A*2};
+    Rect targetPlayer = {300,300};
+    listeOfPlayers.emplace_back(&source, &destPlayer, 0, 100, "../data/player.bmp",&targetPlayer,3, "BAH", 1, 21, defaultNoeud);
+     //init 2 gardes
+     //dest
+     tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 21, WIDTH_A, HEIGHT_A * 2);
+     tabRectDest.emplace_back(50,50,WIDTH_A,HEIGHT_A*2);
+     //tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 23, WIDTH_A, HEIGHT_A * 2);
+     //tabRectDest.emplace_back(WINDOW_X-50,150,WIDTH_A,HEIGHT_A*2);
+     //noeud
+     std::vector<Position> tabNoeud;
+     tabNoeud[0] = {50, 50}; //noeud 1
+     tabNoeud[1] = {50*3, 50}; //noeud 2
+     tabNoeud[2] = {50*3, 50 * 3}; //noeud 3
+     tabNoeud[3] = {50*6, 50*3}; //noeud 4
+     tabNoeud[4] = {50*6, 50}; //noeud 5
+     tabNoeud[4] = {50*12, 50}; //noeud 6
 
-    // Boucle pour créer les gardes en fonction de nbGardes
-    for (int i = 0; i < nbGardes; ++i) {
-        int newX, newY;
-        bool collision;
-        do {
-            collision = false;
-            newX = rand() % ((WINDOW_W - WIDTH_A) - WIDTH_A + 1) + WIDTH_A;
-            newY = rand() % ((WINDOW_H / 2) - HEIGHT_A + 1) + HEIGHT_A;
+     Rect pointTarget = {rand()%((WINDOW_W-WIDTH_A)- WIDTH_A +1) + WIDTH_A,
+                         rand()%((WINDOW_H-HEIGHT_A)- HEIGHT_A +1) + HEIGHT_A
+     };
 
-            // Vérifions s'il y a une collision avec un autre garde
-            for (int j = 0; j < i; ++j) {
-                if (destGarde[j].x < newX + WIDTH_A &&
-                    newX < destGarde[j].x + destGarde[j].w &&
-                    destGarde[j].y < newY + HEIGHT_A &&
-                    newY < destGarde[j].y + destGarde[j].h) {
-                    collision = true;
-                    break;
-                }
-            }
-        } while (collision);
+     for (int i = 0; i < 1; ++i) {
+         listeOfGardes.emplace_back(&tabRectSource[i],
+                                    &tabRectDest[i],
+                                    i,
+                                    (i + 1) * 10,
+                                    pathSpriteGarde[i],
+                                    &pointTarget,
+                                    3,
+                                    gardeName[i],
+                                    i + 1,
+                                    (i + 1) + 1,
+                                    tabNoeud);
+     }
 
-        int gardeSpriteIdx = rand() % 4;
-        destGarde[i] = {newX, newY, WIDTH_A, HEIGHT_A * 2};
-        gardeName[i] = "Garde" + std::to_string(i + 1) + " ";
-        Position pointTarget = {rand()%((WINDOW_W-WIDTH_A)- WIDTH_A +1) + WIDTH_A,
-                                rand()%((WINDOW_H-HEIGHT_A)- HEIGHT_A +1) + HEIGHT_A
-        };
-        listeOfGardes.emplace_back(&source, &destGarde[i],
-                                   i,
-                                   (i + 1) * 10,
-                                   pathSpriteGarde[i],
-                                   &pointTarget,
-                                   3,
-                                   gardeName[i],
-                                   i + 1,
-                                   (i + 1) + 1);
-    }
+
+
+
+     /*
+     // Boucle pour créer les gardes en fonction de nbGardes
+     for (int i = 0; i < nbGardes; ++i) {
+         int newX, newY;
+         bool collision;
+         do {
+             collision = false;
+             newX = rand() % ((WINDOW_W - WIDTH_A) - WIDTH_A + 1) + WIDTH_A;
+             newY = rand() % ((WINDOW_H / 2) - HEIGHT_A + 1) + HEIGHT_A;
+
+             // Vérifions s'il y a une collision avec un autre garde
+             for (int j = 0; j < i; ++j) {
+                 if (destGarde[j].x < newX + WIDTH_A &&
+                     newX < destGarde[j].x + destGarde[j].w &&
+                     destGarde[j].y < newY + HEIGHT_A &&
+                     newY < destGarde[j].y + destGarde[j].h) {
+                     collision = true;
+                     break;
+                 }
+             }
+         } while (collision);
+
+         int gardeSpriteIdx = rand() % 4;
+         destGarde[i] = {newX, newY, WIDTH_A, HEIGHT_A * 2};
+         gardeName[i] = "Garde" + std::to_string(i + 1) + " ";
+         Rect pointTarget = {rand()%((WINDOW_W-WIDTH_A)- WIDTH_A +1) + WIDTH_A,
+                                 rand()%((WINDOW_H-HEIGHT_A)- HEIGHT_A +1) + HEIGHT_A
+         };
+         listeOfGardes.emplace_back(&source,
+                                    &destGarde[i],
+                                    i,
+                                    (i + 1) * 10,
+                                    pathSpriteGarde[i],
+                                    &pointTarget,
+                                    3,
+                                    gardeName[i],
+                                    i + 1,
+                                    (i + 1) + 1);
+     }*/
 }
 
 
@@ -185,6 +225,6 @@ void Game::movingPlayerByAI() {
 
 void Game::updatePlayerDest(int x, int y) {
     // Mettre à jour la position de destination avec les coordonnées du clic
-    _player.dest->x = x;
-    _player.dest->y = y;
+    _player.targetPos->x = x;
+    _player.targetPos->y = y;
 }

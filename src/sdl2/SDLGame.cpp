@@ -1,6 +1,6 @@
 #include "SDLGame.h"
 
-SDLGame::SDLGame() : game(2, renderer){
+SDLGame::SDLGame() : game(1){
 
     // Initialisation de SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -50,55 +50,6 @@ SDLGame::~SDLGame() {
     SDL_Quit();
 }
 
-/*void SDLGame::drawTheMap(const Map &map) const {
-    for (int i = 0; i < map.getDimX(); ++i) {
-        for (int j = 0; j < map.getDimY(); ++j) {
-            // je dessine le sprite approprié en fonction de l'objet de la carte
-            switch (map.getObject(i, j)) {
-                case '#': // Mur
-                    sp_wall1.draw(renderer, i * PLAYER_WIDTH, j * PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT);
-                    break;
-                case '|': // Porte
-                    sp_door.draw(renderer, i * PLAYER_WIDTH, j * PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT);
-                    break;
-                case 'g': // Boîte grise
-                    sp_greyBoxe.draw(renderer, i * PLAYER_WIDTH, j * PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT);
-                    break;
-                case 'i': // Boîte rouge 1
-                    sp_redBoxe1.draw(renderer, i * PLAYER_WIDTH, j * PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT);
-                    break;
-                case 'j': // Boîte rouge 2
-                    sp_redBoxe2.draw(renderer, i * PLAYER_WIDTH, j * PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT);
-                    break;
-                case 'k': // Boîte rouge 3
-                    sp_redBoxe3.draw(renderer, i * PLAYER_WIDTH, j * PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT);
-                    break;
-                case 'l': // Boîte rouge 4
-                    sp_redBoxe4.draw(renderer, i * PLAYER_WIDTH, j * PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT);
-                    break;
-                case 'b': // Petite boîte
-                    sp_smallBoxe.draw(renderer, i * PLAYER_WIDTH, j * PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT);
-                    break;
-                case 'd': // Porte bleue
-                    sp_blueDoor.draw(renderer, i * PLAYER_WIDTH, j * PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT);
-                    break;
-                case 'p': // Mur 2
-                    sp_wall2.draw(renderer, i * PLAYER_WIDTH, j * PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT);
-                    break;
-                case '_': // Grille gris clair
-                    sp_moqGrey.draw(renderer, i * PLAYER_WIDTH, j * PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT);
-                    break;
-                case '.': // Grille noire
-                    sp_moqBlack.draw(renderer, i * PLAYER_WIDTH, j * PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT);
-                    break;
-                default:
-                    // Si l'objet n'est pas reconnu, ne me dessine R
-                    break;
-            }
-        }
-    }
-} */
-
 void SDLGame::sdlDraw() {
     // Je Remplis l'écran de blanc
     SDL_SetRenderDrawColor(renderer, 230, 240, 255, 255);
@@ -116,17 +67,22 @@ void SDLGame::sdlDraw() {
 
 void SDLGame::runProject() {
     SDL_Event event;
-    SDLAnimation playerAnimation(renderer, "../data/player_red.bmp", game._player);
+    SDLAnimation playerAnimation(renderer, game.listeOfPlayers[0]);
+    // Déclarons un tableau pour stocker les animations des gardes
+    SDLAnimation gardeAnimations[1] = {
+            SDLAnimation(renderer, game.listeOfGardes[0]),
+    };
+
     Uint32 lastGuardDestinationChangeTime = SDL_GetTicks();
     bool isOpen = true;
-    playerAnimation.loadClips();
+    game._player.loadClips();
     while (isOpen) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT)
                 isOpen = false;
             else if (event.type == SDL_MOUSEBUTTONDOWN)
                 if (event.button.button == SDL_BUTTON_LEFT) {
-                    //game.updatePlayerDest(event.button.x, event.button.y);
+                    game.updatePlayerDest(event.button.x, event.button.y);
                 }
         }
         /*if(playerAnimation.moving_up && camera.y>0)
@@ -140,11 +96,23 @@ void SDLGame::runProject() {
         //sdlDraw();
         SDL_RenderClear(renderer);
         playerAnimation.handleInput();
-        playerAnimation.updatePlayer();
         playerAnimation.DrawAnimation(renderer);
-       // playerAnimation.Arrow(renderer);
+        playerAnimation.updateCharacter();
         //game.movingPlayerByAI();
-        game.movingGuardByAI(lastGuardDestinationChangeTime);
+        //game.movingGuardByAI(lastGuardDestinationChangeTime);
+
+        for (int i = 0; i < game.nbGardes; ++i) {
+            gardeAnimations[i].handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
+            gardeAnimations[i].updateCharacter(); // Mettre à jour l'animation du garde
+            gardeAnimations[i].DrawAnimation(renderer); // Dessine l'animation du garde
+
+        }
+
+        for (int i = 0; i < 6; ++i) {
+            SDL_Log("noeud %d = {%d, %d} ", i, game.listeOfGardes[0].tabNoeud[i].x,
+                    game.listeOfGardes[0].tabNoeud[i].y);
+        }
+
         SDL_Delay(15);
         SDL_RenderPresent(renderer);
     }

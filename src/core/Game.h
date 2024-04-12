@@ -9,8 +9,6 @@
 #include "Garde.h"
 #include <cstdlib>
 #include <ctime>
-
-
 /**
  * @brief Class representing the game.
  *
@@ -20,7 +18,7 @@
 class Game {
 public:
     int nbGardes; /**< The number of guards. */
-    Player _player; /**< Instance of the player. */
+    _Player _player; /**< Instance of the player. */
     Map _gameMap; /**< Instance of the game map. */
     Garde *allGardes; /**< Pointer to all guards in the game. */
     Rect *gardesDest; /**< Pointer to all guards in the game. */
@@ -92,7 +90,7 @@ public:
      *
      * @return A constant reference to the Player object associated with the game.
      */
-    inline const Player& getConstPlayer() { return _player; }
+    //inline const Player& getConstPlayer() { return _player; }
 
     /**
      * @brief Gets a constant reference to the Map object.

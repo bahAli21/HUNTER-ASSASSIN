@@ -13,19 +13,19 @@ class Character{
 
 public:
 
-    Character(Rect * source, Rect * dest, int direction, int health, const char * theSpritePath, Position * _targetPos,  int _speed);
+    Character(Rect * source, Rect * dest, int direction, int health, const char * theSpritePath, Rect * _targetPos,  int _speed, std::vector<Position> _tabNoeud);
     Character() = default;
     ~Character();
     int health; ///< Health points of the player.
     Rect * dest; ///< Destination of the player.
     Rect * source; ///< Source of the player.
-    Position * targetPos;
+    Rect * targetPos;
     int direction{}; /**< Direction indicators of the player.*/
     std::vector<Arrow> listArrow; /**< Liste des tuiles du niveau. */
     char shootKey;
     int speed; /// La vitesse de déplacement du character
-
     const char * theSpritePath;
+    std::vector<Position> tabNoeud;
     //Walking clips
     Position player_left_clips[9]{}; /**< Array of positions for left movement animation. */
     Position player_right_clips[9]{}; /**< Array of positions for right movement animation. */
@@ -44,7 +44,7 @@ public:
 public:
     static void AttackInit(Position tabPos[], int index);
     void makeAnimation(int index, Position tabPos[]) const;
-    void WalkingAnimation(Position tabPos[], int speed, int indexClips, int direction) const;
+    void WalkingAnimation(Position tabPos[], int speed, int indexClips, int direction);
     void UP(int idxAtt);
     void LEFT(int idxAtt);
     void RIGHT(int idxAtt);

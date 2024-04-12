@@ -53,7 +53,7 @@ public:
     /**
      * @brief Updates player state.
      */
-     void updateCharacter(int dirForTest);
+     void updateCharacter();
 
     /**
      * @brief Draws animation on renderer.
