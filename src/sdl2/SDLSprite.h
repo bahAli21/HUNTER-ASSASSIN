@@ -3,8 +3,7 @@
  * @brief Definition of the SDLSprite class
  */
 
-#ifndef HUNTERASSASSIN_SDLSPRITE_H
-#define HUNTERASSASSIN_SDLSPRITE_H
+#pragma once
 
 #include "SDL.h"
 #include "../core/Rect.h"
@@ -47,4 +46,3 @@ public:
 
 };
 
-#endif // HUNTERASSASSIN_SDLSPRITE_H

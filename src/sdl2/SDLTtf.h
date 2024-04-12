@@ -1,10 +1,4 @@
-//
-// Created by mamad on 21/03/2024.
-//
-
-#ifndef HUNTERASSASSIN_SDLTTF_H
-#define HUNTERASSASSIN_SDLTTF_H
-
+#pragma once
 #include "SDL_ttf.h"
 #include "SDL.h"
 #include "point.h"
@@ -57,4 +51,3 @@ public:
     void Draw(SDL_Renderer* renderer, Position posMessage);
 };
 
-#endif //HUNTERASSASSIN_SDLTTF_H

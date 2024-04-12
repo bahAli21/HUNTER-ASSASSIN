@@ -6,10 +6,10 @@ sound(44100, MIX_DEFAULT_FORMAT, 2, 248){
     fireArrow.loadSpriteFile("../data/imgAnimation/fire-arrow.bmp", renderer);
     shootEffect = SDLSound::LoadChunkFromFile("../data/audio/fire_bow_sound.wav");
     ptrStop = new int;
+
+
     *ptrStop = 0;
 }
-
-SDLAnimation::SDLAnimation() = default;
 
 SDLAnimation::~SDLAnimation() = default;
 
@@ -43,52 +43,55 @@ void SDLAnimation::drawArrow(SDL_Renderer * renderer) const {
     }
 }
 
-void SDLAnimation::updateCharacter() {
+void SDLAnimation::updateCharacter(int index) {
     int animation_speed = SDL_GetTicks() / 170;
     int idxAtt= animation_speed % 13; //for animation frame
     int idxDead = animation_speed % 5;
     int idx = animation_speed % 7;//for walking frame
-    int vitesse = 2;
+    int vitesse = 1;
 
-    if(state[SDL_SCANCODE_S] > 0 && idxAtt==8 && character.canShootNow) {
+    if(state[SDL_SCANCODE_S] > 0 && idxAtt==8 ) {
         character.createArrow(character.direction);
         // Lecture de l'effet sonore une fois
         SDLSound::PlayChunk(shootEffect);
     }
 
-    if(state[SDL_SCANCODE_LEFT] > 0)
-        character.WalkingAnimation(character.player_left_clips, -vitesse, idx, EAST);
-    if(state[SDL_SCANCODE_RIGHT] > 0)
-        character.WalkingAnimation(character.player_right_clips, vitesse, idx, WEST);
-    if(state[SDL_SCANCODE_UP] > 0)
-        character.WalkingAnimation(character.player_up_clips, -vitesse, idx, NORTH);
-    if(state[SDL_SCANCODE_DOWN] > 0)
-        character.WalkingAnimation(character.player_down_clips, vitesse, idx, SOUTH);
-
-    character.updateArrowPos();
-    /*
-    if (character.tabNoeud[0].x != -1 && character.tabNoeud[0].y !=-1){
-        if(character.dest->x < character.tabNoeud[0].x){
+    if(index == 0){ //Concerne un joueur pas les gardes
+        if(state[SDL_SCANCODE_LEFT] > 0)
+            character.WalkingAnimation(character.player_left_clips, -vitesse, idx, EAST);
+        if(state[SDL_SCANCODE_RIGHT] > 0)
             character.WalkingAnimation(character.player_right_clips, vitesse, idx, WEST);
-            character.dest->x++;
+        if(state[SDL_SCANCODE_UP] > 0)
+            character.WalkingAnimation(character.player_up_clips, -vitesse, idx, NORTH);
+        if(state[SDL_SCANCODE_DOWN] > 0)
+            character.WalkingAnimation(character.player_down_clips, vitesse, idx, SOUTH);
+
+    }
+    character.updateArrowPos();
+
+
+
+
+    if (index != 0){ //Concerne un garde pas le joueur
+        if(character.dest->x < character.tabNoeud[0].x){
+            character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
         }
         else if(character.dest->y < character.tabNoeud[1].y){
-            character.WalkingAnimation(character.player_down_clips, vitesse, idx, SOUTH);
-            character.dest->y++;
+            character.WalkingAnimation(character.player_down_clips, +vitesse, idx, SOUTH);
+
         }
         else if(character.dest->x < character.tabNoeud[2].x){
-            character.WalkingAnimation(character.player_right_clips, vitesse, idx, WEST);
-            character.dest->x++;
+            character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
+
         }
         else if(character.dest->y > character.tabNoeud[3].y){
-            character.WalkingAnimation(character.player_up_clips, vitesse, idx, NORTH);
-            character.dest->y--;
+            character.WalkingAnimation(character.player_up_clips, -vitesse, idx, NORTH);
+
         }
         else if(character.dest->x < character.tabNoeud[4].x){
-            character.WalkingAnimation(character.player_right_clips, vitesse, idx, WEST);
-            character.dest->x++;
+            character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
         }
-    }*/
+    }
 
     if (idxAtt>5)
         *ptrStop = 1;

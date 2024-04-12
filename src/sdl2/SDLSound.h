@@ -1,9 +1,4 @@
-//
-// Created by mamad on 21/03/2024.
-//
-
-#ifndef HUNTERASSASSIN_SDLSOUND_H
-#define HUNTERASSASSIN_SDLSOUND_H
+#pragma once
 
 #include "SDL_mixer.h"
 #include "SDL.h"
@@ -59,4 +54,3 @@ public:
     static void PlayMusic(Mix_Music* music);
 };
 
-#endif //HUNTERASSASSIN_SDLSOUND_H

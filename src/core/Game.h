@@ -1,5 +1,4 @@
-#ifndef HUNTERASSASSIN_GAME_H
-#define HUNTERASSASSIN_GAME_H
+#pragma once
 
 #include "Player.h"
 #include "_Player.h"
@@ -18,21 +17,10 @@
 class Game {
 public:
     int nbGardes; /**< The number of guards. */
-    _Player _player; /**< Instance of the player. */
-    Map _gameMap; /**< Instance of the game map. */
-    Garde *allGardes; /**< Pointer to all guards in the game. */
-    Rect *gardesDest; /**< Pointer to all guards in the game. */
-    Rect *gardesRect; /**< Pointer to all guards in the game. */
-    AI PlayerAI; /**< AI object for player. */
-    AI *guardAI; /**< Pointer to AI objects for guards. */
-
-    std::vector<_Garde> listeOfGardes;
-    std::vector<_Player> listeOfPlayers; //Default player index 0
+    std::vector<_Garde> listeOfGardes; /**< List of guards in the game. */
+    std::vector<_Player> listeOfPlayers; /**< List of players in the game. */
 
 public:
-    void addGardeAndPlayers();
-    std::vector<Rect> vecAllObstacles; /**< Vector containing all obstacles in the game. */
-
     /**
      * @brief Default constructor of the Game class.
      *
@@ -41,70 +29,17 @@ public:
     Game(int nbGardes);
 
     /**
-     * @brief Moves the guards based on AI decisions.
-     *
-     * @param lastGuardDestinationChangeTime Time of the last guard destination change.
-     */
-    void movingGuardByAI(Uint32 lastGuardDestinationChangeTime);
-
-    /**
-     * @brief Moves the player based on AI decisions.
-     */
-    void movingPlayerByAI();
-
-    /**
-     * @brief Updates player destination coordinates.
-     *
-     * @param x New x-coordinate of player destination.
-     * @param y New y-coordinate of player destination.
-     */
-    void updatePlayerDest(int x, int y);
-
-    /**
      * @brief Destructor of the Game class.
      */
-    ~Game();
+    ~Game() = default;
 
     /**
-     * @brief Handles keyboard input.
+     * @brief Adds guards and players to the game.
      *
-     * This function determines the action to take based on the pressed key.
-     * It allows the player to move on the map and interact with game elements.
-     *
-     * @param touche The key pressed by the player.
-     * @return true if the player performed an action, false otherwise.
+     * This method initializes and adds guards and players to the game.
+     * It sets up their initial positions, attributes, and behaviors.
      */
-    bool toucheClavier(const char touche);
-
-    /**
-     * @brief Checks for collision between two rectangles.
-     *
-     * @param rect1 The first rectangle.
-     * @param rect2 The second rectangle.
-     * @return true if the rectangles collide, false otherwise.
-     */
-    bool checkCollision(const Rect& rect1, const Rect& rect2);
-
-    /**
-     * @brief Gets a constant reference to the Player object.
-     *
-     * @return A constant reference to the Player object associated with the game.
-     */
-    //inline const Player& getConstPlayer() { return _player; }
-
-    /**
-     * @brief Gets a constant reference to the Map object.
-     *
-     * @return A constant reference to the Map object associated with the game.
-     */
-    inline const Map& getConstMap() { return _gameMap; }
-
-    /**
-     * @brief Gets a pointer to all guards in the game.
-     *
-     * @return A pointer to the guards in the game.
-     */
-    inline const Garde* getAllGardes() { return allGardes; }
+    void addGardeAndPlayers();
 
     /**
      * @brief Gets the number of guards in the game.
@@ -121,4 +56,3 @@ public:
     inline void setNbGardes(int nb) { nbGardes = nb; }
 };
 
-#endif // HUNTERASSASSIN_GAME_H
