@@ -1,11 +1,9 @@
 #pragma once
 
-#include "Player.h"
+
 #include "_Player.h"
 #include "_Garde.h"
 #include "Rect.h"
-#include "IA.h"
-#include "Garde.h"
 #include <cstdlib>
 #include <ctime>
 /**

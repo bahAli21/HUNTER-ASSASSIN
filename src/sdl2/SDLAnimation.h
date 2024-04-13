@@ -3,17 +3,16 @@
 
 #include "../core/config.h"
 #include "../core/point.h"
-#include "../core/Player.h"
+
 #include "../core/_Player.h"
-#include "../core/Garde.h"
+
 #include "SDL.h"
 #include "../core/Rect.h"
 #include "SDLSprite.h"
 #include "../core/Direction.h"
 #include "SDLSound.h"
 #include "SDL_mixer.h"
-#include "../Part2/Vector2D.h"
-#include "../Part2/Level.h"
+
 
 /**
  * @brief Class for handling player animations using SDL.
@@ -88,17 +87,6 @@ public:
      * @param renderer SDL_Renderer object for rendering.
      */
     void drawArrow(SDL_Renderer * renderer) const;
-
-    /**
-     * @brief Updates animation based on time and game state.
-     *
-     * This function updates the animation based on the elapsed time
-     * since the last update and the current game state.
-     *
-     * @param dT Delta time since last update.
-     * @param level Current game level.
-     */
-    void updateTest(float dT, Level& level);
 
     float distanceToTarget; /**< Distance to target. */
     float distanceMove; /**< Distance moved. */
