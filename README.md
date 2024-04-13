@@ -1,12 +1,26 @@
-🎮🏹 **Bienvenue dans le monde de Hunter Assassin !** 🏹🎮
+<div align="center">
+    <h1>Hunter Assassin</h1>
+    <img src="https://img.shields.io/badge/language-C%2B%2B-blue.svg">
+    <img src="https://img.shields.io/badge/license-MIT-green.svg">
+</div>
 
-            _   _   _   _   _   _   _   _   _   _   _   _   _   _   _  
-           / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ 
+---
+
+<div align="center">
+    <h2>🎮🏹 Bienvenue dans le monde de Hunter Assassin ! 🏹🎮</h2>
+    <pre>
+            _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _  
+           / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ 
           ( H | u | n | t | e | r |   | A | s | s | a | s | s | i | n | ! )
-           \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ 
+           \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ 
+    </pre>
+</div>
 
-🎯 **Préparez-vous pour l'action et l'aventure !** 🎯
+---
 
+<div align="center">
+    <h3>🎯 Préparez-vous pour l'action et l'aventure ! 🎯</h3>
+    <pre>
            .--.        .-.
           : (\ ". _..._ .' /) :
            '.    `        `    .'
@@ -16,18 +30,22 @@
           / /   /             \   \ \
           /   /'               `\   \
           /   /                   \   \
+    </pre>
+</div>
 
-         
-
-Veuillez lire les instructions ci-dessous pour commencer à jouer !
+---
 
 ## Description
 
 Hunter Assassin est un jeu d'action et de stratégie dans lequel le joueur incarne un chasseur cherchant à éliminer des gardes sans se faire repérer. Le jeu se déroule dans un environnement 2D avec des graphismes minimalistes et une mécanique de jeu captivante.
 
+---
+
 ## Documentation
 
 La documentation complète du jeu est disponible dans le fichier `index.html` situé dans le dossier `doc/html`.
+
+---
 
 ## Installation
 
@@ -47,7 +65,9 @@ Pour les utilisateurs de Windows, suivez ces étapes :
 1. Téléchargez et installez les librairies SDL2, SDL2_image, SDL2_ttf et SDL2_mixer depuis les liens fournis ci-dessus.
 2. Ouvrez le fichier CMakeLists.txt et modifiez les chemins de destination dans la clause `if(WIN32)` en fonction de l'emplacement où vous avez installé les librairies SDL2.
 
-### Structure des Fichiers
+---
+
+## Structure des Fichiers
 
 Le projet est organisé comme suit :
 <div style="font-family: monospace;">
@@ -95,6 +115,7 @@ Le projet est organisé comme suit :
     </ul>
 </div>
 
+---
 
 ## Comment jouer
 
@@ -104,14 +125,19 @@ Le projet est organisé comme suit :
 4. Compilez le jeu en exécutant la commande `make`.
 5. Lancez le jeu en exécutant l'application générée.
 
+---
+
 ## Crédits
 
-Ce jeu a été développé par [BAH Mamadou](https://github.com/bahAli21) et [Barry Elhadj Amadou](https://github.com/barryelhadj).
+Ce jeu a été développé par [BAH Mamadou](https://github.com/bahAli21) et [Barry Elhadj Amadou](https://github.com/barryelhadj23).
 
+---
 
 ## Avertissement
 
 Ce jeu est destiné à un usage personnel uniquement. Veuillez respecter les droits d'auteur et ne pas redistribuer le jeu sans autorisation.
+
+---
 
 ## Licence
 
