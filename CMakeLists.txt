@@ -37,15 +37,16 @@ set(SRC_ASTAR ${SRC_ASTAR_DIR}/Game.cpp
 )
 
 # Définition des fichiers sources pour chaque composant
-set(SRC_CORE ${SRC_CORE_DIR}/Game.cpp ${SRC_CORE_DIR}/Garde.cpp ${SRC_CORE_DIR}/IA.cpp
-        ${SRC_CORE_DIR}/Player.cpp
-        #${SRC_CORE_DIR}/newIA.cpp
-        src/sdl2/SDLSound.cpp
+set(SRC_CORE ${SRC_CORE_DIR}/Game.cpp
+        ${SRC_CORE_DIR}/_Player.cpp
+        ${SRC_CORE_DIR}/_Garde.cpp
+        ${SRC_CORE_DIR}/Character.cpp
 )
 
-set(HEADER_CORE ${SRC_CORE_DIR}/Game.h ${SRC_CORE_DIR}/Garde.h
-        ${SRC_CORE_DIR}/IA.h ${SRC_CORE_DIR}/Player.h ${SRC_CORE_DIR}/point.h
-        ${SRC_CORE_DIR}/Rect.h ${SRC_CORE_DIR}/config.h
+set(HEADER_CORE ${SRC_CORE_DIR}/Game.h
+        ${SRC_CORE_DIR}/point.h
+        ${SRC_CORE_DIR}/Rect.h
+        ${SRC_CORE_DIR}/config.h
         src/core/Direction.h
         src/core/Arrow.h
         src/sdl2/SDLTtf.h
@@ -53,21 +54,17 @@ set(HEADER_CORE ${SRC_CORE_DIR}/Game.h ${SRC_CORE_DIR}/Garde.h
         src/sdl2/SDLSound.h
 )
 
-set(SRC_SDL2 ${SRC_SDL2_DIR}/mainProject.cpp ${SRC_SDL2_DIR}/SDLGame.cpp
-        ${SRC_SDL2_DIR}/SDLGame.h ${SRC_SDL2_DIR}/SDLSprite.h ${SRC_SDL2_DIR}/SDLSprite.cpp
-        src/sdl2/SDLAnimation.cpp
-)
-
-set(SRC_TXT ${SRC_TXT_DIR}/main_txt.cpp ${SRC_TXT_DIR}/gameTxt.cpp
-        ${SRC_TXT_DIR}/winTxt.h ${SRC_TXT_DIR}/winTxt.cpp ${SRC_TXT_DIR}/gameTxt.h)
-
-set(SRC_ANIMATION ${PROJECT_SOURCE_DIR}/src/mainAnimation.cpp
-        ${PROJECT_SOURCE_DIR}/map/map.cpp ${PROJECT_SOURCE_DIR}/map/map.h
-        src/sdl2/SDLTtf.h
-        src/sdl2/SDLTtf.cpp
-        src/sdl2/SDLSound.h
-        src/sdl2/SDLSound.cpp
-        src/core/Direction.h
+set(SRC_SDL2 ${SRC_SDL2_DIR}/mainProject.cpp
+        ${SRC_SDL2_DIR}/SDLGame.cpp
+        ${SRC_SDL2_DIR}/SDLGame.h
+        ${SRC_SDL2_DIR}/SDLSprite.h
+        ${SRC_SDL2_DIR}/SDLSprite.cpp
+        ${SRC_SDL2_DIR}/SDLAnimation.cpp
+        ${SRC_SDL2_DIR}/SDLAnimation.h
+        ${SRC_SDL2_DIR}/SDLTtf.cpp
+        ${SRC_SDL2_DIR}/SDLTtf.h
+        ${SRC_SDL2_DIR}/SDLSound.cpp
+        ${SRC_SDL2_DIR}/SDLSound.h
 )
 
 # Configuration des librairies SDL2 en fonction du système d'exploitation
@@ -106,44 +103,27 @@ endif (UNIX)
 # Définition des exécutables
 
 add_executable(HunterAssassin ${SRC_CORE} ${HEADER_CORE} ${SRC_SDL2})
-add_executable(JeuTxt ${SRC_CORE} ${HEADER_CORE} ${SRC_TXT})
-add_executable(Animation ${SRC_ANIMATION})
-add_executable(ASTAR ${SRC_ASTAR})
+
 
 # Configuration des propriétés des exécutables
 set_target_properties(HunterAssassin PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${HunterAssassin_OUTPUT_PATH})
-set_target_properties(Animation PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${HunterAssassin_OUTPUT_PATH})
-set_target_properties(JeuTxt PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${HunterAssassin_OUTPUT_PATH})
-set_target_properties(ASTAR PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${HunterAssassin_OUTPUT_PATH})
-
-# Configuration de la sortie pour les fichiers objets
-set_target_properties(HunterAssassin PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${OBJ_DIR})
-set_target_properties(Animation PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${OBJ_DIR})
-set_target_properties(JeuTxt PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${OBJ_DIR})
 
 # Options de compilation C++
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ggdb")
 
 # Inclusion des fichiers de compilation
-target_include_directories(Animation PUBLIC ${SRC_CORE_DIR} ${SRC_SDL2_DIR} ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR})
 target_include_directories(HunterAssassin PUBLIC ${SRC_CORE_DIR} ${SRC_SDL2_DIR} ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR})
-target_include_directories(JeuTxt PUBLIC ${SRC_CORE_DIR} ${SRC_TXT})
-target_include_directories(ASTAR PUBLIC ${SRC_CORE_DIR} ${SRC_SDL2_DIR} ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR})
+
 
 # Liaison des librairies
 target_link_directories(HunterAssassin PUBLIC ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY} ${SDL2_MIXER_LIBRARY})
-target_link_directories(Animation PUBLIC ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY} ${SDL2_MIXER_LIBRARY})
-target_link_directories(ASTAR PUBLIC ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY} ${SDL2_MIXER_LIBRARY})
 # Configuration des librairies selon le système d'exploitation
 if (WIN32)
     target_link_libraries(HunterAssassin mingw32 SDL2main SDL2 SDL2_image SDL2_ttf SDL2_mixer)
-    target_link_libraries(Animation mingw32 SDL2main SDL2 SDL2_image SDL2_ttf SDL2_mixer)
-    target_link_libraries(ASTAR mingw32 SDL2main SDL2 SDL2_image SDL2_ttf SDL2_mixer)
 endif (WIN32)
 
 if (UNIX)
     target_link_libraries(HunterAssassin SDL2 SDL2_image SDL2_ttf SDL2_mixer GL)
-    target_link_libraries(Animation SDL2 SDL2_image SDL2_ttf SDL2_mixer GL)
 endif (UNIX)
 
 # Copie des fichiers DLL SDL pour Windows
