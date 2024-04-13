@@ -1,6 +1,11 @@
-# Hunter Assassin
-Bienvenue dans le jeu Hunter Assassin !
+🎮🏹 **Bienvenue dans le monde de Hunter Assassin !** 🏹🎮
 
+            _   _   _   _   _   _   _   _   _   _   _   _   _   _   _  
+           / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ 
+          ( H | u | n | t | e | r |   | A | s | s | a | s | s | i | n | ! )
+           \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ 
+
+🎯 **Préparez-vous pour l'action et l'aventure !** 🎯
            .--.        .-.
           : (\ ". _..._ .' /) :
            '.    `        `    .'
@@ -10,20 +15,10 @@ Bienvenue dans le jeu Hunter Assassin !
           / /   /             \   \ \
           /   /'               `\   \
           /   /                   \   \
-          
+
+         
 
 Veuillez lire les instructions ci-dessous pour commencer à jouer !
-
-
-🎮🏹 **Bienvenue dans le monde de Hunter Assassin !** 🏹🎮
-
-            _   _   _   _   _   _   _   _   _   _   _   _   _   _   _  
-           / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ 
-          ( H | u | n | t | e | r |   | A | s | s | a | s | s | i | n | ! )
-           \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ 
-
-🎯 **Préparez-vous pour l'action et l'aventure !** 🎯
-
 
 ## Description
 
@@ -57,47 +52,48 @@ Le projet est organisé comme suit :
 <div style="font-family: monospace;">
     <ul>
         <li>
-            <span style="color: #008000;"><strong>src</strong></span>
+            <strong>src</strong>
             <ul>
                 <li>
-                    <span style="color: #0000ff;"><strong>core</strong></span>
+                    <strong>core</strong>
                     <ul>
-                        <li><span style="color: #808080;">_Garde.cpp</span></li>
-                        <li><span style="color: #808080;">_Garde.h</span></li>
-                        <li><span style="color: #808080;">_Player.cpp</span></li>
-                        <li><span style="color: #808080;">_Player.h</span></li>
-                        <li><span style="color: #808080;">Arrow.h</span></li>
-                        <li><span style="color: #808080;">Character.cpp</span></li>
-                        <li><span style="color: #808080;">Character.h</span></li>
-                        <li><span style="color: #808080;">config.h</span></li>
-                        <li><span style="color: #808080;">Direction.h</span></li>
-                        <li><span style="color: #808080;">Game.cpp</span></li>
-                        <li><span style="color: #808080;">Game.h</span></li>
-                        <li><span style="color: #808080;">point.h</span></li>
-                        <li><span style="color: #808080;">Rect.h</span></li>
+                        <li><code>_Garde.cpp</code></li>
+                        <li><code>_Garde.h</code></li>
+                        <li><code>_Player.cpp</code></li>
+                        <li><code>_Player.h</code></li>
+                        <li><code>Arrow.h</code></li>
+                        <li><code>Character.cpp</code></li>
+                        <li><code>Character.h</code></li>
+                        <li><code>config.h</code></li>
+                        <li><code>Direction.h</code></li>
+                        <li><code>Game.cpp</code></li>
+                        <li><code>Game.h</code></li>
+                        <li><code>point.h</code></li>
+                        <li><code>Rect.h</code></li>
                     </ul>
                 </li>
                 <li>
-                    <span style="color: #0000ff;"><strong>sdl2</strong></span>
+                    <strong>sdl2</strong>
                     <ul>
-                        <li><span style="color: #808080;">mainProject.cpp</span></li>
-                        <li><span style="color: #808080;">SDLAnimation.cpp</span></li>
-                        <li><span style="color: #808080;">SDLAnimation.h</span></li>
-                        <li><span style="color: #808080;">SDLGame.cpp</span></li>
-                        <li><span style="color: #808080;">SDLGame.h</span></li>
-                        <li><span style="color: #808080;">SDLSound.cpp</span></li>
-                        <li><span style="color: #808080;">SDLSound.h</span></li>
-                        <li><span style="color: #808080;">SDLSprite.cpp</span></li>
-                        <li><span style="color: #808080;">SDLSprite.h</span></li>
+                        <li><code>mainProject.cpp</code></li>
+                        <li><code>SDLAnimation.cpp</code></li>
+                        <li><code>SDLAnimation.h</code></li>
+                        <li><code>SDLGame.cpp</code></li>
+                        <li><code>SDLGame.h</code></li>
+                        <li><code>SDLSound.cpp</code></li>
+                        <li><code>SDLSound.h</code></li>
+                        <li><code>SDLSprite.cpp</code></li>
+                        <li><code>SDLSprite.h</code></li>
                     </ul>
                 </li>
             </ul>
         </li>
-        <li><span style="color: #ff0000;">extern</span></li>
-        <li><span style="color: #800000;">CMakeLists.txt</span></li>
-        <li><span style="color: #800000;">README.md</span></li>
+        <li><strong>extern</strong></li>
+        <li><strong>CMakeLists.txt</strong></li>
+        <li><strong>README.md</strong></li>
     </ul>
 </div>
+
 
 ## Comment jouer
 
@@ -109,7 +105,8 @@ Le projet est organisé comme suit :
 
 ## Crédits
 
-Ce jeu a été développé par <span style="color:red">**BAH Mamadou**</span> et <span style="color:red">**Barry Elhadj Amadou**</span>.
+Ce jeu a été développé par [BAH Mamadou](https://github.com/bahAli21) et [Barry Elhadj Amadou](https://github.com/barryelhadj).
+
 
 ## Avertissement
 
