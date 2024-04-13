@@ -10,7 +10,7 @@ void Game::addGardeAndPlayers() {
             "../data/garde1.bmp",
             "../data/garde2.bmp",
             "../data/garde3.bmp",
-            "../data/garde4.bmp",
+            "../data/garde6.bmp",
             "../data/garde5.bmp",
             "../data/garde6.bmp"
     };
@@ -23,30 +23,33 @@ void Game::addGardeAndPlayers() {
 
     std::vector<Position> defaultNoeud{{-1, -1}};
     Rect source = {WIDTH_A / 2, HEIGHT_A * 21, WIDTH_A, HEIGHT_A * 2};
-    Rect destPlayer = {300, 300, WIDTH_A, HEIGHT_A*2};
+    Rect destPlayer = {WINDOW_W/2 - WIDTH_A + 30, WINDOW_H - HEIGHT_A*2, WIDTH_A, HEIGHT_A*2};
     Rect targetPlayer = {300,300};
     listeOfPlayers.emplace_back(&source, &destPlayer, 0, 100, "../data/player.bmp",&targetPlayer,3, "BAH", 1, 21, defaultNoeud);
-     //init 2 gardes
      //dest
 
-     //Garde 1
+    //garde 2
      tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 27, WIDTH_A, HEIGHT_A * 2);
-     tabRectDest.emplace_back(10+WIDTH_A,HEIGHT_A+20,WIDTH_A,HEIGHT_A*2);
-     //Garde 2
-     tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 23, WIDTH_A, HEIGHT_A * 2);
-     tabRectDest.emplace_back(WINDOW_W-WIDTH_A-10,HEIGHT_A+20,WIDTH_A,HEIGHT_A*2);
+     tabRectDest.emplace_back(12,-10,WIDTH_A,HEIGHT_A*2);
      //Garde 3
+     tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 23, WIDTH_A, HEIGHT_A * 2);
+     tabRectDest.emplace_back(WINDOW_W-WIDTH_A-22,HEIGHT_A-10,WIDTH_A,HEIGHT_A*2 - 10);
+     //Garde 4
      tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 25, WIDTH_A, HEIGHT_A * 2);
-     tabRectDest.emplace_back(10+WIDTH_A,HEIGHT_A+20*4,WIDTH_A,HEIGHT_A*2);
+     tabRectDest.emplace_back(12,HEIGHT_A+60,WIDTH_A,HEIGHT_A*2);
+     //Garde
+     tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 21, WIDTH_A, HEIGHT_A * 2);
+     tabRectDest.emplace_back(WINDOW_W-WIDTH_A-22,HEIGHT_A*3 - 30,WIDTH_A,HEIGHT_A*2);
+
      //noeud
      //Noeud garde 1 gauche vers la droite (le chemein)
      std::vector<Position> tabNoeud;
-    tabNoeud.push_back({20, 20});        // Noeud 1
-    tabNoeud.push_back({20 * 3, 20});    // Noeud 2
-    tabNoeud.push_back({20 * 3, 20 * 3}); // Noeud 3
-    tabNoeud.push_back({20 * 6, 20 * 3}); // Noeud 4
-    tabNoeud.push_back({20 * 6, 20});    // Noeud 5
-    tabNoeud.push_back({20 * 12, 20});   // Noeud 6
+    tabNoeud.push_back({10, 10});        // Noeud 1
+    tabNoeud.push_back({10 * 3, 10});    // Noeud 2
+    tabNoeud.push_back({10 * 3, 10 * 3}); // Noeud 3
+    tabNoeud.push_back({10 * 6, 10 * 3}); // Noeud 4
+    tabNoeud.push_back({10 * 6, 10});    // Noeud 5
+    tabNoeud.push_back({10 * 12, 10});   // Noeud 6
 
     //Noeud garde 2 droite vers la gauche a faire
 
