@@ -1,0 +1,90 @@
+.TH "SDLSprite" 3 "Hunter-Assassin PROJECT" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SDLSprite \- Class for handling SDL sprites\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <SDLSprite\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSDLSprite\fP ()"
+.br
+.RI "Default constructor of the \fBSDLSprite\fP class\&. "
+.ti -1c
+.RI "\fB~SDLSprite\fP ()"
+.br
+.RI "Destructor of the \fBSDLSprite\fP class\&. "
+.ti -1c
+.RI "void \fBloadSpriteFile\fP (const char *filename, SDL_Renderer *renderer)"
+.br
+.RI "Load an image file as a sprite\&. "
+.ti -1c
+.RI "void \fBdraw\fP (SDL_Renderer *renderer, int x, int y, int w=64, int h=64, SDL_Rect *recSource=nullptr) const"
+.br
+.RI "Draw the sprite on the SDL renderer\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "SDL_Surface * \fB_surface\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fB_texture\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class for handling SDL sprites\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void SDLSprite::draw (SDL_Renderer * renderer, int x, int y, int w = \fR64\fP, int h = \fR64\fP, SDL_Rect * recSource = \fRnullptr\fP) const"
+
+.PP
+Draw the sprite on the SDL renderer\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrenderer\fP The SDL renderer to draw on 
+.br
+\fIx\fP The horizontal position of the sprite 
+.br
+\fIy\fP The vertical position of the sprite 
+.br
+\fIw\fP The width of the sprite (default is 64) 
+.br
+\fIh\fP The height of the sprite (default is 64) 
+.br
+\fIrecSource\fP The source rectangle for clipping (default is nullptr) 
+.RE
+.PP
+
+.SS "void SDLSprite::loadSpriteFile (const char * filename, SDL_Renderer * renderer)"
+
+.PP
+Load an image file as a sprite\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilename\fP The path of the image file 
+.br
+\fIrenderer\fP The SDL renderer to load the texture 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "SDL_Surface* SDLSprite::_surface"
+SDL surface for the sprite 
+.SS "SDL_Texture* SDLSprite::_texture"
+SDL texture for the sprite 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Hunter-Assassin PROJECT from the source code\&.

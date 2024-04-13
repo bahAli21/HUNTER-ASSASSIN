@@ -1,0 +1,132 @@
+.TH "WinTXT" 3 "Hunter-Assassin PROJECT" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WinTXT \- Une fenêtre texte est un tableau 2D de caractères\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <winTxt\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWinTXT\fP (int dx, int dy)"
+.br
+.RI "Constructeur de la classe \fBWinTXT\fP\&. "
+.ti -1c
+.RI "void \fBclear\fP (char c=' ')"
+.br
+.RI "Efface le contenu de la fenêtre avec le caractère spécifié\&. "
+.ti -1c
+.RI "void \fBprint\fP (int x, int y, char c)"
+.br
+.RI "Affiche un caractère à une position spécifique dans la fenêtre\&. "
+.ti -1c
+.RI "void \fBprint\fP (int x, int y, char *c)"
+.br
+.RI "Affiche une chaîne de caractères à une position spécifique dans la fenêtre\&. "
+.ti -1c
+.RI "void \fBdraw\fP (int x=0, int y=0)"
+.br
+.RI "Dessine la fenêtre à l'écran, en commençant à la position spécifiée\&. "
+.ti -1c
+.RI "void \fBpause\fP ()"
+.br
+.RI "Met en pause le programme jusqu'à ce qu'une touche soit enfoncée\&. "
+.ti -1c
+.RI "char \fBgetCh\fP ()"
+.br
+.RI "Obtient un caractère à partir de l'entrée standard\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Une fenêtre texte est un tableau 2D de caractères\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "WinTXT::WinTXT (int dx, int dy)"
+
+.PP
+Constructeur de la classe \fBWinTXT\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdx\fP Largeur de la fenêtre\&. 
+.br
+\fIdy\fP Hauteur de la fenêtre\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void WinTXT::clear (char c = \fR' '\fP)"
+
+.PP
+Efface le contenu de la fenêtre avec le caractère spécifié\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIc\fP Caractère utilisé pour effacer la fenêtre (par défaut, un espace)\&. 
+.RE
+.PP
+
+.SS "void WinTXT::draw (int x = \fR0\fP, int y = \fR0\fP)"
+
+.PP
+Dessine la fenêtre à l'écran, en commençant à la position spécifiée\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP \fBPosition\fP horizontale de départ pour le dessin\&. 
+.br
+\fIy\fP \fBPosition\fP verticale de départ pour le dessin\&. 
+.RE
+.PP
+
+.SS "char WinTXT::getCh ()"
+
+.PP
+Obtient un caractère à partir de l'entrée standard\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Le caractère lu depuis l'entrée standard\&. 
+.RE
+.PP
+
+.SS "void WinTXT::print (int x, int y, char * c)"
+
+.PP
+Affiche une chaîne de caractères à une position spécifique dans la fenêtre\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP \fBPosition\fP horizontale du début de la chaîne\&. 
+.br
+\fIy\fP \fBPosition\fP verticale du début de la chaîne\&. 
+.br
+\fIc\fP Pointeur vers la chaîne de caractères à afficher\&. 
+.RE
+.PP
+
+.SS "void WinTXT::print (int x, int y, char c)"
+
+.PP
+Affiche un caractère à une position spécifique dans la fenêtre\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP \fBPosition\fP horizontale du caractère\&. 
+.br
+\fIy\fP \fBPosition\fP verticale du caractère\&. 
+.br
+\fIc\fP Caractère à afficher\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Hunter-Assassin PROJECT from the source code\&.

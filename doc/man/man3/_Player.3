@@ -1,0 +1,298 @@
+.TH "_Player" 3 "Hunter-Assassin PROJECT" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+_Player \- The Player class represents a player in the game\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <_Player\&.h>\fP
+.PP
+Inherits \fBCharacter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fB_Player\fP (\fBRect\fP *\fBsource\fP, \fBRect\fP *\fBdest\fP, int \fBdirection\fP, int \fBhealth\fP, const char *pathSprite, \fBRect\fP *\fBtargetPos\fP, int _speed, std::string _name, int _level, int _id, std::vector< \fBPosition\fP > \fBtabNoeud\fP)"
+.br
+.RI "Constructs a new Player object\&. "
+.ti -1c
+.RI "const std::string & \fBgetName\fP () const"
+.br
+.RI "Gets the name of the player\&. "
+.ti -1c
+.RI "void \fBsetName\fP (const std::string &_name)"
+.br
+.RI "Sets the name of the player\&. "
+.ti -1c
+.RI "int \fBgetLevel\fP () const"
+.br
+.RI "Gets the level of the player\&. "
+.ti -1c
+.RI "void \fBsetLevel\fP (int _level)"
+.br
+.RI "Sets the level of the player\&. "
+.ti -1c
+.RI "int \fBgetIdentifier\fP () const"
+.br
+.RI "Gets the identifier of the player\&. "
+.ti -1c
+.RI "void \fBsetIdentifier\fP (int _id)"
+.br
+.RI "Sets the identifier of the player\&. "
+.in -1c
+
+Public Member Functions inherited from \fBCharacter\fP
+.in +1c
+.ti -1c
+.RI "\fBCharacter\fP (\fBRect\fP *\fBsource\fP, \fBRect\fP *\fBdest\fP, int \fBdirection\fP, int \fBhealth\fP, const char *\fBtheSpritePath\fP, \fBRect\fP *_targetPos, int _speed, std::vector< \fBPosition\fP > _tabNoeud)"
+.br
+.RI "Constructor for the \fBCharacter\fP class\&. "
+.ti -1c
+.RI "\fBCharacter\fP ()=default"
+.br
+.RI "Default constructor for the \fBCharacter\fP class\&. "
+.ti -1c
+.RI "\fB~Character\fP ()"
+.br
+.RI "Destructor for the \fBCharacter\fP class\&. "
+.ti -1c
+.RI "void \fBmakeAnimation\fP (int index, \fBPosition\fP tabPos[]) const"
+.br
+.ti -1c
+.RI "void \fBWalkingAnimation\fP (\fBPosition\fP tabPos[], int \fBspeed\fP, int indexClips, int \fBdirection\fP)"
+.br
+.ti -1c
+.RI "void \fBUP\fP (int idxAtt)"
+.br
+.ti -1c
+.RI "void \fBLEFT\fP (int idxAtt)"
+.br
+.ti -1c
+.RI "void \fBRIGHT\fP (int idxAtt)"
+.br
+.ti -1c
+.RI "void \fBDOWN\fP (int idxAtt)"
+.br
+.ti -1c
+.RI "void \fBupdateArrowPos\fP ()"
+.br
+.ti -1c
+.RI "void \fBloadClips\fP ()"
+.br
+.ti -1c
+.RI "void \fBcreateArrow\fP (int direct)"
+.br
+.RI "Moves the player to the left on the specified map\&. "
+.ti -1c
+.RI "void \fBgoLeft\fP () const"
+.br
+.ti -1c
+.RI "void \fBgoRight\fP () const"
+.br
+.RI "Moves the player to the right on the specified map\&. "
+.ti -1c
+.RI "void \fBgoUp\fP () const"
+.br
+.RI "Moves the player upward on the specified map\&. "
+.ti -1c
+.RI "void \fBgoDown\fP () const"
+.br
+.RI "Moves the player downward on the specified map\&. "
+.ti -1c
+.RI "int \fBgetHealth\fP () const"
+.br
+.RI "Gets the health points of the player\&. "
+.ti -1c
+.RI "void \fBsetHealth\fP (int _health)"
+.br
+.RI "Sets the health points of the player\&. "
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Static Public Member Functions inherited from \fBCharacter\fP
+.in +1c
+.ti -1c
+.RI "static void \fBAttackInit\fP (\fBPosition\fP tabPos[], int index)"
+.br
+.ti -1c
+.RI "static void \fBWalk\fP (\fBPosition\fP tabPos[], int index)"
+.br
+.in -1c
+
+Public Attributes inherited from \fBCharacter\fP
+.in +1c
+.ti -1c
+.RI "int \fBhealth\fP"
+.br
+.RI "Health points of the character\&. "
+.ti -1c
+.RI "\fBRect\fP * \fBdest\fP"
+.br
+.RI "Destination rectangle for rendering\&. "
+.ti -1c
+.RI "\fBRect\fP * \fBsource\fP"
+.br
+.RI "Source rectangle for rendering\&. "
+.ti -1c
+.RI "\fBRect\fP * \fBtargetPos\fP"
+.br
+.RI "Target position for the character\&. "
+.ti -1c
+.RI "int \fBdirection\fP {}"
+.br
+.ti -1c
+.RI "std::vector< \fBArrow\fP > \fBlistArrow\fP"
+.br
+.ti -1c
+.RI "char \fBshootKey\fP"
+.br
+.RI "Key used for shooting\&. "
+.ti -1c
+.RI "int \fBspeed\fP"
+.br
+.RI "Movement speed of the character\&. "
+.ti -1c
+.RI "const char * \fBtheSpritePath\fP"
+.br
+.RI "Path to the sprite image file\&. "
+.ti -1c
+.RI "std::vector< \fBPosition\fP > \fBtabNoeud\fP"
+.br
+.RI "Vector of positions for character pathfinding\&. "
+.ti -1c
+.RI "\fBPosition\fP \fBplayer_left_clips\fP [9] {}"
+.br
+.ti -1c
+.RI "\fBPosition\fP \fBplayer_right_clips\fP [9] {}"
+.br
+.ti -1c
+.RI "\fBPosition\fP \fBplayer_up_clips\fP [9] {}"
+.br
+.ti -1c
+.RI "\fBPosition\fP \fBplayer_down_clips\fP [9] {}"
+.br
+.ti -1c
+.RI "\fBPosition\fP \fBattackUp\fP [13] {}"
+.br
+.ti -1c
+.RI "\fBPosition\fP \fBattackLeft\fP [13] {}"
+.br
+.ti -1c
+.RI "\fBPosition\fP \fBattackDown\fP [13] {}"
+.br
+.ti -1c
+.RI "\fBPosition\fP \fBattackRight\fP [13] {}"
+.br
+.ti -1c
+.RI "\fBPosition\fP \fBPlayerHurtClips\fP [7]"
+.br
+.ti -1c
+.RI "bool \fBcanShootNow\fP = false"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The Player class represents a player in the game\&. 
+
+It inherits from \fBCharacter\fP class and extends it by adding attributes such as name, level, and identifier\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "_Player::_Player (\fBRect\fP * source, \fBRect\fP * dest, int direction, int health, const char * pathSprite, \fBRect\fP * targetPos, int _speed, std::string _name, int _level, int _id, std::vector< \fBPosition\fP > tabNoeud)\fR [inline]\fP"
+
+.PP
+Constructs a new Player object\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsource\fP The source rectangle\&. 
+.br
+\fIdest\fP The destination rectangle\&. 
+.br
+\fIdirection\fP The initial direction of the player\&. 
+.br
+\fIhealth\fP The initial health of the player\&. 
+.br
+\fI_name\fP The name of the player\&. 
+.br
+\fI_level\fP The level of the player\&. 
+.br
+\fI_identifier\fP The identifier of the player\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "int _Player::getIdentifier () const\fR [inline]\fP"
+
+.PP
+Gets the identifier of the player\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The identifier of the player\&. 
+.RE
+.PP
+
+.SS "int _Player::getLevel () const\fR [inline]\fP"
+
+.PP
+Gets the level of the player\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The level of the player\&. 
+.RE
+.PP
+
+.SS "const std::string & _Player::getName () const\fR [inline]\fP"
+
+.PP
+Gets the name of the player\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The name of the player\&. 
+.RE
+.PP
+
+.SS "void _Player::setIdentifier (int _id)\fR [inline]\fP"
+
+.PP
+Sets the identifier of the player\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI_identifier\fP The new identifier of the player\&. 
+.RE
+.PP
+
+.SS "void _Player::setLevel (int _level)\fR [inline]\fP"
+
+.PP
+Sets the level of the player\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI_level\fP The new level of the player\&. 
+.RE
+.PP
+
+.SS "void _Player::setName (const std::string & _name)\fR [inline]\fP"
+
+.PP
+Sets the name of the player\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI_name\fP The new name of the player\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Hunter-Assassin PROJECT from the source code\&.

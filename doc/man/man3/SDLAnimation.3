@@ -1,0 +1,172 @@
+.TH "SDLAnimation" 3 "Hunter-Assassin PROJECT" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SDLAnimation \- Class for handling player animations using SDL\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <SDLAnimation\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSDLAnimation\fP (SDL_Renderer *renderer, \fBCharacter\fP _player)"
+.br
+.RI "Constructor for \fBSDLAnimation\fP class\&. "
+.ti -1c
+.RI "\fBSDLAnimation\fP ()"
+.br
+.RI "Default constructor for \fBSDLAnimation\fP class\&. "
+.ti -1c
+.RI "\fB~SDLAnimation\fP ()"
+.br
+.RI "Destructor for \fBSDLAnimation\fP class\&. "
+.ti -1c
+.RI "void \fBhandleInput\fP ()"
+.br
+.RI "Handles input from keyboard\&. "
+.ti -1c
+.RI "void \fBupdateCharacter\fP (int index)"
+.br
+.RI "Updates player state\&. "
+.ti -1c
+.RI "void \fBDrawAnimation\fP (SDL_Renderer *renderer) const"
+.br
+.RI "Draws animation on renderer\&. "
+.ti -1c
+.RI "void \fBdrawArrow\fP (SDL_Renderer *renderer) const"
+.br
+.RI "Draws arrow animation on renderer\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCharacter\fP \fBcharacter\fP"
+.br
+.ti -1c
+.RI "\fBSDLSprite\fP \fBfireArrow\fP"
+.br
+.ti -1c
+.RI "\fBSDLSound\fP \fBsound\fP"
+.br
+.ti -1c
+.RI "bool \fBdeathAnimationPlayed\fP = false"
+.br
+.ti -1c
+.RI "int * \fBptrStop\fP"
+.br
+.ti -1c
+.RI "Mix_Chunk * \fBshootEffect\fP"
+.br
+.ti -1c
+.RI "\fBSDLSprite\fP \fBallAnimation\fP"
+.br
+.ti -1c
+.RI "\fBPosition\fP \fBPlayerHurtClips\fP [7]"
+.br
+.ti -1c
+.RI "char \fBkeyBoardK\fP {}"
+.br
+.ti -1c
+.RI "float \fBdistanceToTarget\fP"
+.br
+.ti -1c
+.RI "float \fBdistanceMove\fP"
+.br
+.ti -1c
+.RI "const Uint8 * \fBstate\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class for handling player animations using SDL\&. 
+
+This class manages animations for the player character in the game, including movement, attacks, and other actions\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SDLAnimation::SDLAnimation (SDL_Renderer * renderer, \fBCharacter\fP _player)"
+
+.PP
+Constructor for \fBSDLAnimation\fP class\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrenderer\fP SDL_Renderer object for rendering\&. 
+.br
+\fI_player\fP Player object\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void SDLAnimation::DrawAnimation (SDL_Renderer * renderer) const"
+
+.PP
+Draws animation on renderer\&. This function draws the current animation frame on the specified renderer\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIrenderer\fP SDL_Renderer object for rendering\&. 
+.RE
+.PP
+
+.SS "void SDLAnimation::drawArrow (SDL_Renderer * renderer) const"
+
+.PP
+Draws arrow animation on renderer\&. This function draws the arrow animation on the specified renderer\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIrenderer\fP SDL_Renderer object for rendering\&. 
+.RE
+.PP
+
+.SS "void SDLAnimation::handleInput ()"
+
+.PP
+Handles input from keyboard\&. This function updates the keyboard state and determines the action to be performed based on the pressed keys\&. 
+.SS "void SDLAnimation::updateCharacter (int index)"
+
+.PP
+Updates player state\&. This function updates the state of the player animation, including movement and actions\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP Index of the animation to update\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBSDLSprite\fP SDLAnimation::allAnimation"
+Sprite object containing all animations for the player and other entities\&. 
+.SS "\fBCharacter\fP SDLAnimation::character"
+Player object for animation\&. 
+.SS "bool SDLAnimation::deathAnimationPlayed = false"
+Flag indicating if death animation has been played\&. 
+.SS "float SDLAnimation::distanceMove"
+Distance moved\&. 
+.SS "float SDLAnimation::distanceToTarget"
+Distance to target\&. 
+.SS "\fBSDLSprite\fP SDLAnimation::fireArrow"
+Sprite for fire arrow animation\&. 
+.SS "char SDLAnimation::keyBoardK {}"
+Key pressed by player\&. 
+.SS "\fBPosition\fP SDLAnimation::PlayerHurtClips[7]"
+Array of positions for player hurt animation\&. 
+.SS "int* SDLAnimation::ptrStop"
+Pointer to stop animation\&. 
+.SS "Mix_Chunk* SDLAnimation::shootEffect"
+Sound effect for shooting\&. 
+.SS "\fBSDLSound\fP SDLAnimation::sound"
+Sound effects for animations\&. 
+.SS "const Uint8* SDLAnimation::state"
+Current keyboard state\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Hunter-Assassin PROJECT from the source code\&.

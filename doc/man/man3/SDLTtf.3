@@ -1,0 +1,96 @@
+.TH "SDLTtf" 3 "Hunter-Assassin PROJECT" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SDLTtf \- The \fBSDLTtf\fP class provides functionality to work with TrueType fonts in SDL\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <SDLTtf\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSDLTtf\fP ()"
+.br
+.RI "Constructs an \fBSDLTtf\fP object\&. "
+.ti -1c
+.RI "\fB~SDLTtf\fP ()"
+.br
+.RI "Destroys the \fBSDLTtf\fP object\&. "
+.ti -1c
+.RI "void \fBloadFromFont\fP (SDL_Renderer *renderer, TTF_Font *font, const char *message, SDL_Color color)"
+.br
+.RI "Loads text from a font and renders it onto a surface\&. "
+.ti -1c
+.RI "void \fBDraw\fP (SDL_Renderer *renderer, \fBPosition\fP posMessage)"
+.br
+.RI "Renders the text onto the renderer at the specified position\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static TTF_Font * \fBloadFont\fP (const char *fontPath, int size)"
+.br
+.RI "Loads a TrueType font from a file\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The \fBSDLTtf\fP class provides functionality to work with TrueType fonts in SDL\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void SDLTtf::Draw (SDL_Renderer * renderer, \fBPosition\fP posMessage)"
+
+.PP
+Renders the text onto the renderer at the specified position\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrenderer\fP The SDL renderer to render onto\&. 
+.br
+\fIposMessage\fP The position where the text should be rendered\&. 
+.RE
+.PP
+
+.SS "TTF_Font * SDLTtf::loadFont (const char * fontPath, int size)\fR [static]\fP"
+
+.PP
+Loads a TrueType font from a file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfontPath\fP The path to the TrueType font file\&. 
+.br
+\fIsize\fP The font size\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A pointer to the loaded font\&. 
+.RE
+.PP
+
+.SS "void SDLTtf::loadFromFont (SDL_Renderer * renderer, TTF_Font * font, const char * message, SDL_Color color)"
+
+.PP
+Loads text from a font and renders it onto a surface\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrenderer\fP The SDL renderer to render onto\&. 
+.br
+\fIfont\fP A pointer to the TTF_Font object\&. 
+.br
+\fImessage\fP The text message to render\&. 
+.br
+\fIcolor\fP The color of the rendered text\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Hunter-Assassin PROJECT from the source code\&.

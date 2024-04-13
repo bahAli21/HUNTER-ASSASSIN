@@ -1,0 +1,106 @@
+.TH "Game" 3 "Hunter-Assassin PROJECT" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Game \- Class representing the game\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Game\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGame\fP (int \fBnbGardes\fP)"
+.br
+.RI "Default constructor of the \fBGame\fP class\&. "
+.ti -1c
+.RI "\fB~Game\fP ()=default"
+.br
+.RI "Destructor of the \fBGame\fP class\&. "
+.ti -1c
+.RI "void \fBaddGardeAndPlayers\fP ()"
+.br
+.RI "Adds guards and players to the game\&. "
+.ti -1c
+.RI "int \fBgetNbGardes\fP () const"
+.br
+.RI "Gets the number of guards in the game\&. "
+.ti -1c
+.RI "void \fBsetNbGardes\fP (int nb)"
+.br
+.RI "Sets the number of guards in the game\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBnbGardes\fP"
+.br
+.ti -1c
+.RI "std::vector< \fB_Garde\fP > \fBlisteOfGardes\fP"
+.br
+.ti -1c
+.RI "std::vector< \fB_Player\fP > \fBlisteOfPlayers\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class representing the game\&. 
+
+This class manages operations related to the game, such as player initialization, map handling, and guard management\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Game::Game (int nbGardes)"
+
+.PP
+Default constructor of the \fBGame\fP class\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInbGardes\fP The number of guards\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Game::addGardeAndPlayers ()"
+
+.PP
+Adds guards and players to the game\&. This method initializes and adds guards and players to the game\&. It sets up their initial positions, attributes, and behaviors\&. 
+.SS "int Game::getNbGardes () const\fR [inline]\fP"
+
+.PP
+Gets the number of guards in the game\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The number of guards\&. 
+.RE
+.PP
+
+.SS "void Game::setNbGardes (int nb)\fR [inline]\fP"
+
+.PP
+Sets the number of guards in the game\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInb\fP The new number of guards\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<\fB_Garde\fP> Game::listeOfGardes"
+List of guards in the game\&. 
+.SS "std::vector<\fB_Player\fP> Game::listeOfPlayers"
+List of players in the game\&. 
+.SS "int Game::nbGardes"
+The number of guards\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Hunter-Assassin PROJECT from the source code\&.

@@ -1,0 +1,132 @@
+.TH "SDLSound" 3 "Hunter-Assassin PROJECT" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SDLSound \- The \fBSDLSound\fP class provides functionality to work with sound in SDL\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <SDLSound\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSDLSound\fP (int frequency, Uint16 format, int channels, int chunksize)"
+.br
+.RI "Constructs an \fBSDLSound\fP object with specified audio parameters\&. "
+.ti -1c
+.RI "\fB~SDLSound\fP ()"
+.br
+.RI "Destroys the \fBSDLSound\fP object\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static Mix_Chunk * \fBLoadChunkFromFile\fP (const char *pathChunk)"
+.br
+.RI "Loads a sound chunk from a file\&. "
+.ti -1c
+.RI "static Mix_Music * \fBLoadMusicFromFile\fP (const char *pathMusic)"
+.br
+.RI "Loads music from a file\&. "
+.ti -1c
+.RI "static void \fBPlayChunk\fP (Mix_Chunk *chunk)"
+.br
+.RI "Plays a sound chunk\&. "
+.ti -1c
+.RI "static void \fBPlayMusic\fP (Mix_Music *music)"
+.br
+.RI "Plays music\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The \fBSDLSound\fP class provides functionality to work with sound in SDL\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SDLSound::SDLSound (int frequency, Uint16 format, int channels, int chunksize)"
+
+.PP
+Constructs an \fBSDLSound\fP object with specified audio parameters\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfrequency\fP The audio frequency in samples per second\&. 
+.br
+\fIformat\fP The audio format\&. 
+.br
+\fIchannels\fP The number of audio channels\&. 
+.br
+\fIchunksize\fP The size of audio chunks\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "Mix_Chunk * SDLSound::LoadChunkFromFile (const char * pathChunk)\fR [static]\fP"
+
+.PP
+Loads a sound chunk from a file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpathChunk\fP The path to the sound chunk file\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A pointer to the loaded sound chunk\&. 
+.RE
+.PP
+
+.SS "Mix_Music * SDLSound::LoadMusicFromFile (const char * pathMusic)\fR [static]\fP"
+
+.PP
+Loads music from a file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpathMusic\fP The path to the music file\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A pointer to the loaded music\&. 
+.RE
+.PP
+
+.SS "void SDLSound::PlayChunk (Mix_Chunk * chunk)\fR [static]\fP"
+
+.PP
+Plays a sound chunk\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIchunk\fP A pointer to the sound chunk to be played\&. 
+.RE
+.PP
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIchannel,chunk\fP and loop
+.RE
+.PP
+
+.SS "void SDLSound::PlayMusic (Mix_Music * music)\fR [static]\fP"
+
+.PP
+Plays music\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fImusic\fP A pointer to the music to be played\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Hunter-Assassin PROJECT from the source code\&.
