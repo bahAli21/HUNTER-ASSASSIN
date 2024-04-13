@@ -31,22 +31,22 @@ void Game::addGardeAndPlayers() {
 
      //Garde 1
      tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 27, WIDTH_A, HEIGHT_A * 2);
-     tabRectDest.emplace_back(50,50,WIDTH_A,HEIGHT_A*2);
+     tabRectDest.emplace_back(10+WIDTH_A,HEIGHT_A+20,WIDTH_A,HEIGHT_A*2);
      //Garde 2
      tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 23, WIDTH_A, HEIGHT_A * 2);
-     tabRectDest.emplace_back(WINDOW_W-150,150,WIDTH_A,HEIGHT_A*2);
+     tabRectDest.emplace_back(WINDOW_W-WIDTH_A-10,HEIGHT_A+20,WIDTH_A,HEIGHT_A*2);
      //Garde 3
      tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 25, WIDTH_A, HEIGHT_A * 2);
-     tabRectDest.emplace_back(50,250,WIDTH_A,HEIGHT_A*2);
+     tabRectDest.emplace_back(10+WIDTH_A,HEIGHT_A+20*4,WIDTH_A,HEIGHT_A*2);
      //noeud
      //Noeud garde 1 gauche vers la droite (le chemein)
      std::vector<Position> tabNoeud;
-    tabNoeud.push_back({50, 50});        // Noeud 1
-    tabNoeud.push_back({50 * 3, 50});    // Noeud 2
-    tabNoeud.push_back({50 * 3, 50 * 3}); // Noeud 3
-    tabNoeud.push_back({50 * 6, 50 * 3}); // Noeud 4
-    tabNoeud.push_back({50 * 6, 50});    // Noeud 5
-    tabNoeud.push_back({50 * 12, 50});   // Noeud 6
+    tabNoeud.push_back({20, 20});        // Noeud 1
+    tabNoeud.push_back({20 * 3, 20});    // Noeud 2
+    tabNoeud.push_back({20 * 3, 20 * 3}); // Noeud 3
+    tabNoeud.push_back({20 * 6, 20 * 3}); // Noeud 4
+    tabNoeud.push_back({20 * 6, 20});    // Noeud 5
+    tabNoeud.push_back({20 * 12, 20});   // Noeud 6
 
     //Noeud garde 2 droite vers la gauche a faire
 

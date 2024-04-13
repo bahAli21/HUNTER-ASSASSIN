@@ -59,6 +59,8 @@ void SDLGame::runProject() {
             if (event.type == SDL_QUIT)
                 isOpen = false;
         }
+        SDL_RenderClear(renderer);
+        SDL_SetRenderDrawColor(renderer, 255,255,255,255);
         /*if(playerAnimation.moving_up && camera.y>0)
             camera.y -=5;
         if(playerAnimation.moving_left && camera.x>0)

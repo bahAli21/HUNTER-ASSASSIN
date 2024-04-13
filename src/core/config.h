@@ -22,11 +22,11 @@
 
 /// @def WINDOW_W
 /// Width of the window.
-#define WINDOW_W 900 // 700 for Gold, 500 for Aliou
+#define WINDOW_W 300 // 700 for Gold, 500 for Aliou
 
 /// @def WINDOW_H
 /// Height of the window.
-#define WINDOW_H 600 // 950 for Gold, 600 for Aliou
+#define WINDOW_H 550 // 950 for Gold, 600 for Aliou
 
 /// @def PLAYER_WIDTH
 /// Width of the player.
