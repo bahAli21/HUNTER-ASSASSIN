@@ -31,22 +31,22 @@ Pour les utilisateurs de Windows, suivez ces étapes :
 Le projet est organisé comme suit :
 
 .
-├── src
-│   ├── core
-│   │   ├── _Garde.cpp
-│   │   ├── _Garde.h
-│   │   ├── _Player.cpp
-│   │   ├── _Player.h
-│   │   ├── Arrow.h
-│   │   ├── Character.cpp
-│   │   ├── Character.h
-│   │   ├── config.h
-│   │   ├── Direction.h
-│   │   ├── Game.cpp
-│   │   ├── Game.h
-│   │   ├── point.h
-│   │   └── Rect.h
-│   └── sdl2
+├── src <br>
+│   ├── core<br>
+│   │   ├── _Garde.cpp<br>
+│   │   ├── _Garde.h<br>
+│   │   ├── _Player.cpp<br>
+│   │   ├── _Player.h<br>
+│   │   ├── Arrow.h<br>
+│   │   ├── Character.cpp<br>
+│   │   ├── Character.h<br>
+│   │   ├── config.h<br>
+│   │   ├── Direction.h<br>
+│   │   ├── Game.cpp<br>
+│   │   ├── Game.h<br>
+│   │   ├── point.h<br>
+│   │   └── Rect.h<br>
+│   └── sdl2<br>
 │       ├── mainProject.cpp
 │       ├── SDLAnimation.cpp
 │       ├── SDLAnimation.h
@@ -70,7 +70,8 @@ Le projet est organisé comme suit :
 
 ## Crédits
 
-Ce jeu a été développé par #BAH Mamadou et #Barry Elhadj Amadou.
+Ce jeu a été développé par **BAH Mamadou** et **Barry Elhadj Amadou**.
+
 
 ## Avertissement
 
