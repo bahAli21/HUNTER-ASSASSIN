@@ -1,6 +1,6 @@
 #include "SDLGame.h"
 
-SDLGame::SDLGame() : game(3){
+SDLGame::SDLGame() : game(4){
 
     // Initialisation de SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -46,10 +46,11 @@ void SDLGame::runProject() {
     SDL_Event event;
     SDLAnimation playerAnimation(renderer, game.listeOfPlayers[0]);
     // Déclarons un tableau pour stocker les animations des gardes
-    SDLAnimation gardeAnimations[3] = {
+    SDLAnimation gardeAnimations[4] = {
             SDLAnimation(renderer, game.listeOfGardes[0]),
             SDLAnimation(renderer, game.listeOfGardes[1]),
-            SDLAnimation(renderer, game.listeOfGardes[2])
+            SDLAnimation(renderer, game.listeOfGardes[2]),
+            SDLAnimation(renderer, game.listeOfGardes[3]),
     };
 
     Uint32 lastGuardDestinationChangeTime = SDL_GetTicks();

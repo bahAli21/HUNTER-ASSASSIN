@@ -71,7 +71,7 @@ void SDLAnimation::updateCharacter(int index) {
 
 
 
-
+/*
     if (index != 0){ //Concerne un garde pas le joueur
         if(character.dest->x < character.tabNoeud[0].x){
             character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
@@ -92,7 +92,7 @@ void SDLAnimation::updateCharacter(int index) {
             character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
         }
     }
-
+*/
     if (idxAtt>5)
         *ptrStop = 1;
     if(keyBoardK == 'k' && *ptrStop==0)
