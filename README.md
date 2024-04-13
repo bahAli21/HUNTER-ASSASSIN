@@ -1,7 +1,7 @@
 <div align="center">
     <h1>Hunter Assassin</h1>
-    <img src="https://img.shields.io/badge/language-C%2B%2B-blue.svg">
-    <img src="https://img.shields.io/badge/license-MIT-green.svg">
+    <img src="https://img.shields.io/badge/language-C%2B%2B-red.svg">
+    <img src="https://img.shields.io/badge/license-MIT-yellow.svg">
 </div>
 
 ---
