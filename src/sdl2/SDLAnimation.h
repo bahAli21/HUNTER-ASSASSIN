@@ -31,6 +31,10 @@ public:
     /** Sprite object containing all animations for the player and other entities. */
     SDLSprite allAnimation;
     Position PlayerHurtClips[7]; /**< Array of positions for player hurt animation. */
+    void patrouilleGardeUpLeft(int vitesse, int idx);
+    void patrouilleGardeUpRight(int vitesse, int idx);
+    void patrouilleGardeDownLeft(int vitesse, int idx);
+    void patrouilleGardeDownRight(int vitesse, int idx);
 
     /**
      * @brief Constructor for SDLAnimation class.

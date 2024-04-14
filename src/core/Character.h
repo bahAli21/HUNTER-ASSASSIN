@@ -68,7 +68,7 @@ public:
     bool hasKey = {false};
     // Dead clips
     Position PlayerHurtClips[7]; /**< Array of positions for the hurt animation. */
-
+    bool Retour{false}, Aller{true};
 public:
     static void AttackInit(Position tabPos[], int index);
     void makeAnimation(int index, Position tabPos[]) const;

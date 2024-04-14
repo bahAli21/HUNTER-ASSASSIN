@@ -17,7 +17,8 @@ public:
     int nbGardes; /**< The number of guards. */
     std::vector<_Garde> listeOfGardes; /**< List of guards in the game. */
     std::vector<_Player> listeOfPlayers; /**< List of players in the game. */
-
+    // Tableau statique de 4 gardes et 3 colonnes de structures Position
+    Position tabNoeud[7][7];
 public:
     /**
      * @brief Default constructor of the Game class.

@@ -88,11 +88,11 @@ void SDLGame::runProject() {
         level1.draw(renderer);
         playerAnimation.handleInput();
         playerAnimation.DrawAnimation(renderer);
-        playerAnimation.updateCharacter(0, level1); //index 0 pour un joueur
+        playerAnimation.updateCharacter(-1, level1); //index -1 pour un joueur
 
         for (int i = 0; i < game.nbGardes; ++i) {
             gardeAnimations[i].handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
-            gardeAnimations[i].updateCharacter(1, level1); // Mettre à jour l'animation du garde
+            gardeAnimations[i].updateCharacter(i, level1); // Mettre à jour l'animation du garde
             gardeAnimations[i].DrawAnimation(renderer); // Dessine l'animation du garde
         }
 

@@ -113,6 +113,116 @@ void SDLAnimation::getKey(Level & level) {
     }
 }
 
+void SDLAnimation::patrouilleGardeUpLeft(int vitesse, int idx){
+    if(character.Aller) {
+        if(character.dest->x < character.tabNoeud[1].x){
+            character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
+        } else if(character.dest->y < character.tabNoeud[2].y){
+            character.WalkingAnimation(character.player_down_clips, +vitesse, idx, SOUTH);
+        }
+
+        if(character.dest->y == character.tabNoeud[2].y){
+            character.Retour = true;
+            character.Aller = false;
+        }
+    }
+    if(character.Retour) {
+        if(character.dest->y > character.tabNoeud[1].y){
+            character.WalkingAnimation(character.player_up_clips, -vitesse, idx, NORTH);
+        } else if(character.dest->x > character.tabNoeud[0].x){
+            character.WalkingAnimation(character.player_left_clips, -vitesse, idx, EAST);
+        }
+
+        if(character.dest->x == character.tabNoeud[0].x){
+            character.Retour = false;
+            character.Aller = true;
+        }
+    }
+}
+
+void SDLAnimation::patrouilleGardeUpRight(int vitesse, int idx) {
+    if(character.Aller) {
+        if(character.dest->x > character.tabNoeud[1].x){
+            character.WalkingAnimation(character.player_left_clips, -vitesse, idx, EAST);
+        } else if(character.dest->y < character.tabNoeud[2].y){
+            character.WalkingAnimation(character.player_down_clips, +vitesse, idx, SOUTH);
+        }
+
+        if(character.dest->y == character.tabNoeud[2].y){
+            character.Retour = true;
+            character.Aller = false;
+        }
+    }
+    if(character.Retour) {
+        if(character.dest->y > character.tabNoeud[1].y){
+            character.WalkingAnimation(character.player_up_clips, -vitesse, idx, NORTH);
+        } else if(character.dest->x < character.tabNoeud[0].x){
+            character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
+        }
+
+        if(character.dest->x == character.tabNoeud[0].x){
+            character.Retour = false;
+            character.Aller = true;
+        }
+    }
+}
+
+//Marche pas encore 
+void SDLAnimation::patrouilleGardeDownLeft(int vitesse, int idx) {
+    if(character.Aller) {
+        if(character.dest->x < character.tabNoeud[1].x){
+            character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
+        } else if(character.dest->y > character.tabNoeud[2].y){
+            character.WalkingAnimation(character.player_up_clips, -vitesse, idx, NORTH);
+        }
+
+        if(character.dest->y == character.tabNoeud[2].y){
+            character.Retour = true;
+            character.Aller = false;
+        }
+    }
+    if(character.Retour) {
+        if(character.dest->y < character.tabNoeud[1].y){
+            character.WalkingAnimation(character.player_down_clips, +vitesse, idx, SOUTH);
+        } else if(character.dest->x > character.tabNoeud[0].x){
+            character.WalkingAnimation(character.player_left_clips, -vitesse, idx, EAST);
+        }
+
+        if(character.dest->x == character.tabNoeud[0].x){
+            character.Retour = false;
+            character.Aller = true;
+        }
+    }
+}
+
+void SDLAnimation::patrouilleGardeDownRight(int vitesse, int idx) {
+    if(character.Aller) {
+        if(character.dest->x > character.tabNoeud[1].x){
+            character.WalkingAnimation(character.player_left_clips, -vitesse, idx, EAST);
+        } else if(character.dest->y > character.tabNoeud[2].y){
+            character.WalkingAnimation(character.player_up_clips, -vitesse, idx, NORTH);
+        }
+
+        if(character.dest->y == character.tabNoeud[2].y){
+            character.Retour = true;
+            character.Aller = false;
+        }
+    }
+    if(character.Retour) {
+        if(character.dest->y < character.tabNoeud[1].y){
+            character.WalkingAnimation(character.player_down_clips, +vitesse, idx, SOUTH);
+        } else if(character.dest->x < character.tabNoeud[0].x){
+            character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
+        }
+
+        if(character.dest->x == character.tabNoeud[0].x){
+            character.Retour = false;
+            character.Aller = true;
+        }
+    }
+}
+
+
 void SDLAnimation::updateCharacter(int index, Level &level) {
     int animation_speed = SDL_GetTicks() / 170;
     int idxAtt= animation_speed % 13; //for animation frame
@@ -127,7 +237,7 @@ void SDLAnimation::updateCharacter(int index, Level &level) {
     }
 
 
-    if(index == 0) { //Concerne un joueur pas les gardes
+    if(index == -1) { //Concerne un joueur pas les gardes
         getKey(level);
         openDoor(level);
         closeDoor(level);
@@ -158,30 +268,20 @@ void SDLAnimation::updateCharacter(int index, Level &level) {
     }
     character.updateArrowPos();
 
+    //Garde TOP LEFT
+     if(index == 0){
+         patrouilleGardeUpLeft(vitesse, idx);
+     }
+     if(index == 1){
+         patrouilleGardeUpRight(vitesse, idx);
+     }
+     if(index == 2){
+         patrouilleGardeDownLeft(vitesse, idx);
+     }
+     if(index == 3){
+         patrouilleGardeDownRight(vitesse, idx);
+     }
 
-
-/*
-    if (index != 0){ //Concerne un garde pas le joueur
-        if(character.dest->x < character.tabNoeud[0].x){
-            character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
-        }
-        else if(character.dest->y < character.tabNoeud[1].y){
-            character.WalkingAnimation(character.player_down_clips, +vitesse, idx, SOUTH);
-
-        }
-        else if(character.dest->x < character.tabNoeud[2].x){
-            character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
-
-        }
-        else if(character.dest->y > character.tabNoeud[3].y){
-            character.WalkingAnimation(character.player_up_clips, -vitesse, idx, NORTH);
-
-        }
-        else if(character.dest->x < character.tabNoeud[4].x){
-            character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
-        }
-    }
-*/
     if (idxAtt>5)
         *ptrStop = 1;
     if(keyBoardK == 'k' && *ptrStop==0)
