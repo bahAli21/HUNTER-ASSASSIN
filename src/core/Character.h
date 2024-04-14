@@ -65,7 +65,7 @@ public:
     Position attackLeft[13]{}; /**< Array of positions for attacking left animation. */
     Position attackDown[13]{}; /**< Array of positions for attacking downwards animation. */
     Position attackRight[13]{}; /**< Array of positions for attacking right animation. */
-
+    bool hasKey = {false};
     // Dead clips
     Position PlayerHurtClips[7]; /**< Array of positions for the hurt animation. */
 

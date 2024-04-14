@@ -4,6 +4,7 @@
 #include "../core/Game.h"
 #include "SDL.h"
 #include "../core/config.h"
+#include "Level.h"
 
 /**
  * @brief Class managing the game with SDL display.

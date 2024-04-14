@@ -12,7 +12,7 @@
 #include "../core/Direction.h"
 #include "SDLSound.h"
 #include "SDL_mixer.h"
-
+#include "Level.h"
 
 /**
  * @brief Class for handling player animations using SDL.
@@ -68,7 +68,13 @@ public:
      *
      * @param index Index of the animation to update.
      */
-    void updateCharacter(int index);
+    void updateCharacter(int index, Level &level);
+    bool checkCollision(SDL_Rect rect1, SDL_Rect rect2);
+    bool collisionWithLevel(SDL_Rect playerRect, Level &level);
+    void closeDoor(Level & level);
+    void openDoor(Level & level);
+    void getKey(Level & level);
+    SDL_Rect smallRect;
 
     /**
      * @brief Draws animation on renderer.

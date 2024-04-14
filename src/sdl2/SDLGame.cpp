@@ -44,6 +44,7 @@ SDLGame::~SDLGame() {
 
 void SDLGame::runProject() {
     SDL_Event event;
+    Level level1(renderer);
     SDLAnimation playerAnimation(renderer, game.listeOfPlayers[0]);
     // Déclarons un tableau pour stocker les animations des gardes
     SDLAnimation gardeAnimations[4] = {
@@ -60,8 +61,7 @@ void SDLGame::runProject() {
             if (event.type == SDL_QUIT)
                 isOpen = false;
         }
-        SDL_RenderClear(renderer);
-        SDL_SetRenderDrawColor(renderer, 255,255,255,255);
+
         /*if(playerAnimation.moving_up && camera.y>0)
             camera.y -=5;
         if(playerAnimation.moving_left && camera.x>0)
@@ -72,15 +72,16 @@ void SDLGame::runProject() {
             camera.x +=5;*/
 
         SDL_RenderClear(renderer);
+
+        level1.draw(renderer);
         playerAnimation.handleInput();
         playerAnimation.DrawAnimation(renderer);
-        playerAnimation.updateCharacter(0); //index 0 pour un joueur
+        playerAnimation.updateCharacter(0, level1); //index 0 pour un joueur
 
         for (int i = 0; i < game.nbGardes; ++i) {
             gardeAnimations[i].handleInput(); // Gére les entrées pour les animations des gardes si nécessaire
-            gardeAnimations[i].updateCharacter(1); // Mettre à jour l'animation du garde
+            gardeAnimations[i].updateCharacter(1, level1); // Mettre à jour l'animation du garde
             gardeAnimations[i].DrawAnimation(renderer); // Dessine l'animation du garde
-
         }
 
         SDL_Delay(15);

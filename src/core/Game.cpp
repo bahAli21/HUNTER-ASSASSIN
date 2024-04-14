@@ -23,7 +23,7 @@ void Game::addGardeAndPlayers() {
 
     std::vector<Position> defaultNoeud{{-1, -1}};
     Rect source = {WIDTH_A / 2, HEIGHT_A * 21, WIDTH_A, HEIGHT_A * 2};
-    Rect destPlayer = {WINDOW_W/2 - WIDTH_A + 30, WINDOW_H - HEIGHT_A*2, WIDTH_A, HEIGHT_A*2};
+    Rect destPlayer = {WINDOW_W/2 - WIDTH_A + 30, WINDOW_H - HEIGHT_A*4, WIDTH_A, HEIGHT_A*2};
     Rect targetPlayer = {300,300};
     listeOfPlayers.emplace_back(&source, &destPlayer, 0, 100, "../data/player.bmp",&targetPlayer,3, "BAH", 1, 21, defaultNoeud);
      //dest
@@ -33,13 +33,13 @@ void Game::addGardeAndPlayers() {
      tabRectDest.emplace_back(12,-10,WIDTH_A,HEIGHT_A*2);
      //Garde 3
      tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 23, WIDTH_A, HEIGHT_A * 2);
-     tabRectDest.emplace_back(WINDOW_W-WIDTH_A-22,HEIGHT_A-10,WIDTH_A,HEIGHT_A*2 - 10);
+     tabRectDest.emplace_back(WINDOW_W-WIDTH_A-22,HEIGHT_A+30,WIDTH_A,HEIGHT_A*2 - 10);
      //Garde 4
      tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 25, WIDTH_A, HEIGHT_A * 2);
      tabRectDest.emplace_back(12,HEIGHT_A+60,WIDTH_A,HEIGHT_A*2);
      //Garde
      tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 21, WIDTH_A, HEIGHT_A * 2);
-     tabRectDest.emplace_back(WINDOW_W-WIDTH_A-22,HEIGHT_A*3 - 30,WIDTH_A,HEIGHT_A*2);
+     tabRectDest.emplace_back(WINDOW_W-WIDTH_A-22,HEIGHT_A*3 ,WIDTH_A,HEIGHT_A*2);
 
      //noeud
      //Noeud garde 1 gauche vers la droite (le chemein)
