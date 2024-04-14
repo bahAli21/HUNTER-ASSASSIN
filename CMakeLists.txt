@@ -65,6 +65,11 @@ set(SRC_SDL2 ${SRC_SDL2_DIR}/mainProject.cpp
         ${SRC_SDL2_DIR}/SDLTtf.h
         ${SRC_SDL2_DIR}/SDLSound.cpp
         ${SRC_SDL2_DIR}/SDLSound.h
+        src/sdl2/Level.cpp
+        src/sdl2/Level.h
+        src/sdl2/TextureLoader.cpp
+        src/sdl2/TextureLoader.h
+        src/sdl2/TextureLoader.cpp
 )
 
 # Configuration des librairies SDL2 en fonction du système d'exploitation
