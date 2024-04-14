@@ -11,7 +11,8 @@ private:
     //{} vide par defaut
     SDL_Texture* _texture{}; ///< The texture used for rendering text.
     SDL_Surface* _surface{}; ///< The surface used for rendering text.
-
+    bool zoomIn = true;
+    int scale = 1;
 public:
     /**
      * @brief Constructs an SDLTtf object.
@@ -31,6 +32,7 @@ public:
      * @return A pointer to the loaded font.
      */
     static TTF_Font* loadFont(const char* fontPath, int size);
+    void AnimationText();
 
     /**
      * @brief Loads text from a font and renders it onto a surface.
@@ -40,7 +42,7 @@ public:
      * @param message The text message to render.
      * @param color The color of the rendered text.
      */
-    void loadFromFont(SDL_Renderer* renderer, TTF_Font* font, const char* message, SDL_Color color);
+     void loadFromFont(SDL_Renderer* renderer, TTF_Font* font, const char* message, SDL_Color color);
 
     /**
      * @brief Renders the text onto the renderer at the specified position.

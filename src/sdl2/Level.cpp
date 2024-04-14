@@ -11,28 +11,31 @@ Level::Level(SDL_Renderer *renderer) {
     textureTileKey       = TextureLoader::loadTexture(renderer, "key.bmp");
     textureTileWallOne   = TextureLoader::loadTexture(renderer, "wallTwoHorizontale.bmp");
     textureTileWallTwo   = TextureLoader::loadTexture(renderer, "wallTwo.bmp");
-
+    textureTileCible = TextureLoader::loadTexture(renderer, "cible.bmp");
     // Initialisation des rectangles
-    destMoq = {0, 0, WINDOW_W, WINDOW_H};
-    destWallUp = {0, 0, WINDOW_W, 30};
+    destMoq = {0, 0, 400, 600};
+    destWallUp = {0, 0, 400, 30};
     destSmallWallUpLeft = {30, 115, 150, 20};
-    destSmallWallUpRight = {WINDOW_W-180, 115, 150, 20};
-    destWallDown = {0, WINDOW_H-30, WINDOW_W, 30};
-    destWallLeft = {0, 30, 30, WINDOW_H-59};
-    destWallRight = {WINDOW_W - 30, 30, 30, WINDOW_H-59};
+    destSmallWallUpRight = {400-180, 115, 150, 20};
+    destWallDown = {0, 600-30, 400, 30};
+    destWallLeft = {0, 30, 30, 600-59};
+    destWallRight = {400 - 30, 30, 30, 600-59};
     destBlockGrisTopLeft = {100, 100, 50, 50};
-    destBlockGrisTopRight = {WINDOW_W-150, 100, 50, 50};
+    destBlockGrisTopRight = {400-150, 100, 50, 50};
     destBlockGrisMiddleLeft = {100, 250, 50, 50};
-    destBlockGrisMiddleRight = {WINDOW_W-150, 250, 50, 50};
+    destBlockGrisMiddleRight = {400-150, 250, 50, 50};
     destBlockGrisDownLeft = {100, 400, 50, 50};
-    destBlockGrisDownRight = {WINDOW_W-150, 400, 50, 50};
+    destBlockGrisDownRight = {400-150, 400, 50, 50};
     destKey = {50, 320, 50, 50};
-    destDoorDown = {WINDOW_W/2 -20, WINDOW_H-30, 40, 30};
+    destDoorDown = {400/2 -20, 600-30, 40, 30};
     destDoorUp= {180, 117, 40, 12};
     destCube1= {160, 330, 80, 40};
-    destCube2= {40, WINDOW_H-80, 80, 40};
-    destCube3= {WINDOW_W-120, WINDOW_H-80, 80, 40};
+    destCube2= {40, 600-80, 80, 40};
+    destCube3= {400-120, 600-80, 80, 40};
     destDiamant = {30, 145, 20, 20};
+
+    //Footer
+    cible = {10, WINDOW_H-77, 40, 40};
 }
 
 Level::~Level() = default;
@@ -60,4 +63,5 @@ void Level::draw(SDL_Renderer *renderer) {
     SDL_RenderCopy(renderer, textureTileCubeTwo, nullptr, &destCube2);
     SDL_RenderCopy(renderer, textureTileCubeTwo, nullptr, &destCube3);
     SDL_RenderCopy(renderer, textureTileDiamant, nullptr, &destDiamant);
+    SDL_RenderCopy(renderer, textureTileCible, nullptr, &cible);
 }

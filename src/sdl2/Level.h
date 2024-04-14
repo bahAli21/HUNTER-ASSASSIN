@@ -34,7 +34,7 @@ public:
     SDL_Texture* textureTileDiamant = nullptr;
     SDL_Texture* textureTileMoquette = nullptr;
     SDL_Texture* textureTileCubeTwo = nullptr;
-
+    SDL_Texture* textureTileCible = nullptr;
     SDL_Rect destMoq;
     SDL_Rect destWallUp;
     SDL_Rect destSmallWallUpLeft;
@@ -55,5 +55,8 @@ public:
     SDL_Rect destCube2;
     SDL_Rect destCube3;
     SDL_Rect destDiamant;
+
+    //Footer
+    SDL_Rect cible;
 };
 

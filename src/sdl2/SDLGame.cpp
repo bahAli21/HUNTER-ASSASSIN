@@ -1,6 +1,6 @@
 #include "SDLGame.h"
 
-SDLGame::SDLGame() : game(4){
+SDLGame::SDLGame() : game(4), sound(44100, MIX_DEFAULT_FORMAT, 2, 248){
 
     // Initialisation de SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -56,6 +56,14 @@ void SDLGame::runProject() {
 
     Uint32 lastGuardDestinationChangeTime = SDL_GetTicks();
     bool isOpen = true;
+    SDLTtf myTtfKilled, myTtfSlash, myTtfNbGarde, myTtfWelcom;
+    TTF_Font * font = SDLTtf::loadFont("../data/font/scoreFont.ttf", 24);
+    myTtfKilled.loadFromFont(renderer, font, "0", {255,255, 255});
+    myTtfSlash.loadFromFont(renderer, font, "/", {255,255, 255});
+    myTtfNbGarde.loadFromFont(renderer, font, "4", {255, 255, 255});
+    myTtfWelcom.loadFromFont(renderer, font, "BIENVENUE </> H-A", {193, 55, 25});
+    gameMusic = SDLSound::LoadMusicFromFile("../data/audio/musicGame.mp3");
+    SDLSound::PlayMusic(gameMusic);
     while (isOpen) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT)
@@ -72,7 +80,11 @@ void SDLGame::runProject() {
             camera.x +=5;*/
 
         SDL_RenderClear(renderer);
-
+        myTtfKilled.Draw(renderer, {60, WINDOW_H-70});
+        myTtfSlash.Draw(renderer, {80, WINDOW_H-70});
+        myTtfNbGarde.Draw(renderer, {90, WINDOW_H-70});
+        myTtfWelcom.Draw(renderer, {120, WINDOW_H-70});
+        myTtfWelcom.AnimationText();
         level1.draw(renderer);
         playerAnimation.handleInput();
         playerAnimation.DrawAnimation(renderer);

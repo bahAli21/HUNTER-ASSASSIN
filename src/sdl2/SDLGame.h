@@ -5,6 +5,9 @@
 #include "SDL.h"
 #include "../core/config.h"
 #include "Level.h"
+#include "SDL_mixer.h"
+#include "SDLTtf.h"
+#include "SDL_ttf.h"
 
 /**
  * @brief Class managing the game with SDL display.
@@ -18,6 +21,8 @@ private:
     SDL_Window *window; /**< SDL window for display. */
     SDL_Renderer *renderer; /**< SDL rendering context for display. */
     Position camera {}; /**< Camera position for rendering. */
+    SDLSound sound;
+    Mix_Music * gameMusic;
 public:
     /**
      * @brief Default constructor of the SDLGame class.

@@ -37,8 +37,21 @@ void SDLTtf::loadFromFont(SDL_Renderer * renderer, TTF_Font * font, const char *
     }
 }
 
+void SDLTtf::AnimationText(){
+    if (zoomIn) {
+        scale += 0.01f; // Augmente le facteur de zoom
+        if (scale >= 1.1f) {
+            zoomIn = false; // Inverse la direction du zoom une fois que le zoom est assez grand
+        }
+    } else {
+        scale -= 0.01f; // Diminue le facteur de zoom
+        if (scale <= 0.9f) {
+            zoomIn = true; // Inverse la direction du zoom une fois que le zoom est assez petit
+        }
+    }
+}
 void SDLTtf::Draw(SDL_Renderer *renderer, Position posMessage) {
-    SDL_Rect dest = {posMessage.x, posMessage.y, _surface->w, _surface->h};
+    SDL_Rect dest = {posMessage.x, posMessage.y, _surface->w * scale, _surface->h*scale};
     SDL_RenderCopy(renderer, _texture, nullptr, &dest);
 }
 
