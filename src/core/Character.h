@@ -53,7 +53,8 @@ public:
     int speed; ///< Movement speed of the character.
     const char * theSpritePath; ///< Path to the sprite image file.
     std::vector<Position> tabNoeud; ///< Vector of positions for character pathfinding.
-
+    bool isDead{false}; ///<Checks if the character is dead.
+    SDL_Rect smallRect; /**< SDL_Rect structure for small rectangle. */
     // Walking clips
     Position player_left_clips[9]{}; /**< Array of positions for left movement animation. */
     Position player_right_clips[9]{}; /**< Array of positions for right movement animation. */

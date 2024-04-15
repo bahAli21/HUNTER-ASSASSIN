@@ -2,6 +2,6 @@
 
 int main(int argc, char* args[]) {
     SDLGame gameSdl;
-    gameSdl.runProject();
+    gameSdl.runGame();
     return 0;
 }

@@ -8,6 +8,7 @@
 #include "SDL_mixer.h"
 #include "SDLTtf.h"
 #include "SDL_ttf.h"
+#include "../../menu/menu.h"
 
 /**
  * @brief Class managing the game with SDL display.
@@ -28,6 +29,7 @@ public:
      * @brief Default constructor of the SDLGame class.
      */
     SDLGame();
+    Menu menu;
 
     /**
      * @brief Destructor of the SDLGame class.
@@ -40,6 +42,8 @@ public:
      * This method initializes the SDL window and renderer, starts the game loop,
      * handles user input, updates game state, and renders graphics until the game ends.
      */
-    void runProject();
+    void runGame();
+    void shoot(int direction);
+
 };
 

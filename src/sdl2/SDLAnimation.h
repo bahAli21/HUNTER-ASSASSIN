@@ -128,7 +128,8 @@ public:
      * @param rect2 Second SDL_Rect structure.
      * @return True if collision occurs, false otherwise.
      */
-    bool checkCollision(SDL_Rect rect1, SDL_Rect rect2);
+    bool checkCollision(SDL_Rect rect1, SDL_Rect rect2) const;
+    void makeSmallRectCollision();
 
     /**
      * @brief Checks for collision between player and level objects.
@@ -170,8 +171,7 @@ public:
      */
     void getKey(Level & level);
 
-    SDL_Rect smallRect; /**< SDL_Rect structure for small rectangle. */
-
+    //SDL_Rect smallRect; /**< SDL_Rect structure for small rectangle. */
     /**
      * @brief Draws animation on renderer.
      *

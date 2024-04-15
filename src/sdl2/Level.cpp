@@ -42,8 +42,8 @@ Level::~Level() = default;
 
 void Level::draw(SDL_Renderer *renderer) {
     angle++;
-    // Dessiner les textures en utilisant les rectangles
-    SDL_RenderCopy(renderer, textureTileMoquette, nullptr, &destMoq);
+
+    //SDL_RenderCopy(renderer, textureTileMoquette, nullptr, &destMoq);
     SDL_RenderCopy(renderer, textureTileWallOne, nullptr, &destWallUp);
     SDL_RenderCopy(renderer, textureTileWallOne, nullptr, &destSmallWallUpLeft);
     SDL_RenderCopy(renderer, textureTileWallOne, nullptr, &destSmallWallUpRight);

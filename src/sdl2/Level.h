@@ -2,6 +2,7 @@
 #include "SDL.h"
 #include "TextureLoader.h"
 #include "../core/config.h"
+#include "../core/point.h"
 
 /**
  * @brief Class representing the game level.
@@ -12,7 +13,6 @@ class Level {
 public:
     int angle = 0; /**< Angle of rotation for the door (default: horizontal). */
     int beta = 0; /**< Angle of pivot for the door (default: horizontal). */
-
     /**
      * @brief Constructor for the Level class.
      *

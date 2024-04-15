@@ -35,6 +35,7 @@ void Game::addGardeAndPlayers() {
      tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 23, WIDTH_A, HEIGHT_A * 2);
      tabRectDest.emplace_back(WINDOW_W-WIDTH_A-22,HEIGHT_A+30,WIDTH_A,HEIGHT_A*2 - 10);
 
+
      //Garde 3 Left Down [2]
      tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 25, WIDTH_A, HEIGHT_A * 2);
      tabRectDest.emplace_back(12,HEIGHT_A+60,WIDTH_A,HEIGHT_A*2);

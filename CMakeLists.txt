@@ -70,6 +70,8 @@ set(SRC_SDL2 ${SRC_SDL2_DIR}/mainProject.cpp
         src/sdl2/TextureLoader.cpp
         src/sdl2/TextureLoader.h
         src/sdl2/TextureLoader.cpp
+        menu/menu.h
+        menu/menu.cpp
 )
 
 # Configuration des librairies SDL2 en fonction du système d'exploitation
