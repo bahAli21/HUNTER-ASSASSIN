@@ -60,30 +60,39 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_game_8h.html">../core/Game.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;SDL.h&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="config_8h.html">../core/config.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_s_d_l_game.html">   14</a></span><span class="keyword">class </span><a class="code hl_class" href="class_s_d_l_game.html">SDLGame</a> {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_class" href="class_game.html">Game</a> game; </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    SDL_Window *window; </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    SDL_Renderer *renderer; </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_struct" href="struct_position.html">Position</a> camera {}; </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_function" href="class_s_d_l_game.html#a200db0b6af681960e7fc0c12a90e9c95">SDLGame</a>();</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_function" href="class_s_d_l_game.html#a436da2ce88358147ca644dbda3487e29">~SDLGame</a>();</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_s_d_l_game.html#ad77887b0e535ee0473f87bca5db8c884">runProject</a>();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>};</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="_level_8h.html">Level.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;SDL_mixer.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="_s_d_l_ttf_8h.html">SDLTtf.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;SDL_ttf.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_s_d_l_game.html">   18</a></span><span class="keyword">class </span><a class="code hl_class" href="class_s_d_l_game.html">SDLGame</a> {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_class" href="class_game.html">Game</a> game; </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    SDL_Window *window; </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    SDL_Renderer *renderer; </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_struct" href="struct_position.html">Position</a> camera {}; </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_class" href="class_s_d_l_sound.html">SDLSound</a> sound;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    Mix_Music * gameMusic;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_function" href="class_s_d_l_game.html#a200db0b6af681960e7fc0c12a90e9c95">SDLGame</a>();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_function" href="class_s_d_l_game.html#a436da2ce88358147ca644dbda3487e29">~SDLGame</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_s_d_l_game.html#ad77887b0e535ee0473f87bca5db8c884">runProject</a>();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>};</div>
 </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="ttc" id="a_game_8h_html"><div class="ttname"><a href="_game_8h.html">Game.h</a></div></div>
+<div class="ttc" id="a_level_8h_html"><div class="ttname"><a href="_level_8h.html">Level.h</a></div></div>
 <div class="ttc" id="a_s_d_l_animation_8h_html"><div class="ttname"><a href="_s_d_l_animation_8h.html">SDLAnimation.h</a></div></div>
+<div class="ttc" id="a_s_d_l_ttf_8h_html"><div class="ttname"><a href="_s_d_l_ttf_8h.html">SDLTtf.h</a></div></div>
 <div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdoc">Class representing the game.</div><div class="ttdef"><b>Definition</b> Game.h:15</div></div>
-<div class="ttc" id="aclass_s_d_l_game_html"><div class="ttname"><a href="class_s_d_l_game.html">SDLGame</a></div><div class="ttdoc">Class managing the game with SDL display.</div><div class="ttdef"><b>Definition</b> SDLGame.h:14</div></div>
+<div class="ttc" id="aclass_s_d_l_game_html"><div class="ttname"><a href="class_s_d_l_game.html">SDLGame</a></div><div class="ttdoc">Class managing the game with SDL display.</div><div class="ttdef"><b>Definition</b> SDLGame.h:18</div></div>
 <div class="ttc" id="aclass_s_d_l_game_html_a200db0b6af681960e7fc0c12a90e9c95"><div class="ttname"><a href="class_s_d_l_game.html#a200db0b6af681960e7fc0c12a90e9c95">SDLGame::SDLGame</a></div><div class="ttdeci">SDLGame()</div><div class="ttdoc">Default constructor of the SDLGame class.</div><div class="ttdef"><b>Definition</b> SDLGame.cpp:3</div></div>
 <div class="ttc" id="aclass_s_d_l_game_html_a436da2ce88358147ca644dbda3487e29"><div class="ttname"><a href="class_s_d_l_game.html#a436da2ce88358147ca644dbda3487e29">SDLGame::~SDLGame</a></div><div class="ttdeci">~SDLGame()</div><div class="ttdoc">Destructor of the SDLGame class.</div><div class="ttdef"><b>Definition</b> SDLGame.cpp:39</div></div>
 <div class="ttc" id="aclass_s_d_l_game_html_ad77887b0e535ee0473f87bca5db8c884"><div class="ttname"><a href="class_s_d_l_game.html#ad77887b0e535ee0473f87bca5db8c884">SDLGame::runProject</a></div><div class="ttdeci">void runProject()</div><div class="ttdoc">Main method to run the game.</div><div class="ttdef"><b>Definition</b> SDLGame.cpp:45</div></div>
+<div class="ttc" id="aclass_s_d_l_sound_html"><div class="ttname"><a href="class_s_d_l_sound.html">SDLSound</a></div><div class="ttdoc">The SDLSound class provides functionality to work with sound in SDL.</div><div class="ttdef"><b>Definition</b> SDLSound.h:9</div></div>
 <div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="config_8h.html">config.h</a></div><div class="ttdoc">Project constants.</div></div>
 <div class="ttc" id="astruct_position_html"><div class="ttname"><a href="struct_position.html">Position</a></div><div class="ttdoc">Structure representing a position in a 2D space.</div><div class="ttdef"><b>Definition</b> point.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
