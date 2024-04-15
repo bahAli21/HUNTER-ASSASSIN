@@ -78,7 +78,7 @@ void SDLGame::runProject() {
             camera.y +=5;
         if(playerAnimation.moving_right && camera.x<WINDOW_W)
             camera.x +=5;*/
-
+        SDL_SetRenderDrawColor(renderer, 0,0,0,0);
         SDL_RenderClear(renderer);
         myTtfKilled.Draw(renderer, {60, WINDOW_H-70});
         myTtfSlash.Draw(renderer, {80, WINDOW_H-70});
@@ -96,7 +96,7 @@ void SDLGame::runProject() {
             gardeAnimations[i].DrawAnimation(renderer); // Dessine l'animation du garde
         }
 
-        SDL_Delay(15);
+        SDL_Delay(25);
         SDL_RenderPresent(renderer);
     }
 }

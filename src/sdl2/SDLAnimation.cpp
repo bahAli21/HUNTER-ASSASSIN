@@ -5,10 +5,6 @@ sound(44100, MIX_DEFAULT_FORMAT, 2, 248){
     allAnimation.loadSpriteFile(character.theSpritePath, renderer);
     fireArrow.loadSpriteFile("../data/imgAnimation/fire-arrow.bmp", renderer);
     shootEffect = SDLSound::LoadChunkFromFile("../data/audio/arrowChunck.wav");
-    ptrStop = new int;
-
-
-    *ptrStop = 0;
 }
 
 SDLAnimation::~SDLAnimation() = default;
@@ -45,10 +41,10 @@ void SDLAnimation::drawArrow(SDL_Renderer * renderer) const {
 
 bool SDLAnimation::checkCollision(SDL_Rect rect1, SDL_Rect rect2) {
     // Calcul des coordonnées du petit rectangle
-    int smallRectX = rect1.x + rect1.w / 4;
-    int smallRectY = rect1.y + rect1.h / 4;
-    int smallRectW = rect1.w / 2;
-    int smallRectH = rect1.h / 2;
+    int smallRectX = rect1.x + rect1.w / 4 + 12;
+    int smallRectY = rect1.y + rect1.h / 4 + 12;
+    int smallRectW = rect1.w / 2 -20;
+    int smallRectH = rect1.h / 2  -20;
 
 // Création du petit rectangle
      smallRect = {smallRectX, smallRectY, smallRectW, smallRectH};
@@ -88,19 +84,18 @@ void SDLAnimation::openDoor(Level & level){
     SDL_Rect characterDest = {character.dest->x, character.dest->y, character.dest->w, character.dest->h};
     if(character.hasKey)
         if(checkCollision(characterDest, level.destDoorUp)) {
-            if(level.destDoorUp.w > 0){
-                level.destDoorUp.w--;
-            }
+            level.beta = -90;
+            if(level.beta == -90)
+                doorOpenNow = true;
     }
 }
 
 void SDLAnimation::closeDoor(Level & level){
-    int originalDoorWidth = 40;
     SDL_Rect characterDest = {character.dest->x, character.dest->y, character.dest->w, character.dest->h};
     if(!checkCollision(characterDest, level.destDoorUp)) {
-        if(level.destDoorUp.w < originalDoorWidth){ // originalDoorWidth est la largeur initiale de la porte
-            level.destDoorUp.w++;
-        }
+        level.beta = 0;
+        if(level.beta == 0)
+            doorOpenNow = false;
     }
 }
 
@@ -167,28 +162,28 @@ void SDLAnimation::patrouilleGardeUpRight(int vitesse, int idx) {
     }
 }
 
-//Marche pas encore 
+//Marche pas encore
 void SDLAnimation::patrouilleGardeDownLeft(int vitesse, int idx) {
     if(character.Aller) {
-        if(character.dest->x < character.tabNoeud[1].x){
+        if(character.dest->y < character.tabNoeud[1].y){
+            character.WalkingAnimation(character.player_down_clips, +vitesse, idx, SOUTH);
+        } else if(character.dest->x < character.tabNoeud[2].x){
             character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
-        } else if(character.dest->y > character.tabNoeud[2].y){
-            character.WalkingAnimation(character.player_up_clips, -vitesse, idx, NORTH);
         }
 
-        if(character.dest->y == character.tabNoeud[2].y){
+        if(character.dest->x == character.tabNoeud[2].x){
             character.Retour = true;
             character.Aller = false;
         }
     }
     if(character.Retour) {
-        if(character.dest->y < character.tabNoeud[1].y){
-            character.WalkingAnimation(character.player_down_clips, +vitesse, idx, SOUTH);
-        } else if(character.dest->x > character.tabNoeud[0].x){
+        if(character.dest->x > character.tabNoeud[1].x){
             character.WalkingAnimation(character.player_left_clips, -vitesse, idx, EAST);
+        } else if(character.dest->y > character.tabNoeud[0].y){
+            character.WalkingAnimation(character.player_up_clips, -vitesse, idx, NORTH);
         }
 
-        if(character.dest->x == character.tabNoeud[0].x){
+        if(character.dest->y == character.tabNoeud[0].y){
             character.Retour = false;
             character.Aller = true;
         }
@@ -197,95 +192,86 @@ void SDLAnimation::patrouilleGardeDownLeft(int vitesse, int idx) {
 
 void SDLAnimation::patrouilleGardeDownRight(int vitesse, int idx) {
     if(character.Aller) {
-        if(character.dest->x > character.tabNoeud[1].x){
+        if(character.dest->y < character.tabNoeud[1].y){
+            character.WalkingAnimation(character.player_down_clips, +vitesse, idx, SOUTH);
+        } else if(character.dest->x > character.tabNoeud[2].x){
             character.WalkingAnimation(character.player_left_clips, -vitesse, idx, EAST);
-        } else if(character.dest->y > character.tabNoeud[2].y){
-            character.WalkingAnimation(character.player_up_clips, -vitesse, idx, NORTH);
         }
 
-        if(character.dest->y == character.tabNoeud[2].y){
+        if(character.dest->x == character.tabNoeud[2].x){
             character.Retour = true;
             character.Aller = false;
         }
     }
     if(character.Retour) {
-        if(character.dest->y < character.tabNoeud[1].y){
-            character.WalkingAnimation(character.player_down_clips, +vitesse, idx, SOUTH);
-        } else if(character.dest->x < character.tabNoeud[0].x){
+        if(character.dest->x < character.tabNoeud[1].x){
             character.WalkingAnimation(character.player_right_clips, +vitesse, idx, WEST);
+        } else if(character.dest->y > character.tabNoeud[0].y){
+            character.WalkingAnimation(character.player_up_clips, -vitesse, idx, NORTH);
         }
 
-        if(character.dest->x == character.tabNoeud[0].x){
+        if(character.dest->y == character.tabNoeud[0].y){
             character.Retour = false;
             character.Aller = true;
         }
     }
 }
 
+void SDLAnimation::initCollisionAttribute(Level & level) {
+    SDL_Rect characterDest = {character.dest->x, character.dest->y, character.dest->w, character.dest->h};
+
+    if(collisionWithLevel(characterDest, level)){
+        if(character.direction == NORTH){
+            colUp = true;
+            colDown = false;
+            colRight = false;
+            colLeft = false;
+        } else if(character.direction ==SOUTH){
+            colUp = false;
+            colRight = false;
+            colLeft = false;
+            colDown = true;
+        } else if(character.direction == EAST){
+            colUp = false;
+            colDown = false;
+            colRight = false;
+            colLeft = true;
+        } else{
+            colUp = false;
+            colDown = false;
+            colLeft = false;
+            colRight = true;
+        }
+    }else if(!doorOpenNow && checkCollision(characterDest, level.destDoorUp)){
+        colUp = true;
+        colDown = false;
+        colLeft = false;
+        colRight = false;
+    } else{
+        colUp = false;
+        colDown = false;
+        colLeft = false;
+        colRight = false;
+    }
+}
 
 void SDLAnimation::updateCharacter(int index, Level &level) {
     int animation_speed = SDL_GetTicks() / 170;
     int idxAtt= animation_speed % 13; //for animation frame
     int idxDead = animation_speed % 5;
     int idx = animation_speed % 7;//for walking frame
-    int vitesse = 1;
+    int vitesseGarde = 1;
+    int vitessePlayer = 2;
 
-    if(state[SDL_SCANCODE_S] > 0 && idxAtt==8 ) {
-        character.createArrow(character.direction);
-        // Lecture de l'effet sonore une fois
-        SDLSound::PlayChunk(shootEffect);
-    }
+
 
 
     if(index == -1) { //Concerne un joueur pas les gardes
-        getKey(level);
-        openDoor(level);
-        closeDoor(level);
-
-        SDL_Rect characterDest = {character.dest->x, character.dest->y, character.dest->w, character.dest->h};
-        if(state[SDL_SCANCODE_LEFT] > 0){
-            // Vérifier la collision avant de déplacer le joueur
-            //if (!collisionWithLevel(characterDest, level)) {
-                character.WalkingAnimation(character.player_left_clips, -vitesse, idx, EAST);
-            //}
+        if(state[SDL_SCANCODE_S] > 0 && idxAtt==8 ) {
+            character.createArrow(character.direction);
+            // Lecture de l'effet sonore une fois
+            SDLSound::PlayChunk(shootEffect);
         }
-        if(state[SDL_SCANCODE_RIGHT] > 0){
-            //if (!collisionWithLevel(characterDest, level)) {
-                character.WalkingAnimation(character.player_right_clips, vitesse, idx, WEST);
-            //}
-        }
-        if(state[SDL_SCANCODE_UP] > 0){
-            //if (!collisionWithLevel(characterDest, level)) {
-                character.WalkingAnimation(character.player_up_clips, -vitesse, idx, NORTH);
-            //}
-        }
-        if(state[SDL_SCANCODE_DOWN] > 0){
-            //if (!collisionWithLevel(characterDest, level)) {
-                character.WalkingAnimation(character.player_down_clips, vitesse, idx, SOUTH);
-            //}
-
-        }
-    }
-    character.updateArrowPos();
-
-    //Garde TOP LEFT
-     if(index == 0){
-         patrouilleGardeUpLeft(vitesse, idx);
-     }
-     if(index == 1){
-         patrouilleGardeUpRight(vitesse, idx);
-     }
-     if(index == 2){
-         patrouilleGardeDownLeft(vitesse, idx);
-     }
-     if(index == 3){
-         patrouilleGardeDownRight(vitesse, idx);
-     }
-
-    if (idxAtt>5)
-        *ptrStop = 1;
-    if(keyBoardK == 'k' && *ptrStop==0)
-         character.makeAnimation(idxDead, character.PlayerHurtClips);
 
         if(character.direction == NORTH) {
             character.UP(idxAtt);
@@ -299,11 +285,55 @@ void SDLAnimation::updateCharacter(int index, Level &level) {
         if(character.direction == WEST) {
             character.RIGHT(idxAtt);
         }
-    character.shootKey = ' '; //don't repeat animation
+        character.shootKey = ' '; //don't repeat animation
+
+        getKey(level);
+        openDoor(level);
+        closeDoor(level);
+        initCollisionAttribute(level);
+
+        if(state[SDL_SCANCODE_LEFT] > 0){
+            // Vérifie la collision avant de déplacer le joueur
+            if (!colLeft) {
+                character.WalkingAnimation(character.player_left_clips, -vitessePlayer, idx, EAST);
+            }
+        }
+        if(state[SDL_SCANCODE_RIGHT] > 0){
+            if (!colRight) {
+                character.WalkingAnimation(character.player_right_clips, vitessePlayer, idx, WEST);
+            }
+        }
+        if(state[SDL_SCANCODE_UP] > 0){
+            if (!colUp) {
+                character.WalkingAnimation(character.player_up_clips, -vitessePlayer, idx, NORTH);
+            }
+        }
+        if(state[SDL_SCANCODE_DOWN] > 0){
+            if (!colDown) {
+                character.WalkingAnimation(character.player_down_clips, vitessePlayer, idx, SOUTH);
+            }
+        }
+    }
+    character.updateArrowPos();
+
+    //Garde TOP LEFT
+     if(index == 0){
+         patrouilleGardeUpLeft(vitesseGarde, idx);
+     }
+     if(index == 1){
+         patrouilleGardeUpRight(vitesseGarde, idx);
+     }
+     if(index == 2){
+         patrouilleGardeDownLeft(vitesseGarde, idx);
+     }
+     if(index == 3){
+         patrouilleGardeDownRight(vitesseGarde, idx);
+     }
 }
 
 void SDLAnimation::DrawAnimation(SDL_Renderer * renderer) const {
-
+    SDL_SetRenderDrawColor(renderer, 255,255,255,255);
+    SDL_RenderDrawRect(renderer, &smallRect);
     drawArrow(renderer);
 
     SDL_RenderCopy(renderer,

@@ -1,5 +1,4 @@
-#ifndef HUNTERASSASSIN_SDLANIMATION_H
-#define HUNTERASSASSIN_SDLANIMATION_H
+#pragma once
 
 #include "../core/config.h"
 #include "../core/point.h"
@@ -25,16 +24,62 @@ public:
     Character character; /**< Player object for animation. */
     SDLSprite fireArrow; /**< Sprite for fire arrow animation. */
     SDLSound sound; /**< Sound effects for animations. */
-    bool deathAnimationPlayed = false; /**< Flag indicating if death animation has been played. */
-    int * ptrStop; /**< Pointer to stop animation. */
     Mix_Chunk * shootEffect; /**< Sound effect for shooting. */
     /** Sprite object containing all animations for the player and other entities. */
     SDLSprite allAnimation;
-    Position PlayerHurtClips[7]; /**< Array of positions for player hurt animation. */
+    /**
+ * @brief Executes patrolling behavior for the guard character moving up and left.
+ *
+ * This function controls the patrolling behavior of the guard character, moving it up and left.
+ *
+ * @param vitesse The speed of movement.
+ * @param idx Index of the animation.
+ */
     void patrouilleGardeUpLeft(int vitesse, int idx);
+
+/**
+ * @brief Executes patrolling behavior for the guard character moving up and right.
+ *
+ * This function controls the patrolling behavior of the guard character, moving it up and right.
+ *
+ * @param vitesse The speed of movement.
+ * @param idx Index of the animation.
+ */
     void patrouilleGardeUpRight(int vitesse, int idx);
+
+/**
+ * @brief Executes patrolling behavior for the guard character moving down and left.
+ *
+ * This function controls the patrolling behavior of the guard character, moving it down and left.
+ *
+ * @param vitesse The speed of movement.
+ * @param idx Index of the animation.
+ */
     void patrouilleGardeDownLeft(int vitesse, int idx);
+
+/**
+ * @brief Executes patrolling behavior for the guard character moving down and right.
+ *
+ * This function controls the patrolling behavior of the guard character, moving it down and right.
+ *
+ * @param vitesse The speed of movement.
+ * @param idx Index of the animation.
+ */
     void patrouilleGardeDownRight(int vitesse, int idx);
+
+/**
+ * @brief Initializes collision attributes for the level.
+ *
+ * This function initializes collision attributes for the game level.
+ *
+ * @param level Reference to the game level object.
+ */
+    void initCollisionAttribute(Level & level);
+
+    bool doorOpenNow{false}; /**< Indicates whether the door is currently open. */
+
+    int colLeft{false}, colRight{false}, colDown{false}, colUp{false}; /**< Collision flags for left, right, down, and up directions. */
+
 
     /**
      * @brief Constructor for SDLAnimation class.
@@ -73,12 +118,59 @@ public:
      * @param index Index of the animation to update.
      */
     void updateCharacter(int index, Level &level);
+
+    /**
+     * @brief Checks for collision between two rectangles.
+     *
+     * This function checks for collision between two SDL_Rect structures.
+     *
+     * @param rect1 First SDL_Rect structure.
+     * @param rect2 Second SDL_Rect structure.
+     * @return True if collision occurs, false otherwise.
+     */
     bool checkCollision(SDL_Rect rect1, SDL_Rect rect2);
+
+    /**
+     * @brief Checks for collision between player and level objects.
+     *
+     * This function checks for collision between the player character
+     * and objects in the game level.
+     *
+     * @param playerRect SDL_Rect structure representing player character.
+     * @param level Reference to the game level object.
+     * @return True if collision occurs, false otherwise.
+     */
     bool collisionWithLevel(SDL_Rect playerRect, Level &level);
+
+    /**
+     * @brief Closes the door in the game level.
+     *
+     * This function closes the door in the game level.
+     *
+     * @param level Reference to the game level object.
+     */
     void closeDoor(Level & level);
+
+    /**
+     * @brief Opens the door in the game level.
+     *
+     * This function opens the door in the game level.
+     *
+     * @param level Reference to the game level object.
+     */
     void openDoor(Level & level);
+
+    /**
+     * @brief Gets the key in the game level.
+     *
+     * This function enables the player character to get the key
+     * required to open the door in the game level.
+     *
+     * @param level Reference to the game level object.
+     */
     void getKey(Level & level);
-    SDL_Rect smallRect;
+
+    SDL_Rect smallRect; /**< SDL_Rect structure for small rectangle. */
 
     /**
      * @brief Draws animation on renderer.
@@ -103,4 +195,3 @@ public:
     const Uint8* state; /**< Current keyboard state. */
 };
 
-#endif //HUNTERASSASSIN_SDLANIMATION_H
