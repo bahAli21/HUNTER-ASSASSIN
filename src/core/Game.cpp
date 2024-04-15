@@ -23,7 +23,7 @@ void Game::addGardeAndPlayers() {
 
     std::vector<Position> defaultNoeud{{-1, -1}};
     Rect source = {WIDTH_A / 2, HEIGHT_A * 21, WIDTH_A, HEIGHT_A * 2};
-    Rect destPlayer = {WINDOW_W/2 - WIDTH_A + 30, WINDOW_H - HEIGHT_A*4, WIDTH_A, HEIGHT_A*2};
+    Rect destPlayer = {WINDOW_W/2 - WIDTH_A + 30, WINDOW_H - HEIGHT_A*3-20, WIDTH_A, HEIGHT_A*2};
     Rect targetPlayer = {300,300};
     listeOfPlayers.emplace_back(&source, &destPlayer, 0, 100, "../data/player.bmp",&targetPlayer,3, "BAH", 1, 21, defaultNoeud);
      //dest
@@ -41,7 +41,7 @@ void Game::addGardeAndPlayers() {
 
      //Garde 4 Right Down [3] (coiffure bizarre rouge)
      tabRectSource.emplace_back(WIDTH_A / 2, HEIGHT_A * 25, WIDTH_A, HEIGHT_A * 2);
-     tabRectDest.emplace_back(WINDOW_W-WIDTH_A-22,HEIGHT_A*3 ,WIDTH_A,HEIGHT_A*2);
+     tabRectDest.emplace_back(WINDOW_W-WIDTH_A-62,HEIGHT_A*3 ,WIDTH_A,HEIGHT_A*2);
 
      //noeud garde 1 UP LEFT
 
@@ -63,9 +63,9 @@ void Game::addGardeAndPlayers() {
 
      //noeud garde 4 DOWN RIGHT
 
-     tabNoeud[3][0] = {WINDOW_W-WIDTH_A-22,HEIGHT_A*3};
-     tabNoeud[3][1] = {WINDOW_W-WIDTH_A-22,HEIGHT_A+90};
-     tabNoeud[3][2] = {12,HEIGHT_A+90};
+     tabNoeud[3][0] = {WINDOW_W-WIDTH_A-62,HEIGHT_A*3};
+     tabNoeud[3][1] = {WINDOW_W-WIDTH_A-62,HEIGHT_A*5-20};
+     tabNoeud[3][2] = {20,HEIGHT_A*5-20};
 
     //Noeud garde 2 droite vers la gauche a faire
 
