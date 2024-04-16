@@ -28,13 +28,17 @@ void Menu::makeMenu(SDL_Renderer * renderer, Position mouse) {
 }
 
 int Menu::detecteClic(Position mouse, int value) {
-    for(int i=0; i<3; i++){
-        if((mouse.x >= recTab[i].x && mouse.x <= recTab[i].x + recTab[i].w) && (mouse.y >= recTab[i].y && mouse.y <= recTab[i].y + recTab[i].h)){
-            return recTab[i].y;
+    if (value == 0){
+        for(int i=0; i<3; i++){
+            if((mouse.x >= recTab[i].x && mouse.x <= recTab[i].x + recTab[i].w) && (mouse.y >= recTab[i].y && mouse.y <= recTab[i].y + recTab[i].h)){
+                return recTab[i].y;
+            }
         }
     }
+
     if(value != 0)
-        return -1;
+        return value;
+
     return -1;
 }
 

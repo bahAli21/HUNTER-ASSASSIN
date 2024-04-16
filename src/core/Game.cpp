@@ -25,7 +25,7 @@ void Game::addGardeAndPlayers() {
     Rect source = {WIDTH_A / 2, HEIGHT_A * 21, WIDTH_A, HEIGHT_A * 2};
     Rect destPlayer = {WINDOW_W/2 - WIDTH_A + 30, WINDOW_H - HEIGHT_A*3-20, WIDTH_A, HEIGHT_A*2};
     Rect targetPlayer = {300,300};
-    listeOfPlayers.emplace_back(&source, &destPlayer, 0, 100, "../data/player.bmp",&targetPlayer,3, "BAH", 1, 21, defaultNoeud);
+    listeOfPlayers.emplace_back(&source, &destPlayer, 0, 700, "../data/player.bmp",&targetPlayer,3, "BAH", 1, 21, defaultNoeud);
      //dest
 
     //garde 1 Left Up [0]

@@ -11,6 +11,7 @@ SDLAnimation::~SDLAnimation() = default;
 
 void SDLAnimation::handleInput() {
     state = SDL_GetKeyboardState(nullptr);
+
 }
 void SDLAnimation::makeSmallRectCollision(){
     // Calcul des coordonnées du petit rectangle
@@ -277,6 +278,11 @@ void SDLAnimation::updateCharacter(int index, Level &level) {
                 // Lecture de l'effet sonore une fois
                 SDLSound::PlayChunk(shootEffect);
             }
+
+            if(state[SDL_SCANCODE_S]>0)
+                character.shootKey = 's';
+            else
+                character.shootKey = ' ';
 
             if (character.direction == NORTH) {
                 character.UP(idxAtt);
